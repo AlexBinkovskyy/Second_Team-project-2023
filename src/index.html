@@ -11,24 +11,61 @@
     />
     <link rel="stylesheet" href="./css/index.css" />
   </head>
-  
+
   <body>
-  
-    <header>
-      <load src="./partials/header.html" />
-    </header>
-  
-    <main>
-      <load src="./partials/hero.html" />
-      <load src="./partials/filters.html" />
-      <load src="./partials/cards.html" />
-      <load src="./partials/aditional-products.html" />
-    </main>
-  
-    <footer>
-      <load src="./partials/footer.html" />
-    </footer>
-    <load src="./partials/shopping-cart.html"/>
+    <div class="container">
+      <header>
+        <div class="header-logo">
+          <a href="../index.html" class="header-logo-item"
+            ><svg class="header-logo-icon" width="28" height="28">
+              <use href="./images/sprite.svg#icon-fb-cabbage-logo"></use>
+            </svg>
+          </a>
+          <a class="header-logo-text" href="../index.html">Food Boutique</a>
+        </div>
+        <div>
+          <nav class="header-nav-div">
+            <ul class="header-nav">
+              <li class="header-nav-home-list">
+                <a class="header-nav-home" href="../index.html">Home</a>
+              </li>
+              <li class="header-nav-cart-list">
+                <a class="header-nav-cart" href="./cards.html">
+                  <svg class="header-nav-cart-link" width="14" height="14">
+                    <use href="./images/sprite.svg#icon-shopping-cart"></use>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a class="header-nav-cart-item" href="./cards.html"
+                  >Cart (<span class="cart-number">0</span>)</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <!-- Hero -->
+        <section></section>
+
+        <!-- filter -->
+        <section></section>
+
+        <section>
+          <!-- Product list -->
+
+          <aside class="sidebar">
+            <!-- Popular products -->
+
+            <!-- Discount products -->
+          </aside>
+        </section>
+      </main>
+      <footer></footer>
+    </div>
+    <load src="./partials/shopping-cart.html" />
     <script type="module" src="./js/main.js"></script>
   </body>
 </html>
