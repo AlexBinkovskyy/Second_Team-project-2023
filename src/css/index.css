@@ -8,6 +8,34 @@
 @import url('./reset.css');
 @import url('./variables.css');
 
+@font-face {
+  font-family: 'NeueMontreal-Medium';
+  src: url('../fonts/NeueMontreal-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NeueMontreal-regular';
+  src: url('../fonts/NeueMontreal-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Fontspring-Quincy-Black';
+  src: url('../fonts/Fontspring-DEMO-quincycf-black.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Fontspring-Quincy-Regular';
+  src: url('../fonts/Quincy-CF-Regular.ttf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -147,11 +175,11 @@ body {
 
 .header-logo-text {
   color: #010101;
-  font-family: FONTSPRING DEMO - Quincy CF Black;
+  font-family: 'Fontspring-Quincy-Black';
   font-size: 18px;
   font-weight: 900;
   line-height: 1.11;
-  letter-spacing: -0.02em;
+  /* letter-spacing: -0.02em; */
 }
 
 @media only screen and (min-width: 768px) {
@@ -172,10 +200,11 @@ body {
   border-radius: 30px;
   background: var(--maingreen);
   color: var(--maingray);
-  font-family: Neue Montreal;
-  font-size: 14px;
+  font-family: 'NeueMontreal-regular';
+  font-size: 18px;
   font-weight: 500;
   line-height: 1.28;
+  
 }
 
 @media only screen and (min-width: 768px) {
@@ -227,7 +256,7 @@ body {
 .header-nav-cart-item {
   display: none;
   color: #010101;
-  font-family: Neue Montreal;
+  font-family: 'NeueMontreal-regular';
   font-size: 18px;
   font-weight: 500;
   line-height: 1.33;
