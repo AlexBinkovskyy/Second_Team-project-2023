@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",   
+    "dev": "vite",
     "build": "vite build --base=/Second_Team-project-2023/",
     "preview": "vite preview"
   },
