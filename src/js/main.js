@@ -4,6 +4,7 @@ import { getProdByDiscount } from './query';
 import { getProdByID } from './query';
 import {renderProductDiscount} from './discount'
 
+
 let filterParams = {
   keyword: null,
   category: null,
@@ -17,3 +18,4 @@ getProdByDiscount()
         renderProductDiscount(data)
     })
     .catch(error => console.log(error))
+
