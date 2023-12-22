@@ -1,0 +1,248 @@
+@import url('./reset.css');
+@import url('./variables.css');
+@import url('./index.css');
+
+*,
+*::after,
+::before {
+  box-sizing: border-box;
+}
+body{
+  font-family: 'NeueMontreal-regular';
+  font-size: 18px;
+}
+
+.container {
+  max-width: 1270px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.title {
+  color: var(--text-color);
+  font-size: 32px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.regularText{
+  font-family: 'NeueMontreal-regular';
+}
+.mediumText{
+  font-family: 'NeueMontreal-Medium';
+}
+
+/*
+▮▮▯▯⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘ >>
+*/
+
+.cart {
+  padding: 100px 0;
+}
+.cart-container {
+}
+
+/*
+▮▮▯▯⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘   cart-title   ⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘▯▯▮▮
+*/
+/* .cart-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.cart-title-icon {
+  height: 42px;
+  width: 42px;
+
+  border-radius: 30px;
+  background: #6d8434;
+}
+.cart-title-text {
+}
+.cart-title-count {
+} */
+
+/*
+▮▮▯▯⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘   Cart bottom   ⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘▯▯▮▮
+*/
+.cart-box {
+  padding-top: 87px;
+
+  display: flex;
+  gap: 4%;
+}
+@media screen and (max-width: 780px) {
+  .cart-box {
+    display: block;
+  }
+}
+/*
+▮▮▯▯⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘   Order list   ⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘▯▯▮▮
+*/
+.catr-order-wraper {
+  position: relative;
+  width: 48%;
+}
+@media screen and (max-width: 780px) {
+  .catr-order-wraper{
+    width: 100%;
+    margin-bottom: 100px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .catr-order-wraper{
+    margin-bottom: 80px;
+  }
+}
+.curt-order-clear-btn {
+  position: absolute;
+  right: 0px;
+  top: -40px;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+
+  font-size: 16px;
+  font-weight: 500;
+}
+.curt-order-clear-btn span{
+  font-size: 20px;
+}
+.catr-order {
+  height: 520px;
+  background-color: #887f5d88;
+}
+
+/*
+▮▮▯▯⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘   cart-form   ⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘▯▯▮▮
+*/
+.cart-form-wraper {
+  width: 48%;
+}
+@media screen and (max-width: 780px) {
+  .cart-form-wraper{
+    width: 100%;
+    max-width: 590px;
+  }
+}
+.cart-form-title {
+  margin-bottom: 40px;
+}
+.catr-total-price {
+  height: 60px;
+  padding: 14px 28px;
+  margin-bottom: 40px;
+
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  flex-grow: 1;
+
+  border-radius: 8px;
+  background: rgba(109, 132, 52, 0.05);
+}
+@media screen and (max-width: 400px) {
+  .catr-total-price {
+    margin-bottom: 30px;
+  }
+}
+.catr-total-price-text {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.cart-total-price-sum {
+  color: rgba(1, 1, 1, 0.2);
+  font-size: 12px;
+}
+.cart-total-price-sum-span {
+  color: var(--text-color);
+  font-size: 32px;
+  font-weight: 500;
+}
+
+
+.cart-form {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+@media screen and (max-width: 400px) {
+  .cart-form {
+    display: block;
+    width: 100%;
+  }
+}
+.cart-form-label {
+  position: relative;
+  flex: 1 1 auto;
+}
+.cart-form-label-text {
+  position: absolute;
+  top: 50%;
+  left: 20px;  
+  transform: translateY(-53%);
+
+  color: var(--passive-text-color);
+}
+.cart-form-input {
+  position: relative;  
+  padding: 15px 20px;
+  padding-left: 64px;
+
+  width: 100%;
+
+  background-color: transparent;
+  border-radius: 30px;
+  border: 1px solid rgba(1, 1, 1, 0.3);
+
+  color: var(--text-color);
+  font-size: 18px;
+}
+@media screen and (max-width: 400px) {
+  .cart-form-input {
+    margin-bottom: 14px;
+  }
+}
+.cart-form-input::placeholder {
+  color: var(--text-color);
+  font-size: 18px;
+  line-height: 24px;
+}
+.cart-form-button {
+  padding: 15px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  max-width: 215px;
+  /* min-width: 145px; */
+  flex-grow: 1;
+
+  border-radius: 30px;
+  border-color: transparent;
+  background: #6d8434;
+  cursor: pointer;
+
+  color: #e8e8e2;
+  font-size: 20px;
+  font-weight: 500;
+}
+@media screen and (max-width: 400px) {
+  .cart-form-button{
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.form-label {
+}
+.label-text {
+}
+.form-input {
+}
+.form-button {
+}
