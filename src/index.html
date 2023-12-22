@@ -13,49 +13,48 @@
   </head>
 
   <body>
-    <div class="container">
-      <load src="./partials/header.html" />
-      <main>
-        <!-- Hero -->
-        <section>
-          <div class="hero">
-            <div class="hero-text">
-              <h1 class="hero-main-text">
-                Welcome to the <span class="accent-food">Food</span> Boutique!
-              </h1>
-              <h2 class="hero-second-text">
-                With Food Boutique, you're not just subscribing to food, you're
-                signing up for a fresher, fitter, and happier you.
-              </h2>
-            </div>
-            <div class="hero-img-cont">
-              <svg class="hero-logo-icon" width="28" height="28">
-
-                <use href="./images/sprite.svg#icon-organic-food-yellow"></use>
-              </svg>
-            </div>
+    <load src="./partials/header.html" />
+    <main>
+      <!-- Hero -->
+      <section>
+        <div class="container">
+          <div class="hero-text">
+            <h1 class="hero-main-text">
+              Welcome to the <span class="accent-food">Food</span> Boutique!
+            </h1>
+            <h2 class="hero-second-text">
+              With Food Boutique, you're not just subscribing to food, you're
+              signing up for a fresher, fitter, and happier you.
+            </h2>
           </div>
-        </section>
+          <div class="hero-img-cont">
+            <svg class="hero-logo-icon" width="28" height="28">
+              <use href="./images/sprite.svg#icon-organic-food-yellow"></use>
+            </svg>
+          </div>
+        </div>
+      </section>
 
-        <!-- filter -->
-        <section></section>
+      <!-- filter -->
+      <section></section>
 
-        <section>
-          <!-- Product list -->
+      <section>
+        <!-- Product list -->
+        <div class="container">
           <div class="product-list"></div>
           <aside class="sidebar">
             <!-- Popular products -->
-
             <!-- Discount products -->
             <div class="discount-products">
               <h3 class="discount-products-list">Discount products</h3>
               <ul class="discount-products-item"></ul>
             </div>
           </aside>
-        </section>
-      </main>
-      <load src="./partials/footer.html" />
-    </div>
+        </div>
+      </section>
+    </main>
+    <load src="./partials/footer.html" />
+
     <script type="module" src="./js/main.js"></script>
   </body>
 </html>

@@ -8,7 +8,7 @@ const productList = document.querySelector('.product-list');
 //   })
 //   .catch(error => console.log(error));
 
-export function renderPoductList(data) {
+export function renderProductList(data) {
   productList.insertAdjacentHTML('beforeend', createMarkup(data.results));
 }
 
