@@ -43,7 +43,7 @@
                     </svg>
                   </a>
                 </li>
-                <li>
+                <li class="header-nav-cart-item-list">
                   <a
                     class="header-nav-cart-item"
                     href="./partials/shopping-cart.html"
@@ -58,14 +58,32 @@
 
       <main>
         <!-- Hero -->
-        <section></section>
+        <section>
+          <div class="hero">
+            <div class="hero-text">
+              <h1 class="hero-main-text">
+                Welcome to the <span class="accent-food">Food</span> Boutique!
+              </h1>
+              <h2 class="hero-second-text">
+                With Food Boutique, you're not just subscribing to food, you're
+                signing up for a fresher, fitter, and happier you.
+              </h2>
+            </div>
+            <div class="hero-img-cont">
+              <svg class="hero-logo-icon" width="28" height="28">
+
+                <use href="./images/sprite.svg#icon-organic-food-yellow"></use>
+              </svg>
+            </div>
+          </div>
+        </section>
 
         <!-- filter -->
         <section></section>
 
         <section>
           <!-- Product list -->
-
+          <div class="product-list"></div>
           <aside class="sidebar">
             <!-- Popular products -->
 
@@ -75,86 +93,79 @@
       </main>
       <footer>
         <div class="container footer-content">
-          <div class="footer-content-block">
-            <div class="footer-content-item">
-              <div class="footer-logo">
-                <a class="footer-logo-link" href="index.html">
-                  <svg class="footer-logo-icon" width="28" height="28">
-                    <use
-                      href="./images/sprite.svg#icon-fb-cabbage-logo-inverse"
-                    ></use>
-                  </svg>
-                  <p class="footer-logo-text">Food Boutique</p>
-                </a>
-              </div>
-              <ul class="footer-social-links-box">
-                <li class="footer-social-links-item">
-                  <a
-                    class="footer-social-links"
-                    href="https://www.facebook.com/goITclub/"
-                    target="_blank"
-                  >
-                    <svg class="footer-svg" width="24" height="24">
-                      <use href="./images/sprite.svg#icon-facebook-logo"></use>
-                    </svg>
-                  </a>
-                </li>
-                <li class="footer-social-links-item">
-                  <a
-                    class="footer-social-links"
-                    href="https://www.instagram.com/goitclub/"
-                    target="_blank"
-                  >
-                    <svg class="footer-svg" width="24" height="24">
-                      <use href="./images/sprite.svg#icon-instagram-logo"></use>
-                    </svg>
-                  </a>
-                </li>
-                <li class="footer-social-links-item">
-                  <a
-                    class="footer-social-links"
-                    href="https://www.youtube.com/c/GoIT"
-                    target="_blank"
-                  >
-                    <svg class="footer-svg" width="24" height="24">
-                      <use href="./images/sprite.svg#icon-youtube-logo"></use>
-                    </svg>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="footer-slogan-form">
-              <div class="footer-slogan">
-                <h3 class="footer-slogan-title">
-                  Discover the Variety of Flavors and Quality
-                </h3>
-                <p class="footer-slogan-text">
-                  An online store where you will find fresh, natural and
-                  delicious products for a healthy life and unforgettable
-                  gastronomic adventures.
-                </p>
-              </div>
-              <div class="footer-form-box">
-                <p class="footer-subscribe-text">
-                  Subscribe and learn about new products!
-                </p>
-                <form
-                  class="subscription-form"
-                  action="URL_для_відправки_даних"
-                  method="POST"
-                >
-                  <input
-                    class="footer-form-input"
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    required
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                  />
-                  <button class="footer-form-button" type="submit">Send</button>
-                </form>
-              </div>
-            </div>
+          <div class="footer-logo">
+            <a class="footer-logo-link" href="index.html">
+              <svg class="footer-logo-icon" width="28" height="28">
+                <use
+                  href="./images/sprite.svg#icon-fb-cabbage-logo-inverse"
+                ></use>
+              </svg>
+              <p class="footer-logo-text">Food Boutique</p>
+            </a>
+          </div>
+          <ul class="footer-social-links-box">
+            <li class="footer-social-links-item">
+              <a
+                class="footer-social-links"
+                href="https://www.facebook.com/goITclub/"
+                target="_blank"
+              >
+                <svg class="fotter-svg" width="24" height="24">
+                  <use href="../images/sprite.svg#icon-facebook-logo"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="footer-social-links-item">
+              <a
+                class="footer-social-links"
+                href="https://www.instagram.com/goitclub/"
+                target="_blank"
+              >
+                <svg class="fotter-svg" width="24" height="24">
+                  <use href="../images/sprite.svg#icon-instagram-logo"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="footer-social-links-item">
+              <a
+                class="footer-social-links"
+                href="https://www.youtube.com/c/GoIT"
+                target="_blank"
+              >
+                <svg class="fotter-svg" width="24" height="24">
+                  <use href="../images/sprite.svg#icon-youtube-logo"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+          <div class="footer-slogan">
+            <h3 class="footer-slogan-title">
+              Discover the Variety of Flavors and Quality
+            </h3>
+            <p class="footer-slogan-text">
+              An online store where you will find fresh, natural and delicious
+              products for a healthy life and unforgettable gastronomic
+              adventures.
+            </p>
+          </div>
+          <div class="footer-form-box">
+            <p class="footer-subscribe-text">
+              Subscribe and learn about new products!
+            </p>
+            <form
+              class="subscription-form"
+              action="URL_для_відправки_даних"
+              method="POST"
+            >
+              <input
+                class="footer-form-input"
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+              />
+              <button class="footer-form-button" type="submit">Send</button>
+            </form>
           </div>
           <div class="footer-loader">
             <p class="footer-block-text">Food Boutique. All rights reserved.</p>

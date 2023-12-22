@@ -3,18 +3,8 @@
   --maingreen: #6d8434;
   --maingreen-hower: #586f1f;
   --transition-settings: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  /**
-|============================
-| Footer root
-| start
-|============================
-*/
   --border: 2px solid rgba(232, 232, 226, 0.3);
+  --text-color: #010101;
+  --passive-text-color: rgba(1, 1, 1, 0.30);
+   }
 
-  /**
-|============================
-| Footer root
-| end
-|============================
-*/
-}
