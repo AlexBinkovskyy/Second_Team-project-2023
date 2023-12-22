@@ -2,8 +2,8 @@ import { getProdByParams } from './query';
 import { getProdByPopular } from './query';
 import { getProdByDiscount } from './query';
 import { getProdByID } from './query';
-import {renderProductDiscount} from './discount'
-
+import { renderProductDiscount } from './discount';
+import { renderProductList } from './product-list';
 
 let filterParams = {
   keyword: null,
@@ -14,8 +14,13 @@ let filterParams = {
 localStorage.setItem(filterParams, JSON.stringify(filterParams));
 
 getProdByDiscount()
-    .then(({ data }) => {
-        renderProductDiscount(data)
-    })
-    .catch(error => console.log(error))
+  .then(({ data }) => {
+    renderProductDiscount(data);
+  })
+  .catch(error => console.log(error));
 
+getProdByParams()
+  .then(({ data }) => {
+    renderProductList(data);
+  })
+  .catch(error => console.log(error));
