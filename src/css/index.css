@@ -7,6 +7,7 @@
 
 @import url('./reset.css');
 @import url('./variables.css');
+@import url('./product-list.css');
 
 :root {
   font-synthesis: none;
@@ -46,32 +47,31 @@ textarea {
   outline: none;
 }
 
-.container {
-  width: 1240px;
-  margin: 0 auto;
-}
-
 body {
   background: #E8E8E2;
 }
 
-@media screen and (max-width: 375px) {
-  .container{
-    padding: 18px 20px 20px;
+/* Correct container */
+.container {
+  min-width: 320px;
+  max-width: 428px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    min-width: 768px;
+    padding: 0 32px;
   }
 }
 
-@media screen and (max-width: 767.99px) {
-  .container{
-    padding: 24px 32px 20px;
+@media screen and (min-width: 1440px) {
+  .container {
+    min-width: 1158px;
+    padding: 0 100px;
   }
 }
-
-@media screen and (min-width: 768px) { 
-  .container{
-    padding: 24px 100px 20px;
-  }
-} 
 
 /**
   |============================

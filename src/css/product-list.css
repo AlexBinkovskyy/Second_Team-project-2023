@@ -1,0 +1,19 @@
+.product-list {
+    margin: 20px 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.product-card {
+    padding: 20px;
+
+    border-radius: 20px;
+    background: #FAFAFA;
+}
+
+.product-pic {
+    height: 178px;
+    object-fit: contain;
+}
