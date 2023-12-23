@@ -49,3 +49,5 @@ function proceedSelectCategorie(filterCategories) {
 }
 setNewFilterParams(filterParams);
 }
+
+// some
