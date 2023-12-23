@@ -10,7 +10,6 @@
 @import url('./product-list.css');
 @import url('./discount.css');
 
-
 @font-face {
   font-family: 'NeueMontreal-Medium';
   src: url('../fonts/NeueMontreal-Medium.otf') format('opentype');
@@ -338,24 +337,19 @@ body {
   |============================
 */
 
-.hero {
-  min-width: 375px;
-  width: 375px;
+.hero-section {
+  padding-top: 36px;
   padding-bottom: 37px;
 }
 @media only screen and (min-width: 768px) {
-  .hero {
-    padding-left: 32px;
-    padding-right: 32px;
-    width: 768px;
+  .hero-section {
+    padding-top: 58px;
   }
 }
 
-@media only screen and (min-width: 1240px) {
-  .hero {
-    padding-left: 100px;
-    padding-right: 100px;
-    width: 1440px;
+@media only screen and (min-width: 1440px) {
+  .hero-section {
+    padding-top: 38.5px;
   }
 }
 .hero-text {
@@ -368,7 +362,7 @@ body {
 }
 .hero-main-text {
   padding-bottom: 16px;
-  padding-top: 58px;
+  /* padding-top: 58px; */
   font-size: 44px;
   font-weight: 500;
   font-family: 'NeueMontreal-regular';
@@ -415,8 +409,8 @@ body {
 /* Hero Images */
 
 .hero-img-cont {
-  margin-left: 20px;
-  margin-right: 20px;
+  /* margin-left: 20px;
+  margin-right: 20px; */
   position: relative;
   border-radius: 30px;
   background: url(../images/hero-image-mobile@1x-min.jpg);
