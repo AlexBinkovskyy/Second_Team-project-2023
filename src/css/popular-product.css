@@ -1,21 +1,23 @@
 .popular-product-list {
-  margin: 20px 0;
-
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
 .popular-product-item {
-  padding: 20px;
+  width: 335px;
+  /* height: 98px; */
+  padding: 12px 10px 12px 12px;
 
-  border-radius: 20px;
+  border-radius: 10px;
   background: #fafafa;
 }
 
 .popular-product-pic {
-    width: 74px;
-  object-fit: contain;
+  width: 56px;
+
+  border-radius: 10px;
+  background: #e8e8e2;
 }
 
 .popular-product-title {
@@ -26,14 +28,53 @@
   font-style: normal;
   font-size: 28px;
   line-height: 1.14;
+  margin-bottom: 20px;
 }
 
-.info-item {
-  color: #010101;
+.popular-product-info {
+  display: flex;
+    flex-direction: column;
+}
 
+
+.info-item {
   font-family: Neue Montreal;
   font-weight: 500;
   font-style: normal;
   font-size: 20px;
   line-height: 1.2;
+}
+.info-item-description {
+font-family: Neue Montreal;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.17; /* 116.667% */
+}
+.info-title {
+  font-family: Neue Montreal;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.17; /* 116.667% */
+}
+.popular-product-name {
+ 
+
+  font-family: Neue Montreal;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.11; 
+ 
+ 
+}
+.koshik {
+  fill: var(--maingreen);
+  
+}
+
+.buy-btn {
+  display: flex;
+  margin-left: auto;
 }
