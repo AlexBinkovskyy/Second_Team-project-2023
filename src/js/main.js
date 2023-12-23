@@ -10,7 +10,7 @@ import { renderFilterSelect } from './filter';
 import { filterParams } from './localStorage';
 
 
-// localStorage.setItem('filterParams', JSON.stringify(filterParams));
+localStorage.setItem('filterParams', JSON.stringify(filterParams));
 
 getProdByDiscount()
   .then(({ data }) => {
