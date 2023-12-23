@@ -12,54 +12,42 @@
     
     <script type="module" crossorigin src="/Second_Team-project-2023/commonHelpers.js"></script>
     <link rel="modulepreload" crossorigin href="/Second_Team-project-2023/assets/vendor-a61d8330.js">
-    <link rel="stylesheet" href="/Second_Team-project-2023/assets/index-a0603d5b.css">
+    <link rel="stylesheet" href="/Second_Team-project-2023/assets/index-d9c72f7c.css">
   </head>
 
   <body>
     <header class="header">
-    <div class="container">
-      <div class="header-logo">
-        <a href="./index.html" class="header-logo-item"
-          ><svg class="header-logo-icon" width="28" height="28">
-            <use href="/Second_Team-project-2023/assets/sprite-8e87bd1c.svg#icon-fb-cabbage-logo"></use>
+  <div class="container header-container">
+    <div class="header-logo">
+      <a href="./index.html" class="header-logo-item"
+        ><svg class="header-logo-icon" width="28" height="28">
+          <use href="/Second_Team-project-2023/assets/sprite-67d7c706.svg#icon-fb-cabbage-logo"></use>
+        </svg>
+      </a>
+      <a class="header-logo-text" href="./index.html">Food Boutique</a>
+    </div>
+    <div>
+      <nav class="header-nav">
+        <a class="header-nav-home" href="./index.html">Home</a>
+        <a class="header-nav-cart" href="./partials/shopping-cart.html">
+          <svg class="header-nav-cart-icon" width="14" height="14">
+            <use
+              class="header-nav-cart-icon-svg"
+              href="/Second_Team-project-2023/assets/sprite-67d7c706.svg#icon-shopping-cart"
+            ></use>
           </svg>
         </a>
-        <a class="header-logo-text" href="./index.html">Food Boutique</a>
-      </div>
-      <div>
-        <nav class="header-nav-div">
-          <ul class="header-nav">
-            <li class="header-nav-home-list">
-              <a class="header-nav-home" href="./index.html">Home</a>
-            </li>
-            <li class="header-nav-cart-list">
-              <a
-                class="header-nav-cart"
-                href="./partials/shopping-cart.html"
-              >
-                <svg class="header-nav-cart-link" width="14" height="14">
-                  <use
-                    class="header-nav-cart-link-svg"
-                    href="/Second_Team-project-2023/assets/sprite-8e87bd1c.svg#icon-shopping-cart"
-                  ></use>
-                </svg>
-              </a>
-            </li>
-            <li class="header-nav-cart-item-list">
-              <a
-                class="header-nav-cart-item"
-                href="./partials/shopping-cart.html"
-                >Cart (<span class="cart-number">0</span>)</a
-              >
-            </li>
-          </ul>
-        </nav>
-      </div>
+        <a class="header-nav-cart-item" href="./partials/shopping-cart.html"
+          >Cart (<span class="cart-number">0</span>)</a
+        >
+      </nav>
     </div>
-  </header>
+  </div>
+</header>
+
     <main>
       <!-- Hero -->
-      <section>
+      <section class="hero-section">
         <div class="container">
           <div class="hero-text">
             <h1 class="hero-main-text">
@@ -72,7 +60,7 @@
           </div>
           <div class="hero-img-cont">
             <svg class="hero-logo-icon" width="28" height="28">
-              <use href="/Second_Team-project-2023/assets/sprite-8e87bd1c.svg#icon-organic-food-yellow"></use>
+              <use href="/Second_Team-project-2023/assets/sprite-67d7c706.svg#icon-organic-food-yellow"></use>
             </svg>
           </div>
         </div>
@@ -83,13 +71,20 @@
         <div class="container">
           <p class="filter-text">Filters:</p>
           <form action="submit" name="filter" id="filterForm">
-            <input type="text" placeholder="Search for anything">
-            <button type="submit"><svg class="" width="20" height="20">
-              <use href="/Second_Team-project-2023/assets/sprite-8e87bd1c.svg#icon-search-line-ico"></use>
-            </svg></button>
-            <select name="categories" id="categories" >
+            <input
+              type="text"
+              placeholder="Search for anything"
+              name="filterInput"
+            />
+            <button type="submit">
+              <svg class="" width="20" height="20">
+                <use href="/Second_Team-project-2023/assets/sprite-67d7c706.svg#icon-search-line-ico"></use>
+              </svg>
+            </button>
+            <select name="filterCategories" id="categories">
+              <option value="Show all" class="js-option">Show all</option>
             </select>
-            <select name="filter-method" id="filter-method"></select>
+            <select name="filterMethod" id="filter-method"></select>
           </form>
         </div>
       </section>
@@ -100,6 +95,10 @@
           <div class="product-list"></div>
           <aside class="sidebar">
             <!-- Popular products -->
+            <div class="popular-product">
+              <h3 class="popular-product-title">Popular products</h3>
+              <ul class="popular-product-item"></ul>
+            </div>
             <!-- Discount products -->
             <div class="discount-products">
               <h3 class="discount-products-list">Discount products</h3>
@@ -110,91 +109,89 @@
       </section>
     </main>
     <footer>
-    <div class="container footer-content">
-      <div class="footer-logo">
-        <a class="footer-logo-link" href="index.html">
-          <svg class="footer-logo-icon" width="28" height="28">
-            <use
-              href="/Second_Team-project-2023/assets/sprite-8e87bd1c.svg#icon-fb-cabbage-logo-inverse"
-            ></use>
-          </svg>
-          <p class="footer-logo-text">Food Boutique</p>
-        </a>
-      </div>
-      <ul class="footer-social-links-box">
-        <li class="footer-social-links-item">
-          <a
-            class="footer-social-links"
-            href="https://www.facebook.com/goITclub/"
-            target="_blank"
-          >
-            <svg class="fotter-svg" width="24" height="24">
-              <use href="../images/sprite.svg#icon-facebook-logo"></use>
-            </svg>
-          </a>
-        </li>
-        <li class="footer-social-links-item">
-          <a
-            class="footer-social-links"
-            href="https://www.instagram.com/goitclub/"
-            target="_blank"
-          >
-            <svg class="fotter-svg" width="24" height="24">
-              <use href="../images/sprite.svg#icon-instagram-logo"></use>
-            </svg>
-          </a>
-        </li>
-        <li class="footer-social-links-item">
-          <a
-            class="footer-social-links"
-            href="https://www.youtube.com/c/GoIT"
-            target="_blank"
-          >
-            <svg class="fotter-svg" width="24" height="24">
-              <use href="../images/sprite.svg#icon-youtube-logo"></use>
-            </svg>
-          </a>
-        </li>
-      </ul>
-      <div class="footer-slogan">
-        <h3 class="footer-slogan-title">
-          Discover the Variety of Flavors and Quality
-        </h3>
-        <p class="footer-slogan-text">
-          An online store where you will find fresh, natural and delicious
-          products for a healthy life and unforgettable gastronomic
-          adventures.
-        </p>
-      </div>
-      <div class="footer-form-box">
-        <p class="footer-subscribe-text">
-          Subscribe and learn about new products!
-        </p>
-        <form
-          class="subscription-form"
-          action="URL_для_відправки_даних"
-          method="POST"
+  <div class="container footer-content">
+    <div class="footer-logo">
+      <a class="footer-logo-link" href="index.html">
+        <svg class="footer-logo-icon" width="28" height="28">
+          <use href="/Second_Team-project-2023/assets/sprite-67d7c706.svg#icon-fb-cabbage-logo-inverse"></use>
+        </svg>
+        <p class="footer-logo-text">Food Boutique</p>
+      </a>
+    </div>
+    <ul class="footer-social-links-box">
+      <li class="footer-social-links-item">
+        <a
+          class="footer-social-links"
+          href="https://www.facebook.com/goITclub/"
+          target="_blank"
         >
-          <input
-            class="footer-form-input"
-            type="email"
-            name="email"
-            placeholder="Email"
-            required
-          />
-          <button class="footer-form-button" type="submit">Send</button>
-        </form>
-      </div>
-      <div class="footer-loader">
-        <p class="footer-block-text">Food Boutique. All rights reserved.</p>
-        <div>
-          <a href="">Privacy Policy</a>
-          <span>/</span>
-          <a href="">Terms of Service</a>
-        </div>
+          <svg class="fotter-svg" width="24" height="24">
+            <use href="../images/sprite.svg#icon-facebook-logo"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="footer-social-links-item">
+        <a
+          class="footer-social-links"
+          href="https://www.instagram.com/goitclub/"
+          target="_blank"
+        >
+          <svg class="fotter-svg" width="24" height="24">
+            <use href="../images/sprite.svg#icon-instagram-logo"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="footer-social-links-item">
+        <a
+          class="footer-social-links"
+          href="https://www.youtube.com/c/GoIT"
+          target="_blank"
+        >
+          <svg class="fotter-svg" width="24" height="24">
+            <use href="../images/sprite.svg#icon-youtube-logo"></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+    <div class="footer-slogan">
+      <h3 class="footer-slogan-title">
+        Discover the Variety of Flavors and Quality
+      </h3>
+      <p class="footer-slogan-text">
+        An online store where you will find fresh, natural and delicious
+        products for a healthy life and unforgettable gastronomic adventures.
+      </p>
+    </div>
+    <div class="footer-form-box">
+      <p class="footer-subscribe-text">
+        Subscribe and learn about new products!
+      </p>
+      <form
+        class="subscription-form"
+        action="URL_для_відправки_даних"
+        method="POST"
+      >
+        <input
+          class="footer-form-input"
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+        />
+        <button class="footer-form-button" type="submit">Send</button>
+      </form>
+    </div>
+    <div class="footer-loader">
+      <p class="footer-block-text">Food Boutique. All rights reserved.</p>
+      <div>
+        <a href="">Privacy Policy</a>
+        <span>/</span>
+        <a href="">Terms of Service</a>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
+
 
     
   </body>
