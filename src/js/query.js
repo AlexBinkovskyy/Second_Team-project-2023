@@ -28,4 +28,8 @@ export async function getProdByCategories() {
   return (await axios(`${references.MAIN_URL}/${references.categories}`));
 }
 
+export async function getProdByQuery(keyword, category, page=1, limit=6) {
+  return (await axios(`${references.MAIN_URL}?keyword=${keyword}&category=${category}&page=${page}&limit=${limit}`));
+}
+
 

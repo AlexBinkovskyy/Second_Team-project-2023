@@ -1,8 +1,17 @@
-import { filterParams } from "./filter";
-
 let shoppingCartItems = []
 
 export function setDefaultFilterParams(){
+  const filterParams = {
+    keyword: null,
+    category: null,
+    page: 1,
+    limit: 6,
+  };
+  localStorage.setItem('filterParams', JSON.stringify(filterParams));
+  return getFilterParams();
+}
+
+export function setNewFilterParams(filterParams){
   localStorage.setItem('filterParams', JSON.stringify(filterParams));
 }
 

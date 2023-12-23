@@ -1,19 +1,18 @@
 import { getFilterParams } from './localStorage';
 import { setDefaultFilterParams } from './localStorage';
+import { setNewFilterParams } from './localStorage';
+import { getProdByQuery } from './query';
 const filterForm = document.querySelector('#filterForm');
 filterForm.addEventListener('submit', onSubmit);
 const filterSelectCategories = document.querySelector('#categories');
+const optionSelect = document.querySelector('.js-option');
 
-export let filterParams = {
-  keyword: null,
-  category: null,
-  page: 1,
-  limit: 6,
-};
-setDefaultFilterParams();
+
+
+let filterParams = !getFilterParams() ? setDefaultFilterParams() : getFilterParams();
 
 export function renderFilterSelect(data) {
-  filterSelectCategories.insertAdjacentHTML('beforeend', markup(data));
+  filterSelectCategories.insertAdjacentHTML('afterbegin', markup(data));
 }
 
 function markup(arr) {
@@ -26,14 +25,28 @@ function markup(arr) {
   return selects.join('');
 }
 
+
 function onSubmit(event) {
   event.preventDefault();
   const { filterInput, filterCategories, filterMethod } = event.target.elements;
-  
-  const inputValue = filterInput.value.trim();
-  inputValue !== '' ? (filterParams.keyword = `${inputValue}`) : setDefaultFilterParams();
-  
-  const categoriesValue = filterCategories.value;
-  categoriesValue !== '' ? (filterParams.category = `${categoriesValue}`) : categoriesValue;
-  console.log(filterParams);
+  proceedInput(filterInput);
+
+  proceedSelectCategorie(filterCategories);
+  optionSelect.addEventListener('change', getProdByQuery());
+}
+
+function proceedInput(filterInput) {
+  if (!filterInput.value.trim() !== '') {   
+    filterParams.keyword = `${filterInput.value.trim()}`;
+    setNewFilterParams(filterParams);
+  } else {
+    setDefaultFilterParams();
+  }
+}
+
+function proceedSelectCategorie(filterCategories) {
+  filterCategories.value !== ''
+    ? (filterParams.category = `${filterCategories.value}`)
+    : filterCategories.value;
+  setNewFilterParams(filterParams);
 }
