@@ -2,16 +2,13 @@ import { getProdByParams } from './query';
 import { getProdByPopular } from './query';
 import { getProdByDiscount } from './query';
 import { getProdByID } from './query';
+import { getProdByCategories } from './query';
 import { renderProductDiscount } from './discount';
 import { renderProductList } from './product-list';
+import { renderFilterSelect } from './filter';
+import { filterParams } from './localStorage';
 
-let filterParams = {
-  keyword: null,
-  category: null,
-  page: 1,
-  limit: 6,
-};
-localStorage.setItem(filterParams, JSON.stringify(filterParams));
+// localStorage.setItem('filterParams', JSON.stringify(filterParams));
 
 getProdByDiscount()
   .then(({ data }) => {
@@ -22,5 +19,11 @@ getProdByDiscount()
 getProdByParams()
   .then(({ data }) => {
     renderProductList(data);
+  })
+  .catch(error => console.log(error));
+
+getProdByCategories()
+  .then(({ data }) => {
+    renderFilterSelect(data);
   })
   .catch(error => console.log(error));
