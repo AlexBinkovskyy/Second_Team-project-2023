@@ -23,7 +23,7 @@ function markup(arr) {
               <span class="info-title"> Size: </span>
               ${size}
             </p>
-            <p class="info-item">
+            <p class="info-item-pop">
               <span class="info-title"> Popularity: </span>
               ${popularity}
             </p>
