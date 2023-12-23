@@ -1,6 +1,6 @@
 
 
-const popularProduct = document.querySelector('.popular-product');
+const popularProduct = document.querySelector('.popular-product-list');
 
 export function renderPopularProduct(data) {
   popularProduct.insertAdjacentHTML('beforeend', markup(data));
