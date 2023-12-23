@@ -337,24 +337,19 @@ body {
   |============================
 */
 
-.hero {
-  min-width: 375px;
-  width: 375px;
+.hero-section {
+  padding-top: 36px;
   padding-bottom: 37px;
 }
 @media only screen and (min-width: 768px) {
-  .hero {
-    padding-left: 32px;
-    padding-right: 32px;
-    width: 768px;
+  .hero-section {
+    padding-top: 58px;
   }
 }
 
-@media only screen and (min-width: 1240px) {
-  .hero {
-    padding-left: 100px;
-    padding-right: 100px;
-    width: 1440px;
+@media only screen and (min-width: 1440px) {
+  .hero-section {
+    padding-top: 38.5px;
   }
 }
 .hero-text {
@@ -367,7 +362,7 @@ body {
 }
 .hero-main-text {
   padding-bottom: 16px;
-  padding-top: 58px;
+  /* padding-top: 58px; */
   font-size: 44px;
   font-weight: 500;
   font-family: 'NeueMontreal-regular';
