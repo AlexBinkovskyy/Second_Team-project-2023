@@ -7,6 +7,7 @@ import { renderProductDiscount } from './discount';
 import { renderProductList } from './product-list';
 import { renderFilterSelect } from './filter';
 import { filterParams } from './localStorage';
+import { renderPopularProduct } from './popular-product';
 
 // localStorage.setItem('filterParams', JSON.stringify(filterParams));
 
@@ -21,6 +22,13 @@ getProdByParams()
     renderProductList(data);
   })
   .catch(error => console.log(error));
+
+  getProdByPopular()
+  .then(({ data }) => {
+    renderPopularProduct(data);
+  })
+  .catch(error => console.log(error));
+
 
 getProdByCategories()
   .then(({ data }) => {
