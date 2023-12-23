@@ -10,13 +10,10 @@ let Id = null;
 
 export async function getProdByParams() {
   if (window.innerWidth >= 1440) {
-    console.log(1440);
     limitPerPage = 9;
   } else if (window.innerWidth >= 768) {
-    console.log(768);
     limitPerPage = 8;
   } else {
-    console.log(375);
     limitPerPage = 6;
   }
   return await axios(

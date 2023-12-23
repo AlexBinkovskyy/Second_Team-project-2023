@@ -1,4 +1,12 @@
-let shoppingCartItems = []
+let shoppingCartItems = {
+  "email": "",
+  "products": [
+    {
+      "productId": "",
+      "amount": 1
+    }
+  ]
+}
 
 export function setDefaultFilterParams(){
   const filterParams = {

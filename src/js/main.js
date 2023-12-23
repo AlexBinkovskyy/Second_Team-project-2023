@@ -8,7 +8,6 @@ import { renderProductDiscount } from './discount';
 import { renderProductList } from './product-list';
 import { renderFilterSelect } from './filter';
 
-
 getProdByDiscount()
   .then(({ data }) => {
     renderProductDiscount(data);
