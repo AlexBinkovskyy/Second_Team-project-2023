@@ -36,20 +36,20 @@ function markup(arr) {
     .join('');
 }
 
-// // Зробити функцію глобальною
-// window.addToCart = function(productId) {
-//   const cart = JSON.parse(localStorage.getItem('cart')) || {};
+// Зробити функцію глобальною
+window.addToCart = function(productId) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
 
-//   if (cart[productId]) {
-//     alert('This product is already in your cart!');
-//   } else {
-//     cart[productId] = true;
-//     localStorage.setItem('cart', JSON.stringify(cart));
-//     alert('Product added to cart!');
+  if (cart[productId]) {
+    alert('This product is already in your cart!');
+  } else {
+    cart[productId] = true;
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert('Product added to cart!');
 
-//     // Отримати кнопку за допомогою productId та змінити її на іконку "✓"
-//     const addToCartButton = document.querySelector(`button[data-product-id="${productId}"]`);
-//     addToCartButton.innerHTML = '&#10003;';
-//     addToCartButton.disabled = true;
-//   }
-// };
+    // Отримати кнопку за допомогою productId та змінити її на іконку "✓"
+    const addToCartButton = document.querySelector(`button[data-product-id="${productId}"]`);
+    addToCartButton.innerHTML = '&#10003;';
+    addToCartButton.disabled = true;
+  }
+};
