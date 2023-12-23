@@ -1,0 +1,39 @@
+.popular-product-list {
+  margin: 20px 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.popular-product-item {
+  padding: 20px;
+
+  border-radius: 20px;
+  background: #fafafa;
+}
+
+.popular-product-pic {
+    width: 74px;
+  object-fit: contain;
+}
+
+.popular-product-title {
+  color: #010101;
+
+  font-family: Neue Montreal;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 28px;
+  line-height: 1.14;
+}
+
+.info-item {
+  color: #010101;
+
+  font-family: Neue Montreal;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1.2;
+}
