@@ -1,3 +1,5 @@
+import { getProdByParams } from './query';
+
 const productList = document.querySelector('.product-list');
 
 export function renderProductList(data) {
