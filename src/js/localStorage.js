@@ -16,8 +16,3 @@ export function getCartItemsQuantity() {
   return (JSON.parse(localStorage.getItem('shoppingCartItems')).length);
 }
 
-export function updateCartItems(product) {
-  localStorage.setItem('shoppingCartItems', JSON.stringify(product));
-}
-
-console.log(getCartItemsQuantity());
