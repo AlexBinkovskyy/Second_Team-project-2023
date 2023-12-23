@@ -4,7 +4,6 @@ import references from './references';
 // AxiosQuery
 const params = {};
 
-let queryString = '';
 let page = 1;
 let limitPerPage = 6;
 let Id = null;
@@ -23,6 +22,10 @@ export async function getProdByDiscount() {
 
 export async function getProdByID() {
   return (await axios(`${references.MAIN_URL}/${Id}`));
+}
+
+export async function getProdByCategories() {
+  return (await axios(`${references.MAIN_URL}/${references.categories}`));
 }
 
 
