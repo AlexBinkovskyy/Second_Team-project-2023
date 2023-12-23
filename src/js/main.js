@@ -3,6 +3,7 @@ import { getProdByPopular } from './query';
 import { getProdByDiscount } from './query';
 import { getProdByID } from './query';
 import { getProdByCategories } from './query';
+import { renderPopularProduct } from './popular-product';
 import { renderProductDiscount } from './discount';
 import { renderProductList } from './product-list';
 import { renderFilterSelect } from './filter';
@@ -19,6 +20,13 @@ getProdByParams()
     renderProductList(data);
   })
   .catch(error => console.log(error));
+
+  getProdByPopular()
+  .then(({ data }) => {
+    renderPopularProduct(data);
+  })
+  .catch(error => console.log(error));
+
 
 getProdByCategories()
   .then(({ data }) => {
