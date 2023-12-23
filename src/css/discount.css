@@ -1,0 +1,50 @@
+.discount-products {
+  padding: 40px 0;
+}
+.discount-products-list {
+  color: var(--text-color);
+  font-family: 'NeueMontreal-Medium';
+  font-size: 24px;
+  /* font-weight: 500; */
+  line-height: 1.16;
+  margin-bottom: 20px;
+}
+
+.discount-products-item {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.discount-product {
+  border-radius: 15px;
+  background: #fafafa;
+}
+
+.discount-card {
+  padding: 16px 15px 23px 16px;
+}
+
+.discount-img {
+  /* width: 304px; */
+  height: 150px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: var(--maingray);
+}
+
+.discount-text {
+  display: flex;
+  margin-top: 23px;
+}
+.discount-name,
+.discount-price {
+  color: var(--text-color);
+  font-family: 'NeueMontreal-Medium';
+  font-size: 18px;
+  /* font-weight: 500; */
+  line-height: 1.11;
+}
+
+.discount-name {
+  margin-right: 154px;
+}
