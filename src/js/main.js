@@ -7,10 +7,7 @@ import { renderPopularProduct } from './popular-product';
 import { renderProductDiscount } from './discount';
 import { renderProductList } from './product-list';
 import { renderFilterSelect } from './filter';
-import { filterParams } from './localStorage';
 
-
-// localStorage.setItem('filterParams', JSON.stringify(filterParams));
 
 getProdByDiscount()
   .then(({ data }) => {
