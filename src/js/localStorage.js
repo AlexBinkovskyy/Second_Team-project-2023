@@ -1,9 +1,10 @@
 export let filterParams = {
-    keyword: null,
-    category: null,
-    page: 1,
-    limit: 6,
-  };
+  keyword: null,
+  category: null,
+  page: 1,
+  limit: 6,
+};
+let shoppingCartItems = []
 
 localStorage.setItem('filterParams', JSON.stringify(filterParams));
 
@@ -18,3 +19,5 @@ export function getCartItemsQuantity() {
 export function updateCartItems(product) {
   localStorage.setItem('shoppingCartItems', JSON.stringify(product));
 }
+
+console.log(getCartItemsQuantity());
