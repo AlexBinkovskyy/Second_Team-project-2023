@@ -31,6 +31,16 @@ export function getCartItemsQuantity() {
   return JSON.parse(localStorage.getItem('shoppingCartItems')).products.length;
 }
 
+export function setCartItems(data) {
+    const cartItems = getCartItems();
+    cartItems.products.push(data);
+    localStorage.setItem('shoppingCartItems', JSON.stringify(cartItems))
+}
+
+export function getCartItems() {
+  return JSON.parse(localStorage.getItem('shoppingCartItems'));
+}
+
 export function getFilterParams() {
   return JSON.parse(localStorage.getItem('filterParams'));
 }
