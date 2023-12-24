@@ -207,7 +207,7 @@ body {
 }
 
 .header-logo-text {
-  color: #010101;
+  color: var(--text-color);
   font-family: 'Fontspring-Quincy-Black';
   font-size: 18px;
   font-weight: 900;
@@ -313,7 +313,7 @@ body {
     height: 38px;
     padding: 7px 0;
     display: block;
-    color: #010101;
+    color: var(--text-color);
     font-family: 'NeueMontreal-regular';
     font-size: 18px;
     font-weight: 500;
