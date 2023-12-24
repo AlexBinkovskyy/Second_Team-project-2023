@@ -11,9 +11,12 @@
     />
     <!-- File style -->
     
-    <script type="module" crossorigin src="/Second_Team-project-2023/assets/vendor-a61d8330.js"></script>
-    <script type="module" crossorigin src="/Second_Team-project-2023/assets/main-b495de6c.js"></script>
-    <link rel="stylesheet" href="/Second_Team-project-2023/assets/main-70c34d3e.css">
+    
+    <script type="module" crossorigin src="/Second_Team-project-2023/commonHelpers.js"></script>
+    <link rel="modulepreload" crossorigin href="/Second_Team-project-2023/assets/vendor-a61d8330.js">
+    <link rel="modulepreload" crossorigin href="/Second_Team-project-2023/assets/main-120e0392.js">
+    <link rel="stylesheet" href="/Second_Team-project-2023/assets/main-3fd4d935.css">
+    <link rel="stylesheet" href="/Second_Team-project-2023/assets/cart-f9620519.css">
   </head>
   <body>
     <!-- Header -->
@@ -128,7 +131,7 @@
               placeholder="Enter your email"
             />
           </label>
-          <button class="cart-form-button form-button" type="submit">
+          <button class="cart-form-button form-button js-form-submit" type="submit">
             Checkout
           </button>
         </form>
@@ -139,9 +142,23 @@
 
     <!-- Modal window -->
     <!--Модальне вікно для корзини при успішному запиті на сервер-->
-
-<!--Модальне вікно для корзини при не успішному-->
-
+<div class="cart-modal-bg hiden">
+  <div class="cart-modal cart-modal-success">
+    <button class="cart-modal-close-btn js-modal-close">
+      <svg width="22" height="22">
+        <use href="/Second_Team-project-2023/assets/sprite-67d7c706.svg#icon-Cross_close"></use>
+      </svg>
+    </button>
+    <img class="cart-modal-img" src="/Second_Team-project-2023/assets/curt-modal-succsess-0d481cc8.svg" alt>
+    <h2 class="cart-modal-title mediumText">Order success</h2>
+    <p class="cart-modal-desc">
+      Thank you for shopping at Food Boutique. Your order has been received and
+      is now being freshly prepared just for you! Get ready to indulge in
+      nourishing goodness, delivered right to your doorstep. We're thrilled to
+      be part of your journey to better health and happiness.
+    </p>
+  </div>
+</div>
 
     <!-- Footer -->
     <footer>
@@ -239,6 +256,8 @@
 
 
     <!-- File JS -->
+    
+    
     
   </body>
 </html>
