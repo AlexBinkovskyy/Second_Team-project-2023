@@ -12,6 +12,7 @@ export function renderProductDiscount(data) {
     productDiscount.insertAdjacentHTML("beforeend", markup(data));  
 }
 
+
  function markup(arr) {
     return arr
     .map(({_id, name, img, price }) => `
@@ -33,7 +34,9 @@ export function renderProductDiscount(data) {
             </div>
             </div>
         </li>
-    `).join("")
+    `)
+        .splice(0, 2)
+        .join("")
 }
   
 
