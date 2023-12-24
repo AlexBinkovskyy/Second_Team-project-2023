@@ -1,55 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
+<section class="cart-section">
+  <div class="container">
+    <!-- Заголовок -->
+    <h1 class="cart-title">
+      <svg class="cart-icon" width="18" height="18">
+        <use href="/images/sprite.svg#icon-shopping-cart"></use>
+      </svg>
+      Cart (<span class="js-cart-numbers">0</span>)
+    </h1>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <!-- Пустий кошик -->
+    <div class="visually-hidden">
+      <div class="empty-cart js-empty-cart">
+        <picture class="empty-cart-img">
+          <!-- Desktop -->
+          <source
+            media="(min-width: 1440px)"
+            srcset="
+              /images/shopping-cart@1x-min.png,
+              /images/shopping-cart@2x-min.png
+            "
+          />
+          <!-- Tablet -->
+          <source
+            media="(min-width: 768px)"
+            srcset="
+              /images/shopping-cart@1x-min.png,
+              /images/shopping-cart@2x-min.png
+            "
+          />
+          <!-- Mobile -->
+          <source
+            media="(max-width: 767px)"
+            srcset="
+              /images/shopping-cart@1x-min.png,
+              /images/shopping-cart@2x-min.png
+            "
+          />
+          <img
+            src="/images/shopping-cart@1x-min.png"
+            alt="Empty Basket"
+            loading="lazy"
+          />
+        </picture>
+        <h3 class="empty-cart-title">
+          Your basket is<span class="change-color"> empty...</span>
+        </h3>
+        <p class="empty-cart-text">
+          Go to the main page to select your favorite products and add them to
+          the cart.
+        </p>
+      </div>
+    </div>
 
-  <link rel="stylesheet" href="../css/shopping-cart.css">
-</head>
-
-<body>
-  
-  <section class="cart">
-    <div class="cart-container container">
-      <!-- <h1 class="cart-title">
-        <div class="cart-title-icon">
-        </div>
-        <div class="cart-title-text title mediumText">
-          CART (<span class="cart-title-count">0</span>)
-        </div>
-      </h1>       -->
-      <div class="cart-box">
-        <div class="catr-order-wraper">
-          <button class="curt-order-clear-btn mediumText">Delete all <span>X</span></button>
-          <div class="catr-order js-carts">
-            <!-- ▮▯⁘⁘⁘⁘⁘  Тута картки  ⁘⁘⁘⁘⁘▯▮ -->
-          </div>
-        </div>
-        
-        <div class="cart-form-wraper">
-          <h2 class="cart-form-title title mediumText">Your Order</h2>
-          <div class="catr-total-price">
-            <p class="catr-total-price-text mediumText">
-              Total
-            </p>
-            <p class="cart-total-price-sum">
-              <span>Sum:</span>
-              <span class="cart-total-price-sum-span mediumText">$12,94</span>
-            </p>
-          </div>
-          <form class="cart-form" action="" method="get">
-            <label class="cart-form-label form-label">
-              <span class="cart-form-label-text label-text">Mail:</span>
-              <input class="cart-form-input form-input" name="email" type="email" placeholder="Enter your email">
-            </label>
-            <button class="cart-form-button form-button" type="submit">Checkout</button>
-          </form>          
+    <!-- Повний кошик -->
+    <div class="cart-box">
+      <!-- Ліва частина, перелік -->
+      <div class="cart-order-wraper">
+        <button class="cart-order-clear-btn mediumText">
+          Delete all
+          <svg class="" width="24" height="24">
+            <use href="./images/sprite.svg#icon-Cross_close"></use>
+          </svg>
+        </button>
+        <!-- Список карток-->
+        <div class="cart-order-container js-cart-container">
+          <ul class="cart-list list js-cart-list"></ul>
         </div>
       </div>
-    </div>    
-  </section>
-</body>
-
-</html>
+      <!-- Права частина, тотал та емейл -->
+      <div class="cart-form-wraper">
+        <h2 class="cart-form-title title mediumText">Your Order</h2>
+        <div class="cart-total-price">
+          <p class="cart-total-price-text mediumText">Total</p>
+          <p class="cart-total-price-sum">
+            <span>Sum:</span>
+            <span class="cart-total-price-sum-span mediumText">$12,94</span>
+          </p>
+        </div>
+        <form class="cart-form" action="" method="get">
+          <label class="cart-form-label form-label">
+            <span class="cart-form-label-text label-text">Mail:</span>
+            <input
+              class="cart-form-input form-input"
+              name="email"
+              type="email"
+              placeholder="Enter your email"
+            />
+          </label>
+          <button class="cart-form-button form-button" type="submit">
+            Checkout
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

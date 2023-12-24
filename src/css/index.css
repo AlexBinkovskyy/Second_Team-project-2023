@@ -8,6 +8,7 @@
 @import url('./reset.css');
 @import url('./variables.css');
 @import url('./product-list.css');
+@import url('./shopping-cart.css');
 
 @font-face {
   font-family: 'NeueMontreal-Medium';
