@@ -1,4 +1,12 @@
-let shoppingCartItems = []
+let shoppingCartItems = {
+  "email": "",
+  "products": [
+    {
+      "productId": "",
+      "amount": 1
+    }
+  ]
+}
 
 export function setDefaultFilterParams(){
   const filterParams = {
@@ -25,4 +33,6 @@ export function getCartItemsQuantity() {
 
 export function getFilterParams(){
   return JSON.parse(localStorage.getItem('filterParams'))
-}
+} 
+
+// some

@@ -6,10 +6,9 @@ const filterForm = document.querySelector('#filterForm');
 filterForm.addEventListener('submit', onSubmit);
 const filterSelectCategories = document.querySelector('#categories');
 const optionSelect = document.querySelector('.js-option');
+optionSelect.addEventListener('change', onSubmit)
 
-
-
-let filterParams = !getFilterParams() ? setDefaultFilterParams() : getFilterParams();
+let filterParams = getFilterParams() ? getFilterParams()  : setDefaultFilterParams();
 
 export function renderFilterSelect(data) {
   filterSelectCategories.insertAdjacentHTML('afterbegin', markup(data));
@@ -25,28 +24,32 @@ function markup(arr) {
   return selects.join('');
 }
 
-
 function onSubmit(event) {
   event.preventDefault();
   const { filterInput, filterCategories, filterMethod } = event.target.elements;
-  proceedInput(filterInput);
 
-  proceedSelectCategorie(filterCategories);
-  optionSelect.addEventListener('change', getProdByQuery());
+  proceedInput(filterInput);
+//   proceedSelectCategorie(filterCategories);
 }
 
 function proceedInput(filterInput) {
-  if (!filterInput.value.trim() !== '') {   
+    console.log(filterParams);
+  if (filterInput.value.trim()) {
     filterParams.keyword = `${filterInput.value.trim()}`;
     setNewFilterParams(filterParams);
   } else {
+    // !!!!!!!!!!!!!!!!!!!!!!
     setDefaultFilterParams();
+    // !!!!!!!!!!!!!!!!!!!!!!!
   }
 }
 
 function proceedSelectCategorie(filterCategories) {
-  filterCategories.value !== ''
-    ? (filterParams.category = `${filterCategories.value}`)
-    : filterCategories.value;
+  filterParams.category = `${filterCategories.value}`;
   setNewFilterParams(filterParams);
 }
+
+// function onSelect(event) {
+
+//   console.log(event.target);
+// }

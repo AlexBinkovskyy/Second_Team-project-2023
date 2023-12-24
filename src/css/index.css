@@ -9,6 +9,8 @@
 @import url('./variables.css');
 @import url('./product-list.css');
 @import url('./shopping-cart.css');
+@import url('./discount.css');
+
 
 @font-face {
   font-family: 'NeueMontreal-Medium';
@@ -337,24 +339,19 @@ body {
   |============================
 */
 
-.hero {
-  min-width: 375px;
-  width: 375px;
+.hero-section {
+  padding-top: 36px;
   padding-bottom: 37px;
 }
 @media only screen and (min-width: 768px) {
-  .hero {
-    padding-left: 32px;
-    padding-right: 32px;
-    width: 768px;
+  .hero-section {
+    padding-top: 58px;
   }
 }
 
-@media only screen and (min-width: 1240px) {
-  .hero {
-    padding-left: 100px;
-    padding-right: 100px;
-    width: 1440px;
+@media only screen and (min-width: 1440px) {
+  .hero-section {
+    padding-top: 38.5px;
   }
 }
 .hero-text {
@@ -367,7 +364,7 @@ body {
 }
 .hero-main-text {
   padding-bottom: 16px;
-  padding-top: 58px;
+  /* padding-top: 58px; */
   font-size: 44px;
   font-weight: 500;
   font-family: 'NeueMontreal-regular';
@@ -405,9 +402,7 @@ body {
   }
 }
 
-@media only screen and (min-width: 1240px) {
-  .hero-main-text {
-  }
+@media only screen and (min-width: 1440px) {
   .hero-second-text {
     padding-left: 374px;
     padding-right: 374px;
@@ -416,8 +411,8 @@ body {
 /* Hero Images */
 
 .hero-img-cont {
-  margin-left: 20px;
-  margin-right: 20px;
+  /* margin-left: 20px;
+  margin-right: 20px; */
   position: relative;
   border-radius: 30px;
   background: url(../images/hero-image-mobile@1x-min.jpg);
@@ -426,6 +421,13 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+@media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .hero-img-cont {
+    background-image: url(../images/hero-image-mobile@2x-min.jpg);
+  }
 }
 /* .hero-img {
   border-radius: 30px;
@@ -450,11 +452,13 @@ body {
     right: 10px;
     top: -30px;
   }
-  /* .hero-img {
-    border-radius: 60px;
-    height: 580px;
-    background: url(../images/hero-image-tablet@1x-min.jpg);
-  } */
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .hero-img-cont {
+      background-image: url(../images/hero-image-tablet@2x-min.jpg);
+    }
+  }
 }
 
 @media only screen and (min-width: 1240px) {
