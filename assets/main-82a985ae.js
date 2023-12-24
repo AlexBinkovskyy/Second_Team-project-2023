@@ -18,7 +18,7 @@ import{a as l}from"./vendor-a61d8330.js";(function(){const o=document.createElem
             </p>
             </div>
             </div>
-            <button type="button" class="buy-btn" onclick="addToCart('${o}')"><svg class="koshik" width="12" height="12">
+            <button type="button" class="popular buy-btn" onclick="addToCart('${o}')"><svg class="koshik" width="12" height="12">
             <use href="./images/sprite.svg#icon-shopping-cart"></use>
           </svg>
             <button>
@@ -68,4 +68,4 @@ import{a as l}from"./vendor-a61d8330.js";(function(){const o=document.createElem
       `).join("")}let _={email:"",products:[{productId:"",amount:1}]};function p(){const t={keyword:null,category:null,page:1,limit:6};return localStorage.setItem("filterParams",JSON.stringify(t)),d()}function z(t){localStorage.setItem("filterParams",JSON.stringify(t))}JSON.parse(localStorage.getItem("shoppingCartItems"))||localStorage.setItem("shoppingCartItems",JSON.stringify(_));function d(){return JSON.parse(localStorage.getItem("filterParams"))}const F=document.querySelector("#filterForm");F.addEventListener("submit",f);const J=document.querySelector("#categories"),x=document.querySelector(".js-option");x.addEventListener("change",f);let u=d()?d():p();function B(t){J.insertAdjacentHTML("afterbegin",D(t))}function D(t){const o=t.map(i=>`
     <option value="${i}" class="js-option">${i}</option>
     `);return o.unshift('<option value="" disabled selected>Categories</option>'),o.join("")}function f(t){t.preventDefault();const{filterInput:o,filterCategories:i,filterMethod:n}=t.target.elements;E(o)}function E(t){console.log(u),t.value.trim()?(u.keyword=`${t.value.trim()}`,z(u)):p()}function H(){const t=document.querySelector(".subscription-form"),o=document.querySelector(".footer-form-input");t.addEventListener("submit",function(i){i.preventDefault();const n=o.value;if(!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(n)){alert("Будь ласка, введіть коректну адресу електронної пошти.");return}fetch(t.action,{method:t.method,headers:{"Content-Type":"application/json"},body:JSON.stringify({email:n})}).then(e=>{if(e.status===201)return e.json();throw e.status===409?new Error("Підписка вже існує"):new Error("Щось пішло не так. Спробуйте пізніше.")}).then(e=>{alert(e.message),o.value=""}).catch(e=>{alert(e.message)})})}P().then(({data:t})=>{M(t)}).catch(t=>console.log(t));$().then(({data:t})=>{q(t)}).catch(t=>console.log(t));S().then(({data:t})=>{I(t)}).catch(t=>console.log(t));w().then(({data:t})=>{B(t)}).catch(t=>console.log(t));H();
-//# sourceMappingURL=main-8638164f.js.map
+//# sourceMappingURL=main-82a985ae.js.map
