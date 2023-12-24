@@ -1,9 +1,10 @@
-import { getProdByParams } from './query';
+import discountSvg from '../images/icons/discount.svg';
+import shoppingSvg from '../images/icons/shopping-cart.svg';
 
 const productList = document.querySelector('.product-list');
 
 export function renderProductList(data) {
-  productList.insertAdjacentHTML('beforeend', createMarkup(data.results));
+  productList.innerHTML = createMarkup(data.results);
 }
 
 function createMarkup(arr) {
@@ -11,48 +12,36 @@ function createMarkup(arr) {
     .map(
       ({ _id, name, img, category, price, size, is10PercentOff, popularity }) =>
         `
-        <div class="product-card" id="${_id}">
-         <img src="${img}" alt="${name}" loading="lazy" class="product-pic" />        
-         <h3 class="product-name header-three">${name}</h3>
-         <div class="product-info regular-text">
-            <p class="info-item">
-            <span class="info-title"> Category: </span>
-            ${category.replace('_', ' ')}
+        <div class="all-product-card" id="${_id}">
+         <img class="all-discount-svg
+         ${is10PercentOff.toString().replace('false', 'visually-hidden')}
+          " 
+        src="${discountSvg}" alt="discount-icon" width="60" height="60"/>
+         <img src="${img}" alt="${name}" loading="lazy" class="all-product-pic" />
+         <h3 class="all-product-name header-three">${name}</h3>
+         <div class="all-product-info regular-text">
+            <p class="all-info-item">
+            <span class="all-info-title"> Category: </span>
+            ${category.replaceAll('_', ' ')}
             </p>
-            <p class="info-item">
-            <span class="info-title"> Size: </span>
+            <p class="all-info-item">
+            <span class="all-info-title"> Size: </span>
             ${size}
             </p>
-            <p class="info-item">
-            <span class="info-title"> Popularity: </span>
+            <p class="all-info-item">
+            <span class="all-info-title"> Popularity: </span>
             ${popularity}
             </p>
           </div>
-          <div class="purchaise-box">
-            <h3 class="product-price header-three">&#36;${price}</h3>
-            <button type="button" class="buy-btn">Buy</button>
+          <div class="all-purchaise-box">
+            <h3 class="all-product-price header-three">&#36;${price}</h3>
+            <button class="all-product-btn buy-btn" type="button">
+                <img class="all-buy-svg" src="${shoppingSvg}" alt="shop-icon" width="18" height="18"/>
+               
+            </button>
           </div>
         </div>
       `
     )
     .join('');
 }
-
-// const heightOutput = document.querySelector('#height');
-// const widthOutput = document.querySelector('#width');
-// function reportWindowSize() {
-//   heightOutput.textContent = window.innerHeight;
-//   widthOutput.textContent = window.innerWidth;
-// }
-// window.onresize = reportWindowSize;
-
-// if (window.innerWidth >= 1440) {
-//   console.log(1440);
-//   limitPerPage = 9;
-// } else if (window.innerWidth >= 768) {
-//   console.log(768);
-//   limitPerPage = 8;
-// } else {
-//   console.log(375);
-//   limitPerPage = 6;
-// }
