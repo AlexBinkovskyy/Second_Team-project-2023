@@ -8,6 +8,7 @@ import { renderProductDiscount } from './discount';
 import { renderProductList } from './product-list';
 import { renderFilterSelect } from './filter';
 import { setupSubscriptionForm } from './footer.js';
+import { pagination } from './pagination.js';
 
 getProdByDiscount()
   .then(({ data }) => {
