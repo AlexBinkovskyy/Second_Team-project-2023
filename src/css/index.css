@@ -459,23 +459,6 @@ body {
     top: -50px;
   }
 }
-/* @media only screen and (min-device-pixel-ratio: 2) {
-  .hero-img-cont {
-    background-image: url(../images/hero-image-mobile@2x-min.jpg);
-  }
-
-  @media only screen and (min-width: 768px) {
-    .hero-img-cont {
-      background-image: url(../images/hero-image-tablet@2x-min.jpg);
-    }
-  }
-
-  @media only screen and (min-width: 1440px) {
-    .hero-img-cont {
-      background-image: url(../images/hero-image-desktop@2x-min.jpg);
-    }
-  }
-} */
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
   (min-resolution: 192dpi) {
   /* For 2x retina displays */
