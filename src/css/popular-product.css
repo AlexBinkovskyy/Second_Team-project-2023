@@ -1,30 +1,50 @@
+.popular-product {
+  padding-bottom: 40px;
+  width: 335px;
+}
+@media screen and (min-width: 768px) {
+  .popular-product {
+    padding: 50px  0 32px;
+   
+    
+  }
+}
+
+
 .popular-product-list {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
+@media screen and (min-width: 768px) {
+  .popular-product-list{
+    
+   
+
+  }
+}
+
+
 
 .popular-product-item {
   display: flex;
-  width: 335px;
-  /* height: 98px; */
   padding: 12px 10px 12px 12px;
 
   border-radius: 10px;
   background: #fafafa;
 }
 
+
 .popular-product-pic {
   width: 56px;
   height: 56px;
   border-radius: 10px;
-  background: #e8e8e2;
+  background: var(--maingray);
 }
 
 .popular-product-title {
-  color: #010101;
-
-  font-family: Neue Montreal;
+  color: var(--text-color);
+  font-family: 'NeueMontreal-Medium';
   font-weight: 500;
   font-style: normal;
   font-size: 28px;
@@ -33,14 +53,15 @@
 }
 
 .popular-product-info {
-  display: flex;
-    flex-direction: column;
-    padding-left: 12px;
+  /* display: flex;
+  flex-direction: column; */
+  padding-left: 12px;
+
 }
 
-
 .info-item {
-  font-family: Neue Montreal;
+  color: var(--text-color);
+  font-family: 'NeueMontreal-Medium';
   font-weight: 500;
   font-style: normal;
   font-size: 20px;
@@ -51,45 +72,54 @@
   align-items: baseline;
   gap: 9px;
   flex-wrap: wrap;
-font-family: Neue Montreal;
-font-size: 12px;
-font-style: normal;
-font-weight: 400;
-line-height: 1.17; /* 116.667% */
+  /* font-family: 'NeueMontreal-regular';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.17; 116.667% */
 }
-.info-title {
-  font-family: Neue Montreal;
-font-size: 12px;
-font-style: normal;
-font-weight: 400;
-line-height: 1.17; /* 116.667% */
+.info-title,
+.info-item-description {
+  font-family: 'NeueMontreal-regular';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.17; /* 116.667% */
 }
 .popular-product-name {
- 
-
-  font-family: Neue Montreal;
+  font-family: 'NeueMontreal-Medium';
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  line-height: 1.11; 
- 
- 
+  line-height: 1.11;
+  margin-bottom: 12px;
 }
-.koshik {
-  fill: var(--maingreen);
+@media screen and (min-width: 768px) {
+  .popular-product-name {
+    margin-bottom: 10px;
+  }
+}
+/* .popular-btn {
+  display: inline-flex;
+  justify-content: center;
   
+  
+} */
+.koshik {
+  
+  
+  fill: var(--maingreen);
 }
 
-.popular {
+
+
+.popular-buy {
   
-  
-  display: inline-flex;
   padding: 4px;
-  justify-content: center;
-  /* align-items: center; */
   gap: 10px;
-  border-radius: 30px;
-  background: #E8E8E2;
   width: 20px;
   height: 20px;
+  border-radius: 30px;
+  background: var(--maingray);
+  
 }

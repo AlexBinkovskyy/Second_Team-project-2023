@@ -1,4 +1,6 @@
 
+import shoppingSvg from  '../images/icons/shopping-cart.svg';
+
 
 const popularProduct = document.querySelector('.popular-product-list');
 
@@ -29,10 +31,11 @@ function markup(arr) {
             </p>
             </div>
             </div>
-            <button type="button" class="popular buy-btn" onclick="addToCart('${_id}')"><svg class="koshik" width="12" height="12">
-            <use href="./images/sprite.svg#icon-shopping-cart"></use>
-          </svg>
-            <button>
+            <div class="popular-btn">
+            <button type="button" class="popular-buy buy-btn" onclick="addToCart('${_id}')">
+            <img class="koshik"  src="${shoppingSvg}" alt="shop-icon" width="12" height="12"/>
+            </button>
+            </div>
           </li>
       `
     )
