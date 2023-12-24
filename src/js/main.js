@@ -7,7 +7,7 @@ import { renderPopularProduct } from './popular-product';
 import { renderProductDiscount } from './discount';
 import { renderProductList } from './product-list';
 import { renderFilterSelect } from './filter';
-import { setupSubscriptionForm } from './footer.js';
+import { showModalMessage } from './footer.js';
 
 getProdByDiscount()
   .then(({ data }) => {
@@ -29,8 +29,8 @@ getProdByPopular()
 
 getProdByCategories()
   .then(({ data }) => {
-    renderFilterSelect((data.toString().replaceAll('_', ' ')).split(','));
+    renderFilterSelect(data.toString().replaceAll('_', ' ').split(','));
   })
   .catch(error => console.log(error));
 
-setupSubscriptionForm();
+showModalMessage();

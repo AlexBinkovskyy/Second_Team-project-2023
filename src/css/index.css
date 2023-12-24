@@ -747,3 +747,78 @@ body {
   | FOOTER Section end
   |============================
 */
+
+/**
+  |============================
+  | Modal Section start
+  |============================
+*/
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(46, 47, 66, 0.4);
+  backdrop-filter: blur(1px);
+
+  transition: opacity var(--animation), visibility var(--animation);
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  padding: 72px 24px 24px 24px;
+
+  background-color: var(--maingray);
+  transform: translate(-50%, -50%);
+  min-width: 320px;
+  max-width: 600px;
+  min-height: 276px;
+  border-radius: 20px;
+  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
+  transition: transform var(--animation);
+}
+
+.modal-btn {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  fill: var(--maingreen);
+  transition: background-color var(--animation);
+  border: var(--animation);
+}
+
+.modal-btn-icon {
+  transition: fill var(--animation);
+}
+
+.modal-btn:hover,
+.modal-btn:focus {
+  background-color: var(--maingreen-hower);
+  border: none;
+  fill: var(--maingray);
+}
+/**
+  |============================
+  | Modal Section end
+  |============================
+*/
