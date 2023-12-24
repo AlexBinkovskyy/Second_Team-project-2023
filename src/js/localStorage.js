@@ -33,6 +33,6 @@ export function getCartItemsQuantity() {
 
 export function getFilterParams(){
   return JSON.parse(localStorage.getItem('filterParams'))
-} 
+}
 
-// some
+
