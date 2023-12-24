@@ -6,7 +6,7 @@ const filterForm = document.querySelector('#filterForm');
 filterForm.addEventListener('submit', onSubmit);
 const filterSelectCategories = document.querySelector('#categories');
 const optionSelect = document.querySelector('.js-option');
-// optionSelect.addEventListener('change', onSubmit);
+filterForm.elements.filterCategories.addEventListener('change', proceedSelect);
 
 let filterParams;
 
@@ -32,7 +32,7 @@ function markup(arr) {
   return selects.join('');
 }
 
-async function onSubmit(event) {
+function onSubmit(event) {
   event.preventDefault();
   const {
     filterInput,
@@ -40,31 +40,28 @@ async function onSubmit(event) {
     filterMethod = 'A-Z',
   } = event.target.elements;
   proceedInput(filterInput, filterCategories);
-  await proceedSelectCategorie(filterCategories)
 }
 
 function proceedInput(filterInput, filterCategories) {
-  if (filterInput.value.trim()) {
+  if (!filterInput.value.trim().length) {
+    filterForm.reset();
+    setDefaultFilterParams();
+    checkFilterParams();
+  } else if (filterInput.value.trim()) {
     filterParams.keyword = filterInput.value.trim();
+    if (filterCategories.value !== '') {
+      filterParams.category = filterCategories.value;
+    }
     setNewFilterParams(filterParams);
   } else if (filterCategories.value) {
     filterParams.category = filterCategories.value.trim();
     setNewFilterParams(filterParams);
-  } else if (!filterInput.value.trim().length) {
-    console.log('kdjshfdhfjs', filterInput.value.trim().length);
-    filterForm.reset();
-    setDefaultFilterParams();
-    checkFilterParams();
   }
 }
 
-
-function proceedSelectCategorie(filterCategories) {
-  filterParams.category = filterCategories.value;
+function proceedSelect(event) {
+  event.preventDefault();
+  console.log(event.target.value);
+  filterParams.category = event.target.value;
   setNewFilterParams(filterParams);
 }
-
-// function onSelect(event) {
-
-//   console.log(event.target);
-// }
