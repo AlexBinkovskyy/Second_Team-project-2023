@@ -1,3 +1,4 @@
+import { sendSubscription } from "./query";
 export function showModalMessage(message) {
   const modalText = document.querySelector('.modal-text');
   modalText.innerText = message;
@@ -33,26 +34,32 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    fetch(form.action, {
-      method: form.method,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email: email }),
-    })
-      .then(response => {
-        if (response.status === 201) {
-          showModalMessage('Успішна підписка на розсилку нових продуктів!');
-        } else if (response.status === 409) {
-          showModalMessage('Підписка вже існує. Ви вже підписані на розсилку.');
-        } else {
-          showModalMessage(
-            'Виникла помилка під час підписки. Спробуйте ще раз.'
-          );
-        }
-      })
-      .catch(error => {
-        showModalMessage('Виникла помилка під час підписки. Спробуйте ще раз.');
-      });
+    // fetch(form.action, {
+    //   method: form.method,
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({ email: email }),
+    // })
+    //   .then(response => {
+    //     if (response.status === 201) {
+    //       showModalMessage('Успішна підписка на розсилку нових продуктів!');
+    //     } else if (response.status === 409) {
+    //       showModalMessage('Підписка вже існує. Ви вже підписані на розсилку.');
+    //     } else {
+    //       showModalMessage(
+    //         'Виникла помилка під час підписки. Спробуйте ще раз.'
+    //       );
+    //     }
+    //   })
+    //   .catch(error => {
+    //     showModalMessage('Виникла помилка під час підписки. Спробуйте ще раз.');
+    //   });
   });
 });
+
+const temp = {
+  email: 'test@gmail.com'
+}
+
+sendSubscription(temp).then((data) => console.log(data)).catch((err) => console.log(err))
