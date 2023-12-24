@@ -37,3 +37,7 @@ export function getCartItemsQuantity() {
 export function getFilterParams() {
   return JSON.parse(localStorage.getItem('filterParams'));
 }
+
+const cartNumber = document.querySelector(".cart-number");
+cartNumber.insertAdjacentHTML("beforeend", getCartItemsQuantity());
+
