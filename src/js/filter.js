@@ -5,8 +5,8 @@ import { getProdByQuery } from './query';
 const filterForm = document.querySelector('#filterForm');
 filterForm.addEventListener('submit', onSubmit);
 const filterSelectCategories = document.querySelector('#categories');
-const optionSelect = document.querySelector('.js-option');
-// optionSelect.addEventListener('change', onSubmit);
+filterForm.elements.filterCategories.addEventListener('change', proceedSelect);
+filterForm.elements.filterMethod.addEventListener('change', proceedFilter);
 
 let filterParams;
 
@@ -32,7 +32,7 @@ function markup(arr) {
   return selects.join('');
 }
 
-async function onSubmit(event) {
+function onSubmit(event) {
   event.preventDefault();
   const {
     filterInput,
@@ -40,31 +40,60 @@ async function onSubmit(event) {
     filterMethod = 'A-Z',
   } = event.target.elements;
   proceedInput(filterInput, filterCategories);
-  await proceedSelectCategorie(filterCategories)
 }
 
 function proceedInput(filterInput, filterCategories) {
-  if (filterInput.value.trim()) {
+  if (!filterInput.value.trim().length) {
+    filterForm.reset();
+    setDefaultFilterParams();
+    checkFilterParams();
+  } else if (filterInput.value.trim()) {
     filterParams.keyword = filterInput.value.trim();
+    if (filterCategories.value !== '') {
+      filterParams.category = filterCategories.value;
+    }
     setNewFilterParams(filterParams);
   } else if (filterCategories.value) {
     filterParams.category = filterCategories.value.trim();
     setNewFilterParams(filterParams);
-  } else if (!filterInput.value.trim().length) {
-    console.log('kdjshfdhfjs', filterInput.value.trim().length);
-    filterForm.reset();
-    setDefaultFilterParams();
-    checkFilterParams();
   }
 }
 
-
-function proceedSelectCategorie(filterCategories) {
-  filterParams.category = filterCategories.value;
+function proceedSelect(event) {
+  event.preventDefault();
+  filterParams.category = event.target.value.replace(' ', '_');
   setNewFilterParams(filterParams);
 }
 
-// function onSelect(event) {
-
-//   console.log(event.target);
-// }
+function proceedFilter(event) {
+  event.preventDefault();
+  console.log(event.target.value);
+  if (event.target.value === 'A_to_Z' || event.target.value === 'Z_to_A') {
+    event.target.value === 'A_to_Z'
+      ? (filterParams.byABC = true)
+      : (filterParams.byABC = false);
+    setNewFilterParams(filterParams);
+    return;
+  } else if (
+    event.target.value === 'Cheap' ||
+    event.target.value === 'Expensive'
+  ) {
+    event.target.value === 'Cheap'
+      ? (filterParams.byPrice = true)
+      : (filterParams.byPrice = false);
+    setNewFilterParams(filterParams);
+    return;
+  } else if (
+    event.target.value === 'Popular' ||
+    event.target.value === 'Not_popular'
+  ) {
+    event.target.value === 'Not_popular'
+      ? (filterParams.byPopularity = true)
+      : (filterParams.byPopularity = false);
+    setNewFilterParams(filterParams);
+    return;
+  } else if (event.target.value === 'Show_all') {
+    setDefaultFilterParams()
+    return;
+  }
+}

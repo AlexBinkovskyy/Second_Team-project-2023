@@ -3,7 +3,7 @@ import { getProdByParams } from './query';
 const productList = document.querySelector('.product-list');
 
 export function renderProductList(data) {
-  productList.insertAdjacentHTML('beforeend', createMarkup(data.results));
+  productList.innerHTML = createMarkup(data.results);
 }
 
 function createMarkup(arr) {
