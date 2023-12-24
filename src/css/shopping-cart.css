@@ -2,70 +2,152 @@
 @import url('./variables.css');
 @import url('./index.css');
 
-*,
-*::after,
-::before {
-  box-sizing: border-box;
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-body{
-  font-family: 'NeueMontreal-regular';
-  font-size: 18px;
-}
-
-.container {
-  max-width: 1270px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-.title {
-  color: var(--text-color);
-  font-size: 32px;
-  font-weight: 500;
-  text-transform: uppercase;
-}
-.regularText{
-  font-family: 'NeueMontreal-regular';
-}
-.mediumText{
-  font-family: 'NeueMontreal-Medium';
+.cart-section {
+  flex: 1;
 }
 
-/*
-▮▮▯▯⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘ >>
+/**
+  |============================
+  | Заголовок верхній блок / початок
+  |============================
 */
 
-.cart {
-  padding: 100px 0;
-}
-.cart-container {
-}
-
-/*
-▮▮▯▯⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘   cart-title   ⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘▯▯▮▮
-*/
-/* .cart-title {
+/* cart-title */
+.cart-title {
   display: flex;
   align-items: center;
-  gap: 14px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.16;
+  text-transform: uppercase;
+  margin-bottom: 72px;
+  margin-top: 36px;
+  font-family: 'NeueMontreal-Medium';
+  color: var(--text-color);
 }
-.cart-title-icon {
-  height: 42px;
-  width: 42px;
 
+@media only screen and (min-width: 768px) {
+  .cart-title {
+    font-size: 32px;
+    margin-bottom: 88px;
+    margin-top: 41px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .cart-title {
+    margin-top: 41px;
+    margin-bottom: 150px;
+  }
+}
+
+/* cart-icon */
+.cart-icon {
+  justify-content: center;
+  align-items: center;
+  fill: var(--maingray);
+  background-color: var(--maingreen);
   border-radius: 30px;
-  background: #6d8434;
+  width: 38px;
+  height: 38px;
+  padding: 10px;
+  margin-right: 14px;
 }
-.cart-title-text {
-}
-.cart-title-count {
-} */
 
+@media only screen and (min-width: 768px) {
+  .cart-icon {
+    width: 42px;
+    height: 42px;
+    padding: 12px;
+  }
+}
+
+/**
+  |============================
+  | Заголовок верхній блок / кінець
+  |============================
+*/
+
+/**
+  |============================
+  | Пустий кошик стилі / початок
+  |============================
+*/
+
+.empty-cart {
+  display: flex;
+  visibility: visible;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 120px;
+}
+
+.empty-cart-img {
+  margin-top: 12px;
+  margin-bottom: 28px;
+  width: 132px;
+  height: 114px;
+}
+.empty-cart-title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11;
+  margin-bottom: 14px;
+}
+
+.change-color {
+  color: var(--maingreen);
+  font-weight: 500;
+  line-height: 1.11;
+}
+.empty-cart-text {
+  color: rgba(1, 1, 1, 0.7);
+  width: 279px;
+  font-size: 14px;
+  line-height: 1.29;
+  text-align: center;
+}
+@media only screen and (min-width: 768px) {
+  .empty-cart-image {
+    width: 164px;
+    height: 140px;
+    margin-bottom: 40px;
+    margin-top: 42px;
+  }
+  .empty-cart-text {
+    width: 387px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .empty-cart-image {
+    margin-top: 80px;
+  }
+  .empty-cart {
+    margin-bottom: 150px;
+  }
+}
+
+/**
+  |============================
+  | Пустий кошик стилі / кінець
+  |============================
+*/
+
+/**
+  |============================
+  | Повний кошик стилі / початок
+  |============================
+*/
 /*
 ▮▮▯▯⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘   Cart bottom   ⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘▯▯▮▮
 */
 .cart-box {
-  padding-top: 87px;
-
   display: flex;
   gap: 4%;
 }
@@ -77,29 +159,29 @@ body{
 /*
 ▮▮▯▯⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘   Order list   ⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘▯▯▮▮
 */
-.catr-order-wraper {
+.cart-order-wraper {
   position: relative;
   width: 48%;
 }
 @media screen and (max-width: 780px) {
-  .catr-order-wraper{
+  .cart-order-wraper {
     width: 100%;
     margin-bottom: 100px;
   }
 }
 @media screen and (max-width: 400px) {
-  .catr-order-wraper{
+  .cart-order-wraper {
     margin-bottom: 80px;
   }
 }
-.curt-order-clear-btn {
+.cart-order-clear-btn {
   position: absolute;
   right: 0px;
   top: -40px;
 
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
 
   background-color: transparent;
   border-color: transparent;
@@ -108,12 +190,28 @@ body{
   font-size: 16px;
   font-weight: 500;
 }
-.curt-order-clear-btn span{
-  font-size: 20px;
-}
-.catr-order {
-  height: 520px;
+.cart-order-container {
+  font-family: 'Neue Montreal';
+  display: flex;
+  margin-bottom: 80px;
+  position: relative;
+  width: 100%;
+  max-height: 472px;
+  height: 472px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
   background-color: #887f5d88;
+}
+@media only screen and (min-width: 1440px) {
+  .cart-order-container {
+    width: 500px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .cart-order-container {
+    max-height: 568px;
+  }
 }
 
 /*
@@ -123,7 +221,7 @@ body{
   width: 48%;
 }
 @media screen and (max-width: 780px) {
-  .cart-form-wraper{
+  .cart-form-wraper {
     width: 100%;
     max-width: 590px;
   }
@@ -131,7 +229,7 @@ body{
 .cart-form-title {
   margin-bottom: 40px;
 }
-.catr-total-price {
+.cart-total-price {
   height: 60px;
   padding: 14px 28px;
   margin-bottom: 40px;
@@ -145,11 +243,11 @@ body{
   background: rgba(109, 132, 52, 0.05);
 }
 @media screen and (max-width: 400px) {
-  .catr-total-price {
+  .cart-total-price {
     margin-bottom: 30px;
   }
 }
-.catr-total-price-text {
+.cart-total-price-text {
   font-size: 20px;
   font-weight: 500;
   line-height: 24px;
@@ -163,7 +261,6 @@ body{
   font-size: 32px;
   font-weight: 500;
 }
-
 
 .cart-form {
   width: 100%;
@@ -183,13 +280,13 @@ body{
 .cart-form-label-text {
   position: absolute;
   top: 50%;
-  left: 20px;  
+  left: 20px;
   transform: translateY(-53%);
 
   color: var(--passive-text-color);
 }
 .cart-form-input {
-  position: relative;  
+  position: relative;
   padding: 15px 20px;
   padding-left: 64px;
 
@@ -232,17 +329,198 @@ body{
   font-weight: 500;
 }
 @media screen and (max-width: 400px) {
-  .cart-form-button{
+  .cart-form-button {
     width: 100%;
     max-width: none;
   }
 }
 
-.form-label {
+/* .form-label {
 }
 .label-text {
 }
 .form-input {
 }
 .form-button {
+} */
+/**
+  |============================
+  | Повний кошик стилі / кінець
+  |============================
+*/
+
+/**
+  |============================
+  | Стилі карток товарів / початок
+  |============================
+*/
+.product-info {
+  /* flex-wrap: wrap; */
+  font-family: 'NeueMontreal-Medium';
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  /* margin-top: 10px; */
+  margin-bottom: 36px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 215px;
 }
+@media only screen and (min-width: 768px) {
+  .product-info {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    max-width: none;
+  }
+}
+
+@media only screen and (max-width: 325px) {
+  .product-info {
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+    gap: 0;
+  }
+}
+
+/*Стилізація розмітки кошика */
+
+.cart-list {
+  width: 100%;
+}
+
+.selectedProduct {
+  display: flex;
+  flex-direction: row;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  position: relative;
+}
+.product-picture {
+  border-radius: 10px;
+  background: var(--color-card-bckg);
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  margin-right: 20px;
+  padding: 24px;
+}
+.info-header {
+  font-family: 'Neue Montreal';
+  display: flex;
+  /* flex-direction: row; */
+}
+.product-name {
+  font-family: 'Neue Montreal';
+  color: var(--color-text);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.2; /* 120% */
+  /* margin-right: 243px; */
+  /* margin-bottom: 10px; */
+}
+.delete-btn {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-text);
+  fill: var(--color-text);
+  background: transparent;
+  border: none;
+  position: absolute;
+  top: 14px;
+  right: 8px;
+  padding: 0;
+}
+
+@media only screen and (min-width: 375px) {
+  .product-info {
+    font-family: 'Neue Montreal';
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-top: 10px;
+    margin-bottom: 36px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.info-quality {
+  font-family: 'Neue Montreal';
+  color: rgba(1, 1, 1, 0.3);
+  font-size: 12px;
+  line-height: 1.16; /* 116.667% */
+  gap: 4px;
+  padding: 2px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.info-quality-category {
+  font-family: 'Neue Montreal';
+  color: rgba(1, 1, 1, 0.3);
+  font-size: 12px;
+  line-height: 1.16; /* 116.667% */
+  gap: 4px;
+  padding: 2px 0;
+  /* white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+}
+.info-value {
+  font-family: 'Neue Montreal';
+  margin-left: 4px;
+  color: var(--color-text);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.28; /* 128.571% */
+  /* white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+}
+.price {
+  font-family: 'Neue Montreal';
+  color: var(--color-text);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 120% */
+}
+
+@media only screen and (min-width: 768px) {
+  .product-picture {
+    width: 120px;
+    height: 120px;
+    margin-right: 40px;
+  }
+  .product-name {
+    margin-bottom: 12px;
+  }
+}
+
+.selectedProduct:not(:last-child) {
+  border-bottom: 1px solid rgba(1, 1, 1, 0.1);
+  padding-bottom: 30px;
+  position: relative;
+}
+
+@media only screen and (min-width: 768px) {
+  .selectedProduct:not(:last-child) {
+    padding-bottom: 40px;
+  }
+}
+
+/**
+  |============================
+  | Стилі карток товарів / кінець
+  |============================
+*/
