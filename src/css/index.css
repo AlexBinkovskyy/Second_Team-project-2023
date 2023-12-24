@@ -11,6 +11,7 @@
 @import url('./shopping-cart.css');
 @import url('./discount.css');
 @import url('./popular-product.css');
+@import url('./pagination.css');
 
 @font-face {
   font-family: 'NeueMontreal-Medium';
