@@ -11,7 +11,6 @@
 @import url('./shopping-cart.css');
 @import url('./discount.css');
 
-
 @font-face {
   font-family: 'NeueMontreal-Medium';
   src: url('../fonts/NeueMontreal-Medium.otf') format('opentype');
@@ -360,7 +359,7 @@ body {
   font-style: normal;
 }
 .accent-food {
-  color: #6d8434;
+  color: var(--maingreen);
 }
 .hero-main-text {
   padding-bottom: 16px;
@@ -485,68 +484,63 @@ body {
   |============================
 */
 .footer-content {
-  color: #e8e8e2;
-
+  color: var(--maingray);
   padding-top: 40px;
-  padding-left: 20px;
   padding-bottom: 20px;
-  background: #6d8434;
-}
-.footer-content-block {
-  width: 375px;
-  margin: 0 auto;
+  background: var(--maingreen);
 }
 @media screen and (min-width: 768px) {
   .footer-content {
     padding-top: 44px;
   }
+}
+.footer-content-block {
+  width: 100%;
+  margin-bottom: 40px;
+}
+@media screen and (min-width: 768px) {
   .footer-content-block {
-    width: 768px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
   }
 }
-@media screen and (min-width: 1158px) {
+@media screen and (min-width: 1440px) {
   .footer-content-block {
-    max-width: 1158px;
+    margin-bottom: 88px;
   }
-  .footer-content-item {
-    margin-right: 148px;
-  }
-  .footer-slogan-form {
-    display: flex;
-  }
-  .footer-slogan {
-    width: 335px;
-  }
+}
+
+.footer-logo-social {
+  margin-bottom: 40px;
 }
 .footer-logo {
-  max-width: 154px;
   margin-bottom: 20px;
 }
 .footer-logo-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  width: 162px;
+}
+
+.footer-logo-text {
+  font-family: 'Fontspring-Quincy-Black';
   font-size: 18px;
   font-weight: 900;
   line-height: 20px; /* 111.111% */
   letter-spacing: -0.36px;
 }
-.footer-logo-icon {
-}
-.footer-logo-text {
-  font-family: 'Fontspring-Quincy-Black';
+@media screen and (min-width: 768px) {
+  .footer-logo-text {
+    font-size: 24px;
+    line-height: 24px; /* 100% */
+    letter-spacing: -0.48px;
+  }
 }
 .footer-social-links-box {
   display: flex;
   flex-wrap: wrap;
   width: auto;
   gap: 12px;
-  margin-bottom: 40px;
-}
-.footer-social-links-item {
 }
 .footer-social-links {
   display: flex;
@@ -558,6 +552,7 @@ body {
 
   border: var(--border);
   border-radius: 10px;
+  transition: var(--transition-settings);
 }
 .footer-social-links:hover,
 .footer-social-links:focus {
@@ -565,28 +560,44 @@ body {
 }
 .footer-svg {
   fill: rgba(232, 232, 226, 0.6);
+  transition: var(--transition-settings);
 }
 .footer-svg:hover,
 .footer-svg:focus {
-  fill: #e8e8e2;
+  fill: var(--maingray);
+}
+@media screen and (min-width: 1440px) {
+  .footer-slogan-form {
+    width: 800px;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 .footer-slogan {
   max-width: 335px;
-
   margin-bottom: 40px;
+}
+@media screen and (min-width: 768px) {
+  .footer-slogan {
+    max-width: 410px;
+  }
 }
 .footer-slogan-title {
   font-family: 'NeueMontreal-Medium';
-  padding-right: 34px;
   margin-bottom: 14px;
-  color: #e8e8e2;
-
-  font-family: Neue Montreal;
+  color: var(--maingray);
   font-size: 24px;
-  font-style: normal;
   font-weight: 500;
   line-height: 28px; /* 116.667% */
   letter-spacing: -0.48px;
+}
+@media screen and (min-width: 768px) {
+  .footer-slogan-title {
+    margin-bottom: 20px;
+    font-size: 40px;
+    line-height: 44px; /* 110% */
+    letter-spacing: -0.8px;
+  }
 }
 .footer-slogan-text {
   color: rgba(232, 232, 226, 0.6);
@@ -595,24 +606,35 @@ body {
 
   font-family: 'NeueMontreal-regular';
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: 18px; /* 128.571% */
 }
-.footer-form-box {
+@media screen and (min-width: 768px) {
+  .footer-slogan-text {
+    font-size: 18px;
+    line-height: 24px; /* 133.333% */
+  }
+}
+@media screen and (min-width: 1440px) {
+  .footer-form-box {
+    width: 280px;
+  }
 }
 .footer-subscribe-text {
-  color: #e8e8e2;
+  color: var(--maingray);
 
   font-family: 'NeueMontreal-regular';
   font-size: 14px;
-  font-style: normal;
+
   font-weight: 400;
   line-height: 18px; /* 128.571% */
   margin-bottom: 20px;
 }
-.subscription-form {
-  max-width: 335px;
+@media screen and (min-width: 768px) {
+  .footer-subscribe-text {
+    font-size: 18px;
+    line-height: 24px; /* 133.333% */
+  }
 }
 .footer-form-input {
   padding: 12px 18px;
@@ -622,53 +644,70 @@ body {
   color: rgba(232, 232, 226, 0.3);
   margin-bottom: 14px;
   width: 100%;
+  transition: var(--transition-settings);
+}
+.footer-form-input::placeholder {
+  color: rgba(232, 232, 226, 0.6);
+  font-family: 'NeueMontreal-regular';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+  transition: var(--transition-settings);
+}
+@media screen and (min-width: 768px) {
+  .footer-form-input::placeholder {
+    font-size: 16px;
+    line-height: 24px; /* 150% */
+  }
 }
 .footer-form-input:hover,
-.footer-form-input:focus {
-  border-color: #e8e8e2;
-  color: #e8e8e2;
+.footer-form-input:focus,
+.footer-form-input:hover::placeholder,
+.footer-form-input:focus::placeholder {
+  border-color: var(--maingray);
+  color: var(--maingray);
 }
 .footer-form-button {
-  color: #6d8434;
+  color: var(--maingreen);
 
   display: flex;
-  width: 335px;
-  padding: 12px 149px;
-  margin-bottom: 40px;
+  width: 100%;
+  padding: 12px 100px;
+
   justify-content: center;
-  align-items: center;
-  gap: 8px;
   border-radius: 30px;
-  background: #e8e8e2;
+  background: var(--maingray);
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px; /* 128.571% */
+  transition: var(--transition-settings);
+}
+@media screen and (min-width: 768px) {
+  .footer-form-button {
+    font-size: 16px;
+    line-height: 24px; /* 150% */
+  }
 }
 .footer-form-button:hover,
 .footer-form-button:focus {
   color: #010101;
 }
 .footer-loader {
-  margin: 0 auto;
+  font-family: 'NeueMontreal-regular';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
 }
 @media screen and (min-width: 768px) {
   .footer-loader {
-    width: 768px;
-
     display: flex;
-    justify-content: space-around;
-  }
-}
-@media screen and (min-width: 1240px) {
-  .footer-loader {
-    width: 1280px;
+    justify-content: space-between;
   }
 }
 .footer-block-text {
   margin-bottom: 8px;
 }
-
-/* Desktop screen*/
-@media screen and (min-width: 1158px) {
-}
-
 /**
   |============================
   | FOOTER Section end
