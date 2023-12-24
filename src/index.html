@@ -16,7 +16,7 @@
     <load src="./partials/header.html" />
     <main>
       <!-- Hero -->
-      <section>
+      <section class="hero-section">
         <div class="container">
           <div class="hero-text">
             <h1 class="hero-main-text">
@@ -40,11 +40,18 @@
         <div class="container">
           <p class="filter-text">Filters:</p>
           <form action="submit" name="filter" id="filterForm">
-            <input type="text" placeholder="Search for anything" name="filterInput">
-            <button type="submit"><svg class="" width="20" height="20">
-              <use href="./images/sprite.svg#icon-search-line-ico"></use>
-            </svg></button>
-            <select name="filterCategories" id="categories" >
+            <input
+              type="text"
+              placeholder="Search for anything"
+              name="filterInput"
+            />
+            <button type="submit">
+              <svg class="" width="20" height="20">
+                <use href="./images/sprite.svg#icon-search-line-ico"></use>
+              </svg>
+            </button>
+            <select name="filterCategories" id="categories">
+              <option value="Show all" class="js-option">Show all</option>
             </select>
             <select name="filterMethod" id="filter-method"></select>
           </form>
@@ -57,6 +64,10 @@
           <div class="product-list"></div>
           <aside class="sidebar">
             <!-- Popular products -->
+            <div class="popular-product">
+              <h3 class="popular-product-title">Popular products</h3>
+              <ul class="popular-product-item"></ul>
+            </div>
             <!-- Discount products -->
             <div class="discount-products">
               <h3 class="discount-products-list">Discount products</h3>

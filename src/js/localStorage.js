@@ -1,8 +1,25 @@
-import { filterParams } from "./filter";
-
-let shoppingCartItems = []
+let shoppingCartItems = {
+  "email": "",
+  "products": [
+    {
+      "productId": "",
+      "amount": 1
+    }
+  ]
+}
 
 export function setDefaultFilterParams(){
+  const filterParams = {
+    keyword: null,
+    category: null,
+    page: 1,
+    limit: 6,
+  };
+  localStorage.setItem('filterParams', JSON.stringify(filterParams));
+  return getFilterParams();
+}
+
+export function setNewFilterParams(filterParams){
   localStorage.setItem('filterParams', JSON.stringify(filterParams));
 }
 
@@ -17,4 +34,5 @@ export function getCartItemsQuantity() {
 export function getFilterParams(){
   return JSON.parse(localStorage.getItem('filterParams'))
 }
+
 

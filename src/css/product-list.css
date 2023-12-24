@@ -1,19 +1,114 @@
+/* Global styles */
+.header-three {
+    color: #010101;
+    font-family: 'NeueMontreal-regular';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.11;
+}
+@media screen and (min-width: 768px) {
+    .header-three {
+        font-size: 20px;
+        line-height: 1.2;
+    }
+}
+
+.regular-text {
+    font-family: 'NeueMontreal-regular';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.16;
+}
+
+/* Section styles */
 .product-list {
     margin: 20px 0;
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
 }
+@media screen and (min-width: 768px) {
+.product-list {
+    margin: 40px 0;
+    
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 34px;
+}
+}
+@media screen and (min-width: 1440px) {
+    .product-list {
+    margin: 60px 40px 60px 0;
+
+    gap: 40px 20px;
+    }
+}
+
 
 .product-card {
+    max-width: 335px;
+    height: 356px;
     padding: 20px;
 
     border-radius: 20px;
     background: #FAFAFA;
 }
+@media screen and (min-width: 768px) {
+    .product-card {
+            flex-basis: calc((100% - 32px) / 2);
+            height: 360px;
+        }
+}
+@media screen and (min-width: 1440px) {
+    .product-card {
+        flex-basis: calc((100% - 40px) / 3);
+        height: 363px;
+    }
+}
 
 .product-pic {
     height: 178px;
     object-fit: contain;
+
+    border-radius: 10px;
+    background: #E8E8E2;
+
+    margin-bottom: 20px;
 }
+
+.product-name {
+    margin-bottom: 10px;
+}
+
+.product-info{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.info-title {
+    color: rgba(1, 1, 1, 0.30);
+    margin-right: 4px;
+}
+
+.purchaise-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-price {
+    align-self: flex-end;
+}
+
+.purchaise-box .buy-btn {
+    width: 34px;
+    height: 34px;
+}
+
