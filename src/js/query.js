@@ -23,7 +23,6 @@ export async function getProdByParams() {
 }
 
 export async function getProdByPopular() {
-
   return await axios(
     `${references.MAIN_URL}/${references.popular}?limit=5`
   );
@@ -36,6 +35,9 @@ export async function getProdByDiscount() {
 
 export async function getProdByID() {
   return await axios(`${references.MAIN_URL}/${Id}`);
+}
+export async function getProdByIDWithParams(id) {
+  return await axios(`${references.MAIN_URL}/${id}`);
 }
 
 
