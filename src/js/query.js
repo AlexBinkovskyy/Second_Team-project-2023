@@ -8,6 +8,7 @@ let page = 1;
 let limitPerPage = 6;
 let Id = null;
 
+
 export async function getProdByParams() {
   if (window.innerWidth >= 1440) {
     limitPerPage = 9;

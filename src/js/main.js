@@ -29,7 +29,7 @@ getProdByPopular()
 
 getProdByCategories()
   .then(({ data }) => {
-    renderFilterSelect(data);
+    renderFilterSelect((data.toString().replaceAll('_', ' ')).split(','));
   })
   .catch(error => console.log(error));
 
