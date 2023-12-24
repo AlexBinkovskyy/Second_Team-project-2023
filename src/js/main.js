@@ -7,6 +7,7 @@ import { renderPopularProduct } from './popular-product';
 import { renderProductDiscount } from './discount';
 import { renderProductList } from './product-list';
 import { renderFilterSelect } from './filter';
+import { setupSubscriptionForm } from './footer.js';
 
 getProdByDiscount()
   .then(({ data }) => {
@@ -20,15 +21,16 @@ getProdByParams()
   })
   .catch(error => console.log(error));
 
-  getProdByPopular()
+getProdByPopular()
   .then(({ data }) => {
     renderPopularProduct(data);
   })
   .catch(error => console.log(error));
-
 
 getProdByCategories()
   .then(({ data }) => {
     renderFilterSelect(data);
   })
   .catch(error => console.log(error));
+
+setupSubscriptionForm();
