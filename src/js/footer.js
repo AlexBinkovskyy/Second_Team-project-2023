@@ -1,15 +1,35 @@
-export function setupSubscriptionForm() {
+export function showModalMessage(message) {
+  const modalText = document.querySelector('.modal-text');
+  modalText.innerText = message;
+
+  const backdrop = document.querySelector('[data-modal]');
+  backdrop.classList.remove('is-hidden');
+
+  const closeButton = document.querySelector('[data-modal-close]');
+  closeButton.onclick = function () {
+    backdrop.classList.add('is-hidden');
+  };
+
+  window.onclick = function (event) {
+    if (event.target === backdrop) {
+      backdrop.classList.add('is-hidden');
+    }
+  };
+}
+
+document.addEventListener('DOMContentLoaded', function () {
   const form = document.querySelector('.subscription-form');
-  const emailInput = document.querySelector('.footer-form-input');
 
   form.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    const email = emailInput.value;
+    const email = document.querySelector('.footer-form-input').value;
 
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailPattern.test(email)) {
-      alert('Будь ласка, введіть коректну адресу електронної пошти.');
+      showModalMessage(
+        'Будь ласка, введіть коректну адресу електронної пошти.'
+      );
       return;
     }
 
@@ -22,19 +42,17 @@ export function setupSubscriptionForm() {
     })
       .then(response => {
         if (response.status === 201) {
-          return response.json();
+          showModalMessage('Успішна підписка на розсилку нових продуктів!');
         } else if (response.status === 409) {
-          throw new Error('Підписка вже існує');
+          showModalMessage('Підписка вже існує. Ви вже підписані на розсилку.');
         } else {
-          throw new Error('Щось пішло не так. Спробуйте пізніше.');
+          showModalMessage(
+            'Виникла помилка під час підписки. Спробуйте ще раз.'
+          );
         }
       })
-      .then(data => {
-        alert(data.message);
-        emailInput.value = '';
-      })
       .catch(error => {
-        alert(error.message);
+        showModalMessage('Виникла помилка під час підписки. Спробуйте ще раз.');
       });
   });
-}
+});
