@@ -1,3 +1,4 @@
+// import Pagination from 'tui-pagination';
 const startBtn = document.querySelector("#startBtn"),
   endBtn = document.querySelector("#endBtn"),
   prevNext = document.querySelectorAll(".prevNext"),
