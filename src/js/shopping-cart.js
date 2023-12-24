@@ -1,4 +1,6 @@
-import { getProdByIDWithParams } from "./query";
+import { getProdByIDWithParams } from './query';
+import icons from '../images/sprite.svg';
+
 const list = document.querySelector('.js-cart-list');
 const arrCart = [
   {
@@ -20,12 +22,12 @@ const arrCart = [
   },
 ];
 
-spawnCardProducts(arrCart[0].products)
+spawnCardProducts(arrCart[0].products);
 
 function spawnCardProducts(products) {
   generateCardListMarkup(products, createCartProductMarkup).then(result => {
     list.insertAdjacentHTML('beforeend', result);
-  })
+  });
 }
 
 /*  Параметри:
@@ -39,13 +41,14 @@ function spawnCardProducts(products) {
 
     Повертає html розмітку продуктів
 ===================================================================================== */
-async function generateCardListMarkup(productList, createElementMarkupFunc) {  
+async function generateCardListMarkup(productList, createElementMarkupFunc) {
   const products = await getCartProducts(productList);
-  return products.map((product) => {
-    return createElementMarkupFunc(product);
-  }).join("");
+  return products
+    .map(product => {
+      return createElementMarkupFunc(product);
+    })
+    .join('');
 }
-
 
 /*  Параметри:
       1.productList - масив з продуктами      
@@ -57,13 +60,13 @@ async function generateCardListMarkup(productList, createElementMarkupFunc) {
     Повертає масив даних з продуктів
 ===================================================================================== */
 async function getCartProducts(productList) {
-  return await Promise.all(productList
-    .map(({id}) => getProdByIDWithParams(id)
-    .then(rqst => rqst.data)));
+  return await Promise.all(
+    productList.map(({ id }) =>
+      getProdByIDWithParams(id).then(rqst => rqst.data)
+    )
+  );
 }
 
-
- 
 // створення карттки в кошику
 function createCartProductMarkup(product) {
   const { _id, name, img, category, price, size } = product;
@@ -81,7 +84,7 @@ function createCartProductMarkup(product) {
         <h2 class="product-name">${name}</h2>
         <button class="delete-btn">
           <svg class="" width="20" height="20">
-            <use href=""></use>
+            <use href="${icons}#icon-Cross_close"></use>
           </svg>
         </button>
       </div>
@@ -96,4 +99,3 @@ function createCartProductMarkup(product) {
       </div>
   </li>`;
 }
-
