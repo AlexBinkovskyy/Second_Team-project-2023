@@ -24,7 +24,7 @@ export async function getProdByParams() {
 export async function getProdByPopular() {
 
   return await axios(
-    `${references.MAIN_URL}/${references.popular}?limit=${limitPerPage}`
+    `${references.MAIN_URL}/${references.popular}?limit=5`
   );
 
 }
