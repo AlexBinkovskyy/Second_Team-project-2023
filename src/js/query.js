@@ -33,8 +33,8 @@ export async function getProdByDiscount() {
   return await axios(`${references.MAIN_URL}/${references.discount}`);
 }
 
-export async function getProdByID() {
-  return await axios(`${references.MAIN_URL}/${Id}`);
+export async function getProdByID(id) {
+  return await axios(`${references.MAIN_URL}/${id}`);
 }
 export async function getProdByIDWithParams(id) {
   return await axios(`${references.MAIN_URL}/${id}`);

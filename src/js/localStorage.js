@@ -31,9 +31,12 @@ export function getCartItemsQuantity() {
   return JSON.parse(localStorage.getItem('shoppingCartItems')).products.length;
 }
 
-export function setCartItems(data) {
+export function setCartItems(id, amount = 1) {
     const cartItems = getCartItems();
-    cartItems.products.push(data);
+    if (!cartItems.products.find(id)){
+      console.log(yes);
+    }
+    cartItems.products.push({'id': id, 'amount': amount});
     localStorage.setItem('shoppingCartItems', JSON.stringify(cartItems))
 }
 
