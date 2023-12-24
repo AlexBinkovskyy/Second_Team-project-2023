@@ -81,6 +81,15 @@ line-height: 1.17; /* 116.667% */
 }
 
 .buy-btn {
-  display: flex;
   
+  
+  display: inline-flex;
+  padding: 4px;
+  justify-content: center;
+  /* align-items: center; */
+  gap: 10px;
+  border-radius: 30px;
+  background: #E8E8E2;
+  width: 20px;
+  height: 20px;
 }
