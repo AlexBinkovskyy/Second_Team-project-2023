@@ -13,6 +13,7 @@ import { getCartItemsQuantity } from './localStorage.js';
 import { setCartItems } from './localStorage.js';
 import { getCartItems } from './localStorage.js';
 
+setCartItems('640c2dd963a319ea671e383b')
 
 getProdByDiscount()
   .then(({ data }) => {
@@ -41,5 +42,5 @@ getProdByCategories()
 // showModalMessage();
 
 
-setCartItems('640c2dd963a319ea671e383b')
+
 
