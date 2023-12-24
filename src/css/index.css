@@ -518,11 +518,14 @@ body {
   | FOOTER Section start
   |============================
 */
-.footer-content {
+.footer {
   color: var(--maingray);
+
+  background-color: var(--maingreen);
+}
+.footer-content {
   padding-top: 40px;
   padding-bottom: 20px;
-  background: var(--maingreen);
 }
 @media screen and (min-width: 768px) {
   .footer-content {
@@ -530,7 +533,6 @@ body {
   }
 }
 .footer-content-block {
-  width: 100%;
   margin-bottom: 40px;
 }
 @media screen and (min-width: 768px) {
@@ -620,7 +622,6 @@ body {
 .footer-slogan-title {
   font-family: 'NeueMontreal-Medium';
   margin-bottom: 14px;
-  color: var(--maingray);
   font-size: 24px;
   font-weight: 500;
   line-height: 28px; /* 116.667% */
@@ -656,8 +657,6 @@ body {
   }
 }
 .footer-subscribe-text {
-  color: var(--maingray);
-
   font-family: 'NeueMontreal-regular';
   font-size: 14px;
 
@@ -726,7 +725,7 @@ body {
 }
 .footer-form-button:hover,
 .footer-form-button:focus {
-  color: #010101;
+  color: var(--text-color);
 }
 .footer-loader {
   font-family: 'NeueMontreal-regular';
