@@ -1,4 +1,4 @@
-import { sendSubscription } from "./query";
+// import { sendSubscription } from "./query";
 export function showModalMessage(message) {
   const modalText = document.querySelector('.modal-text');
   modalText.innerText = message;
@@ -62,4 +62,4 @@ const temp = {
   email: 'test@gmail.com'
 }
 
-sendSubscription(temp).then((data) => console.log(data)).catch((err) => console.log(err))
+// sendSubscription(temp).then((data) => console.log(data)).catch((err) => console.log(err))

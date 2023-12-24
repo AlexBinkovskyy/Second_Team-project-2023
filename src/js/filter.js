@@ -82,6 +82,7 @@ function proceedFilter(event) {
       ? (filterParams.byPrice = true)
       : (filterParams.byPrice = false);
     setNewFilterParams(filterParams);
+    
     return;
   } else if (
     event.target.value === 'Popular' ||

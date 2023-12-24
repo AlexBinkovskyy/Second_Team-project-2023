@@ -9,6 +9,7 @@ import { renderProductList } from './product-list';
 import { renderFilterSelect } from './filter';
 import { showModalMessage } from './footer.js';
 import { pagination } from './pagination.js';
+import { getCartItemsQuantity } from './localStorage.js';
 
 
 getProdByDiscount()
@@ -35,4 +36,5 @@ getProdByCategories()
   })
   .catch(error => console.log(error));
 
-showModalMessage();
+// showModalMessage();
+console.log(getCartItemsQuantity())

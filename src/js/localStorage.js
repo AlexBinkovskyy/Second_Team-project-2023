@@ -1,10 +1,7 @@
 let shoppingCartItems = {
   email: '',
   products: [
-    {
-      productId: '',
-      amount: 1,
-    },
+
   ],
 };
 
@@ -31,7 +28,7 @@ if (!JSON.parse(localStorage.getItem('shoppingCartItems'))) {
 }
 
 export function getCartItemsQuantity() {
-  return JSON.parse(localStorage.getItem('shoppingCartItems')).length;
+  return JSON.parse(localStorage.getItem('shoppingCartItems')).products.length;
 }
 
 export function getFilterParams() {

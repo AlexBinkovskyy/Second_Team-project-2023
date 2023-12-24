@@ -49,6 +49,6 @@ export async function getProdByQuery(keyword, category, page=1, limit=6) {
   return (await axios(`${references.MAIN_URL}?keyword=${keyword}&category=${category}&page=${page}&limit=${limit}`));
 }
 
-export async function sendSubscription(data) {
-  return (await axios.post(`${references.SECOND_URL}`))
-}
+// export async function sendSubscription(data) {
+//   return (await axios.post(`${references.SECOND_URL}`))
+// }
