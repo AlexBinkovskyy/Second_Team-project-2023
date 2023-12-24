@@ -29,7 +29,7 @@ function markup(arr) {
             </p>
             </div>
             </div>
-            <button type="button" class="buy-btn" onclick="addToCart('${_id}')"><svg class="koshik" width="12" height="12">
+            <button type="button" class="popular buy-btn" onclick="addToCart('${_id}')"><svg class="koshik" width="12" height="12">
             <use href="./images/sprite.svg#icon-shopping-cart"></use>
           </svg>
             <button>
