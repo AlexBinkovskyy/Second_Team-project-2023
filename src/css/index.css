@@ -14,6 +14,8 @@
 @import url('./aditional-products.css');
 @import url('./footer.css');
 @import url('./shopping-cart.css');
+@import url('./pagination.css');
+
 
 :root {
   font-synthesis: none;
