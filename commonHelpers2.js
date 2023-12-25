@@ -1,4 +1,4 @@
-import{s as M,a as d,b as r,c as b,d as S,e as $}from"./assets/sprite-fde99ce6.js";import"./assets/vendor-a61d8330.js";const f="/Second_Team-project-2023/assets/discount-1f26b8b0.svg",q=document.querySelector(".popular-product-list");function C(t){q.insertAdjacentHTML("beforeend",T(t))}function T(t){return t.map(({_id:e,name:o,img:n,category:c,size:g,popularity:m})=>`
+import{s as M,a as d,b as r,c as b,d as S,e as $}from"./assets/sprite-0d58b666.js";import"./assets/vendor-a61d8330.js";const f="/Second_Team-project-2023/assets/discount-1f26b8b0.svg",q=document.querySelector(".popular-product-list");function C(t){q.insertAdjacentHTML("beforeend",T(t))}function T(t){return t.map(({_id:e,name:o,img:n,category:c,size:g,popularity:m})=>`
           <li class="popular-product-item" id="${e}">
          <img class="discount-svg" src="${f}" alt="discount-icon" width="60" height="60"/>
             <img src="${n}" alt="${o}" width="56" height="56" loading="lazy" class="popular-product-pic" />
