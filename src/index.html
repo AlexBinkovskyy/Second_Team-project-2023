@@ -36,7 +36,7 @@
       </section>
 
       <!-- filter -->
-      <section>
+      <section class="filter">
         <div class="container">
           <p class="filter-text">Filters:</p>
           <form action="submit" name="filter" id="filterForm">
@@ -68,7 +68,7 @@
 
       <section>
         <!-- Product list -->
-        <div class="container">
+        <div class="container main-adapt">
           <div class="product-list"></div>
           <load src="./partials/pagination.html" />
           <aside class="sidebar">
@@ -78,12 +78,13 @@
                 <div class="popular-product-container"></div>
                 <ul class="popular-product-list"></ul>
               </div>
-            </div>
-            <!-- Discount products -->
+                          <!-- Discount products -->
             <div class="discount-products">
               <h3 class="discount-products-list">Discount products</h3>
               <ul class="discount-products-item"></ul>
             </div>
+            </div>
+
           </aside>
         </div>
       </section>

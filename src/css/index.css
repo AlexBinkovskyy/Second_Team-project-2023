@@ -822,3 +822,26 @@ body {
   | Modal Section end
   |============================
 */
+
+/* GRID starts*/
+.filter {
+  padding-top: 37px;
+  padding-bottom: 20px;
+}
+.popular-product {
+  padding-top: 40px;
+}
+.discount-products {
+  padding-bottom: 80px;
+}
+@media only screen and (min-width: 768px) {
+}
+
+@media only screen and (min-width: 1440px) {
+  .main-adapt {
+    display: flex;
+  }
+  .product-list {
+  }
+}
+/* GRID ends */
