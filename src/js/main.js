@@ -8,11 +8,8 @@ import { renderProductDiscount } from './discount';
 import { renderProductList } from './product-list';
 import { renderFilterSelect } from './filter';
 import { showModalMessage } from './footer.js';
-import { pagination } from './pagination.js';
-import { getCartItemsQuantity } from './localStorage.js';
-import { setCartItems } from './localStorage.js';
-import { getCartItems } from './localStorage.js';
 
+const loaderContainer = document.getElementById('loader-container');
 
 getProdByDiscount()
   .then(({ data }) => {
@@ -40,6 +37,14 @@ getProdByCategories()
 
 // showModalMessage();
 
+const body = document.body;
 
+export function showLoader() {
+  body.classList.add('no-scroll');
+  loaderContainer.classList.remove('visually-hidden');
+}
 
-
+export function hideLoader() {
+  body.classList.remove('no-scroll');
+  loaderContainer.classList.add('visually-hidden');
+}

@@ -52,19 +52,6 @@
   margin: 0;
 }
 
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-}
-
 img {
   display: block;
   width: 100%;
@@ -93,6 +80,11 @@ textarea {
 
 body {
   background: var(--maingray);
+  
+}
+
+body.no-scroll {
+  overflow: hidden;
 }
 
 /* Correct container */
@@ -116,38 +108,6 @@ body {
     padding: 0 100px;
   }
 }
-
-/* .container {
-  min-width: 320px;
-  max-width: 428px;
-  padding: 0 20px;
-  margin: 0 auto;
-}
-
-@media only screen and (min-width: 375px) {
-  .container {
-    width: 375px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .container {
-    width: 768px;
-    padding: 0 32px;
-  }
-}
-
-@media only screen and (min-width: 1280px) {
-  .container {
-    width: 1280px;
-    padding: 0 100px;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .container {
-    width: 1440px;
-  }} */
 
 /**
   |============================
@@ -823,6 +783,7 @@ body {
   |============================
 */
 
+
 /* GRID starts*/
 .filter {
   padding-top: 37px;
@@ -845,3 +806,69 @@ body {
   }
 }
 /* GRID ends */
+
+/**
+  |============================
+  | Loader starts 
+  |============================
+*/
+
+@keyframes loader {
+  0% { transform: rotate(0deg) }
+  25% { transform: rotate(90deg) }
+  50% { transform: rotate(180deg) }
+  75% { transform: rotate(270deg) }
+  100% { transform: rotate(360deg) }
+}
+
+.loader-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loader {
+  width: 201px;
+  height: 201px;
+  display: inline-block;
+  overflow: hidden;
+  background: none;
+  position: relative;
+  backface-visibility: hidden;
+  transform-origin: 0 0;
+}
+
+.loader div {
+  position: absolute;
+  animation: loader 1s linear infinite;
+  width: 160px;
+  height: 160px;
+  top: 20px;
+  left: 20px;
+  border-radius: 50%;
+  box-shadow: 0 10px 0 0 var(--maingreen);
+  transform-origin: 80px 80px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+  /**
+    |============================
+    | Loader ends
+    |============================
+  */
+  
+
+  
+
