@@ -83,7 +83,7 @@ function createCartProductMarkup(product) {
       <div class="info-header">
         <h2 class="product-name">${name}</h2>
         <button class="delete-btn">
-          <svg class="" width="20" height="20">
+          <svg class="" width="11.25" height="11.25">
             <use href="${icons}#icon-Cross_close"></use>
           </svg>
         </button>
