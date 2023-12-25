@@ -1,13 +1,13 @@
-import{g as d}from"./assets/query-9091648c.js";import"./assets/vendor-f9e4276b.js";const l="/Second_Team-project-2023/assets/sprite-67d7c706.svg",u=document.querySelector(".js-cart-list"),p=[{email:"",products:[{id:"640c2dd963a319ea671e383b",amount:1},{id:"640c2dd963a319ea671e3864",amount:1}]}];m(p[0].products);function m(t){f(t,g).then(e=>{u.insertAdjacentHTML("beforeend",e)})}async function f(t,e){return(await v(t)).map(a=>e(a)).join("")}async function v(t){return await Promise.all(t.map(({id:e})=>d(e).then(s=>s.data)))}function g(t){const{_id:e,name:s,img:a,category:o,price:n,size:r}=t,i=o.replace(/_/g," ");return`
-    <li class="selectedProduct" data-id=${e}>
+import{g as d,s as l}from"./assets/sprite-77e1cee7.js";import"./assets/vendor-f9e4276b.js";const u=document.querySelector(".js-cart-list"),p=[{email:"",products:[{id:"640c2dd963a319ea671e383b",amount:1},{id:"640c2dd963a319ea671e3864",amount:1}]}];m(p[0].products);function m(t){f(t,v).then(a=>{u.insertAdjacentHTML("beforeend",a)})}async function f(t,a){return(await g(t)).map(s=>a(s)).join("")}async function g(t){return await Promise.all(t.map(({id:a})=>d(a).then(e=>e.data)))}function v(t){const{_id:a,name:e,img:s,category:c,price:n,size:r}=t,i=c.replace(/_/g," ");return`
+    <li class="selectedProduct" data-id=${a}>
       <div class="product-picture">
-          <img src="${a}" alt="${s}" class="" loading="lazy" />
+          <img src="${s}" alt="${e}" class="" loading="lazy" />
       </div>
 
       <div class="product-info-container">
 
       <div class="info-header">
-        <h2 class="product-name">${s}</h2>
+        <h2 class="product-name">${e}</h2>
         <button class="delete-btn">
           <svg class="" width="20" height="20">
             <use href="${l}#icon-Cross_close"></use>
@@ -23,5 +23,5 @@ import{g as d}from"./assets/query-9091648c.js";import"./assets/vendor-f9e4276b.j
           <span>${n}</span>
         </div>
       </div>
-  </li>`}const y=document.querySelector(".cart-form"),h=document.querySelector(".js-modal-close"),c=document.querySelector(".cart-modal-bg");console.log("Modal js");y.addEventListener("submit",C);h.addEventListener("click",$);function C(t){t.preventDefault(),c.classList.remove("hiden")}function $(){c.classList.add("hiden")}
+  </li>`}const y=document.querySelector(".cart-form"),h=document.querySelector(".js-modal-close"),o=document.querySelector(".cart-modal-bg");console.log("Modal js");y.addEventListener("submit",C);h.addEventListener("click",$);function C(t){t.preventDefault(),o.classList.remove("hiden")}function $(){o.classList.add("hiden")}
 //# sourceMappingURL=commonHelpers.js.map
