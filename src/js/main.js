@@ -63,18 +63,6 @@ const loaderContainer = document.getElementById('loader-container');
 const main = document.querySelector('.main')
 const body = document.body;
 
-export function showLoader() {
-  body.classList.add('no-scroll');
-  loaderContainer.classList.remove('visually-hidden');
-}
-
-export function hideLoader() {
-  body.classList.remove('no-scroll');
-  loaderContainer.classList.add('visually-hidden');
-}
-
-
-
 window.addEventListener("load", function () {
   const loadingScreen = document.querySelector(".loader-container");
 
