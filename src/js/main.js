@@ -40,25 +40,11 @@ getProdByCategories()
 // showModalMessage();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /**
     |============================
     | Loader starts
     |============================
   */
-
-
 
 
 const loaderContainer = document.getElementById('loader-container');
@@ -93,10 +79,14 @@ window.addEventListener("load", function () {
     });
 });
 
-
+//export function hideLoader() {
+//body.classList.remove('no-scroll');
+//loaderContainer.classList.add('visually-hidden');
+//}
 
 /**
     |============================
     | Loader ends
     |============================
   */
+

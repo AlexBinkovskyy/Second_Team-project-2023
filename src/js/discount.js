@@ -2,14 +2,18 @@ import axios from 'axios';
 import references from './references';
 import { getProdByDiscount } from './query';
 import  discountSvg    from '../images/icons/discount.svg';
-import  shoppingSvg   from '../images/icons/shopping-cart.svg';
-
+import shoppingSvg from '../images/icons/shopping-cart.svg';
+import  check  from '../images/icons/check-ico.svg';
 
 const productDiscount = document.querySelector('.discount-products-item');
 
-
 export function renderProductDiscount(data) {
-    productDiscount.insertAdjacentHTML("beforeend", markup(data));  
+    productDiscount.insertAdjacentHTML("beforeend", markup(data));
+    const clickBtnBuy = document.querySelector('.click-buy');
+    clickBtnBuy.addEventListener('click',()=>{clickBtnBuy.style.display='none', clickcheck.style.display='block'})
+   const clickcheck = document.querySelector('.discount-check');
+    
+   
 }
 
 
@@ -26,9 +30,13 @@ export function renderProductDiscount(data) {
                 </div>
                 <div class=discount-price-item>
                 <p class="discount-price">&#36;${price}</p>
-                <button class="discount-buy buy-btn" type="button">
+                <button class="discount-buy buy-btn click-buy" type="button">
                 <img class="discount-buy-svg" src="${shoppingSvg}" alt="shop-icon" width="18" height="18"/>
-  </svg>
+            
+</button>
+           <button class="discount-check " type="button">
+                <img class="discount-check-svg" src="${check}" alt="shop-icon" width="18" height="18"/>
+            
 </button>
 </div> 
             </div>
@@ -39,6 +47,7 @@ export function renderProductDiscount(data) {
         .join("")
 }
   
-
-
+ 
+   
+   
             

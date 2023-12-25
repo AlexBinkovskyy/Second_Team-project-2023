@@ -124,7 +124,13 @@
     line-height: 1.11;
   }
 }
-.discount-buy {
+
+.discount-check {
+  display: none;
+}
+
+.discount-buy,
+.discount-check {
   width: 34px;
   height: 34px;
   padding: 8px;
