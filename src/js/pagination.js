@@ -79,7 +79,9 @@ export async function pagination() {
     let limitPerPage = 6; // Начальное количество элементов на странице
   
     async function onPageChanged(event) {
+      console.log(event.page);
       currentPage = event.page;
+
       const limit = event.itemsPerPage;
   
       try {
