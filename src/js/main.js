@@ -11,6 +11,12 @@ import { showModalMessage } from './footer.js';
 
 
 
+pagination()
+  .then(({ data }) => {
+    renderProductList(data);
+  })
+  .catch(error => console.log(error));
+
 getProdByDiscount()
   .then(({ data }) => {
     renderProductDiscount(data);
