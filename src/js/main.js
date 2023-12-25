@@ -48,3 +48,6 @@ export function hideLoader() {
   body.classList.remove('no-scroll');
   loaderContainer.classList.add('visually-hidden');
 }
+
+
+

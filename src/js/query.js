@@ -73,3 +73,5 @@ export async function getProdByQuery({
 // export async function sendSubscription(data) {
 //   return (await axios.post(`${references.SECOND_URL}`))
 // }
+
+ 
