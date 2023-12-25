@@ -1,7 +1,12 @@
 import { getProdByIDWithParams } from './query';
 import icons from '../images/sprite.svg';
 import { getCartItems } from './localStorage';
-import { addProductToCart, setEmailToOrderInfo, removeAllProductsFromCart } from './workWithCart';
+import {
+  addProductToCart,
+  setEmailToOrderInfo,
+  removeAllProductsFromCart,
+  removeProductFromCart,
+} from './workWithCart';
 
 const list = document.querySelector('.js-cart-list');
 const formInput = document.querySelector('.cart-form-input');
@@ -12,7 +17,7 @@ const clearOrderBtn = document.querySelector('.js-clear-order-btn');
 const cartBox = document.querySelector('.js-cart-box');
 const emptyCart = document.querySelector('.js-empty-cart');
 
-addProductToCart('640c2dd963a319ea671e383b');
+addProductToCart('640c2dd963a319ea671e383b', 3);
 addProductToCart('640c2dd963a319ea671e3864');
 addProductToCart('640c2dd963a319ea671e3865');
 addProductToCart('640c2dd963a319ea671e366d');
@@ -24,33 +29,43 @@ let arrCart = getCartItems();
 let totalSumm = 0;
 drawCartPage();
 
-// spawnCardProducts(arrCart.products);
+list.addEventListener('click', e => {
+  if (e.target.classList.contains('delete-btn')) {
+    let parent = e.target.closest('.selectedProduct');
+    console.log(parent);
+    removeProductFromCart(parent.dataset.id)
+    drawCartPage();
+  }
+});
+
 
 async function drawCartPage() {
+  //масив з localStorage
   arrCart = getCartItems();
-  // console.log(arrCart);
+  console.log(arrCart);
+
   const amountElements = arrCart.products.length;
   switchSections(amountElements);
 
-  const originProductList = await getCartProducts(arrCart.products);
-  
-  cartNumbersUpdate(cartNumbersList, amountElements);
-  
-
   if (amountElements) {
     list.innerHTML = '';
-    console.log(cartBox);
-    spawnCardProducts(originProductList);
-    summ.textContent = "$" + getTotalSumm(originProductList)
-  }
+    //масив з Серверу
+    const originProductList = await getCartProducts(arrCart.products);
+    console.log(originProductList);
 
+    cartNumbersUpdate(cartNumbersList, amountElements);
+    // console.log(cartBox);
+    spawnCardProducts(originProductList);
+  }
+  summ.textContent = '$' + getTotalSumm(originProductList);
+  // updateCartBasket();
   formInput.value = arrCart.email;
 }
 
 clearOrderBtn.addEventListener('click', () => {
   removeAllProductsFromCart();
   drawCartPage();
-})
+});
 
 function spawnCardProducts(products) {
   generateCardListMarkup(products, createCartProductMarkup).then(result => {
@@ -69,7 +84,7 @@ function spawnCardProducts(products) {
 
     Повертає html розмітку продуктів
 ===================================================================================== */
-async function generateCardListMarkup(productList, createElementMarkupFunc) {  
+async function generateCardListMarkup(productList, createElementMarkupFunc) {
   return productList
     .map(product => {
       totalSumm += product.price;
@@ -152,14 +167,14 @@ function objHide(...objs) {
 }
 
 function cartNumbersUpdate(objs, number) {
-  objs.forEach((obj) => {
+  objs.forEach(obj => {
     obj.textContent = number;
-  })
+  });
 }
 
 function getTotalSumm(products) {
   return products.reduce((sum, product) => {
     console.log(product);
-    return sum + product.price
-  }, 0)
+    return sum + product.price;
+  }, 0);
 }
