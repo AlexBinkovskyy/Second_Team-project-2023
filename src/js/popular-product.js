@@ -1,4 +1,6 @@
 
+import shoppingSvg from  '../images/sprite.svg';
+
 
 const popularProduct = document.querySelector('.popular-product-list');
 
@@ -11,7 +13,7 @@ function markup(arr) {
     .map(
       ({ _id, name, img, category, size, popularity }) => `
           <li class="popular-product-item" id="${_id}">
-            <img src="${img}" alt="${name}" loading="lazy" class="popular-product-pic" />
+            <img src="${img}" alt="${name}" width="56" height="56" loading="lazy" class="popular-product-pic" />
             <div class="popular-product-info">
             <h3 class="popular-product-name">${name}</h3>
               <div class="info-item-description">
@@ -29,10 +31,12 @@ function markup(arr) {
             </p>
             </div>
             </div>
-            <button type="button" class="popular buy-btn" onclick="addToCart('${_id}')"><svg class="koshik" width="12" height="12">
-            <use href="./images/sprite.svg#icon-shopping-cart"></use>
-          </svg>
-            <button>
+            <div class="popular-btn">
+            <button type="button" class="popular-buy buy-btn" onclick="addToCart('${_id}')">
+            <svg class="img-icon"  width="12" height="12">
+            <use href="${shoppingSvg}#icon-shopping-cart"></use></svg>
+            </button>
+            </div>
           </li>
       `
     )
