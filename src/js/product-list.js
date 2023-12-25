@@ -1,5 +1,6 @@
 import discountSvg from '../images/icons/discount.svg';
 import shoppingSvg from '../images/icons/shopping-cart.svg';
+import { getProdByParams } from './query';
 
 const productList = document.querySelector('.product-list');
 
@@ -44,4 +45,21 @@ function createMarkup(arr) {
       `
     )
     .join('');
+}
+
+function onClick(event) {
+  event.preventDefault();
+  getProdByParams()
+    .then(({ data }) => {
+      renderProductList(data);
+    })
+    .catch(error => console.log(error));
+}
+
+export function createEmptyMarkup() {
+  const emptyQuery = `<h3>Nothing was found for the selected <a href="" class="link js-link">filters...</a></h3>
+  <p>Try adjusting your search parameters or browse our range by other criteria to find the perfect product for you. </p>`;
+  productList.innerHTML = emptyQuery;
+  const emptySetLink = document.querySelector('.js-link');
+  emptySetLink.addEventListener('click', onClick);
 }
