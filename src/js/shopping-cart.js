@@ -1,28 +1,56 @@
 import { getProdByIDWithParams } from './query';
 import icons from '../images/sprite.svg';
+import { getCartItems } from './localStorage';
+import { addProductToCart, setEmailToOrderInfo, removeAllProductsFromCart } from './workWithCart';
 
 const list = document.querySelector('.js-cart-list');
-const arrCart = [
-  {
-    email: '',
-    products: [
-      {
-        id: '640c2dd963a319ea671e383b',
-        amount: 1,
-      },
-      {
-        id: '640c2dd963a319ea671e3864',
-        amount: 1,
-      },
-      // {
-      //   id: '640c2dd963a319ea671e37ad',
-      //   amount: 1,
-      // },
-    ],
-  },
-];
+const formInput = document.querySelector('.cart-form-input');
+const summ = document.querySelector('.js-total-summ');
+const cartNumbersList = document.querySelectorAll('.js-cart-numbers');
+const clearOrderBtn = document.querySelector('.js-clear-order-btn');
 
-spawnCardProducts(arrCart[0].products);
+const cartBox = document.querySelector('.js-cart-box');
+const emptyCart = document.querySelector('.js-empty-cart');
+
+addProductToCart('640c2dd963a319ea671e383b');
+addProductToCart('640c2dd963a319ea671e3864');
+addProductToCart('640c2dd963a319ea671e3865');
+addProductToCart('640c2dd963a319ea671e366d');
+addProductToCart('640c2dd963a319ea671e366c');
+
+setEmailToOrderInfo('zgerzanic@gmail.com');
+
+let arrCart = getCartItems();
+let totalSumm = 0;
+drawCartPage();
+
+// spawnCardProducts(arrCart.products);
+
+async function drawCartPage() {
+  arrCart = getCartItems();
+  // console.log(arrCart);
+  const amountElements = arrCart.products.length;
+  switchSections(amountElements);
+
+  const originProductList = await getCartProducts(arrCart.products);
+  
+  cartNumbersUpdate(cartNumbersList, amountElements);
+  
+
+  if (amountElements) {
+    list.innerHTML = '';
+    console.log(cartBox);
+    spawnCardProducts(originProductList);
+    summ.textContent = "$" + getTotalSumm(originProductList)
+  }
+
+  formInput.value = arrCart.email;
+}
+
+clearOrderBtn.addEventListener('click', () => {
+  removeAllProductsFromCart();
+  drawCartPage();
+})
 
 function spawnCardProducts(products) {
   generateCardListMarkup(products, createCartProductMarkup).then(result => {
@@ -41,10 +69,10 @@ function spawnCardProducts(products) {
 
     Повертає html розмітку продуктів
 ===================================================================================== */
-async function generateCardListMarkup(productList, createElementMarkupFunc) {
-  const products = await getCartProducts(productList);
-  return products
+async function generateCardListMarkup(productList, createElementMarkupFunc) {  
+  return productList
     .map(product => {
+      totalSumm += product.price;
       return createElementMarkupFunc(product);
     })
     .join('');
@@ -83,7 +111,7 @@ function createCartProductMarkup(product) {
       <div class="info-header">
         <h2 class="product-name">${name}</h2>
         <button class="delete-btn">
-          <svg class="" width="20" height="20">
+          <svg class="" width="11" height="11">
             <use href="${icons}#icon-Cross_close"></use>
           </svg>
         </button>
@@ -98,4 +126,38 @@ function createCartProductMarkup(product) {
         </div>
       </div>
   </li>`;
+}
+
+function switchSections(bool) {
+  objHide(cartBox, emptyCart);
+  if (bool) {
+    objShow(cartBox);
+  } else {
+    objShow(emptyCart);
+  }
+}
+
+function objShow(...objs) {
+  objs.forEach(obj => {
+    obj.classList.remove('hiden');
+  });
+}
+
+function objHide(...objs) {
+  objs.forEach(obj => {
+    obj.classList.add('hiden');
+  });
+}
+
+function cartNumbersUpdate(objs, number) {
+  objs.forEach((obj) => {
+    obj.textContent = number;
+  })
+}
+
+function getTotalSumm(products) {
+  return products.reduce((sum, product) => {
+    console.log(product);
+    return sum + product.price
+  }, 0)
 }
