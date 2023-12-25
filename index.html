@@ -17,7 +17,8 @@
   </head>
 
   <body>
-    <header class="header">
+    <div class="main">
+      <header class="header">
   <div class="container header-container">
     <div class="header-logo">
       <a href="./index.html" class="header-logo-item"
@@ -46,63 +47,61 @@
   </div>
 </header>
 
-    <main>
-      <!-- Hero -->
-      <section class="hero-section">
-        <div class="container">
-          <div class="hero-text">
-            <h1 class="hero-main-text">
-              Welcome to the <span class="accent-food">Food</span> Boutique!
-            </h1>
-            <h2 class="hero-second-text">
-              With Food Boutique, you're not just subscribing to food, you're
-              signing up for a fresher, fitter, and happier you.
-            </h2>
-          </div>
-          <div class="hero-img-cont">
-            <svg class="hero-logo-icon" width="28" height="28">
-              <use href="/Second_Team-project-2023/assets/sprite-67d7c706.svg#icon-organic-food-yellow"></use>
-            </svg>
-          </div>
-        </div>
-      </section>
-
-      <!-- filter -->
-      <section class="filter">
-        <div class="container">
-          <p class="filter-text">Filters:</p>
-          <form action="submit" name="filter" id="filterForm">
-            <input
-              type="text"
-              placeholder="Search for anything"
-              name="filterInput"
-            />
-            <button type="submit">
-              <svg class="" width="20" height="20">
-                <use href="/Second_Team-project-2023/assets/sprite-67d7c706.svg#icon-search-line-ico"></use>
+      <main>
+        <!-- Hero -->
+        <section class="hero-section">
+          <div class="container">
+            <div class="hero-text">
+              <h1 class="hero-main-text">
+                Welcome to the <span class="accent-food">Food</span> Boutique!
+              </h1>
+              <h2 class="hero-second-text">
+                With Food Boutique, you're not just subscribing to food, you're
+                signing up for a fresher, fitter, and happier you.
+              </h2>
+            </div>
+            <div class="hero-img-cont">
+              <svg class="hero-logo-icon" width="28" height="28">
+                <use href="/Second_Team-project-2023/assets/sprite-67d7c706.svg#icon-organic-food-yellow"></use>
               </svg>
-            </button>
-            <select name="filterCategories" id="categories">
-              <option value="Show all" class="js-option">Show all</option>
-            </select>
-            <select name="filterMethod" id="filter-method" disabled>
-              <option value="A_to_Z">A to Z</option>
-              <option value="Z_to_A">Z to A</option>
-              <option value="Cheap">Cheap</option>
-              <option value="Expensive">Expensive</option>
-              <option value="Popular">Popular</option>
-              <option value="Not_popular">Not popular</option>
-              <option value="Show_all">Show all</option>
-            </select>
-          </form>
-        </div>
-      </section>
-
-      <section>
-        <!-- Product list -->
-        <div class="container main-adapt">
-          <div class="product-list"></div>
-                  <div id="tui-pagination-container" class="tui-pagination">
+            </div>
+          </div>
+        </section>
+        <!-- filter -->
+        <section class="filter">
+          <div class="container">
+            <p class="filter-text">Filters:</p>
+            <form action="submit" name="filter" id="filterForm">
+              <input
+                type="text"
+                placeholder="Search for anything"
+                name="filterInput"
+              />
+              <button type="submit">
+                <svg class="" width="20" height="20">
+                  <use href="/Second_Team-project-2023/assets/sprite-67d7c706.svg#icon-search-line-ico"></use>
+                </svg>
+              </button>
+              <select name="filterCategories" id="categories">
+                <option value="Show all" class="js-option">Show all</option>
+              </select>
+              <select name="filterMethod" id="filter-method" disabled>
+                <option value="A_to_Z">A to Z</option>
+                <option value="Z_to_A">Z to A</option>
+                <option value="Cheap">Cheap</option>
+                <option value="Expensive">Expensive</option>
+                <option value="Popular">Popular</option>
+                <option value="Not_popular">Not popular</option>
+                <option value="Show_all">Show all</option>
+              </select>
+            </form>
+          </div>
+        </section>
+        <section>
+          <!-- Product list -->
+          <div class="container main-adapt">
+            <div class="product-list"></div>
+                    <div id="tui-pagination-container" class="tui-pagination">
             <!-- <button class="pagination-button page" id="startBtn" disabled>
                 <svg class="" width="24" height="24">
                     <use href="./images/sprite.svg#icon-left-arrow"></use>
@@ -129,27 +128,23 @@
               </button> -->
          
         </div>
-          <aside class="sidebar">
-            <!-- Popular products -->
-
-            <div class="popular-product">
-              <h3 class="popular-product-title">Popular products</h3>
-              <div class="popular-product-container"></div>
-              <ul class="popular-product-list"></ul>
-            </div>
-            <!-- Discount products -->
-
-            <div class="discount-products">
-              <h3 class="discount-products-list">Discount products</h3>
-              <ul class="discount-products-item"></ul>
-            </div>
-            </div>
-
-          </aside>
-        </div>
-      </section>
-    </main>
-    <footer class="footer">
+            <aside class="sidebar">
+              <!-- Popular products -->
+              <div class="popular-product">
+                <h3 class="popular-product-title">Popular products</h3>
+                <div class="popular-product-container"></div>
+                <ul class="popular-product-list"></ul>
+              </div>
+              <!-- Discount products -->
+              <div class="discount-products">
+                <h3 class="discount-products-list">Discount products</h3>
+                <ul class="discount-products-item"></ul>
+              </div>
+            </aside>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
   <div class="container footer-content">
     <div class="footer-content-block">
       <div class="footer-logo-social">
@@ -253,6 +248,7 @@
   </div>
 </div>
 
+    </div>
 
     <div class="loader-container visually-hidden">
       <div class="loader">
