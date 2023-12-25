@@ -110,10 +110,6 @@
   background: #f9f9f9;
 }
 
-.filter{
-  margin: 37px;
-}
-
 #filterForm {
   display: flex;
   position: relative;
