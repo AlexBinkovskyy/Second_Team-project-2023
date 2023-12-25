@@ -15,7 +15,7 @@ export function addProductToCart(idProduct, amount = 1) {
   const cartItems = getCartItems();
 
   if (!cartItems.products.find(({ id }) => id === idProduct)) {
-    cartItems.products.push({ id: idProduct, amount: amount });
+    cartItems.products.push({ "id": idProduct, "amount": amount });
     localStorage.setItem('shoppingCartItems', JSON.stringify(cartItems));
   }
 }

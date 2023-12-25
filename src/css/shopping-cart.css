@@ -454,6 +454,10 @@ body {
   top: 30px;
   right: 8px;
   padding: 0;
+  
+}
+.delete-btn > svg {
+  pointer-events: none;
 }
 
 @media only screen and (min-width: 375px) {
