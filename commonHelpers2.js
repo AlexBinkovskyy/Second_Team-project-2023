@@ -1,4 +1,4 @@
-import{s as S,a as m,b as n,c as P,d as $,e as C}from"./assets/sprite-c7e0917e.js";import"./assets/vendor-f9e4276b.js";const L=document.querySelector(".popular-product-list");function w(t){L.insertAdjacentHTML("beforeend",A(t))}function A(t){return t.map(({_id:e,name:a,img:s,category:l,size:u,popularity:d})=>`
+import{s as S,a as m,b as n,c as P,d as $,e as C}from"./assets/sprite-3f928b9b.js";import"./assets/vendor-f9e4276b.js";const L=document.querySelector(".popular-product-list");function w(t){L.insertAdjacentHTML("beforeend",A(t))}function A(t){return t.map(({_id:e,name:a,img:s,category:l,size:u,popularity:d})=>`
           <li class="popular-product-item" id="${e}">
             <img src="${s}" alt="${a}" width="56" height="56" loading="lazy" class="popular-product-pic" />
             <div class="popular-product-info">
