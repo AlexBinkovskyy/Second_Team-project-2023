@@ -73,7 +73,7 @@ import references from './references';
 export async function pagination() {
     const productList = document.querySelector('.product-list');
     const container = document.getElementById('pagination1');
-    let currentPage = 3;
+    let currentPage = 1;
     let limitPerPage = 6; // Начальное количество элементов на странице
   
     async function onPageChanged(event) {
