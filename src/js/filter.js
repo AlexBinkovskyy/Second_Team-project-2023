@@ -62,6 +62,7 @@ function proceedInput(filterInput, filterCategories) {
       .then(resp => {
         console.log(resp);
         if (resp.data.results.length) {
+
           renderProductList(resp.data);
         } else if (
           !Array.isArray(resp.data.results) ||
