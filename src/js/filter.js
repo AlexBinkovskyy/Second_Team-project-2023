@@ -98,7 +98,7 @@ function proceedSelect(event) {
       .catch(error => console.log(error));
     filterForm.reset();
   }
-  filterParams.category = event.target.value.replaceAll(' ', '_');
+  filterParams.category = event.target.value.replaceAll(' ', '_').replaceAll('&', '%26');
   setNewFilterParams(filterParams);
   getProdByQuery(getFilterParams())
     .then(resp => {

@@ -56,20 +56,23 @@ export async function getProdByQuery({
   if (category) {
     query += `category=${category}&`;
   }
-  // if (!!~byABC) {
-  //   query +=`byABC=${byABC}&`;
-  // }
-  // if (!!~byPrice) {
-  //   query += `byPrice=${byPrice}&`;
-  // }
-  // if (!!~byPopularity) {
-  //   query += `byPopularity=${byPopularity}&`;
-  // }
+  if (!!~byABC) {
+    query +=`byABC=${byABC}&`;
+  }
+  if (!!~byPrice) {
+    query += `byPrice=${byPrice}&`;
+  }
+  if (!!~byPopularity) {
+    query += `byPopularity=${byPopularity}&`;
+  }
   query += `page=${page}&limit=${limit}`;
   console.log(query);
   return await axios(query);
 }
 
+// export async function sendSubscription(data) {
+//   return (await axios.post(`${references.SECOND_URL}`))
+// }
 // export async function sendSubscription(data) {
 //   return (await axios.post(`${references.SECOND_URL}`))
 // }

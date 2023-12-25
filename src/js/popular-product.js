@@ -1,4 +1,4 @@
-
+import  discountSvg    from '../images/icons/discount.svg';
 import shoppingSvg from  '../images/sprite.svg';
 
 
@@ -13,6 +13,7 @@ function markup(arr) {
     .map(
       ({ _id, name, img, category, size, popularity }) => `
           <li class="popular-product-item" id="${_id}">
+         <img class="discount-svg" src="${discountSvg}" alt="discount-icon" width="60" height="60"/>
             <img src="${img}" alt="${name}" width="56" height="56" loading="lazy" class="popular-product-pic" />
             <div class="popular-product-info">
             <h3 class="popular-product-name">${name}</h3>
@@ -43,7 +44,8 @@ function markup(arr) {
     .join('');
 }
 
-// Зробити функцію глобальною
+
+// Змініть ваш код так, щоб він виглядав приблизно так
 window.addToCart = function(productId) {
   const cart = JSON.parse(localStorage.getItem('cart')) || {};
 
@@ -54,9 +56,9 @@ window.addToCart = function(productId) {
     localStorage.setItem('cart', JSON.stringify(cart));
     alert('Product added to cart!');
 
-    // Отримати кнопку за допомогою productId та змінити її на іконку "✓"
-    const addToCartButton = document.querySelector(`button[data-product-id="${productId}"]`);
-    addToCartButton.innerHTML = '&#10003;';
+    // Отримайте кнопку за допомогою productId та змініть її на іконку "✓"
+    const addToCartButton = document.querySelector(`[data-product-id="${productId}"]`);
+    addToCartButton.innerHTML = '<svg class="img-icon" width="12" height="12"><use href="${shoppingSvg}#check-icon"></use></svg>';
     addToCartButton.disabled = true;
   }
 };

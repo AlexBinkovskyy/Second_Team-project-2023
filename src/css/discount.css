@@ -1,6 +1,8 @@
 .discount-products {
   padding: 40px 0;
   width: 335px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media screen and (min-width: 768px) {
@@ -21,7 +23,6 @@
   color: var(--text-color);
   font-family: 'NeueMontreal-Medium';
   font-size: 24px;
-  /* font-weight: 500; */
   line-height: 1.16;
   margin-bottom: 20px;
 }
@@ -40,9 +41,9 @@
   right: 10px;
   top: 3px;
 }
+
 .discount-products-item {
   display: block;
-  /* gap: 20px; */
 }
 
 @media screen and (min-width: 768px) {
@@ -83,13 +84,6 @@
   padding: 16px 15px 23px 16px;
 }
 
-@media only screen and (max-width: 767.98px) {
-  .discount-card {
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
 .discount-card {
   padding: 16px 15px 16px;
 }
@@ -111,7 +105,6 @@
 
 .discount-text {
   display: flex;
-
   align-items: center;
   justify-content: space-between;
 }
@@ -121,7 +114,6 @@
   color: var(--text-color);
   font-family: 'NeueMontreal-Medium';
   font-size: 18px;
-  /* font-weight: 500; */
   line-height: 1.11;
 }
 
