@@ -9,7 +9,7 @@
     </h1>
 
     <!-- Пустий кошик -->
-    <div class="visually-hidden">
+    <div class="js-empty-cart hiden">
       <div class="empty-cart js-empty-cart">
         <picture class="empty-cart-img">
           <!-- Desktop -->
@@ -53,12 +53,14 @@
     </div>
 
     <!-- Повний кошик -->
-    <div class="cart-box">
+    <div class="cart-box js-cart-box hiden">
       <!-- Ліва частина, перелік -->
       <div class="cart-order-wraper">
-        <button class="cart-order-clear-btn mediumText">
+        <button class="cart-order-clear-btn mediumText js-clear-order-btn">
           Delete all
-          <svg class="" width="22" height="22">
+
+          <svg class="" width="13.5" height="13.5">
+
             <use href="./images/sprite.svg#icon-Cross_close"></use>
           </svg>
         </button>
@@ -74,7 +76,7 @@
           <p class="cart-total-price-text mediumText">Total</p>
           <p class="cart-total-price-sum">
             <span>Sum:</span>
-            <span class="cart-total-price-sum-span mediumText">$12,94</span>
+            <span class="cart-total-price-sum-span mediumText js-total-summ">$12,94</span>
           </p>
         </div>
         <form class="cart-form" action="" method="get">
@@ -85,6 +87,7 @@
               name="email"
               type="email"
               placeholder="Enter your email"
+              required
             />
           </label>
           <button

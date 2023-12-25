@@ -1,4 +1,5 @@
 .popular-product {
+  padding-top: 40px;
   padding-bottom: 40px;
   width: 335px;
 }
@@ -7,7 +8,12 @@
     padding: 50px 0 32px;
   }
 }
-
+@media screen and (min-width: 1440px) {
+  .popular-product {
+    padding-top: 0;
+    padding-bottom: 20px;
+  }
+}
 .popular-product-list {
   display: flex;
   flex-wrap: wrap;
@@ -34,13 +40,21 @@
       display: flex;
   }
 }
-/* @media screen and (min-width: 768px) {
-  .popular-product-list{
-    
-   
 
+.popular-product-title {
+  color: var(--text-color);
+  font-family: 'NeueMontreal-Medium';
+  font-weight: 500;
+  font-style: normal;
+  font-size: 28px;
+  line-height: 1.14;
+  margin-bottom: 20px;
+}
+@media screen and (min-width: 1440) {
+  .popular-product-title {
+    margin: 0;
   }
-} */
+}
 
 .popular-product-item {
   display: flex;
@@ -55,6 +69,12 @@
     width: calc((100% - 13px)/2);
   }
 }
+@media screen and (min-width: 1440px) {
+  .popular-product-item {
+    padding-bottom: 20px;
+  }
+ 
+}
 
 .popular-product-pic {
   
@@ -67,15 +87,7 @@
   background: var(--maingray);
 }
 
-.popular-product-title {
-  color: var(--text-color);
-  font-family: 'NeueMontreal-Medium';
-  font-weight: 500;
-  font-style: normal;
-  font-size: 28px;
-  line-height: 1.14;
-  margin-bottom: 20px;
-}
+
 
 .popular-product-info {
   /* display: flex;
@@ -102,6 +114,10 @@
   font-weight: 400;
   line-height: 1.17; 116.667% */
 }
+
+.info-title {
+  color: var(--passive-text-color);
+}
 .info-title,
 .info-item-description {
   font-family: 'NeueMontreal-regular';
@@ -123,17 +139,19 @@
     margin-bottom: 10px;
   }
 }
-.popular-btn {
-  width: 20px;
-  height: 20px;
-  
-  
-}
+
 
 .popular-buy {
+  width: 20px;
+  height: 20px;
   padding: 4px;
   border-radius: 30px;
   background: var(--maingray);
+  transition: var(--transition-settings);
+}
+.popular-buy:hover,
+.popular-buy:focus {
+  background: var(--maingreen);
 }
 
 .img-icon {
@@ -141,4 +159,10 @@
   justify-content: center;
   align-items: center;
   fill: var(--maingreen);
+  transition: var(--transition-settings);
+}
+
+.img-icon:hover,
+.img-icon:focus {
+fill: var(--maingray);
 }

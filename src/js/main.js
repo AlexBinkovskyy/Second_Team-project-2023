@@ -7,9 +7,11 @@ import { renderPopularProduct } from './popular-product';
 import { renderProductDiscount } from './discount';
 import { renderProductList } from './product-list';
 import { renderFilterSelect } from './filter';
+import { getCartItems } from './localStorage.js';
 import { showModalMessage } from './footer.js';
+// import { pagination } from './pagination.js';
 
-const loaderContainer = document.getElementById('loader-container');
+
 
 getProdByDiscount()
   .then(({ data }) => {
@@ -37,17 +39,54 @@ getProdByCategories()
 
 // showModalMessage();
 
+
+/**
+    |============================
+    | Loader starts
+    |============================
+  */
+
+
+const loaderContainer = document.getElementById('loader-container');
+const main = document.querySelector('.main')
 const body = document.body;
 
-export function showLoader() {
+window.addEventListener("load", function () {
+  const loadingScreen = document.querySelector(".loader-container");
+
+  // Array of asynchronous functions
+  const asyncFunctions = [getProdByDiscount, getProdByParams, getProdByPopular, getProdByCategories]
+
+  // Show loading screen
+  main.classList.add("visually-hidden");
   body.classList.add('no-scroll');
-  loaderContainer.classList.remove('visually-hidden');
-}
-
-export function hideLoader() {
-  body.classList.remove('no-scroll');
-  loaderContainer.classList.add('visually-hidden');
-}
+  loadingScreen.classList.remove("visually-hidden");
 
 
+  // Execute all asynchronous functions
+  Promise.all(asyncFunctions.map(fn => fn()))
+    .then(() => {
+      // All asynchronous functions completed
+      main.classList.remove("visually-hidden")
+      loadingScreen.classList.add("visually-hidden"); // Hide loading screen
+      body.classList.remove('no-scroll');
+    
+    })
+    .catch(error => {
+      console.error("Error in asynchronous operation:", error);
+      loadingScreen.classList.add("visually-hidden"); // Hide loading screen even in case of an error
+      body.classList.remove('no-scroll');
+    });
+});
+
+//export function hideLoader() {
+//body.classList.remove('no-scroll');
+//loaderContainer.classList.add('visually-hidden');
+//}
+
+/**
+    |============================
+    | Loader ends
+    |============================
+  */
 
