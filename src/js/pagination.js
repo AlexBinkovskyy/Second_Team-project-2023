@@ -8,7 +8,7 @@ import references from './references';
 
 export async function pagination() {
     const productList = document.querySelector('.product-list');
-    const container = document.getElementById('pagination1');
+    const container = document.getElementById('tui-pagination-container');
   
     let page = 1; 
   
