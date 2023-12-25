@@ -34,9 +34,9 @@ export async function pagination() {
     }
   }
   
-  document.addEventListener('DOMContentLoaded', async () => {
-    await createPagination();
-  });
+  // document.addEventListener('DOMContentLoaded', async () => {
+  //   await createPagination();
+  // });
 //Друга
 // export async function pagination() {
 //     const productList = document.querySelector('.product-list');
