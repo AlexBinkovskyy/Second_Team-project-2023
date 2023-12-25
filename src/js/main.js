@@ -10,6 +10,12 @@ import { renderFilterSelect } from './filter';
 import { setupSubscriptionForm } from './footer.js';
 import { pagination } from './pagination.js';
 
+pagination()
+  .then(({ data }) => {
+    renderProductDiscount(data);
+  })
+  .catch(error => console.log(error));
+  
 getProdByDiscount()
   .then(({ data }) => {
     renderProductDiscount(data);
