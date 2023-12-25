@@ -6,7 +6,7 @@ import { getProdByParams } from './query';
 import { renderProductList } from './product-list';
 import { createEmptyMarkup } from './product-list';
 
-const filterForm = document.querySelector('#filterForm');
+export const filterForm = document.querySelector('#filterForm');
 filterForm.addEventListener('submit', onSubmit);
 const filterSelectCategories = document.querySelector('#categories');
 filterForm.elements.filterCategories.addEventListener('change', proceedSelect);
@@ -14,7 +14,7 @@ filterForm.elements.filterMethod.addEventListener('change', proceedFilter);
 
 let filterParams;
 
-function checkFilterParams() {
+export function checkFilterParams() {
   filterParams = getFilterParams()
     ? getFilterParams()
     : setDefaultFilterParams();
@@ -46,7 +46,11 @@ function proceedInput(filterInput, filterCategories) {
   if (!filterInput.value.trim().length) {
     setDefaultFilterParams();
     checkFilterParams();
-    getProdByParams();
+    getProdByParams()
+      .then(({ data }) => {
+        renderProductList(data);
+      })
+      .catch(error => console.log(error));
     filterForm.reset();
   } else if (filterInput.value.trim()) {
     filterParams.keyword = filterInput.value.trim();
@@ -59,7 +63,11 @@ function proceedInput(filterInput, filterCategories) {
         console.log(resp);
         if (resp.data.results.length) {
           renderProductList(resp.data);
-        } else {
+        } else if (
+          !Array.isArray(resp.data.results) ||
+          !resp.data.results.length
+        ) {
+          createEmptyMarkup();
           return;
         }
       })
@@ -82,7 +90,11 @@ function proceedInput(filterInput, filterCategories) {
 function proceedSelect(event) {
   event.preventDefault();
   if (event.target.value === 'Show all') {
-    getProdByParams();
+    getProdByParams()
+      .then(({ data }) => {
+        renderProductList(data);
+      })
+      .catch(error => console.log(error));
     filterForm.reset();
   }
   filterParams.category = event.target.value.replaceAll(' ', '_');

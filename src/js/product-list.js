@@ -1,6 +1,9 @@
 import discountSvg from '../images/icons/discount.svg';
 import shoppingSvg from '../images/icons/shopping-cart.svg';
 import { getProdByParams } from './query';
+import { filterForm } from './filter';
+import { setDefaultFilterParams } from './localStorage';
+import { checkFilterParams } from './filter';
 
 const productList = document.querySelector('.product-list');
 
@@ -54,6 +57,9 @@ function onClick(event) {
       renderProductList(data);
     })
     .catch(error => console.log(error));
+  filterForm.reset();
+  setDefaultFilterParams();
+  checkFilterParams();
 }
 
 export function createEmptyMarkup() {
