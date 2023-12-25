@@ -8,7 +8,7 @@ import { createEmptyMarkup } from './product-list';
 
 export const filterForm = document.querySelector('#filterForm');
 filterForm.addEventListener('submit', onSubmit);
-const filterSelectCategories = document.querySelector('#categories');
+const filterSelectCategories = document.querySelector('#single');
 filterForm.elements.filterCategories.addEventListener('change', proceedSelect);
 filterForm.elements.filterMethod.addEventListener('change', proceedFilter);
 
@@ -24,6 +24,8 @@ checkFilterParams();
 
 export function renderFilterSelect(data) {
   filterSelectCategories.insertAdjacentHTML('afterbegin', markup(data));
+
+
 }
 
 function markup(arr) {

@@ -51,26 +51,30 @@
                   <use href="./images/sprite.svg#icon-search-line-ico"></use>
                 </svg>
               </button>
-              <select
-                name="filterCategories"
-                id="categories"
-                class="filter-select custom-select sources"
-              >
-                <option value="Show all" class="js-option">Show all</option>
-              </select>
-              <select
-                name="filterMethod"
-                id="filter-method"
-                class="filter-select custom-select sources"
-              >
-                <option value="A_to_Z">A to Z</option>
-                <option value="Z_to_A">Z to A</option>
-                <option value="Cheap">Cheap</option>
-                <option value="Expensive">Expensive</option>
-                <option value="Popular">Popular</option>
-                <option value="Not_popular">Not popular</option>
-                <option value="Show_all">Show all</option>
-              </select>
+              <div class="custom-select">
+                <select
+                  name="filterCategories"
+                  id="single"
+                  class="filter-select custom-select"
+                >
+                  <option value="Show all" class="js-option">Show all</option>
+                </select>
+              </div>
+              <div class="custom-select">
+                <select
+                  name="filterMethod"
+                  id="filter-method"
+                  class="filter-select custom-select"
+                >
+                  <option value="A_to_Z">A to Z</option>
+                  <option value="Z_to_A">Z to A</option>
+                  <option value="Cheap">Cheap</option>
+                  <option value="Expensive">Expensive</option>
+                  <option value="Popular">Popular</option>
+                  <option value="Not_popular">Not popular</option>
+                  <option value="Show_all">Show all</option>
+                </select>
+              </div>
             </form>
           </div>
         </section>
