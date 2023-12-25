@@ -32,8 +32,8 @@
   top: 50%;
   right: 25px;
   margin-top: -3px;
-  border-bottom: 1px solid #fff;
-  border-right: 1px solid #fff;
+  /* border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff; */
   transform: rotate(45deg) translateY(-50%);
   transition: all 0.4s ease-in-out;
   transform-origin: 50% 0;
@@ -50,7 +50,7 @@
   right: 0;
   min-width: 100%;
   margin: 15px 0;
-  border: 1px solid #b5b5b5;
+  /* border: 1px solid #b5b5b5; */
   border-radius: 4px;
   box-sizing: border-box;
   box-shadow: 0 2px 1px rgba(0, 0, 0, 0.07);
@@ -77,8 +77,8 @@
   width: 7px;
   height: 7px;
   margin-bottom: -4px;
-  border-top: 1px solid #b5b5b5;
-  border-left: 1px solid #b5b5b5;
+  /* border-top: 1px solid #b5b5b5;
+  border-left: 1px solid #b5b5b5; */
   background: #fff;
   transform: rotate(45deg);
   transition: all 0.4s ease-in-out;
@@ -90,7 +90,7 @@
   position: relative;
   display: block;
   padding: 0 22px;
-  border-bottom: 1px solid #b5b5b5;
+  /* border-bottom: 1px solid #b5b5b5; */
   font-size: 18px;
   font-weight: 600;
   color: #b5b5b5;
@@ -110,12 +110,25 @@
   background: #f9f9f9;
 }
 
+.filter{
+  margin: 37px;
+}
+
 #filterForm {
   display: flex;
   position: relative;
   gap: 8px;
   align-items: center;
   justify-content: flex-start;
+}
+
+.filter-text {
+  color: rgba(1, 1, 1, 0.3);
+  font-family: 'NeueMontreal-regular';
+  font-size: 14px;
+  line-height: 18px;
+  word-wrap: break-word;
+  margin-bottom: 8px;
 }
 
 .submit-button {
@@ -131,17 +144,21 @@
 
 .filter-select,
 .filter-input {
+  justify-content: baseline;
   height: 52px;
   padding: 14px 20px;
   border-color: rgba(1, 1, 1, 0.3);
   border-radius: 30px;
   background-color: transparent;
-  font-family: 'NeueMontreal-Medium';
+  font-family: 'NeueMontreal-regular';
   line-height: 24px;
   font-size: 18px;
+  border-width: 1px;
+  border-style: solid;
 }
 
-.filter-select {
+.filter-select:active {
+  border-width: 1px;
 }
 
 .filter-input::placeholder {
