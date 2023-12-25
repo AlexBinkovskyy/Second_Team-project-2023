@@ -57,9 +57,7 @@ export async function getProdByQuery({
     query += `category=${category}&`;
   }
   if (!!~byABC) {
-    const temp = query.indexOf('by')
-    query= query.replace(temp)
-    query +=`&byABC=${byABC}`;
+    query +=`byABC=${byABC}&`;
   }
   if (!!~byPrice) {
     query += `byPrice=${byPrice}&`;
