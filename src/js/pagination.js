@@ -73,35 +73,78 @@ import references from './references';
 export async function pagination() {
     const productList = document.querySelector('.product-list');
     const container = document.getElementById('pagination1');
-  
-    let currentPage = 1; 
+    let currentPage = 3;
     let limitPerPage = 6; // Начальное количество элементов на странице
   
     async function onPageChanged(event) {
-        currentPage = event.page; 
-        const limit = event.itemsPerPage;
+      currentPage = event.page;
+      const limit = event.itemsPerPage;
   
-        try {
-            const response = await getProdByParams(currentPage, limit);
-            const totalItems = response.data.totalCount;
+      try {
+        const response = await getProdByParams(currentPage, limit);
+        const totalItems = response.data.totalCount;
   
-            renderProductList(response.data); 
+        renderProductList(response.data);
   
-            const pagination = new Pagination(container, {
-                totalItems: totalItems,
-                itemsPerPage: limit,
-                visiblePages: 5,
-                page: currentPage,
-            });
+        const pagination = new Pagination(container, {
+          totalItems: totalItems,
+          itemsPerPage: limit,
+          visiblePages: 5,
+          page: currentPage,
+        });
   
-            pagination.on('afterMove', onPageChanged);
-        } catch (error) {
-            console.error('Failed to fetch data:', error);
-        }
+        pagination.on('afterMove', onPageChanged);
+      } catch (error) {
+        console.error('Failed to fetch data:', error);
+      }
     }
   
-    onPageChanged({ page: currentPage, itemsPerPage: limitPerPage }); 
-}
+    const initialData = await getProdByParams(currentPage, limitPerPage);
+    const totalItems = initialData.data.totalCount;
+  
+    renderProductList(initialData.data);
+  
+    const initialPagination = new Pagination(container, {
+      totalItems: totalItems,
+      itemsPerPage: limitPerPage,
+      visiblePages: 5,
+      page: currentPage,
+    });
+  
+    initialPagination.on('afterMove', onPageChanged);
+  }
+  
+//   export async function pagination() {
+//     const productList = document.querySelector('.product-list');
+//     const container = document.getElementById('pagination1');
+    
+//     let currentPage = 3; 
+//     let limitPerPage = 6;
+    
+//     async function onPageChanged(event) {
+//       currentPage = event.page; 
+//       const limit = event.itemsPerPage;
+  
+//       try {
+//         const response = await getProdByParams(currentPage, limit);
+//         renderProductList(response); // Передаем данные напрямую
+//       } catch (error) {
+//         console.error('Failed to fetch data:', error);
+//       }
+//     }
+  
+//     const response = await getProdByParams(currentPage, limitPerPage); // Получаем данные для первой страницы
+//     renderProductList(response); // Рендерим первую страницу
+  
+//     const pagination = new Pagination(container, {
+//       totalItems: response.totalCount,
+//       itemsPerPage: limitPerPage,
+//       visiblePages: 5,
+//       page: currentPage,
+//     });
+  
+//     pagination.on('afterMove', onPageChanged);
+//   }
   
 //Третя
     

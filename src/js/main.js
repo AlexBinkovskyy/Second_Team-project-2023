@@ -12,10 +12,10 @@ import { pagination } from './pagination.js';
 
 pagination()
   .then(({ data }) => {
-    renderProductDiscount(data);
+    renderProductList(data);
   })
   .catch(error => console.log(error));
-  
+
 getProdByDiscount()
   .then(({ data }) => {
     renderProductDiscount(data);
