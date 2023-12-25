@@ -80,7 +80,6 @@ textarea {
 
 body {
   background: var(--maingray);
-  
 }
 
 body.no-scroll {
@@ -783,7 +782,6 @@ body.no-scroll {
   |============================
 */
 
-
 /* GRID starts*/
 .filter {
   padding-top: 37px;
@@ -802,8 +800,6 @@ body.no-scroll {
   .main-adapt {
     display: flex;
   }
-  .product-list {
-  }
 }
 /* GRID ends */
 
@@ -814,11 +810,21 @@ body.no-scroll {
 */
 
 @keyframes loader {
-  0% { transform: rotate(0deg) }
-  25% { transform: rotate(90deg) }
-  50% { transform: rotate(180deg) }
-  75% { transform: rotate(270deg) }
-  100% { transform: rotate(360deg) }
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loader-container {
@@ -863,12 +869,8 @@ body.no-scroll {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
-  /**
+/**
     |============================
     | Loader ends
     |============================
   */
-  
-
-  
-
