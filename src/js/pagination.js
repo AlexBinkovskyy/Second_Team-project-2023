@@ -1,46 +1,78 @@
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+// import 'tui-pagination/dist/tui-pagination.css';
 import axios from 'axios';
 import { getProdByParams } from './query';
 import { renderProductList } from './product-list';
 import references from './references';
 
-
+// Перша
 export async function pagination() {
-    const productList = document.querySelector('.product-list');
-    const container = document.getElementById('tui-pagination-container');
+    const container = document.getElementById('pagination-container');
+    const itemsPerPage = 6; // Количество товаров на странице
+    let currentPage = 1;
   
-    let page = 1; 
+    try {
+      const response = await getProdByParams(currentPage, itemsPerPage);
+      const totalItems = response.data.totalCount;
   
-    async function onPageChanged(event) {
-      page = event.page; 
+      renderProductList(response.data);
   
-      const limit = event.itemsPerPage;
+      const pagination = new Pagination(container, {
+        totalItems: totalItems,
+        itemsPerPage: itemsPerPage,
+        visiblePages: 5,
+        page: currentPage,
+      });
   
-      try {
-        const response = await getProdByParams(page, limit);
-        const totalItems = response.data.totalCount;
-  
-        renderProductList(response.data); 
-  
-        const pagination = new Pagination(container, {
-          totalItems: totalItems,
-          itemsPerPage: limit,
-          visiblePages: 5,
-          page: page,
-        });
-  
-        pagination.on('afterMove', onPageChanged);
-      } catch (error) {
-        console.error('Failed to fetch data:', error);
-      }
+      pagination.on('afterMove', async (event) => {
+        currentPage = event.page;
+        const newResponse = await getProdByParams(currentPage, itemsPerPage);
+        renderProductList(newResponse.data);
+      });
+    } catch (error) {
+      console.error('error:', error);
     }
-  
-    onPageChanged({ page, itemsPerPage: 6 }); 
   }
+  
+  document.addEventListener('DOMContentLoaded', async () => {
+    await createPagination();
+  });
+//Друга
+// export async function pagination() {
+//     const productList = document.querySelector('.product-list');
+//     const container = document.getElementById('tui-pagination-container');
+  
+//     let page = 1; 
+  
+//     async function onPageChanged(event) {
+//       page = event.page; 
+  
+//       const limit = event.itemsPerPage;
+  
+//       try {
+//         const response = await getProdByParams(page, limit);
+//         const totalItems = response.data.totalCount;
+  
+//         renderProductList(response.data); 
+  
+//         const pagination = new Pagination(container, {
+//           totalItems: totalItems,
+//           itemsPerPage: limit,
+//           visiblePages: 5,
+//           page: page,
+//         });
+  
+//         pagination.on('afterMove', onPageChanged);
+//       } catch (error) {
+//         console.error('Failed to fetch data:', error);
+//       }
+//     }
+  
+//     onPageChanged({ page, itemsPerPage: 6 }); 
+//   }
 
   
-
+//Третя
     
 //   const startBtn = document.querySelector("#startBtn"),
 //   endBtn = document.querySelector("#endBtn"),
