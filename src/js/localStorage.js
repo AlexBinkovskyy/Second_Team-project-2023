@@ -1,11 +1,6 @@
 let shoppingCartItems = {
   email: '',
-  products: [
-    {
-      productId: '',
-      amount: 1,
-    },
-  ],
+  products: [],
 };
 
 export function setDefaultFilterParams() {
@@ -31,13 +26,24 @@ if (!JSON.parse(localStorage.getItem('shoppingCartItems'))) {
 }
 
 export function getCartItemsQuantity() {
-  return JSON.parse(localStorage.getItem('shoppingCartItems')).length;
+  return JSON.parse(localStorage.getItem('shoppingCartItems')).products.length;
+}
+
+export function setCartItems(ID, amount = 1) {
+  const cartItems = getCartItems();
+  if (!cartItems.products.find(({ id }) => ID !== id)) {
+    cartItems.products.push({ ID: ID, amount: amount });
+    localStorage.setItem('shoppingCartItems', JSON.stringify(cartItems));
+  }
+}
+
+export function getCartItems() {
+  return JSON.parse(localStorage.getItem('shoppingCartItems'));
 }
 
 export function getFilterParams() {
   return JSON.parse(localStorage.getItem('filterParams'));
 }
 
-const cartNumber = document.querySelector(".cart-number");
-cartNumber.insertAdjacentHTML("beforeend", getCartItemsQuantity());
-
+const cartNumber = document.querySelector('.cart-number');
+cartNumber.insertAdjacentHTML('beforeend', getCartItemsQuantity());

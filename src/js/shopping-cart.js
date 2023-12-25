@@ -1,87 +1,101 @@
-// import iconSvg from './image/icons.svg';
+import { getProdByIDWithParams } from './query';
+import icons from '../images/sprite.svg';
 
-// Довільний масив продуктів
-// const arrCart = [
-//   {
-//     _id: '640c2dd963a319ea671e383b',
-//     name: 'Ackee',
-//     img: 'https://ftp.goit.study/img/so-yummy/ingredients/640c2dd963a319ea671e383b.png',
-//     category: 'Fresh_Produce',
-//     price: 8.99,
-//     size: '16 oz',
-//     is10PercentOff: false,
-//     popularity: 0,
-//   },
-//   {
-//     _id: '640c2dd963a319ea671e3864',
-//     name: 'Black Beans',
-//     img: 'https://ftp.goit.study/img/so-yummy/ingredients/640c2dd963a319ea671e3864.png',
-//     category: 'Pantry_Items',
-//     price: 1.99,
-//     size: '16oz',
-//     is10PercentOff: false,
-//     popularity: 0,
-//   },
-//   {
-//     _id: '640c2dd963a319ea671e37ad',
-//     name: 'Black Olives',
-//     img: 'https://ftp.goit.study/img/so-yummy/ingredients/640c2dd963a319ea671e37ad.png',
-//     category: 'Fresh_Produce',
-//     price: 3.99,
-//     size: '1 jar (16 oz)',
-//     is10PercentOff: false,
-//     popularity: 0,
-//   },
-// ];
+const list = document.querySelector('.js-cart-list');
+const arrCart = [
+  {
+    email: '',
+    products: [
+      {
+        id: '640c2dd963a319ea671e383b',
+        amount: 1,
+      },
+      {
+        id: '640c2dd963a319ea671e3864',
+        amount: 1,
+      },
+      // {
+      //   id: '640c2dd963a319ea671e37ad',
+      //   amount: 1,
+      // },
+    ],
+  },
+];
+
+spawnCardProducts(arrCart[0].products);
+
+function spawnCardProducts(products) {
+  generateCardListMarkup(products, createCartProductMarkup).then(result => {
+    list.insertAdjacentHTML('beforeend', result);
+  });
+}
+
+/*  Параметри:
+      1.productList - масив з продуктами      
+        [{
+          id: '640c2dd963a319ea671e383b',
+          amount: 1,
+        }]
+
+      2.createElementMarkupFunc - Функція, що створює потрібну вам розмітку елемента.
+
+    Повертає html розмітку продуктів
+===================================================================================== */
+async function generateCardListMarkup(productList, createElementMarkupFunc) {
+  const products = await getCartProducts(productList);
+  return products
+    .map(product => {
+      return createElementMarkupFunc(product);
+    })
+    .join('');
+}
+
+/*  Параметри:
+      1.productList - масив з продуктами      
+        [{
+          id: '640c2dd963a319ea671e383b',
+          amount: 1,
+        }]
+
+    Повертає масив даних з продуктів
+===================================================================================== */
+async function getCartProducts(productList) {
+  return await Promise.all(
+    productList.map(({ id }) =>
+      getProdByIDWithParams(id).then(rqst => rqst.data)
+    )
+  );
+}
 
 // створення карттки в кошику
-// const list = document.querySelector('.js-cart-list');
-// list.insertAdjacentHTML('beforeend', createCartProduct(arrCart));
+function createCartProductMarkup(product) {
+  const { _id, name, img, category, price, size } = product;
+  const cleanedCategory = category.replace(/_/g, ' ');
 
-// function createCartProduct(arr) {
-//   return arr
-//     .map(({ _id, name, img, category, price, size }) => {
-//       const cleanedCategory = category.replace(/_/g, ' ');
+  return `
+    <li class="selectedProduct" data-id=${_id}>
+      <div class="product-picture">
+          <img src="${img}" alt="${name}" class="" loading="lazy" />
+      </div>
 
-//       return `<li class="selectedProduct" data-id=${_id}>
-//             <div class="product-picture">
-//                 <img src="${img}" alt="${name}" class="" loading="lazy" />
-//             </div>
+      <div class="product-info-container">
 
-//             <div class="product-info-container">
+      <div class="info-header">
+        <h2 class="product-name">${name}</h2>
+        <button class="delete-btn">
+          <svg class="" width="11.25" height="11.25">
+            <use href="${icons}#icon-Cross_close"></use>
+          </svg>
+        </button>
+      </div>
 
-//             <div class="info-header">
-//                 <h2 class="product-name">${name}</h2>
-//                 <button class="delete-btn">
-//                     <svg class="" width="20" height="20">
-//                     <use href="${iconSvg}#icon-Cross_close"></use>
-//                     </svg>
-//                 </button>
-//             </div>
-
-//             <div class="product-info">
-//                 <p class="info-quality-category"> Category: <span class="info-value">${cleanedCategory}</span>
-//                 </p>
-//                 <p class="info-quality"> Size:<span class="info-value">${size}</span></p>
-//             </div>
-//             <div class="price">$
-//             <span>${price}</span>
-//             </div>
-//             </div>
-//         </li>`;
-//     })
-//     .join('');
-// }
-
-// функція яка відмалює товари в кошику якщо масив в localeStorage не пустий
-
-// function fullCart() {
-//   if (arr.length !== 0) {
-//     блок_коду_пустого_кошику.style.display = 'none';
-//     блок_коду_не_пустого_кошику.style.display = 'flex';
-//     список_в_ul.insertAdjacentHTML('beforeend', createCartProduct(arr));
-//   } else {
-//     блок_коду_пустого_кошику.style.display = 'flex';
-//     блок_коду_не_пустого_кошику.style.display = 'none';
-//   }
-// }
+      <div class="product-info">
+        <p class="info-quality-category"> Category: <span class="info-value">${cleanedCategory}</span></p>
+        <p class="info-quality"> Size:<span class="info-value">${size}</span></p>
+      </div>
+        <div class="price">$
+          <span>${price}</span>
+        </div>
+      </div>
+  </li>`;
+}

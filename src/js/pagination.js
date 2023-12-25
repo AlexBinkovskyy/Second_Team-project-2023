@@ -17,6 +17,7 @@ import references from './references';
   
 //       renderProductList(response.data);
   
+
 //       const pagination = new Pagination(container, {
 //         totalItems: totalItems,
 //         itemsPerPage: itemsPerPage,
@@ -37,6 +38,7 @@ import references from './references';
 //   document.addEventListener('DOMContentLoaded', async () => {
 //     await createPagination();
 //   });
+
 //Друга
 // export async function pagination() {
 //     const productList = document.querySelector('.product-list');

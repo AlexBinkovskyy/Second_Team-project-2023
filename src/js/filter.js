@@ -2,7 +2,11 @@ import { getFilterParams } from './localStorage';
 import { setDefaultFilterParams } from './localStorage';
 import { setNewFilterParams } from './localStorage';
 import { getProdByQuery } from './query';
-const filterForm = document.querySelector('#filterForm');
+import { getProdByParams } from './query';
+import { renderProductList } from './product-list';
+import { createEmptyMarkup } from './product-list';
+
+export const filterForm = document.querySelector('#filterForm');
 filterForm.addEventListener('submit', onSubmit);
 const filterSelectCategories = document.querySelector('#categories');
 filterForm.elements.filterCategories.addEventListener('change', proceedSelect);
@@ -10,7 +14,7 @@ filterForm.elements.filterMethod.addEventListener('change', proceedFilter);
 
 let filterParams;
 
-function checkFilterParams() {
+export function checkFilterParams() {
   filterParams = getFilterParams()
     ? getFilterParams()
     : setDefaultFilterParams();
@@ -34,45 +38,99 @@ function markup(arr) {
 
 function onSubmit(event) {
   event.preventDefault();
-  const {
-    filterInput,
-    filterCategories,
-    filterMethod = 'A-Z',
-  } = event.target.elements;
+  const { filterInput, filterCategories } = event.target.elements;
   proceedInput(filterInput, filterCategories);
 }
 
 function proceedInput(filterInput, filterCategories) {
   if (!filterInput.value.trim().length) {
-    filterForm.reset();
     setDefaultFilterParams();
     checkFilterParams();
+    getProdByParams()
+      .then(({ data }) => {
+        renderProductList(data);
+      })
+      .catch(error => console.log(error));
+    filterForm.reset();
   } else if (filterInput.value.trim()) {
     filterParams.keyword = filterInput.value.trim();
     if (filterCategories.value !== '') {
       filterParams.category = filterCategories.value;
     }
     setNewFilterParams(filterParams);
+    getProdByQuery(getFilterParams())
+      .then(resp => {
+        console.log(resp);
+        if (resp.data.results.length) {
+
+          renderProductList(resp.data);
+        } else if (
+          !Array.isArray(resp.data.results) ||
+          !resp.data.results.length
+        ) {
+          createEmptyMarkup();
+          return;
+        }
+      })
+      .catch(err => console.log(err));
   } else if (filterCategories.value) {
     filterParams.category = filterCategories.value.trim();
     setNewFilterParams(filterParams);
+    getProdByQuery(getFilterParams())
+      .then(resp => {
+        if (resp.data.results.length) {
+          renderProductList(resp.data);
+        } else {
+          return;
+        }
+      })
+      .catch(err => console.log(err));
   }
 }
 
 function proceedSelect(event) {
   event.preventDefault();
-  filterParams.category = event.target.value.replace(' ', '_');
+  if (event.target.value === 'Show all') {
+    getProdByParams()
+      .then(({ data }) => {
+        renderProductList(data);
+      })
+      .catch(error => console.log(error));
+    filterForm.reset();
+  }
+  filterParams.category = event.target.value.replaceAll(' ', '_').replaceAll('&', '%26');
   setNewFilterParams(filterParams);
+  getProdByQuery(getFilterParams())
+    .then(resp => {
+      if (resp.data.results.length) {
+        renderProductList(resp.data);
+      } else if (
+        !Array.isArray(resp.data.results) ||
+        !resp.data.results.length
+      ) {
+        createEmptyMarkup();
+        return;
+      }
+    })
+    .catch(err => console.log(err));
 }
 
 function proceedFilter(event) {
   event.preventDefault();
-  console.log(event.target.value);
   if (event.target.value === 'A_to_Z' || event.target.value === 'Z_to_A') {
     event.target.value === 'A_to_Z'
       ? (filterParams.byABC = true)
       : (filterParams.byABC = false);
     setNewFilterParams(filterParams);
+    getProdByQuery(getFilterParams())
+      .then(resp => {
+        if (resp.data.results.length) {
+          renderProductList(resp.data);
+        } else {
+          return;
+        }
+      })
+      .catch(err => console.log(err));
     return;
   } else if (
     event.target.value === 'Cheap' ||
@@ -82,6 +140,15 @@ function proceedFilter(event) {
       ? (filterParams.byPrice = true)
       : (filterParams.byPrice = false);
     setNewFilterParams(filterParams);
+    getProdByQuery(getFilterParams())
+      .then(resp => {
+        if (resp.data.results.length) {
+          renderProductList(resp.data);
+        } else {
+          return;
+        }
+      })
+      .catch(err => console.log(err));
     return;
   } else if (
     event.target.value === 'Popular' ||
@@ -91,9 +158,18 @@ function proceedFilter(event) {
       ? (filterParams.byPopularity = true)
       : (filterParams.byPopularity = false);
     setNewFilterParams(filterParams);
+    getProdByQuery(getFilterParams())
+      .then(resp => {
+        if (resp.data.results.length) {
+          renderProductList(resp.data);
+        } else {
+          return;
+        }
+      })
+      .catch(err => console.log(err));
     return;
   } else if (event.target.value === 'Show_all') {
-    setDefaultFilterParams()
+    setDefaultFilterParams();
     return;
   }
 }
