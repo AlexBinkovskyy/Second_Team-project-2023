@@ -7,6 +7,7 @@ import { renderPopularProduct } from './popular-product';
 import { renderProductDiscount } from './discount';
 import { renderProductList } from './product-list';
 import { renderFilterSelect } from './filter';
+import { getCartItems } from './localStorage.js';
 import { showModalMessage } from './footer.js';
 // import { pagination } from './pagination.js';
 

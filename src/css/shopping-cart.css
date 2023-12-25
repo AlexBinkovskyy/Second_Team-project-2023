@@ -175,7 +175,9 @@ body {
   position: absolute;
   right: 0px;
   top: -40px;
+
   margin-right: 15px;
+
   display: flex;
   align-items: center;
   gap: 8px;
@@ -187,8 +189,15 @@ body {
   font-size: 16px;
   font-weight: 500;
 }
+@media only screen and (min-width: 768px) {
+  .cart-order-clear-btn {
+    right: 58px;
+  }
+}
 .cart-order-container {
   position: relative;
+  padding-right: 7px;
+  /* margin-right: 15px; */
   width: 100%;
   max-height: 520px;
   min-height: 360px;
@@ -198,15 +207,26 @@ body {
   scroll-behavior: smooth;
   /* background-color: #887f5d88; */
 }
-@media only screen and (min-width: 1440px) {
-  .cart-order-container {
-    /* width: 500px; */
-  }
-}
 @media only screen and (min-width: 768px) {
   .cart-order-container {
-    /* max-height: 568px; */
+    padding-right: 35px;
   }
+}
+/* Стилізація скролбара */
+.cart-order-container::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent;
+}
+
+/* Стилізація кнопки скролбара */
+.cart-order-container::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background: rgba(1, 1, 1, 0.08);
+}
+
+/* Стилізація кнопки скролбара при наведенні */
+.cart-order-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(1, 1, 1, 0.11);
 }
 
 /*
@@ -260,12 +280,12 @@ body {
 
 .cart-form {
   width: 100%;
-  display: flex;
+  display: block;
   gap: 10px;
 }
-@media screen and (max-width: 400px) {
+@media screen and (min-width: 768px) {
   .cart-form {
-    display: block;
+    display: flex;
     width: 100%;
   }
 }
@@ -274,10 +294,11 @@ body {
   flex: 1 1 auto;
 }
 .cart-form-label-text {
+  z-index: 1;
   position: absolute;
   top: 50%;
   left: 20px;
-  transform: translateY(-53%);
+  transform: translateY(-45%);
 
   color: var(--passive-text-color);
 }
@@ -295,24 +316,24 @@ body {
   color: var(--text-color);
   font-size: 18px;
 }
-@media screen and (max-width: 400px) {
-  .cart-form-input {
-    margin-bottom: 14px;
-  }
-}
 .cart-form-input::placeholder {
   color: var(--text-color);
   font-size: 18px;
   line-height: 24px;
 }
+.cart-form-input:focus,
+.cart-form-input:active,
+.cart-form-input:valid {
+  border-color: #6d8434;
+}
 .cart-form-button {
+  margin-top: 14px;
   padding: 15px 25px;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  max-width: 215px;
-  /* min-width: 145px; */
+  width: 100%;
   flex-grow: 1;
 
   border-radius: 30px;
@@ -323,12 +344,17 @@ body {
   color: #e8e8e2;
   font-size: 20px;
   font-weight: 500;
+
+  transition: background var(--transition-settings);
 }
-@media screen and (max-width: 400px) {
+@media screen and (min-width: 768px) {
   .cart-form-button {
-    width: 100%;
-    max-width: none;
+    margin: 0;
+    max-width: 214px;
   }
+}
+.cart-form-button:hover {
+  background: #586f1f;
 }
 
 /* .form-label {
@@ -509,3 +535,7 @@ body {
   | Стилі карток товарів / кінець
   |============================
 */
+
+/* .hiden {
+  display: none;
+} */
