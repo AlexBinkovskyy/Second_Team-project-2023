@@ -57,12 +57,12 @@ export async function getProdByQuery({
     query += `category=${category}&`;
   }
   if (byABC !== null) {
-    query +=`byABC=${byABC}&`;
+    query += `byABC=${byABC}&`;
   }
   if (byPrice !== null) {
     query += `byPrice=${byPrice}&`;
   }
-  if (byPopularity  !== null) {
+  if (byPopularity !== null) {
     query += `byPopularity=${byPopularity}&`;
   }
   query += `page=${page}&limit=${limit}`;
@@ -78,3 +78,30 @@ export async function getProdByQuery({
 //   return (await axios.post(`${references.SECOND_URL}`))
 // }
 
+export function handleSubscriptionError(errorCode, errorMessage) {
+  const modalText = document.querySelector('.modal-text');
+
+  // Визначення тексту помилки на основі коду помилки
+  let errorText = '';
+  switch (errorCode) {
+    case 400:
+      errorText = 'Bad request: Invalid request body';
+      break;
+    case 404:
+      errorText = 'Not found';
+      break;
+    case 409:
+      errorText = 'Subscription already exists';
+      break;
+    case 500:
+      errorText = 'Server error';
+      break;
+    default:
+      errorText = 'An unexpected error occurred';
+      break;
+  }
+
+  // Виведення тексту помилки у модальному вікні
+  modalText.textContent = `${errorText}: ${errorMessage}`;
+  toggleModal();
+}

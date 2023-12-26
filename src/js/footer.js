@@ -1,65 +1,43 @@
-// import { sendSubscription } from "./query";
-export function showModalMessage(message) {
-  const modalText = document.querySelector('.modal-text');
-  modalText.innerText = message;
+import { handleSubscriptionError } from './query.js';
 
-  const backdrop = document.querySelector('[data-modal]');
-  backdrop.classList.remove('is-hidden');
+const subscriptionForm = document.querySelector('.subscription-form');
 
-  const closeButton = document.querySelector('[data-modal-close]');
-  closeButton.onclick = function () {
-    backdrop.classList.add('is-hidden');
-  };
+subscriptionForm.addEventListener('submit', async event => {
+  event.preventDefault();
 
-  window.onclick = function (event) {
-    if (event.target === backdrop) {
-      backdrop.classList.add('is-hidden');
+  const formData = new FormData(subscriptionForm);
+  const email = formData.get('email');
+
+  try {
+    const response = await fetch(
+      'https://food-boutique.b.goit.study/api/subscription',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      }
+    );
+
+    const responseData = await response.json();
+
+    if (response.ok) {
+      // Ваш код на випадок успішної відповіді від сервера
+      console.log('Subscription successful!');
+    } else {
+      // Обробка помилок при неуспішній відповіді від сервера
+      handleSubscriptionError(response.status, responseData.message);
     }
-  };
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  const form = document.querySelector('.subscription-form');
-
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    const email = document.querySelector('.footer-form-input').value;
-
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailPattern.test(email)) {
-      showModalMessage(
-        'Будь ласка, введіть коректну адресу електронної пошти.'
-      );
-      return;
-    }
-
-    // fetch(form.action, {
-    //   method: form.method,
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({ email: email }),
-    // })
-    //   .then(response => {
-    //     if (response.status === 201) {
-    //       showModalMessage('Успішна підписка на розсилку нових продуктів!');
-    //     } else if (response.status === 409) {
-    //       showModalMessage('Підписка вже існує. Ви вже підписані на розсилку.');
-    //     } else {
-    //       showModalMessage(
-    //         'Виникла помилка під час підписки. Спробуйте ще раз.'
-    //       );
-    //     }
-    //   })
-    //   .catch(error => {
-    //     showModalMessage('Виникла помилка під час підписки. Спробуйте ще раз.');
-    //   });
-  });
+  } catch (error) {
+    console.error('Error occurred:', error);
+    // Якщо виникає помилка під час взаємодії з сервером
+    handleSubscriptionError(500, 'Server error');
+  }
 });
 
-const temp = {
-  email: 'test@gmail.com'
+// Функція для показу/приховання модального вікна
+export function toggleModal() {
+  const modalBackdrop = document.querySelector('.backdrop');
+  modalBackdrop.classList.toggle('is-hidden');
 }
-
-// sendSubscription(temp).then((data) => console.log(data)).catch((err) => console.log(err))
