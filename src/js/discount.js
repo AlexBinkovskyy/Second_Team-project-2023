@@ -23,7 +23,7 @@ export function renderProductDiscount(data) {
     return arr
     .map(({_id, name, img, price }) => `
         <li class="discount-product">
-         <div class="discount-card" id="${_id}">
+         <div class="discount-card"  data-id="${_id}" id="${_id}">
          <img class="discount-svg" src="${discountSvg}" alt="discount-icon" width="60" height="60"/>
             <img id="icondiscount" class="discount-img"src="${img}" alt="${name}" loading="lazy">
             <div class="discount-text">
@@ -32,7 +32,7 @@ export function renderProductDiscount(data) {
                 </div>
                 <div class=discount-price-item>
                 <p class="discount-price">&#36;${price}</p>
-                <button class="discount-buy buy-btn click-buy" type="button">
+                <button class="discount-buy buy-btn click-buy js-buy-btn" type="button">
                 <img class="discount-buy-svg" src="${shoppingSvg}" alt="shop-icon" width="18" height="18"/>
             
 </button>
