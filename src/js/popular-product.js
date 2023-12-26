@@ -1,6 +1,5 @@
-import  discountSvg    from '../images/icons/discount.svg';
-import shoppingSvg from  '../images/sprite.svg';
-
+import discountSvg from '../images/icons/discount.svg';
+import shoppingSvg from '../images/sprite.svg';
 
 const popularProduct = document.querySelector('.popular-product-list');
 
@@ -12,12 +11,12 @@ function markup(arr) {
   return arr
     .map(
       ({ _id, name, img, category, size, popularity }) => `
-          <li class="popular-product-item" id="${_id}">
+          <li class="popular-product-item js-product-cart"  data-id="${_id}">
             <img src="${img}" alt="${name}" width="56" height="56" loading="lazy" class="popular-product-pic" />
             <div class="popular-product-info">
             <div class="popular-product-info-btn">
             <h3 class="popular-product-name">${name}</h3>
-              <button type="button" class="popular-buy buy-btn" onclick="addToCart('${_id}')">
+           <button type="button" class="popular-buy buy-btn js-buy-btn" onclick="addToCart('${_id}')">
             <svg class="img-icon"  width="12" height="12">
             <use href="${shoppingSvg}#icon-shopping-cart"></use></svg>
             </button>
@@ -45,9 +44,8 @@ function markup(arr) {
     .join('');
 }
 
-
 // Змініть ваш код так, щоб він виглядав приблизно так
-window.addToCart = function(productId) {
+window.addToCart = function (productId) {
   const cart = JSON.parse(localStorage.getItem('cart')) || {};
 
   if (cart[productId]) {
@@ -58,8 +56,11 @@ window.addToCart = function(productId) {
     alert('Product added to cart!');
 
     // Отримайте кнопку за допомогою productId та змініть її на іконку "✓"
-    const addToCartButton = document.querySelector(`[data-product-id="${productId}"]`);
-    addToCartButton.innerHTML = '<svg class="img-icon" width="12" height="12"><use href="${shoppingSvg}#check-icon"></use></svg>';
+    const addToCartButton = document.querySelector(
+      `[data-product-id="${productId}"]`
+    );
+    addToCartButton.innerHTML =
+      '<svg class="img-icon" width="12" height="12"><use href="${shoppingSvg}#check-icon"></use></svg>';
     addToCartButton.disabled = true;
   }
 };
