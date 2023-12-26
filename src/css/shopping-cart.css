@@ -454,7 +454,6 @@ body {
   top: 30px;
   right: 8px;
   padding: 0;
-  
 }
 .delete-btn > svg {
   pointer-events: none;
@@ -540,6 +539,64 @@ body {
   |============================
 */
 
-/* .hiden {
-  display: none;
-} */
+/* стилі для лічильника */
+.counter-container {
+  display: flex;
+  padding: 4px 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  height: fit-content;
+  position: absolute;
+  bottom: 30px;
+  right: 7px;
+  border-radius: 100px;
+  border: 1px solid rgba(1, 1, 1, 0.1);
+}
+@media only screen and (min-width: 768px) {
+  .counter-container {
+    padding: 5px 16px;
+    gap: 10px;
+  }
+}
+
+.cart-list-item:not(:last-child) .counter-container {
+  bottom: 24px;
+}
+@media only screen and (min-width: 768px) {
+  .cart-list-item:not(:last-child) .counter-container {
+    bottom: 40px;
+  }
+}
+
+.counter-container:hover {
+  border: 1px solid var(--maingreen);
+}
+
+.counter-btn {
+  background: none;
+  font-size: 14px;
+  color: var(--text-color);
+}
+@media only screen and (min-width: 768px) {
+  .counter-btn {
+    font-size: 18px;
+  }
+}
+
+.counter-btn:hover,
+.counter-btn:focus {
+  background-color: transparent;
+}
+
+.counter-value {
+  color: var(--text-color);
+  font-size: 16px;
+  line-height: 1.12;
+}
+@media only screen and (min-width: 768px) {
+  .counter-value {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+}
