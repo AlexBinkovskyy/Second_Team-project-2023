@@ -1,19 +1,47 @@
 .popular-product {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding: 40px 0;
   width: 335px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 @media screen and (min-width: 768px) {
   .popular-product {
+    width: 704px;
     padding: 50px 0 32px;
+    margin: 0;
   }
 }
+
 @media screen and (min-width: 1440px) {
   .popular-product {
-    padding-top: 0;
     padding-bottom: 20px;
+    padding-top: 30px;
+    width: 275px;
   }
 }
+
+.popular-product-title {
+  color: var(--text-color);
+  font-family: 'NeueMontreal-Medium';
+  font-size: 24px;
+  line-height: 1.16;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .popular-product-title {
+    font-size: 28px;
+    line-height: 1.14;
+  }
+}
+
+/* @media screen and (min-width: 1440) {
+  .popular-product-title {
+    margin: 0;
+  }
+} */
+
 .popular-product-list {
   display: flex;
   flex-wrap: wrap;
@@ -22,124 +50,63 @@
 
 @media screen and (min-width: 768px) {
   .popular-product-list {
-    width: 663px;
-    
     gap: 13px;
-  }
-}
-@media screen and (min-width: 1440px) {
-  .popular-product-list {
-     flex-direction: column;
-  }
-}
-@media screen and (min-width: 768px) {
-  .popular-product-container{
     width: 563px;
-      margin-left: 0;
-      justify-content: flex-start;
-      display: flex;
   }
 }
 
-.popular-product-title {
-  color: var(--text-color);
-  font-family: 'NeueMontreal-Medium';
-  font-weight: 500;
-  font-style: normal;
-  font-size: 28px;
-  line-height: 1.14;
-  margin-bottom: 20px;
-}
-@media screen and (min-width: 1440) {
-  .popular-product-title {
-    margin: 0;
+@media screen and (min-width: 1440px) {
+  .popular-product-list {
+    flex-direction: column;
+    width: 275px;
   }
 }
 
 .popular-product-item {
+  width: 335px;
   display: flex;
   padding: 12px;
-
   border-radius: 10px;
   background: #fafafa;
 }
 
 @media screen and (min-width: 768px) {
   .popular-product-item {
-    width: calc((100% - 13px)/2);
+    width: 275px;
   }
-}
-@media screen and (min-width: 1440px) {
-  .popular-product-item {
-    padding-bottom: 20px;
-  }
- 
 }
 
 .popular-product-pic {
-  
-  width: 74px;
+  max-width: 74px;
   height: 74px;
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
   padding: 9px;
   border-radius: 10px;
   background: var(--maingray);
+  margin-right: 10px;
 }
-
-
 
 .popular-product-info {
-  /* display: flex;
-  flex-direction: column; */
-  padding-left: 12px;
+  min-width: 227px;
 }
 
-.info-item {
-  color: var(--text-color);
-  font-family: 'NeueMontreal-Medium';
-  font-weight: 500;
-  font-style: normal;
-  font-size: 20px;
-  line-height: 1.2;
-}
-.info-item-description {
-  display: flex;
-  align-items: baseline;
-  gap: 9px;
-  flex-wrap: wrap;
-  /* font-family: 'NeueMontreal-regular';
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.17; 116.667% */
-}
-
-.info-title {
-  color: var(--passive-text-color);
-}
-.info-title,
-.info-item-description {
-  font-family: 'NeueMontreal-regular';
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.17; /* 116.667% */
-}
-.popular-product-name {
-  font-family: 'NeueMontreal-Medium';
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.11;
-  margin-bottom: 12px;
-}
 @media screen and (min-width: 768px) {
-  .popular-product-name {
-    margin-bottom: 10px;
+  .popular-product-info {
+    min-width: 167px;
   }
 }
 
+.popular-product-info-btn {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+@media screen and (min-width: 768px) {
+  .popular-product-info-btn {
+    margin-bottom: 10px;
+  }
+}
 
 .popular-buy {
   width: 20px;
@@ -149,20 +116,60 @@
   background: var(--maingray);
   transition: var(--transition-settings);
 }
-.popular-buy:hover,
-.popular-buy:focus {
-  background: var(--maingreen);
-}
 
 .img-icon {
   display: flex;
   justify-content: center;
   align-items: center;
   fill: var(--maingreen);
-  transition: var(--transition-settings);
 }
 
-.img-icon:hover,
-.img-icon:focus {
-fill: var(--maingray);
+.popular-buy:hover,
+.popular-buy:focus {
+  background: var(--maingreen);
+  .img-icon {
+    fill: var(--maingray);
+  }
+}
+
+.info-item-description {
+  font-family: 'NeueMontreal-regular';
+  font-size: 12px;
+  line-height: 1.17;
+  line-height: 1.16;
+}
+.info-item-title {
+  color: var(--text-color);
+  margin-bottom: 9px;
+}
+
+.info-title {
+  color: var(--passive-text-color);
+}
+
+.popular-info {
+  display: flex;
+}
+
+@media screen and (min-width: 768px) {
+  .popular-info {
+    margin-top: 9px;
+  }
+}
+
+.info-size {
+  margin-right: 9px;
+}
+
+.popular-product-name {
+  font-family: 'NeueMontreal-Medium';
+  font-size: 18px;
+  line-height: 1.11;
+}
+
+@media screen and (min-width: 768px) {
+  .popular-product-name {
+    font-size: 20px;
+    line-height: 1.2;
+  }
 }

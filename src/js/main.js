@@ -11,9 +11,11 @@ import { getCartItems } from './localStorage.js';
 import { showModalMessage } from './footer.js';
 import { addProductToCart } from './workWithCart.js';
 import shoppingSvg from '../images/sprite.svg'
-// import { pagination } from './pagination.js';
+import Pagination from 'tui-pagination';
 
 
+const container = document.getElementById('tui-pagination-container');
+// const instance = new Pagination(container, { ... });
 
 getProdByDiscount()
   .then(({ data }) => {
@@ -24,6 +26,7 @@ getProdByDiscount()
 getProdByParams()
   .then(({ data }) => {
     renderProductList(data);
+    // // // // TUI
   })
   .catch(error => console.log(error));
 
@@ -41,42 +44,43 @@ getProdByCategories()
 
 // showModalMessage();
 
-
 /**
     |============================
     | Loader starts
     |============================
   */
 
-
 const loaderContainer = document.getElementById('loader-container');
-const main = document.querySelector('.main')
+const main = document.querySelector('.main');
 const body = document.body;
 
-window.addEventListener("load", function () {
-  const loadingScreen = document.querySelector(".loader-container");
+window.addEventListener('load', function () {
+  const loadingScreen = document.querySelector('.loader-container');
 
   // Array of asynchronous functions
-  const asyncFunctions = [getProdByDiscount, getProdByParams, getProdByPopular, getProdByCategories]
+  const asyncFunctions = [
+    getProdByDiscount,
+    getProdByParams,
+    getProdByPopular,
+    getProdByCategories,
+  ];
 
   // Show loading screen
-  main.classList.add("visually-hidden");
+  main.classList.add('visually-hidden');
   body.classList.add('no-scroll');
-  loadingScreen.classList.remove("visually-hidden");
-
+  loadingScreen.classList.remove('visually-hidden');
 
   // Execute all asynchronous functions
   Promise.all(asyncFunctions.map(fn => fn()))
     .then(() => {
       // All asynchronous functions completed
-      main.classList.remove("visually-hidden")
-      loadingScreen.classList.add("visually-hidden"); // Hide loading screen
+      main.classList.remove('visually-hidden');
+      loadingScreen.classList.add('visually-hidden'); // Hide loading screen
       body.classList.remove('no-scroll');
-    
     })
     .catch(error => {
-      console.error("Error in asynchronous operation:", error);
-      loadingScreen.classList.add("visually-hidden"); // Hide loading screen even in case of an error
+      console.error('Error in asynchronous operation:', error);
+      loadingScreen.classList.add('visually-hidden'); // Hide loading screen even in case of an error
       body.classList.remove('no-scroll');
     });
 });
@@ -127,9 +131,4 @@ function addedToCartProduct(id) {
     // console.log(btn);
   })
 }
-
-
-
- 
-    
 

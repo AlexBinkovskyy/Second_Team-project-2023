@@ -1,9 +1,9 @@
 import discountSvg from '../images/icons/discount.svg';
 import shoppingSvg from '../images/icons/shopping-cart.svg';
 import { getProdByParams } from './query';
-import { filterForm } from './filter';
+// import { filterForm } from './filter';
 import { setDefaultFilterParams } from './localStorage';
-import { checkFilterParams } from './filter';
+// import { checkFilterParams } from './filter';
 import { showProductModal } from './product-list-modal.js';
 
 const productList = document.querySelector('.product-list');
@@ -12,23 +12,29 @@ const productModalWindow = document.querySelector('.product-modal-window');
 export function renderProductList(data) {
   productList.innerHTML = createMarkup(data.results);
 
-  const productModalOpen = document.querySelector('.product-modal-open');
+  const productModalOpen = document.querySelectorAll('.product-modal-open');
 
-  console.log(productModalOpen);
+  // console.log(productModalOpen);
+  // console.log(event);
 
-  productModalOpen.addEventListener(
-    'click',
-    showProductModal(productModalOpen)
-  );
+  productModalOpen.forEach(element => {
+    // console.log(element);
+    element.addEventListener('click', showProductModal(element));
+  });
 }
+
+// function logModal(event) {
+//   const productModalContent = document.querySelector('.product-modal-content');
+//   console.log(productModalContent);
+// }
 
 function createMarkup(arr) {
   return arr
     .map(
       ({ _id, name, img, category, price, size, is10PercentOff, popularity }) =>
         `
-        <li class="all-product-card" id="${_id}">
-          <div class="product-modal-open">
+        <li class="all-product-card product-modal-open" id="${_id}">
+          <div class="">
             <img
               class="all-discount-svg ${is10PercentOff
                 .toString()

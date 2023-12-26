@@ -13,16 +13,22 @@ function markup(arr) {
     .map(
       ({ _id, name, img, category, size, popularity }) => `
           <li class="popular-product-item" id="${_id}">
-         <img class="discount-svg" src="${discountSvg}" alt="discount-icon" width="60" height="60"/>
             <img src="${img}" alt="${name}" width="56" height="56" loading="lazy" class="popular-product-pic" />
             <div class="popular-product-info">
+            <div class="popular-product-info-btn">
             <h3 class="popular-product-name">${name}</h3>
+              <button type="button" class="popular-buy buy-btn" onclick="addToCart('${_id}')">
+            <svg class="img-icon"  width="12" height="12">
+            <use href="${shoppingSvg}#icon-shopping-cart"></use></svg>
+            </button>
+        </div>
               <div class="info-item-description">
-              <p class="info-item">
+              <p class="info-item-title">
               <span class="info-title"> Category: </span>
               ${category.replace('_', ' ')}
             </p>
-            <p class="info-item">
+            <div class="popular-info">
+            <p class="info-item info-size">
               <span class="info-title"> Size: </span>
               ${size}
             </p>
@@ -32,11 +38,6 @@ function markup(arr) {
             </p>
             </div>
             </div>
-            <div class="popular-btn">
-            <button type="button" class="popular-buy buy-btn" onclick="addToCart('${_id}')">
-            <svg class="img-icon"  width="12" height="12">
-            <use href="${shoppingSvg}#icon-shopping-cart"></use></svg>
-            </button>
             </div>
           </li>
       `

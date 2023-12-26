@@ -56,13 +56,13 @@ export async function getProdByQuery({
   if (category) {
     query += `category=${category}&`;
   }
-  if (!!~byABC) {
+  if (byABC !== null) {
     query +=`byABC=${byABC}&`;
   }
-  if (!!~byPrice) {
+  if (byPrice !== null) {
     query += `byPrice=${byPrice}&`;
   }
-  if (!!~byPopularity) {
+  if (byPopularity  !== null) {
     query += `byPopularity=${byPopularity}&`;
   }
   query += `page=${page}&limit=${limit}`;

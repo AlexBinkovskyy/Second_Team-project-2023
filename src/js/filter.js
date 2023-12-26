@@ -8,7 +8,7 @@ import { createEmptyMarkup } from './product-list';
 
 export const filterForm = document.querySelector('#filterForm');
 filterForm.addEventListener('submit', onSubmit);
-const filterSelectCategories = document.querySelector('#categories');
+const filterSelectCategories = document.querySelector('#single');
 filterForm.elements.filterCategories.addEventListener('change', proceedSelect);
 filterForm.elements.filterMethod.addEventListener('change', proceedFilter);
 
@@ -62,7 +62,6 @@ function proceedInput(filterInput, filterCategories) {
       .then(resp => {
         console.log(resp);
         if (resp.data.results.length) {
-
           renderProductList(resp.data);
         } else if (
           !Array.isArray(resp.data.results) ||
@@ -98,7 +97,9 @@ function proceedSelect(event) {
       .catch(error => console.log(error));
     filterForm.reset();
   }
-  filterParams.category = event.target.value.replaceAll(' ', '_').replaceAll('&', '%26');
+  filterParams.category = event.target.value
+    .replaceAll(' ', '_')
+    .replaceAll('&', '%26');
   setNewFilterParams(filterParams);
   getProdByQuery(getFilterParams())
     .then(resp => {
@@ -117,16 +118,29 @@ function proceedSelect(event) {
 
 function proceedFilter(event) {
   event.preventDefault();
+  if (event.target.value === 'Show_all') {
+    setDefaultFilterParams();
+    checkFilterParams();
+    getProdByParams()
+      .then(({ data }) => {
+        renderProductList(data);
+      })
+      .catch(error => console.log(error));
+    filterForm.reset();
+  }
   if (event.target.value === 'A_to_Z' || event.target.value === 'Z_to_A') {
     event.target.value === 'A_to_Z'
       ? (filterParams.byABC = true)
       : (filterParams.byABC = false);
+    filterParams.byPrice = null;
+    filterParams.byPopularity = null;
     setNewFilterParams(filterParams);
     getProdByQuery(getFilterParams())
       .then(resp => {
         if (resp.data.results.length) {
           renderProductList(resp.data);
         } else {
+          createEmptyMarkup();
           return;
         }
       })
@@ -139,12 +153,15 @@ function proceedFilter(event) {
     event.target.value === 'Cheap'
       ? (filterParams.byPrice = true)
       : (filterParams.byPrice = false);
+    filterParams.byABC = null;
+    filterParams.byPopularity = null;
     setNewFilterParams(filterParams);
     getProdByQuery(getFilterParams())
       .then(resp => {
         if (resp.data.results.length) {
           renderProductList(resp.data);
         } else {
+          createEmptyMarkup();
           return;
         }
       })
@@ -157,12 +174,15 @@ function proceedFilter(event) {
     event.target.value === 'Not_popular'
       ? (filterParams.byPopularity = true)
       : (filterParams.byPopularity = false);
+    filterParams.byABC = null;
+    filterParams.byPrice = null;
     setNewFilterParams(filterParams);
     getProdByQuery(getFilterParams())
       .then(resp => {
         if (resp.data.results.length) {
           renderProductList(resp.data);
         } else {
+          createEmptyMarkup();
           return;
         }
       })

@@ -33,7 +33,6 @@ list.addEventListener('click', e => {
   }
 });
 
-
 async function drawCartPage() {
   //масив з localStorage
   arrCart = getCartItems();
@@ -108,6 +107,10 @@ async function getCartProducts(productList) {
   );
 }
 
+//
+
+//
+
 // створення карттки в кошику
 function createCartProductMarkup(product) {
   const { _id, name, img, category, price, size } = product;
@@ -140,6 +143,15 @@ function createCartProductMarkup(product) {
           <span>${price}</span>
         </div>
       </div>
+      <div class="counter-container">
+            <button class="counter-btn" type="button" data-action="decrement">
+                -
+            </button>
+            <span class="counter-value">1</span>
+            <button class="counter-btn" type="button" data-action="increment">
+                +
+            </button>
+        </div>
   </li>`;
 }
 
