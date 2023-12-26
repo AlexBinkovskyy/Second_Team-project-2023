@@ -17,13 +17,8 @@ const clearOrderBtn = document.querySelector('.js-clear-order-btn');
 const cartBox = document.querySelector('.js-cart-box');
 const emptyCart = document.querySelector('.js-empty-cart');
 
-addProductToCart('640c2dd963a319ea671e383b', 3);
-addProductToCart('640c2dd963a319ea671e3864');
-addProductToCart('640c2dd963a319ea671e3865');
-addProductToCart('640c2dd963a319ea671e366d');
-addProductToCart('640c2dd963a319ea671e366c');
 
-setEmailToOrderInfo('zgerzanic@gmail.com');
+setEmailToOrderInfo('p@gmail.com');
 
 let arrCart = getCartItems();
 let totalSumm = 0;
@@ -33,7 +28,7 @@ list.addEventListener('click', e => {
   if (e.target.classList.contains('delete-btn')) {
     let parent = e.target.closest('.selectedProduct');
     console.log(parent);
-    removeProductFromCart(parent.dataset.id)
+    removeProductFromCart(parent.dataset.id);
     drawCartPage();
   }
 });
@@ -43,6 +38,8 @@ async function drawCartPage() {
   //масив з localStorage
   arrCart = getCartItems();
   console.log(arrCart);
+
+  summ.textContent = '$0';
 
   const amountElements = arrCart.products.length;
   switchSections(amountElements);
@@ -56,8 +53,9 @@ async function drawCartPage() {
     cartNumbersUpdate(cartNumbersList, amountElements);
     // console.log(cartBox);
     spawnCardProducts(originProductList);
+    summ.textContent = '$' + getTotalSumm(originProductList);
   }
-  summ.textContent = '$' + getTotalSumm(originProductList);
+  
   // updateCartBasket();
   formInput.value = arrCart.email;
 }

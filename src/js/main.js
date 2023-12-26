@@ -9,6 +9,8 @@ import { renderProductList } from './product-list';
 import { renderFilterSelect } from './filter';
 import { getCartItems } from './localStorage.js';
 import { showModalMessage } from './footer.js';
+import { addProductToCart } from './workWithCart.js';
+import shoppingSvg from '../images/sprite.svg'
 // import { pagination } from './pagination.js';
 
 
@@ -89,4 +91,45 @@ window.addEventListener("load", function () {
     | Loader ends
     |============================
   */
+
+// const productCard = document.querySelector('js-product-card');
+// const buyBtn = document.querySelector('js-buy-btn');
+const mainContainer = document.querySelector('.js-main-container');
+
+// loadBuyBtnsState();
+
+// function loadBuyBtnsState() {
+//   console.log(1);
+//   const ls = getCartItems();
+//   console.log(ls);
+// }
+
+
+mainContainer.addEventListener('click', e => {
+  // console.log("Click");
+  if (e.target.classList.contains('js-buy-btn')) {
+    console.log("click buy");
+    let parent = e.target.closest('.js-product-card');
+    addProductToCart(parent.dataset.id);
+    addedToCartProduct(parent.dataset.id)
+  }
+});
+
+function addedToCartProduct(id) {
+  const allProductsById = document.querySelectorAll(`.js-product-card[data-id="${id}"]`);
+  const iconName = "";
+
+  console.log(allProductsById);
+  allProductsById.forEach((obj) => {
+    const btn = obj.querySelector('.js-buy-btn');
+    btn.innerHTML = `<svg class="img-icon" width="12" height="12" style="stroke:"#fff""><use href="${shoppingSvg}#${iconName}"></use></svg>`
+    btn.disabled = true;
+    // console.log(btn);
+  })
+}
+
+
+
+ 
+    
 
