@@ -1,9 +1,9 @@
 import discountSvg from '../images/icons/discount.svg';
 import shoppingSvg from '../images/icons/shopping-cart.svg';
 import { getProdByParams } from './query';
-import { filterForm } from './filter';
+// import { filterForm } from './filter';
 import { setDefaultFilterParams } from './localStorage';
-import { checkFilterParams } from './filter';
+// import { checkFilterParams } from './filter';
 import { showProductModal } from './product-list-modal.js';
 
 const productList = document.querySelector('.product-list');
@@ -12,14 +12,20 @@ const productModalWindow = document.querySelector('.product-modal-window');
 export function renderProductList(data) {
   productList.innerHTML = createMarkup(data.results);
 
-  const productModalOpen = document.querySelector('.product-modal-open');
+  const productModalOpen = document.querySelectorAll('.product-modal-open');
 
-  console.log(productModalOpen);
+  // console.log(productModalOpen);
+  // console.log(event);
 
-  productModalOpen.addEventListener(
-    'click',
-    showProductModal(productModalOpen)
-  );
+  productModalOpen.forEach(element => {
+    // console.log(element);
+    element.addEventListener('click', showProductModal(element));
+  });
+
+  // productModalOpen.addEventListener(
+  //   'click',
+  //   showProductModal(productModalOpen)
+  // );
 }
 
 function createMarkup(arr) {

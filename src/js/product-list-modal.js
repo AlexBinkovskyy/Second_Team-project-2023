@@ -1,6 +1,6 @@
-export function showProductModal(productModalOpen) {
+export function showProductModal(element) {
   const refs = {
-    openModalBtn: productModalOpen,
+    openModalBtn: element,
     closeModalBtn: document.querySelector('.product-modal-close'),
     modal: document.querySelector('.product-backdrop'),
   };
@@ -13,8 +13,8 @@ export function showProductModal(productModalOpen) {
   }
 }
 
-export function renderProductModal(data) {
-  createProductModal(data.results);
-}
+// export function renderProductModal(data) {
+//   createProductModal(data.results);
+// }
 
-function createProductModal() {}
+// function createProductModal() {}
