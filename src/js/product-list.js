@@ -21,20 +21,20 @@ export function renderProductList(data) {
     // console.log(element);
     element.addEventListener('click', showProductModal(element));
   });
-
-  // productModalOpen.addEventListener(
-  //   'click',
-  //   showProductModal(productModalOpen)
-  // );
 }
+
+// function logModal(event) {
+//   const productModalContent = document.querySelector('.product-modal-content');
+//   console.log(productModalContent);
+// }
 
 function createMarkup(arr) {
   return arr
     .map(
       ({ _id, name, img, category, price, size, is10PercentOff, popularity }) =>
         `
-        <li class="all-product-card" id="${_id}">
-          <div class="product-modal-open">
+        <li class="all-product-card product-modal-open" id="${_id}">
+          <div class="">
             <img
               class="all-discount-svg ${is10PercentOff
                 .toString()
