@@ -10,9 +10,10 @@ import { renderFilterSelect } from './filter';
 import { getCartItems } from './localStorage.js';
 import { showModalMessage } from './footer.js';
 import Pagination from 'tui-pagination';
+import { getProdByQuery } from './query';
 
 const container = document.getElementById('tui-pagination-container');
-// const instance = new Pagination(container, { ... });
+const instance = new Pagination(container, {});
 
 getProdByDiscount()
   .then(({ data }) => {
@@ -20,13 +21,43 @@ getProdByDiscount()
   })
   .catch(error => console.log(error));
 
-getProdByParams()
-  .then(({ data }) => {
+  getProdByParams().then(({ data, data: { perPage, totalPages } }) => {
     renderProductList(data);
-    // // // // TUI
-  })
-  .catch(error => console.log(error));
-
+    const container = document.getElementById('tui-pagination-container');
+    const instance = new Pagination(container, {
+      totalItems: perPage * totalPages,
+      itemsPerPage: perPage,
+      visiblePages: 5,
+      centerAlign: true,
+      template: {
+        page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+        currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+        moveButton:
+          '<a href="#" class="tui-page-btn tui-{{type}}">' +
+          '<span class="tui-ico-{{type}}">{{type}}</span>' +
+          '</a>',
+        disabledMoveButton:
+          '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+          '<span class="tui-ico-{{type}}">{{type}}</span>' +
+          '</span>',
+        moreButton:
+          '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+          '<span class="tui-ellip">...</span>' +
+          '</a>',
+      },
+    });
+  
+    instance.on('beforeMove', async (event) => {
+      const newPage = event.page;
+      try {
+        const { data: newData } = await getProdByQuery({ page: newPage, limitPerPage: perPage });
+        renderProductList(newData);
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  });
+  
 getProdByPopular()
   .then(({ data }) => {
     renderPopularProduct(data);

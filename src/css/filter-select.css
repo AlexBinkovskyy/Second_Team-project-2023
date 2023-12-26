@@ -54,6 +54,11 @@ input {
   font-family: 'NeueMontreal-regular';
 }
 
+.filter-select::placeholder {
+  color: black;
+  font-family: 'NeueMontreal-regular';
+}
+
 
 /**
   |============================
