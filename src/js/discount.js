@@ -9,13 +9,15 @@ const productDiscount = document.querySelector('.discount-products-item');
 
 export function renderProductDiscount(data) {
     productDiscount.insertAdjacentHTML("beforeend", markup(data));
-    const clickBtnBuy = document.querySelector('.click-buy');
-    clickBtnBuy.addEventListener('click',()=>{clickBtnBuy.style.display='none', clickcheck.style.display='block'})
-   const clickcheck = document.querySelector('.discount-check');
-    
-   
+    const clickBtns = document.querySelectorAll('.click-buy');
+    const clickChecks = document.querySelectorAll('.discount-check');
+    clickBtns.forEach((clickBtn) =>
+        clickBtn.addEventListener('click', () => { clickBtn.style.display = 'none'; onCheck(clickBtn) }));
+    function onCheck() {
+        clickChecks.forEach((clickChecks) =>
+        clickChecks.style.display = 'block')
+    }
 }
-
 
  function markup(arr) {
     return arr
