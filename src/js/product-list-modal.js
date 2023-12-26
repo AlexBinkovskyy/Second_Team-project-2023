@@ -1,20 +1,27 @@
-export function showProductModal(productModalOpen) {
+export function showProductModal(element) {
   const refs = {
-    openModalBtn: productModalOpen,
+    openModalBtn: element,
     closeModalBtn: document.querySelector('.product-modal-close'),
     modal: document.querySelector('.product-backdrop'),
   };
 
-  refs.openModalBtn.addEventListener('click', toggleModal);
-  refs.closeModalBtn.addEventListener('click', toggleModal);
+  refs.openModalBtn.addEventListener('click', toggleModalOpen);
+  refs.closeModalBtn.addEventListener('click', toggleModalClose);
 
-  function toggleModal() {
+  function toggleModalOpen() {
+    refs.modal.classList.toggle('is-hidden');
+
+    logModal(event.currentTarget);
+  }
+
+  function toggleModalClose() {
     refs.modal.classList.toggle('is-hidden');
   }
 }
 
-export function renderProductModal(data) {
-  createProductModal(data.results);
+function logModal(obj) {
+  const productModalContent = document.querySelector('.product-modal-content');
+  console.log(obj);
 }
 
 function createProductModal() {}

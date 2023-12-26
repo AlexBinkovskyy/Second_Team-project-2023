@@ -137,10 +137,10 @@
   font-size: 12px;
   line-height: 1.17;
   line-height: 1.16;
-  margin-bottom: 9px;
 }
 .info-item-title {
   color: var(--text-color);
+  margin-bottom: 9px;
 }
 
 .info-title {
