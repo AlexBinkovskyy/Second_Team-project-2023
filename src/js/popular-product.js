@@ -11,12 +11,12 @@ function markup(arr) {
   return arr
     .map(
       ({ _id, name, img, category, size, popularity }) => `
-          <li class="popular-product-item" js-product-cart  data-id="${_id}">
+          <li class="popular-product-item js-product-cart"  data-id="${_id}">
             <img src="${img}" alt="${name}" width="56" height="56" loading="lazy" class="popular-product-pic" />
             <div class="popular-product-info">
             <div class="popular-product-info-btn">
             <h3 class="popular-product-name">${name}</h3>
-           <button type="button" class="popular-buy buy-btn" js-buy-btn onclick="addToCart('${_id}')">
+           <button type="button" class="popular-buy buy-btn js-buy-btn" onclick="addToCart('${_id}')">
             <svg class="img-icon"  width="12" height="12">
             <use href="${shoppingSvg}#icon-shopping-cart"></use></svg>
             </button>
