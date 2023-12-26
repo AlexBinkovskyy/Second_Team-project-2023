@@ -32,7 +32,7 @@ drawCartPage();
 list.addEventListener('click', e => {
   if (e.target.classList.contains('delete-btn')) {
     let parent = e.target.closest('.selectedProduct');
-    console.log(parent);
+    // console.log(parent);
     removeProductFromCart(parent.dataset.id);
     drawCartPage();
   }
@@ -41,7 +41,7 @@ list.addEventListener('click', e => {
 async function drawCartPage() {
   //масив з localStorage
   arrCart = getCartItems();
-  console.log(arrCart);
+  // console.log(arrCart);
 
   const amountElements = arrCart.products.length;
   switchSections(amountElements);
@@ -50,7 +50,7 @@ async function drawCartPage() {
     list.innerHTML = '';
     //масив з Серверу
     const originProductList = await getCartProducts(arrCart.products);
-    console.log(originProductList);
+    // console.log(originProductList);
 
     cartNumbersUpdate(cartNumbersList, amountElements);
     // console.log(cartBox);
@@ -109,10 +109,6 @@ async function getCartProducts(productList) {
   );
 }
 
-//
-
-//
-
 // створення карттки в кошику
 function createCartProductMarkup(product) {
   const { _id, name, img, category, price, size } = product;
@@ -149,7 +145,7 @@ function createCartProductMarkup(product) {
             <button class="counter-btn" type="button" data-action="decrement">
                 -
             </button>
-            <span class="counter-value">1</span>
+            <span class="counter-value data-counter">1</span>
             <button class="counter-btn" type="button" data-action="increment">
                 +
             </button>
@@ -157,6 +153,60 @@ function createCartProductMarkup(product) {
   </li>`;
 }
 
+/**
+  |============================
+  | ЛІЧИЛЬНИК
+  |============================
+*/
+
+let counter;
+
+list.addEventListener('click', function (event) {
+  // Перевірка кліку сурово по кнопкам + або -
+  if (
+    event.target.dataset.action === 'increment' ||
+    event.target.dataset.action === 'decrement'
+  ) {
+    // Найшли обгортку лічильника
+    const counterContainer = event.target.closest('.counter-container');
+
+    // Найшли значення лічильника
+    counter = counterContainer.querySelector('.counter-value');
+  }
+
+  // Перевірка чи елемент являється кнопкою плюс
+  if (event.target.dataset.action === 'increment') {
+    // Змінює текст в лічильнику, збільшує на 1
+    counter.innerHTML = ++counter.innerHTML;
+  }
+
+  // Перевірка чи елемент являється кнопкою мінус
+  if (event.target.dataset.action === 'decrement') {
+    // Перевірка щоб лічильник був більше або рівний 1
+    if (parseInt(counter.innerHTML) > 1) {
+      // Змінює текст в лічильнику, зменьшує на 1
+      counter.innerHTML = --counter.innerHTML;
+    }
+  }
+});
+
+/**
+  |============================
+  | ДОДАТКОВО ВИДАЛИТЬ ПРОДУКТ ЯКЩО ВІН БУДЕ МЕНШЕ 1
+  |============================
+*/
+// else if (parseInt(counter.innerHTML) === 1) {
+//       // Якщо лічильник дорівнює 1, видалити товар з кошика
+//       let parentEl = event.target.closest('.selectedProduct');
+//       removeProductFromCart(parentEl.dataset.id);
+//       drawCartPage();
+//     }
+
+/**
+  |============================
+  | 
+  |============================
+*/
 function switchSections(bool) {
   objHide(cartBox, emptyCart);
   if (bool) {
