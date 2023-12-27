@@ -3,8 +3,6 @@
   color: var(--text-color);
   font-family: 'NeueMontreal-medium';
   font-size: 18px;
-  /* font-style: normal; */
-  /* font-weight: 500; */
   line-height: 1.11;
 }
 @media screen and (min-width: 768px) {
@@ -17,9 +15,6 @@
 .regular-text {
   font-family: 'NeueMontreal-regular';
   font-size: 12px;
-  /* font-style: normal; */
-  /* font-weight: 400; */
-  /* line-height: 1.16; */
 }
 
 /* Section styles */
@@ -48,13 +43,11 @@
 }
 
 .all-product-card {
-  /* width: 335px;     */
-  height: 356px;
+  width: 100vw;
+  max-width: 335px;    
   padding: 20px;
-
   border-radius: 20px;
   background: #fafafa;
-
   position: relative;
 }
 @media screen and (max-width: 767.8px) {
@@ -69,24 +62,24 @@
 @media screen and (min-width: 768px) {
   .all-product-card {
     flex-basis: calc((100% - 34px) / 2);
-    height: 360px;
   }
 }
 @media screen and (min-width: 1440px) {
   .all-product-card {
     flex-basis: calc((100% - 40px) / 3);
-    height: 363px;
   }
 }
 
 .all-product-pic {
-  height: 178px;
-  object-fit: contain;
-
+  padding: 20px 78px;
   border-radius: 10px;
   background: #e8e8e2;
-
   margin-bottom: 20px;
+}
+@media screen and (min-width: 1440px) {
+  .all-product-pic {
+      padding: 20px 58px;
+  }
 }
 
 .all-discount-svg {
@@ -104,9 +97,9 @@
 .all-product-info {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  margin-bottom: 40px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 8px;
 }
 
 .all-info-title {
@@ -114,9 +107,20 @@
   margin-right: 4px;
 }
 
+.all-product-desc{
+  color: rgba(1, 1, 1, 0.70);
+  font-family: 'NeueMontreal-regular';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.28;
+  margin-top: 20px;
+}
+
 .all-purchaise-box {
   display: flex;
   justify-content: space-between;
+  margin-top: 40px;
 }
 
 .all-product-price {
@@ -124,13 +128,10 @@
 }
 
 .all-product-btn {
-  width: 34px;
-  height: 34px;
   padding: 8px;
   fill: var(--maingray);
   border-radius: 30px;
   background: var(--maingreen);
-  margin-left: 8px;
   transition: var(--transition-settings);
 }
 
@@ -140,6 +141,6 @@
 }
 
 .all-buy-svg {
-  width: 100%;
-  height: 100%;
+  width: 18px;
+  height: 18px;
 }
