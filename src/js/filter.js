@@ -14,10 +14,31 @@ filterForm.elements.filterMethod.addEventListener('change', proceedFilter);
 
 let filterParams;
 
-export function checkFilterParams() {
-  filterParams = getFilterParams()
-    ? getFilterParams()
-    : setDefaultFilterParams();
+export async function checkFilterParams() {
+  if (getFilterParams()) {
+    filterParams = getFilterParams();
+    if (filterParams.keyword !== null) {
+      filterForm.filterInput.value = filterParams.keyword;
+      await getProdByQuery(getFilterParams()).then(resp => {
+        console.log(resp);
+        if (resp.data.results.length) {
+          renderProductList(resp.data);
+        } else if (
+          !Array.isArray(resp.data.results) ||
+          !resp.data.results.length
+        ) {
+          createEmptyMarkup();
+          return;
+        }
+      });
+    } else if (filterParams.category !== null) {
+        // selectedCategory = document.querySelector(`#single option[value ="${filterParams.category}" ]`)
+        // console.log(selectedCategory);
+        // selectedCategory.selected = true;
+      }
+  } else {
+    setDefaultFilterParams();
+  }
 }
 
 checkFilterParams();
