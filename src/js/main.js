@@ -111,9 +111,9 @@ const mainContainer = document.querySelector('.js-main-container');
 
 mainContainer.addEventListener('click', e => {
   // console.log("Click");
-  if (e.target.classList.contains('js-buy-btn')) {
-    console.log("click buy");
+  if (e.target.classList.contains('js-buy-btn')) {    
     let parent = e.target.closest('.js-product-card');
+    // console.log("click buy", parent.dataset.id);
     addProductToCart(parent.dataset.id);
     addedToCartProduct(parent.dataset.id)
   }
