@@ -1,4 +1,4 @@
-import { getProdByIDWithParams, postOrder } from './query';
+import { getProdByIDWithParams } from './query';
 import icons from '../images/sprite.svg';
 import { getCartItems } from './localStorage';
 import {

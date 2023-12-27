@@ -22,7 +22,7 @@ function createMarkup(arr) {
     .map(
       ({ _id, name, img, category, price, size, is10PercentOff, popularity }) =>
         `
-        <li class="all-product-card product-modal-open" id="${_id}">
+        <li class="all-product-card product-modal-open  js-product-card" id="${_id}" data-id=${_id}>
             <img
               class="all-discount-svg ${is10PercentOff
                 .toString()
@@ -51,7 +51,7 @@ function createMarkup(arr) {
             </div>
           <div class="all-purchaise-box">
             <h3 class="all-product-price header-three">&#36;${price}</h3>
-            <button class="all-product-btn buy-btn" type="button">
+            <button class="all-product-btn buy-btn js-buy-btn" type="button">
               <img
                 class="all-buy-svg"
                 src="${shoppingSvg}"

@@ -881,6 +881,7 @@ body.no-scroll {
     |============================
   */
 
-.js-buy-btn img {
+.js-buy-btn img,
+.js-buy-btn svg {
   pointer-events: none;
 }
