@@ -20,6 +20,21 @@ export function addProductToCart(idProduct, amount = 1) {
   }
 }
 
+
+/* 
+Оновлення продукту в корзині по ID
+==========================================================================*/
+export function updateProductInCart(idProduct, amount) {
+  const cartItems = getCartItems();
+
+  const product = cartItems.products.find(({ id }) => id === idProduct);
+  if (product) {
+    product.amount = amount;
+    localStorage.setItem('shoppingCartItems', JSON.stringify(cartItems));
+  }
+}
+
+
 /* 
 Видалення продукту з корзинки по ID
   Параметри:
