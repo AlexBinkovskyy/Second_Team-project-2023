@@ -1,0 +1,28 @@
+@media screen and (min-width: 768px) {
+  .tui-pagination {
+    padding: 0 116px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .tui-pagination {
+    padding: 0 226px 48px;
+  }
+}
+.svg-pag,
+.svg-pag-dis {
+  width: 24px;
+  height: 24px;
+  padding: 8px;
+  border-radius: 60px;
+  background: #fafafa;
+}
+
+.tui-page-btn {
+  width: 40px;
+  height: 40px;
+  color: #a3a3a3;
+  font-family: 'NeueMontreal-Medium';
+  font-size: 14px;
+  line-height: 1.42;
+}
