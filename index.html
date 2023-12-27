@@ -11,9 +11,10 @@
     />
     
     <script type="module" crossorigin src="/Second_Team-project-2023/commonHelpers2.js"></script>
-    <link rel="modulepreload" crossorigin href="/Second_Team-project-2023/assets/vendor-99d50140.js">
-    <link rel="modulepreload" crossorigin href="/Second_Team-project-2023/assets/workWithCart-a605d29f.js">
-    <link rel="stylesheet" href="/Second_Team-project-2023/assets/index-5e66f663.css">
+    <link rel="modulepreload" crossorigin href="/Second_Team-project-2023/assets/vendor-b592f4c5.js">
+    <link rel="modulepreload" crossorigin href="/Second_Team-project-2023/assets/workWithCart-ff7b8521.js">
+    <link rel="stylesheet" href="/Second_Team-project-2023/assets/vendor-a0b14d8a.css">
+    <link rel="stylesheet" href="/Second_Team-project-2023/assets/index-cb1cb811.css">
   </head>
 
   <body>
@@ -113,7 +114,12 @@
         <section>
           <!-- Product list -->
           <div class="container main-adapt js-main-container">
-            <ul class="product-list"></ul>
+            <div class="adapt-pagination">
+              <ul class="product-list"></ul>
+              <div class="pagination">
+                <div id="tui-pagination-container" class="tui-pagination"></div>
+              </div>
+            </div>
             <aside class="sidebar">
               <!-- Popular products -->
               <div class="popular-product">
@@ -129,7 +135,6 @@
             </aside>
           </div>
         </section>
-        <div id="tui-pagination-container" class="tui-pagination"></div>
       </main>
       <footer class="footer">
   <div class="container footer-content">
