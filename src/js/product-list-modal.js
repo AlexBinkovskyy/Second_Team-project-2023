@@ -1,3 +1,9 @@
+import { getProdByID } from './query';
+import shoppingSvg from '../images/icons/shopping-cart.svg';
+
+const productModalContent = document.querySelector('.product-modal-content');
+const body = document.querySelector('body');
+
 export function showProductModal(element) {
   const refs = {
     openModalBtn: element,
@@ -8,20 +14,94 @@ export function showProductModal(element) {
   refs.openModalBtn.addEventListener('click', toggleModalOpen);
   refs.closeModalBtn.addEventListener('click', toggleModalClose);
 
-  function toggleModalOpen() {
-    refs.modal.classList.toggle('is-hidden');
+  function toggleModalOpen(event) {
+    // body.style.overflow = 'hidden';
+    // refs.modal.classList.remove('is-hidden');
+    // logModal(event.currentTarget);
 
-    logModal(event.currentTarget);
+    const allProductBtn = document.querySelector('.all-product-btn');
+    const allBuySvg = document.querySelector('.all-buy-svg');
+
+    if (event.target === allProductBtn) {
+      // console.log('allProductBtn');
+      // event.preventDefault();
+    } else if (event.target === allBuySvg) {
+      // console.log('allBuySvg');
+      // event.preventDefault();
+    } else {
+      body.style.overflow = 'hidden';
+      refs.modal.classList.remove('is-hidden');
+      logModal(event.currentTarget);
+      // console.log('Render');
+    }
+    // console.log(allProductBtn);
+    // console.log(allBuySvg);
   }
 
   function toggleModalClose() {
-    refs.modal.classList.toggle('is-hidden');
+    body.style.overflow = 'visible';
+    productModalContent.innerHTML = `
+    <div class="product-modal-content">Loading...</div>
+    `;
+    refs.modal.classList.add('is-hidden');
   }
 }
 
 function logModal(obj) {
-  const productModalContent = document.querySelector('.product-modal-content');
-  console.log(obj);
+  getProdByID(obj.id)
+    .then(({ data }) => {
+      const productModalContent = document.querySelector(
+        '.product-modal-content'
+      );
+      productModalContent.innerHTML = renderProductModal(data);
+    })
+    .catch(error => console.log(error));
 }
 
-function createProductModal() {}
+function renderProductModal(object) {
+  return `
+    <div class="modal-card-content" id="${object._id}" data-id="${object._id}">
+    <div class="modal-card-pic-info">
+      <img
+        src="${object.img}"
+        alt="${object.name}"
+        loading="lazy"
+        class="all-product-pic"
+      />
+      <div>
+      <h3 class="all-product-name header-three">${object.name}</h3>
+      <div class="all-product-info regular-text">
+        <p class="all-info-item">
+          <span class="all-info-title"> Category: </span>
+          ${object.category.replaceAll('_', ' ')}
+        </p>
+        <p class="all-info-item">
+          <span class="all-info-title"> Size: </span>
+          ${object.size}
+        </p>
+        <p class="all-info-item">
+          <span class="all-info-title"> Popularity: </span>
+          ${object.popularity}
+          </div>
+      </p>
+      <p class="all-product-desc">
+      ${object.desc}
+      </p>
+      </div>
+</div>
+      <div class="all-purchaise-box">
+        <h3 class="all-product-price header-three">&#36;${object.price}</h3>
+        <button class="modal-product-btn buy-btn js-buy-btn" type="button">
+          <p class="modal-product-btn-text">Add to</p>
+          <img
+            class="all-buy-svg"
+            src="${shoppingSvg}"
+            alt="shop-icon"
+            width="18"
+            height="18"
+          />
+        </button>
+      </div>
+    </div>
+  `;
+}
