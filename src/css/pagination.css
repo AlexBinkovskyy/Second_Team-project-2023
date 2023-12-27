@@ -1,0 +1,45 @@
+.pagination {
+  padding: 20px 12px 40px 11px;
+}
+
+@media screen and (min-width: 768px) {
+  .pagination {
+    padding: 25px 148px 50px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .pagination {
+    padding: 20px 0 60px 0;
+  }
+}
+
+.tui-pagination {
+  height: 40px;
+}
+
+.tui-pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.svg-pag,
+.svg-pag-dis {
+  width: 24px;
+  height: 24px;
+  padding: 8px;
+  border-radius: 60px;
+  background: #fafafa;
+}
+
+.tui-page-btn {
+  width: 40px;
+  height: 40px;
+  color: #a3a3a3;
+  font-family: 'NeueMontreal-Medium';
+  line-height: 1.42;
+}
+
+.adapt-pagination {
+}
