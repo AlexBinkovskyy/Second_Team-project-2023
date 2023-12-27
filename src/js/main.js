@@ -13,6 +13,7 @@ import { addProductToCart } from './workWithCart.js';
 import shoppingSvg from '../images/sprite.svg'
 import Pagination from 'tui-pagination';
 import { getProdByQuery } from './query';
+import 'tui-pagination/dist/tui-pagination.css';
 
 
 
@@ -37,15 +38,13 @@ getProdByDiscount()
       template: {
         page: '<a href="#" class="tui-page-btn">{{page}}</a>',
         currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-        moveButton: 
-          '<a href="#" class="tui-page-btn tui-{{type}}">' +
-          '<span class="tui-ico-{{type}}"><svg class="svg-pag" width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L1 9" stroke="#A3A3A3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'
-          +
-          '</a>',
+      moveButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}">' +
+        '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</a>',
     disabledMoveButton:
       '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}"><svg class="svg-pag-dis" width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 9L1 5L5 1" stroke="#A3A3A3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span > '
-      +
+        '<span class="tui-ico-{{type}}">{{type}}</span>' +
       '</span>',
     moreButton:
       '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
