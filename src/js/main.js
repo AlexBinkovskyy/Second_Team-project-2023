@@ -8,7 +8,7 @@ import { renderProductDiscount } from './discount';
 import { renderProductList } from './product-list';
 import { renderFilterSelect } from './filter';
 import { getCartItems } from './localStorage.js';
-import { showModalMessage } from './footer.js';
+// import { showModalMessage } from './footer.js';
 import { addProductToCart } from './workWithCart.js';
 import shoppingSvg from '../images/sprite.svg'
 import Pagination from 'tui-pagination';
