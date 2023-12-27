@@ -1,26 +1,37 @@
 import discountSvg from '../images/icons/discount.svg';
 import shoppingSvg from '../images/sprite.svg';
+import check from '../images/icons/check-ico.svg';
 
 const popularProduct = document.querySelector('.popular-product-list');
 
 export function renderPopularProduct(data) {
   popularProduct.insertAdjacentHTML('beforeend', markup(data));
+  const clickBtnBuy = document.querySelector('.click-buy');
+  clickBtnBuy.addEventListener('click', () => {
+    (clickBtnBuy.style.display = 'none'), (clickcheck.style.display = 'block');
+  });
+  const clickcheck = document.querySelector('.popular-check');
 }
 
 function markup(arr) {
   return arr
     .map(
       ({ _id, name, img, category, size, popularity }) => `
-          <li class="popular-product-item js-product-card" data-id="${_id}">
-            <img src="${img}" alt="${name}" width="56" height="56" loading="lazy" class="popular-product-pic" />
+          <li class="popular-product-item js-product-card"  data-id="${_id}">
+            <img src="${img}" alt="${name}" width="56" height="56" loading="lazy" class="popular-product-pic"/>
             <div class="popular-product-info">
             <div class="popular-product-info-btn">
             <h3 class="popular-product-name">${name}</h3>
-           <button type="button" class="popular-buy buy-btn js-buy-btn">
+           <button type="button" class="popular-buy buy-btn js-buy-btn js-btn-first-ico" >
             <svg class="img-icon"  width="12" height="12">
-            <use href="${shoppingSvg}#icon-shopping-cart"></use></svg>
+            <use href="${shoppingSvg}#icon-shopping-cart"></use>
+            </svg>
             </button>
-        </div>
+            <button 
+            class="popular-check  js-btn-second-ico" type="button">
+            <img class="popular-check-svg" src="${check}" alt="shop-icon" width="12" height="12"/>
+            </button>
+              </div>
               <div class="info-item-description">
               <p class="info-item-title">
               <span class="info-title"> Category: </span>
@@ -43,6 +54,7 @@ function markup(arr) {
     )
     .join('');
 }
+
 
 // Змініть ваш код так, щоб він виглядав приблизно так
 // window.addToCart = function (productId) {

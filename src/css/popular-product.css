@@ -132,6 +132,21 @@
   }
 }
 
+.popular-check {
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+  fill: var(--maingray);
+  border-radius: 30px;
+  background: var(--maingreen);
+  margin-left: 8px;
+  transition: var(--transition-settings);
+}
+
+.popular-check {
+  display: none;
+}
+
 .info-item-description {
   font-family: 'NeueMontreal-regular';
   font-size: 12px;
