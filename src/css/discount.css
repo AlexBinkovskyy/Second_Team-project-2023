@@ -94,6 +94,12 @@
   }
 }
 
+@media screen and (min-width: 1440px) {
+  .discount-card {
+    height: 232px;
+  }
+}
+
 .discount-img {
   width: 304px;
   height: 150px;

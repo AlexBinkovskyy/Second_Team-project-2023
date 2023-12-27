@@ -13,6 +13,9 @@ import { addProductToCart } from './workWithCart.js';
 import shoppingSvg from '../images/sprite.svg'
 import Pagination from 'tui-pagination';
 import { getProdByQuery } from './query';
+import 'tui-pagination/dist/tui-pagination.css';
+
+
 
 
 const container = document.getElementById('tui-pagination-container');
@@ -35,18 +38,18 @@ getProdByDiscount()
       template: {
         page: '<a href="#" class="tui-page-btn">{{page}}</a>',
         currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-        moveButton:
-          '<a href="#" class="tui-page-btn tui-{{type}}">' +
-          '<span class="tui-ico-{{type}}">{{type}}</span>' +
-          '</a>',
-        disabledMoveButton:
-          '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-          '<span class="tui-ico-{{type}}">{{type}}</span>' +
-          '</span>',
-        moreButton:
-          '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-          '<span class="tui-ellip">...</span>' +
-          '</a>',
+      moveButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}">' +
+        '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</a>',
+    disabledMoveButton:
+      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+        '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</span>',
+    moreButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+        '<span class="tui-ico-ellip">...</span>' +
+      '</a>'
       },
     });
   
@@ -142,9 +145,9 @@ const mainContainer = document.querySelector('.js-main-container');
 
 mainContainer.addEventListener('click', e => {
   // console.log("Click");
-  if (e.target.classList.contains('js-buy-btn')) {
-    console.log("click buy");
+  if (e.target.classList.contains('js-buy-btn')) {    
     let parent = e.target.closest('.js-product-card');
+    // console.log("click buy", parent.dataset.id);
     addProductToCart(parent.dataset.id);
     addedToCartProduct(parent.dataset.id)
   }

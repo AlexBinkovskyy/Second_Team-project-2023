@@ -64,7 +64,7 @@
                 <select
                   name="filterMethod"
                   id="filter-method"
-                  class="filter-select custom-select"
+                  class="filter-select custom-select filter-input-item"
                 >
                   <option value="A_to_Z">A to Z</option>
                   <option value="Z_to_A">Z to A</option>
@@ -81,7 +81,12 @@
         <section>
           <!-- Product list -->
           <div class="container main-adapt js-main-container">
-            <ul class="product-list"></ul>
+            <div class="adapt-pagination">
+              <ul class="product-list"></ul>
+              <div class="pagination">
+                <div id="tui-pagination-container" class="tui-pagination"></div>
+              </div>
+            </div>
             <aside class="sidebar">
               <!-- Popular products -->
               <div class="popular-product">
@@ -97,7 +102,6 @@
             </aside>
           </div>
         </section>
-        <div id="tui-pagination-container" class="tui-pagination"></div>
       </main>
       <load src="./partials/footer.html" />
       <load src="./partials/product-list-modal.html" />

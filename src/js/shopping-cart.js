@@ -1,4 +1,4 @@
-import { getProdByIDWithParams } from './query';
+import { getProdByIDWithParams, postOrder } from './query';
 import icons from '../images/sprite.svg';
 import { getCartItems } from './localStorage';
 import {
@@ -6,6 +6,7 @@ import {
   setEmailToOrderInfo,
   removeAllProductsFromCart,
   removeProductFromCart,
+  updateProductInCart,
 } from './workWithCart';
 
 const list = document.querySelector('.js-cart-list');
@@ -17,11 +18,12 @@ const clearOrderBtn = document.querySelector('.js-clear-order-btn');
 const cartBox = document.querySelector('.js-cart-box');
 const emptyCart = document.querySelector('.js-empty-cart');
 
-
-setEmailToOrderInfo('p@gmail.com');
+// setEmailToOrderInfo('p@gmail.com');
+let totalSumm = 0;
 
 let arrCart = getCartItems();
-let totalSumm = 0;
+let listFromServer = null;
+
 drawCartPage();
 
 list.addEventListener('click', e => {
@@ -29,8 +31,25 @@ list.addEventListener('click', e => {
     let parent = e.target.closest('.selectedProduct');
     // console.log(parent);
     removeProductFromCart(parent.dataset.id);
-    drawCartPage();
+
+    const index = arrCart.products.findIndex((product) => product.id === parent.dataset.id)
+    console.log("index", index);
+    if (index !== -1) {
+      arrCart.products.splice(index, 1);
+      listFromServer.splice(index, 1)
+    }
+    console.log(arrCart);
+    console.log(listFromServer);
+    // drawCartPage();
+    updateCartPage();
   }
+});
+
+clearOrderBtn.addEventListener('click', () => {
+  removeAllProductsFromCart();
+  arrCart.products = [];
+  listFromServer = [];
+  updateCartPage();
 });
 
 async function drawCartPage() {
@@ -47,22 +66,37 @@ async function drawCartPage() {
     list.innerHTML = '';
     //масив з Серверу
     const originProductList = await getCartProducts(arrCart.products);
+    listFromServer = originProductList;
+    console.log(listFromServer);
     // console.log(originProductList);
 
     cartNumbersUpdate(cartNumbersList, amountElements);
     // console.log(cartBox);
     spawnCardProducts(originProductList);
-    summ.textContent = '$' + getTotalSumm(originProductList);
+    summ.textContent = '$' + getTotalSumm(originProductList).toFixed(2);
   }
-  
-  // updateCartBasket();
   formInput.value = arrCart.email;
 }
 
-clearOrderBtn.addEventListener('click', () => {
-  removeAllProductsFromCart();
-  drawCartPage();
-});
+async function updateCartPage() {
+  arrCart = getCartItems();
+  console.log(arrCart);
+
+  const amountElements = arrCart.products.length;
+  switchSections(amountElements);
+
+  if (amountElements) {
+    // console.log(1, listFromServer);
+    // console.log(2, arrCart);
+    
+    summ.textContent = '$' + getTotalSumm(listFromServer).toFixed(2);
+    list.innerHTML = '';
+    spawnCardProducts(listFromServer);
+  }
+  // console.log(2, listFromServer);
+  cartNumbersUpdate(cartNumbersList, amountElements);
+}
+
 
 function spawnCardProducts(products) {
   generateCardListMarkup(products, createCartProductMarkup).then(result => {
@@ -110,6 +144,14 @@ async function getCartProducts(productList) {
 // створення карттки в кошику
 function createCartProductMarkup(product) {
   const { _id, name, img, category, price, size } = product;
+  let amount = null;
+  try {
+    amount = arrCart.products[arrCart.products.findIndex(p => p.id === _id)].amount;
+  } catch (error) {
+    console.log(error);
+    return ""
+  }
+  
   const cleanedCategory = category.replace(/_/g, ' ');
 
   return `
@@ -143,7 +185,7 @@ function createCartProductMarkup(product) {
             <button class="counter-btn" type="button" data-action="decrement">
                 -
             </button>
-            <span class="counter-value data-counter">1</span>
+            <span class="counter-value data-counter">${amount}</span>
             <button class="counter-btn" type="button" data-action="increment">
                 +
             </button>
@@ -160,21 +202,34 @@ function createCartProductMarkup(product) {
 let counter;
 
 list.addEventListener('click', function (event) {
+  const obj = getCartItems();
+  let thisCard = '';
+  let thisProductIndex = '';
+
   // Перевірка кліку сурово по кнопкам + або -
   if (
     event.target.dataset.action === 'increment' ||
     event.target.dataset.action === 'decrement'
   ) {
+    thisCard = event.target.closest('.selectedProduct');
+    thisProductIndex = arrCart.products.findIndex(
+      product => product.id === thisCard.dataset.id
+    );
+    // console.log(thisProductIndex);
+
     // Найшли обгортку лічильника
     const counterContainer = event.target.closest('.counter-container');
 
     // Найшли значення лічильника
     counter = counterContainer.querySelector('.counter-value');
+  } else {
+    return;
   }
 
   // Перевірка чи елемент являється кнопкою плюс
   if (event.target.dataset.action === 'increment') {
     // Змінює текст в лічильнику, збільшує на 1
+
     counter.innerHTML = ++counter.innerHTML;
   }
 
@@ -186,6 +241,10 @@ list.addEventListener('click', function (event) {
       counter.innerHTML = --counter.innerHTML;
     }
   }
+
+  updateProductInCart(obj.products[thisProductIndex].id, counter.innerHTML);
+
+  updateCartPage()
 });
 
 /**
@@ -234,7 +293,8 @@ function cartNumbersUpdate(objs, number) {
 
 function getTotalSumm(products) {
   return products.reduce((sum, product) => {
-    console.log(product);
-    return sum + product.price;
+    return (
+      sum + product.price * arrCart.products[arrCart.products.findIndex(p => p.id === product._id)].amount
+    );
   }, 0);
 }

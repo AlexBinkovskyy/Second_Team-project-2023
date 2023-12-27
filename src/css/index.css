@@ -789,13 +789,17 @@ body.no-scroll {
   padding-top: 37px;
   padding-bottom: 20px;
 }
+@media only screen and (min-width: 768px) {
+  .filter {
+    padding-bottom: 30px;
+  }
+}
+
 /* .popular-product {
   padding-top: 40px;
 } */
 .discount-products {
   padding-bottom: 80px;
-}
-@media only screen and (min-width: 768px) {
 }
 
 @media only screen and (min-width: 1440px) {
