@@ -8,9 +8,10 @@ import { renderProductDiscount } from './discount';
 import { renderProductList } from './product-list';
 import { renderFilterSelect } from './filter';
 import { getCartItems } from './localStorage.js';
-import { handleSubscriptionError } from './query.js';
-import { toggleModal } from './footer.js';
 import Pagination from 'tui-pagination';
+import { setupSubscriptionForm } from './footer.js';
+
+setupSubscriptionForm();
 
 const container = document.getElementById('tui-pagination-container');
 // const instance = new Pagination(container, { ... });
