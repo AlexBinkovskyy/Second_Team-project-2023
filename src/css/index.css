@@ -880,3 +880,7 @@ body.no-scroll {
     | Loader ends
     |============================
   */
+
+.js-buy-btn img {
+  pointer-events: none;
+}

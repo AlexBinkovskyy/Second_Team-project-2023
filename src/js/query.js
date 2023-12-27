@@ -1,12 +1,8 @@
 import axios from 'axios';
 import references from './references';
 
-// AxiosQuery
-const params = {};
-
 let page = 1;
 let limitPerPage = 6;
-let Id = null;
 
 export async function getProdByParams() {
   if (window.innerWidth >= 1440) {
@@ -41,14 +37,20 @@ export async function getProdByCategories() {
 }
 
 export async function getProdByQuery({
-  keyword,
-  category,
-  byABC,
-  byPrice,
-  byPopularity,
+  keyword = null,
+  category = null,
+  byABC = null,
+  byPrice = null,
+  byPopularity = null,
   page = 1,
-  limit = 6,
+  limitPerPage = 6,
 }) {
+  if (window.innerWidth >= 1440) {
+    limitPerPage = 9;
+  } else if (window.innerWidth >= 768) {
+    limitPerPage = 8;
+  } 
+
   let query = `https://food-boutique.b.goit.study/api/products?`;
   if (keyword) {
     query += `keyword=${keyword}&`;
@@ -65,7 +67,7 @@ export async function getProdByQuery({
   if (byPopularity  !== null) {
     query += `byPopularity=${byPopularity}&`;
   }
-  query += `page=${page}&limit=${limit}`;
+  query += `page=${page}&limit=${limitPerPage}`;
   console.log(query);
   return await axios(query);
 }
@@ -78,3 +80,24 @@ export async function getProdByQuery({
 //   return (await axios.post(`${references.SECOND_URL}`))
 // }
 
+// export async function postOrder(order) {
+//   console.log("--------------------");
+//   console.log(order);
+//   console.log(JSON.stringify(order));
+//   return await axios.post(`https://food-boutique.b.goit.study/api/orders`, JSON.stringify(order), {
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   });
+// }
+
+
+// postOrder(JSON.stringify({
+//   "email": "test@gmail.com",
+//   "products": [
+//     {
+//       "productId": "640c2dd963a319ea671e383b",
+//       "amount": 2
+//     }
+//   ]
+// }));
