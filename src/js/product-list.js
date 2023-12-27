@@ -21,7 +21,7 @@ function createMarkup(arr) {
   return arr
     .map(
       ({ _id, name, img, category, price, size, is10PercentOff, popularity }) =>
-        `
+       `
         <li class="all-product-card product-modal-open  js-product-card" id="${_id}" data-id=${_id}>
             <img
               class="all-discount-svg ${is10PercentOff
