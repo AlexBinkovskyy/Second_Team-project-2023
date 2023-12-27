@@ -1,7 +1,7 @@
-import{s as b,g as l,r as h,a as C,b as L,c as S}from"./assets/workWithCart-743a34c2.js";import"./assets/vendor-99d50140.js";const c=document.querySelector(".js-cart-list"),q=document.querySelector(".cart-form-input"),s=document.querySelector(".js-total-summ"),P=document.querySelectorAll(".js-cart-numbers"),j=document.querySelector(".js-clear-order-btn"),i=document.querySelector(".js-cart-box"),u=document.querySelector(".js-empty-cart");b("p@gmail.com");let r=l(),$=0;o();c.addEventListener("click",t=>{if(t.target.classList.contains("delete-btn")){let e=t.target.closest(".selectedProduct");h(e.dataset.id),o()}});async function o(){r=l(),s.textContent="$0";const t=r.products.length;if(w(t),t){c.innerHTML="";const e=await T(r.products);x(P,t),E(e),s.textContent="$"+I(e)}q.value=r.email}j.addEventListener("click",()=>{C(),o()});function E(t){M(t,H).then(e=>{c.insertAdjacentHTML("beforeend",e)})}async function M(t,e){return t.map(n=>($+=n.price,e(n))).join("")}async function T(t){return await Promise.all(t.map(({id:e})=>L(e).then(n=>n.data)))}function H(t){const{_id:e,name:n,img:p,category:f,price:g,size:v}=t,y=f.replace(/_/g," ");return`
+import{g as s,r as j,a as E,b as H,u as I,s as M,c as T}from"./assets/workWithCart-253776cd.js";import"./assets/vendor-99d50140.js";const i=document.querySelector(".js-cart-list"),w=document.querySelector(".cart-form-input"),u=document.querySelector(".js-total-summ"),b=document.querySelectorAll(".js-cart-numbers"),k=document.querySelector(".js-clear-order-btn"),g=document.querySelector(".js-cart-box"),y=document.querySelector(".js-empty-cart");let F=0,o=s(),a=null;B();i.addEventListener("click",t=>{if(t.target.classList.contains("delete-btn")){let e=t.target.closest(".selectedProduct");j(e.dataset.id);const n=o.products.findIndex(r=>r.id===e.dataset.id);console.log("index",n),n!==-1&&(o.products.splice(n,1),a.splice(n,1)),console.log(o),console.log(a),m()}});k.addEventListener("click",()=>{E(),o.products=[],a=[],m()});async function B(){o=s(),u.textContent="$0";const t=o.products.length;if(L(t),t){i.innerHTML="";const e=await z(o.products);a=e,console.log(a),S(b,t),C(e),u.textContent="$"+P(e).toFixed(2)}w.value=o.email}async function m(){o=s(),console.log(o);const t=o.products.length;L(t),t&&(u.textContent="$"+P(a).toFixed(2),i.innerHTML="",C(a)),S(b,t)}function C(t){_(t,A).then(e=>{i.insertAdjacentHTML("beforeend",e)})}async function _(t,e){return t.map(n=>(F+=n.price,e(n))).join("")}async function z(t){return await Promise.all(t.map(({id:e})=>H(e).then(n=>n.data)))}function A(t){const{_id:e,name:n,img:r,category:p,price:d,size:q}=t;let f=null;try{f=o.products[o.products.findIndex(l=>l.id===e)].amount}catch(l){return console.log(l),""}const $=p.replace(/_/g," ");return`
     <li class="selectedProduct" data-id=${e}>
       <div class="product-picture">
-          <img src="${p}" alt="${n}" class="" loading="lazy" />
+          <img src="${r}" alt="${n}" class="" loading="lazy" />
       </div>
 
       <div class="product-info-container">
@@ -12,27 +12,27 @@ import{s as b,g as l,r as h,a as C,b as L,c as S}from"./assets/workWithCart-743a
 
           <svg class="" width="11.25" height="11.25">
 
-            <use href="${S}#icon-Cross_close"></use>
+            <use href="${M}#icon-Cross_close"></use>
           </svg>
         </button>
       </div>
 
       <div class="product-info">
-        <p class="info-quality-category"> Category: <span class="info-value">${y}</span></p>
-        <p class="info-quality"> Size:<span class="info-value">${v}</span></p>
+        <p class="info-quality-category"> Category: <span class="info-value">${$}</span></p>
+        <p class="info-quality"> Size:<span class="info-value">${q}</span></p>
       </div>
         <div class="price">$
-          <span>${g}</span>
+          <span>${d}</span>
         </div>
       </div>
       <div class="counter-container">
             <button class="counter-btn" type="button" data-action="decrement">
                 -
             </button>
-            <span class="counter-value data-counter">1</span>
+            <span class="counter-value data-counter">${f}</span>
             <button class="counter-btn" type="button" data-action="increment">
                 +
             </button>
         </div>
-  </li>`}let a;c.addEventListener("click",function(t){(t.target.dataset.action==="increment"||t.target.dataset.action==="decrement")&&(a=t.target.closest(".counter-container").querySelector(".counter-value")),t.target.dataset.action==="increment"&&(a.innerHTML=++a.innerHTML),t.target.dataset.action==="decrement"&&parseInt(a.innerHTML)>1&&(a.innerHTML=--a.innerHTML)});function w(t){k(i,u),d(t?i:u)}function d(...t){t.forEach(e=>{e.classList.remove("hiden")})}function k(...t){t.forEach(e=>{e.classList.add("hiden")})}function x(t,e){t.forEach(n=>{n.textContent=e})}function I(t){return t.reduce((e,n)=>(console.log(n),e+n.price),0)}const B=document.querySelector(".cart-form"),z=document.querySelector(".js-modal-close"),m=document.querySelector(".cart-modal-bg");B.addEventListener("submit",A);z.addEventListener("click",O);function A(t){t.preventDefault(),m.classList.remove("hiden")}function O(){m.classList.add("hiden")}
+  </li>`}let c;i.addEventListener("click",function(t){const e=s();let n="",r="";if(t.target.dataset.action==="increment"||t.target.dataset.action==="decrement")n=t.target.closest(".selectedProduct"),r=o.products.findIndex(d=>d.id===n.dataset.id),c=t.target.closest(".counter-container").querySelector(".counter-value");else return;t.target.dataset.action==="increment"&&(c.innerHTML=++c.innerHTML),t.target.dataset.action==="decrement"&&parseInt(c.innerHTML)>1&&(c.innerHTML=--c.innerHTML),I(e.products[r].id,c.innerHTML),m()});function L(t){O(g,y),v(t?g:y)}function v(...t){t.forEach(e=>{e.classList.remove("hiden")})}function O(...t){t.forEach(e=>{e.classList.add("hiden")})}function S(t,e){t.forEach(n=>{n.textContent=e})}function P(t){return t.reduce((e,n)=>e+n.price*o.products[o.products.findIndex(r=>r.id===n._id)].amount,0)}const h=document.querySelector(".cart-form"),D=document.querySelector(".js-modal-close"),x=document.querySelector(".cart-modal-bg");console.log("Hello");h.addEventListener("submit",t=>{t.preventDefault(),T(h.elements.email.value),s(),N()});D.addEventListener("click",U);function N(){x.classList.remove("hiden")}function U(){x.classList.add("hiden")}
 //# sourceMappingURL=commonHelpers.js.map
