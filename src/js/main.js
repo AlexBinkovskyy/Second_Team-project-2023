@@ -14,10 +14,9 @@ import shoppingSvg from '../images/sprite.svg'
 import Pagination from 'tui-pagination';
 import { getProdByQuery } from './query';
 import 'tui-pagination/dist/tui-pagination.css';
+import { setupSubscriptionForm } from './footer.js';
 
-
-
-
+setupSubscriptionForm();
 const container = document.getElementById('tui-pagination-container');
 const instance = new Pagination(container, {});
 

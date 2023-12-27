@@ -59,12 +59,12 @@ export async function getProdByQuery({
     query += `category=${category}&`;
   }
   if (byABC !== null) {
-    query +=`byABC=${byABC}&`;
+    query += `byABC=${byABC}&`;
   }
   if (byPrice !== null) {
     query += `byPrice=${byPrice}&`;
   }
-  if (byPopularity  !== null) {
+  if (byPopularity !== null) {
     query += `byPopularity=${byPopularity}&`;
   }
   query += `page=${page}&limit=${limitPerPage}`;
@@ -101,3 +101,4 @@ export async function getProdByQuery({
 //     }
 //   ]
 // }));
+

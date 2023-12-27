@@ -1,65 +1,59 @@
-// import { sendSubscription } from "./query";
-export function showModalMessage(message) {
+export function handleSubscriptionError(statusCode, errorMessage) {
   const modalText = document.querySelector('.modal-text');
-  modalText.innerText = message;
-
-  const backdrop = document.querySelector('[data-modal]');
-  backdrop.classList.remove('is-hidden');
-
-  const closeButton = document.querySelector('[data-modal-close]');
-  closeButton.onclick = function () {
-    backdrop.classList.add('is-hidden');
-  };
-
-  window.onclick = function (event) {
-    if (event.target === backdrop) {
-      backdrop.classList.add('is-hidden');
-    }
-  };
+  modalText.textContent = `Error ${statusCode}: ${errorMessage}`;
+  toggleModal();
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  const form = document.querySelector('.subscription-form');
+export function toggleModal() {
+  const modalBackdrop = document.querySelector('.backdrop');
+  modalBackdrop.classList.toggle('is-hidden');
+}
 
-  form.addEventListener('submit', function (event) {
+export function setupSubscriptionForm() {
+  const subscriptionForm = document.querySelector('.subscription-form');
+
+  subscriptionForm.addEventListener('submit', async event => {
     event.preventDefault();
 
-    const email = document.querySelector('.footer-form-input').value;
+    const formData = new FormData(subscriptionForm);
+    const email = formData.get('email');
 
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailPattern.test(email)) {
-      showModalMessage(
-        'Будь ласка, введіть коректну адресу електронної пошти.'
-      );
-      return;
+    try {
+      const queryString = `https://food-boutique.b.goit.study/api/subscription?email=${email}`;
+      const getDataResponse = await fetch(queryString, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (getDataResponse.ok) {
+        const responseData = await getDataResponse.json();
+        console.log('Data retrieved successfully:', responseData);
+        processSubscriptionData(responseData);
+      } else {
+        const errorData = await getDataResponse.json();
+        handleSubscriptionError(getDataResponse.status, errorData.message);
+      }
+    } catch (error) {
+      console.error('Error occurred:', error);
+      handleSubscriptionError(500, 'Server error');
     }
-
-    // fetch(form.action, {
-    //   method: form.method,
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({ email: email }),
-    // })
-    //   .then(response => {
-    //     if (response.status === 201) {
-    //       showModalMessage('Успішна підписка на розсилку нових продуктів!');
-    //     } else if (response.status === 409) {
-    //       showModalMessage('Підписка вже існує. Ви вже підписані на розсилку.');
-    //     } else {
-    //       showModalMessage(
-    //         'Виникла помилка під час підписки. Спробуйте ще раз.'
-    //       );
-    //     }
-    //   })
-    //   .catch(error => {
-    //     showModalMessage('Виникла помилка під час підписки. Спробуйте ще раз.');
-    //   });
   });
-});
-
-const temp = {
-  email: 'test@gmail.com'
 }
+function processSubscriptionData(data) {
+  // Ваші додаткові дії з отриманими даними
+  // Наприклад, оновлення вмісту сторінки, виведення інформації тощо
+  // Наприклад:
+  const subscriptionInfoElement = document.querySelector('.subscription-info');
+  if (subscriptionInfoElement) {
+    subscriptionInfoElement.textContent = data.message;
+  }
+}
+// async function post() {
+//   return await axios.post(`${MAIN_URL}subscription`, {
+//     email: 'email@gmail.com',
+//   });
+// }
 
-// sendSubscription(temp).then((data) => console.log(data)).catch((err) => console.log(err))
+// console.log(post());
