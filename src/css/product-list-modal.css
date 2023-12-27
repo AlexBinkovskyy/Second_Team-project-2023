@@ -5,8 +5,7 @@
     width: 100%;
     height: 100%;
     background-color: #2e2f4266;
-    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
+    transition: opacity var(--transition-settings), visibility var(--transition-settings);
     z-index: 100;
 }
 
@@ -17,18 +16,30 @@
 }
 
 .product-modal-window {
+    /* width: 335px; */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
     width: 100vw;
-    max-width: 392px;
-    padding: 72px 16px 24px 16px;
-
+    max-width: 335px;
+    padding: 40px 20px;
     border-radius: 20px;
     background: #FAFAFA;
+    transition: var(--transition-settings);
+}
+@media screen and (min-width: 768px) {
+    .product-modal-window {
+        max-width: 600px;
+        padding: 40px;
+    }
+}
 
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+@media screen and (min-width: 768px) {
+    .modal-card-pic-info {
+        display: flex;
+        gap: 24px;
+    }
 }
 
 .product-modal-title {
@@ -38,20 +49,68 @@
     margin: 0 0 16px 0;
 }
 
+@media screen and (min-width: 768px) {
+    .modal-card-content .all-product-desc {
+        margin-top: 24px;
+    }
+}
+
+.modal-card-content .all-product-pic{
+    padding: 26px 68px;
+}
+@media screen and (min-width: 768px) {
+    .modal-card-content .all-product-pic {
+        margin-bottom: 0;
+        padding: 26px 40px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .modal-card-content .all-purchaise-box{
+        margin-top: 48px;
+    }
+}
+
 .product-modal-close {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 24px;
-    right: 24px;
-    padding: 0;
-    width: 24px;
-    height: 24px;
-    border: 1px solid #0000001a;
+    top: 14px;
+    right: 14px;
+    padding: 4px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
-    background-color: #e7e9fc;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
+    background-color: #FAFAFA;
+    transition: background-color var(--transition-settings), border var(--transition-settings);
     z-index: 10;
+}
+.product-modal-close:hover,
+.product-modal-close:focus {
+    background-color: var(--maingreen-hower);
+    border: none;
+    fill: var(--maingray);
+}
+
+.modal-product-btn{
+    padding: 12px 24px;
+    fill: var(--maingray);
+    border-radius: 30px;
+    background: var(--maingreen);
+    transition: var(--transition-settings);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.modal-product-btn-text {
+    color: var(--maingray);
+    font-family: 'NeueMontreal-regular';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.28;
 }

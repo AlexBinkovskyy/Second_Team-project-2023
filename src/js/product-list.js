@@ -1,40 +1,28 @@
 import discountSvg from '../images/icons/discount.svg';
 import shoppingSvg from '../images/icons/shopping-cart.svg';
 import { getProdByParams } from './query';
-// import { filterForm } from './filter';
+import { filterForm } from './filter';
 import { setDefaultFilterParams } from './localStorage';
-// import { checkFilterParams } from './filter';
+import { checkFilterParams } from './filter';
 import { showProductModal } from './product-list-modal.js';
 
 const productList = document.querySelector('.product-list');
-const productModalWindow = document.querySelector('.product-modal-window');
 
 export function renderProductList(data) {
   productList.innerHTML = createMarkup(data.results);
 
   const productModalOpen = document.querySelectorAll('.product-modal-open');
-
-  // console.log(productModalOpen);
-  // console.log(event);
-
   productModalOpen.forEach(element => {
-    // console.log(element);
     element.addEventListener('click', showProductModal(element));
   });
 }
-
-// function logModal(event) {
-//   const productModalContent = document.querySelector('.product-modal-content');
-//   console.log(productModalContent);
-// }
 
 function createMarkup(arr) {
   return arr
     .map(
       ({ _id, name, img, category, price, size, is10PercentOff, popularity }) =>
-        `
-        <li class="all-product-card product-modal-open" id="${_id}">
-          <div class="">
+       `
+        <li class="all-product-card product-modal-open  js-product-card" id="${_id}" data-id=${_id}>
             <img
               class="all-discount-svg ${is10PercentOff
                 .toString()
@@ -61,10 +49,9 @@ function createMarkup(arr) {
                 ${popularity}
               </p>
             </div>
-          </div>
           <div class="all-purchaise-box">
             <h3 class="all-product-price header-three">&#36;${price}</h3>
-            <button class="all-product-btn buy-btn" type="button">
+            <button class="all-product-btn buy-btn js-buy-btn" type="button">
               <img
                 class="all-buy-svg"
                 src="${shoppingSvg}"

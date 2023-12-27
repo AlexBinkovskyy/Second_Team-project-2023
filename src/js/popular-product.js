@@ -55,7 +55,8 @@ function markup(arr) {
     .join('');
 }
 
-// // Змініть ваш код так, щоб він виглядав приблизно так
+
+// Змініть ваш код так, щоб він виглядав приблизно так
 // window.addToCart = function (productId) {
 //   const cart = JSON.parse(localStorage.getItem('cart')) || {};
 
