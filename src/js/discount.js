@@ -9,14 +9,14 @@ const productDiscount = document.querySelector('.discount-products-item');
 
 export function renderProductDiscount(data) {
     productDiscount.insertAdjacentHTML("beforeend", markup(data));
-    const clickBtns = document.querySelectorAll('.click-buy');
-    const clickChecks = document.querySelectorAll('.discount-check');
-    clickBtns.forEach((clickBtn) =>
-        clickBtn.addEventListener('click', () => { clickBtn.style.display = 'none'; onCheck(clickBtn) }));
-    function onCheck() {
-        clickChecks.forEach((clickChecks) =>
-        clickChecks.style.display = 'block')
-    }
+    // const clickBtns = document.querySelectorAll('.click-buy');
+    // const clickChecks = document.querySelectorAll('.discount-check');
+    // clickBtns.forEach((clickBtn) =>
+    //     clickBtn.addEventListener('click', () => { clickBtn.style.display = 'none'; onCheck(clickBtn) }));
+    // function onCheck() {
+    //     clickChecks.forEach((clickChecks) =>
+    //     clickChecks.style.display = 'block')
+    // }
 }
 
  function markup(arr) {
@@ -32,11 +32,11 @@ export function renderProductDiscount(data) {
                 </div>
                 <div class=discount-price-item>
                 <p class="discount-price">&#36;${price}</p>
-                <button class="discount-buy buy-btn click-buy js-buy-btn" type="button">
+                <button class="discount-buy buy-btn click-buy js-buy-btn js-btn-first-ico" type="button">
                 <img class="discount-buy-svg" src="${shoppingSvg}" alt="shop-icon" width="18" height="18"/>
             
 </button>
-           <button class="discount-check " type="button">
+           <button class="discount-check js-btn-second-ico" type="button">
                 <img class="discount-check-svg" src="${check}" alt="shop-icon" width="18" height="18"/>
             
 </button>
