@@ -5,7 +5,7 @@ import { filterForm } from './filter';
 import { setDefaultFilterParams } from './localStorage';
 import { checkFilterParams } from './filter';
 import { showProductModal } from './product-list-modal.js';
-import  check  from '../images/icons/check-ico.svg';
+import check from '../images/icons/check-ico.svg';
 
 const productList = document.querySelector('.product-list');
 const tuiPagination = document.querySelector('.pagination');
@@ -16,8 +16,13 @@ export function renderProductList(data) {
   productList.innerHTML = createMarkup(data.results);
 
   const productModalOpen = document.querySelectorAll('.product-modal-open');
+  // const productModalBuy = document.querySelectorAll('.');
   productModalOpen.forEach(element => {
     element.addEventListener('click', showProductModal(element));
+
+    // showProductModal(element);
+
+    // console.log(element);
   });
 }
 

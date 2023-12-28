@@ -1,6 +1,6 @@
 import { getProdByID } from './query';
 import shoppingSvg from '../images/icons/shopping-cart.svg';
-import  check  from '../images/icons/check-ico.svg';
+import check from '../images/icons/check-ico.svg';
 
 const productModalContent = document.querySelector('.product-modal-content');
 const body = document.querySelector('body');
@@ -20,21 +20,32 @@ export function showProductModal(element) {
     // refs.modal.classList.remove('is-hidden');
     // logModal(event.currentTarget);
 
-    const allProductBtn = document.querySelector('.all-product-btn');
-    const allBuySvg = document.querySelector('.all-buy-svg');
-
-    if (event.target === allProductBtn) {
-      // console.log('allProductBtn');
-      // event.preventDefault();
-    } else if (event.target === allBuySvg) {
-      // console.log('allBuySvg');
-      // event.preventDefault();
+    if (event.target.tagName === 'BUTTON') {
+      console.log('Buy button');
     } else {
       body.style.overflow = 'hidden';
       refs.modal.classList.remove('is-hidden');
       logModal(event.currentTarget);
-      // console.log('Render');
     }
+
+    console.log(event.target);
+
+    // const allProductBtn = document.querySelector('.all-product-btn');
+    // const allBuySvg = document.querySelector('.all-buy-svg');
+
+    // if (event.target === allProductBtn) {
+    //   // console.log('allProductBtn');
+    //   // event.preventDefault();
+    // } else if (event.target === allBuySvg) {
+    //   // console.log('allBuySvg');
+    //   // event.preventDefault();
+    // } else {
+    //   body.style.overflow = 'hidden';
+    //   refs.modal.classList.remove('is-hidden');
+    //   logModal(event.currentTarget);
+    //   // console.log('Render');
+    // }
+
     // console.log(allProductBtn);
     // console.log(allBuySvg);
   }
