@@ -168,3 +168,4 @@ function addedToCartProduct(id) {
     // console.log(btn);
   });
 }
+//some
