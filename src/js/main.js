@@ -8,15 +8,12 @@ import { renderProductDiscount } from './discount';
 import { renderProductList } from './product-list';
 import { renderFilterSelect } from './filter';
 import { getCartItems } from './localStorage.js';
-// import { showModalMessage } from './footer.js';
 import { addProductToCart } from './workWithCart.js';
 import shoppingSvg from '../images/sprite.svg';
 import Pagination from 'tui-pagination';
 import { getProdByQuery } from './query';
 import 'tui-pagination/dist/tui-pagination.css';
-import { setupSubscriptionForm } from './footer.js';
 
-setupSubscriptionForm();
 const container = document.getElementById('tui-pagination-container');
 const instance = new Pagination(container, {});
 
@@ -37,7 +34,8 @@ getProdByParams().then(({ data, data: { perPage, totalPages } }) => {
     template: {
       page: '<a href="#" class="tui-page-btn">{{page}}</a>',
       currentPage:
-        '<strong id="tui-page-btn"class="tui-page-btn tui-is-selected">{{page}}</strong>',
+        '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+
       moveButton:
         '<a href="#" class="tui-page-btn tui-{{type}}">' +
         '<span class="tui-ico-{{type}}">{{type}}</span>' +
@@ -169,4 +167,4 @@ function addedToCartProduct(id) {
     // console.log(btn);
   });
 }
-//some
+
