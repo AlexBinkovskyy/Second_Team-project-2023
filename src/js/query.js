@@ -110,8 +110,14 @@ export async function getProdByQuery({
 // }));
 
 // Функція для відправки даних з форми
-async function postData(email) {
+export async function postData(email) {
   return axios.post(`${references.SECOND_URL}`, { email });
+}
+
+export async function postOrder(obj) {
+  return await axios
+  .post("https://food-boutique.b.goit.study/api/orders", obj)
+  
 }
 
 // Функція для відображення модального вікна з текстом
@@ -180,4 +186,3 @@ modalBackdrop.addEventListener('click', function (event) {
     closeModal();
   }
 });
-

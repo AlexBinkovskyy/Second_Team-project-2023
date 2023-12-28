@@ -7,7 +7,16 @@ body {
   flex: 1;
   padding-bottom: 100px;
 }
-
+.cart-container{
+  min-width: 104%;
+  padding-right: 8px;  
+}
+@media only screen and (min-width: 768px) {
+  .cart-container{
+    padding-right: 20px;
+    min-width: none;
+  }
+}
 /**
   |============================
   | Заголовок верхній блок / початок
@@ -242,6 +251,7 @@ body {
   }
 }
 .cart-form-title {
+  font-size: 32px;
   margin-bottom: 40px;
   text-transform: uppercase;
 }

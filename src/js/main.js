@@ -8,10 +8,12 @@ import { renderProductDiscount } from './discount';
 import { renderProductList } from './product-list';
 import { renderFilterSelect } from './filter';
 import { getCartItems } from './localStorage.js';
-import { addProductToCart } from './workWithCart.js';
+import { addProductToCart, setEmailToOrderInfo } from './workWithCart.js';
 import shoppingSvg from '../images/sprite.svg';
 import Pagination from 'tui-pagination';
 import { getProdByQuery } from './query';
+import { postData, postOrder } from './query';
+import axios from 'axios';
 import 'tui-pagination/dist/tui-pagination.css';
 
 const container = document.getElementById('tui-pagination-container');
@@ -156,7 +158,8 @@ mainContainer.addEventListener('click', e => {
     addProductToCart(parent.dataset.id);
     // addedToCartProduct(parent.dataset.id);
     updateCartBtns();
-    document.querySelector(".js-cart-numbers").textContent = getCartItems().products.length;
+    document.querySelector('.js-cart-numbers').textContent =
+      getCartItems().products.length;
   }
 });
 
@@ -167,16 +170,16 @@ function addedToCartProduct(id) {
   const iconName = '';
 
   if (!allProductsById.length) {
-    return
+    return;
   }
 
   // console.log(allProductsById);
   allProductsById.forEach(obj => {
     const btn = obj.querySelector('.js-buy-btn');
-    btn.style.backgroundColor = "#6D8434";
-    btn.style.cursor = "default";
-    btn.querySelector(".js-btn-first-ico").style.display = "none";
-    btn.querySelector(".js-btn-second-ico").style.display = "block";
+    btn.style.backgroundColor = '#6D8434';
+    btn.style.cursor = 'default';
+    btn.querySelector('.js-btn-first-ico').style.display = 'none';
+    btn.querySelector('.js-btn-second-ico').style.display = 'block';
     // btn.innerHTML = `<svg class="img-icon" width="12" height="12" style="stroke:"#fff""><use href="${shoppingSvg}#${iconName}"></use></svg>`;
     btn.disabled = true;
     // console.log(btn);
@@ -184,11 +187,8 @@ function addedToCartProduct(id) {
 }
 
 function updateCartBtns() {
-  getCartItems().products.forEach((product) => {
+  getCartItems().products.forEach(product => {
     // console.log(product.id);
     addedToCartProduct(product.id);
-  })
+  });
 }
-
-
-

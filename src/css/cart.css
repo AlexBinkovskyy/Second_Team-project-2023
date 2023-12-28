@@ -43,6 +43,10 @@
   margin: 0;
 }
 
+.mediumText{
+  font-family: 'NeueMontreal-Medium';
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -84,6 +88,8 @@ textarea {
 
 body {
   background: var(--maingray);
+  font-family: 'NeueMontreal-regular';
+  color: var(--text-color);
 }
 
 /* Correct container */
