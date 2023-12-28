@@ -56,13 +56,15 @@
 
 .modal-card-content .all-product-pic{
     padding: 26px 68px;
-
+    width: 295px;
+    height: 212px;
 }
 @media screen and (min-width: 768px) {
     .modal-card-content .all-product-pic {
         margin-bottom: 0;
         padding: 26px 40px;
         object-fit: contain;
+        width: 240px;
     }
 }
 
