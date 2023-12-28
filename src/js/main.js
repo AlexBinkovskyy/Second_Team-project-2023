@@ -8,7 +8,7 @@ import { renderProductDiscount } from './discount';
 import { renderProductList } from './product-list';
 import { renderFilterSelect } from './filter';
 import { getCartItems } from './localStorage.js';
-import { showModalMessage } from './footer.js';
+// import { showModalMessage } from './footer.js';
 import { addProductToCart } from './workWithCart.js';
 import shoppingSvg from '../images/sprite.svg'
 import Pagination from 'tui-pagination';
@@ -36,7 +36,7 @@ getProdByDiscount()
       centerAlign: true,
       template: {
         page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-        currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+        currentPage: '<strong id="tui-page-btn"class="tui-page-btn tui-is-selected">{{page}}</strong>',
       moveButton:
       '<a href="#" class="tui-page-btn tui-{{type}}">' +
         '<span class="tui-ico-{{type}}">{{type}}</span>' +
