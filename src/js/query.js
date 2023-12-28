@@ -108,3 +108,76 @@ export async function getProdByQuery({
 //     }
 //   ]
 // }));
+
+// Функція для відправки даних з форми
+async function postData(email) {
+  return axios.post(`${references.SECOND_URL}`, { email });
+}
+
+// Функція для відображення модального вікна з текстом
+function showModal(title, text) {
+  const modalBackdrop = document.querySelector('[data-modal]');
+  const modalTitle = modalBackdrop.querySelector('.modal-title');
+  const modalText = modalBackdrop.querySelector('.modal-text');
+
+  modalTitle.textContent = title;
+  modalText.textContent = text;
+
+  modalBackdrop.classList.remove('is-hidden');
+}
+
+// Функція для закриття модального вікна
+function closeModal() {
+  const modalBackdrop = document.querySelector('[data-modal]');
+  modalBackdrop.classList.add('is-hidden');
+}
+
+// Отримання форми та додавання обробника подій для події submit
+const form = document.getElementById('subscriptionForm');
+form.addEventListener('submit', async function (event) {
+  event.preventDefault(); // Зупинити перезавантаження сторінки при натисканні кнопки
+
+  const emailInput = document.getElementById('emailInput');
+  const email = emailInput.value; // Отримання значення поля email
+
+  postData(email)
+    .then(response => {
+      const responseData = response.data;
+      showModal(
+        'Thanks for subscribing for new products',
+        'We promise you organic and high-quality products that will meet your expectations. Please stay with us and we promise you many pleasant surprises.'
+      );
+    })
+    .catch(error => {
+      const errorMessage = error.response
+        ? 'This email address has already been entered'
+        : 'An error occurred';
+      showModal(
+        errorMessage,
+        'You have already subscribed to our new products. Watch for offers at the mailing address.'
+      );
+    });
+});
+
+// Додавання обробника подій для закриття модального вікна при натисканні на кнопку закриття
+const modalCloseBtn = document.querySelector('[data-modal-close]');
+modalCloseBtn.addEventListener('click', closeModal);
+
+// Додавання обробника подій для закриття модального вікна при натисканні клавіші "Esc"
+document.addEventListener('keydown', function (event) {
+  const modalBackdrop = document.querySelector('[data-modal]');
+  if (
+    event.key === 'Escape' &&
+    !modalBackdrop.classList.contains('is-hidden')
+  ) {
+    closeModal();
+  }
+});
+// Додавання обробника подій для закриття модального вікна при кліку поза модальним вікном
+const modalBackdrop = document.querySelector('[data-modal]');
+modalBackdrop.addEventListener('click', function (event) {
+  if (event.target === modalBackdrop) {
+    closeModal();
+  }
+});
+

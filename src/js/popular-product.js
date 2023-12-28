@@ -17,7 +17,7 @@ function markup(arr) {
   return arr
     .map(
       ({ _id, name, img, category, size, popularity }) => `
-          <li class="popular-product-item js-product-card"  data-id="${_id}">
+          <li class="popular-product-item product-modal-open js-product-card"  data-id="${_id}" id="${_id}">
             <img src="${img}" alt="${name}" width="56" height="56" loading="lazy" class="popular-product-pic"/>
             <div class="popular-product-info">
             <div class="popular-product-info-btn">
@@ -51,7 +51,6 @@ function markup(arr) {
     )
     .join('');
 }
-
 
 // Змініть ваш код так, щоб він виглядав приблизно так
 // window.addToCart = function (productId) {
