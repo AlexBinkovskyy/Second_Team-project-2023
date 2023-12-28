@@ -927,3 +927,6 @@ body.no-scroll {
 .js-buy-btn svg {
   pointer-events: none;
 }
+.js-btn-second-ico{
+  display: none;
+}
