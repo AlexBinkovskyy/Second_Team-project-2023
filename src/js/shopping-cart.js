@@ -78,7 +78,7 @@ async function drawCartPage() {
   formInput.value = arrCart.email;
 }
 
-async function updateCartPage() {
+export async function updateCartPage() {
   arrCart = getCartItems();
   console.log(arrCart);
 

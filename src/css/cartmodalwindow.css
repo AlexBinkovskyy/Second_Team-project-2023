@@ -40,22 +40,35 @@
 
   background-color: transparent;
 }
-.cart-modal-close-btn svg{
+.cart-modal-close-btn svg {
 }
-.cart-modal-img {
-  /* margin-bottom: 15px; */
-
-  height: 140px;
-  width: 170px;
+.success-modal .cart-modal-img {
+  width: 150px;
+  height: 133px;
+}
+.fail-modal .cart-modal-img {
+  margin-bottom: 10px;
+  width: 150px;
+  height: 118px;
 }
 .cart-modal-title {
   margin-bottom: 20px;
 
+  font-family: Neue Montreal;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px; /* 100% */
   text-transform: uppercase;
+  text-align: center;
 }
 .cart-modal-desc {
+  color: rgba(1, 1, 1, 0.7);
+
   text-align: center;
-  opacity: 0.7;
+  font-size: 18px;
+  font-style: normal;
+  line-height: 24px;
 }
 
 /*
