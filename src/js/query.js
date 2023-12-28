@@ -5,13 +5,21 @@ let page = 1;
 let limitPerPage = 6;
 
 export async function getProdByParams() {
-  if (window.innerWidth >= 1440) {
-    limitPerPage = 9;
-  } else if (window.innerWidth >= 768) {
+  // if (window.innerWidth >= 1440) {
+  //   limitPerPage = 9;
+  // } else if (window.innerWidth >= 768) {
+  //   limitPerPage = 8;
+  // } else {
+  //   limitPerPage = 6;
+  // }
+
+  if (window.innerWidth >= 768) {
     limitPerPage = 8;
-  } else {
-    limitPerPage = 6;
+    if (window.innerWidth >= 1440) {
+      limitPerPage = 9;
+    }
   }
+
   return await axios(
     `${references.MAIN_URL}?page=${page}&limit=${limitPerPage}`
   );
@@ -154,3 +162,4 @@ form.addEventListener('submit', async function (event) {
 // Додавання обробника подій для закриття модального вікна при натисканні на кнопку закриття
 const modalCloseBtn = document.querySelector('[data-modal-close]');
 modalCloseBtn.addEventListener('click', closeModal);
+

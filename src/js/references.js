@@ -1,4 +1,4 @@
-const MAIN_URL = 'https://food-boutique.b.goit.study/api/products/';
+const MAIN_URL = 'https://food-boutique.b.goit.study/api/products';
 const SECOND_URL = 'https://food-boutique.b.goit.study/api/subscription';
 const categories = 'categories';
 const popular = 'popular';

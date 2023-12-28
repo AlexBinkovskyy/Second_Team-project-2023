@@ -4,7 +4,7 @@ import check from '../images/icons/check-ico.svg';
 
 const popularProduct = document.querySelector('.popular-product-list');
 
-export function renderPopularProduct(data) {
+export async function renderPopularProduct(data) {
   popularProduct.insertAdjacentHTML('beforeend', markup(data));
   const clickBtnBuy = document.querySelector('.click-buy');
   clickBtnBuy.addEventListener('click', () => {

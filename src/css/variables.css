@@ -1,4 +1,5 @@
 :root {
+  --mainwhite: #fafafa;
   --maingray: #e8e8e2;
   --maingreen: #6d8434;
   --maingreen-hower: #586f1f;
@@ -6,5 +7,7 @@
   --border: 2px solid rgba(232, 232, 226, 0.3);
   --text-color: #010101;
   --passive-text-color: rgba(1, 1, 1, 0.30);
+  --more-passive-text-color: rgba(1, 1, 1, 0.70);
+  --modal-background: #2e2f4266;
    }
 

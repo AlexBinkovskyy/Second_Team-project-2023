@@ -1,5 +1,6 @@
 import { getProdByID } from './query';
 import shoppingSvg from '../images/icons/shopping-cart.svg';
+import check from '../images/icons/check-ico.svg';
 
 const productModalContent = document.querySelector('.product-modal-content');
 const body = document.querySelector('body');
@@ -19,21 +20,32 @@ export function showProductModal(element) {
     // refs.modal.classList.remove('is-hidden');
     // logModal(event.currentTarget);
 
-    const allProductBtn = document.querySelector('.all-product-btn');
-    const allBuySvg = document.querySelector('.all-buy-svg');
-
-    if (event.target === allProductBtn) {
-      // console.log('allProductBtn');
-      // event.preventDefault();
-    } else if (event.target === allBuySvg) {
-      // console.log('allBuySvg');
-      // event.preventDefault();
+    if (event.target.tagName === 'BUTTON') {
+      console.log('Buy button');
     } else {
       body.style.overflow = 'hidden';
       refs.modal.classList.remove('is-hidden');
       logModal(event.currentTarget);
-      // console.log('Render');
     }
+
+    console.log(event.target);
+
+    // const allProductBtn = document.querySelector('.all-product-btn');
+    // const allBuySvg = document.querySelector('.all-buy-svg');
+
+    // if (event.target === allProductBtn) {
+    //   // console.log('allProductBtn');
+    //   // event.preventDefault();
+    // } else if (event.target === allBuySvg) {
+    //   // console.log('allBuySvg');
+    //   // event.preventDefault();
+    // } else {
+    //   body.style.overflow = 'hidden';
+    //   refs.modal.classList.remove('is-hidden');
+    //   logModal(event.currentTarget);
+    //   // console.log('Render');
+    // }
+
     // console.log(allProductBtn);
     // console.log(allBuySvg);
   }
@@ -91,16 +103,23 @@ function renderProductModal(object) {
 </div>
       <div class="all-purchaise-box">
         <h3 class="all-product-price header-three">&#36;${object.price}</h3>
-        <button class="modal-product-btn buy-btn js-buy-btn" type="button">
+        <button class="modal-product-btn buy-btn js-buy-btn js-btn-first-ico" type="button">
           <p class="modal-product-btn-text">Add to</p>
           <img
             class="all-buy-svg"
             src="${shoppingSvg}"
             alt="shop-icon"
-            width="18"
-            height="18"
           />
         </button>
+             <button class="all-product-btn btn-check buy-btn js-btn-second-ico" type="button">
+              <img
+                class="all-buy-svg"
+                src="${check}"
+                alt="shop-icon"
+                width="18"
+                height="18"
+              />
+            </button>
       </div>
     </div>
   `;
