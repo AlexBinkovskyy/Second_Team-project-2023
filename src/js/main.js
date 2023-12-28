@@ -63,6 +63,7 @@ getProdByParams().then(({ data, data: { perPage, totalPages } }) => {
         limitPerPage: perPage,
       });
       renderProductList(newData);
+      updateCartBtns();
     } catch (err) {
       console.log(err);
     }
@@ -175,6 +176,7 @@ function addedToCartProduct(id) {
   allProductsById.forEach(obj => {
     const btn = obj.querySelector('.js-buy-btn');
     btn.style.backgroundColor = "#6D8434";
+    btn.style.cursor = "default";
     btn.querySelector(".js-btn-first-ico").style.display = "none";
     btn.querySelector(".js-btn-second-ico").style.display = "block";
     // btn.innerHTML = `<svg class="img-icon" width="12" height="12" style="stroke:"#fff""><use href="${shoppingSvg}#${iconName}"></use></svg>`;
