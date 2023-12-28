@@ -35,6 +35,7 @@ getProdByParams().then(({ data, data: { perPage, totalPages } }) => {
       page: '<a href="#" class="tui-page-btn">{{page}}</a>',
       currentPage:
         '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+
       moveButton:
         '<a href="#" class="tui-page-btn tui-{{type}}">' +
         '<span class="tui-ico-{{type}}">{{type}}</span>' +
@@ -88,36 +89,36 @@ const loaderContainer = document.getElementById('loader-container');
 const main = document.querySelector('.main');
 const body = document.body;
 
-window.addEventListener('load', function () {
-  const loadingScreen = document.querySelector('.loader-container');
+// window.addEventListener('load', function () {
+//   const loadingScreen = document.querySelector('.loader-container');
 
-  // Array of asynchronous functions
-  const asyncFunctions = [
-    getProdByDiscount,
-    getProdByParams,
-    getProdByPopular,
-    getProdByCategories,
-  ];
+//   // Array of asynchronous functions
+//   const asyncFunctions = [
+//     getProdByDiscount,
+//     getProdByParams,
+//     getProdByPopular,
+//     getProdByCategories,
+//   ];
 
-  // Show loading screen
-  main.classList.add('visually-hidden');
-  body.classList.add('no-scroll');
-  loadingScreen.classList.remove('visually-hidden');
+//   // Show loading screen
+//   main.classList.add('visually-hidden');
+//   body.classList.add('no-scroll');
+//   loadingScreen.classList.remove('visually-hidden');
 
-  // Execute all asynchronous functions
-  Promise.all(asyncFunctions.map(fn => fn()))
-    .then(() => {
-      // All asynchronous functions completed
-      main.classList.remove('visually-hidden');
-      loadingScreen.classList.add('visually-hidden'); // Hide loading screen
-      body.classList.remove('no-scroll');
-    })
-    .catch(error => {
-      console.error('Error in asynchronous operation:', error);
-      loadingScreen.classList.add('visually-hidden'); // Hide loading screen even in case of an error
-      body.classList.remove('no-scroll');
-    });
-});
+//   // Execute all asynchronous functions
+//   Promise.all(asyncFunctions.map(fn => fn()))
+//     .then(() => {
+//       // All asynchronous functions completed
+//       main.classList.remove('visually-hidden');
+//       loadingScreen.classList.add('visually-hidden'); // Hide loading screen
+//       body.classList.remove('no-scroll');
+//     })
+//     .catch(error => {
+//       console.error('Error in asynchronous operation:', error);
+//       loadingScreen.classList.add('visually-hidden'); // Hide loading screen even in case of an error
+//       body.classList.remove('no-scroll');
+//     });
+// });
 
 //export function hideLoader() {
 //body.classList.remove('no-scroll');
@@ -166,3 +167,4 @@ function addedToCartProduct(id) {
     // console.log(btn);
   });
 }
+

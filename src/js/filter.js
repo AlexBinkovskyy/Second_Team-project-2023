@@ -31,20 +31,26 @@ export async function checkFilterParams() {
           return;
         }
       });
-    } else if (filterParams.category !== null) {
-        // selectedCategory = document.querySelector(`#single option[value ="${filterParams.category}" ]`)
-        // console.log(selectedCategory);
-        // selectedCategory.selected = true;
-      }
-  } else {
+    }  else {
     setDefaultFilterParams();
   }
-}
+}}
 
 checkFilterParams();
 
 export function renderFilterSelect(data) {
   filterSelectCategories.insertAdjacentHTML('afterbegin', markup(data));
+
+  if (filterParams.category !== null) {
+    console.log('1', filterForm.filterCategories);
+      const opt = filterForm.filterCategories.options;
+      for (const option of opt) {
+        if (option.value === filterParams.category) {
+        option.value.option.selected;
+        break; // Зупинити пошук, якщо знайдено
+      }
+    }
+  } 
 }
 
 function markup(arr) {
