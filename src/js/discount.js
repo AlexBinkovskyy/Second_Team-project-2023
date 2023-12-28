@@ -1,29 +1,30 @@
 import axios from 'axios';
 import references from './references';
 import { getProdByDiscount } from './query';
-import  discountSvg    from '../images/icons/discount.svg';
+import discountSvg from '../images/icons/discount.svg';
 import shoppingSvg from '../images/icons/shopping-cart.svg';
-import  check  from '../images/icons/check-ico.svg';
+import check from '../images/icons/check-ico.svg';
 
 const productDiscount = document.querySelector('.discount-products-item');
 
 export function renderProductDiscount(data) {
-    productDiscount.insertAdjacentHTML("beforeend", markup(data));
-    // const clickBtns = document.querySelectorAll('.click-buy');
-    // const clickChecks = document.querySelectorAll('.discount-check');
-    // clickBtns.forEach((clickBtn) =>
-    //     clickBtn.addEventListener('click', () => { clickBtn.style.display = 'none'; onCheck(clickBtn) }));
-    // function onCheck() {
-    //     clickChecks.forEach((clickChecks) =>
-    //     clickChecks.style.display = 'block')
-    // }
+  productDiscount.insertAdjacentHTML('beforeend', markup(data));
+  // const clickBtns = document.querySelectorAll('.click-buy');
+  // const clickChecks = document.querySelectorAll('.discount-check');
+  // clickBtns.forEach((clickBtn) =>
+  //     clickBtn.addEventListener('click', () => { clickBtn.style.display = 'none'; onCheck(clickBtn) }));
+  // function onCheck() {
+  //     clickChecks.forEach((clickChecks) =>
+  //     clickChecks.style.display = 'block')
+  // }
 }
 
- function markup(arr) {
-    return arr
-    .map(({_id, name, img, price }) => `
+function markup(arr) {
+  return arr
+    .map(
+      ({ _id, name, img, price }) => `
         <li class="discount-product">
-         <div class="discount-card js-product-card"  data-id="${_id}" id="${_id}">
+         <div class="discount-card product-modal-open js-product-card"  data-id="${_id}" id="${_id}">
          <img class="discount-svg" src="${discountSvg}" alt="discount-icon" width="60" height="60"/>
             <img id="icondiscount" class="discount-img"src="${img}" alt="${name}" loading="lazy">
             <div class="discount-text">
@@ -44,12 +45,8 @@ export function renderProductDiscount(data) {
             </div>
             </div>
         </li>
-    `)
-        .splice(0, 2)
-        .join("")
+    `
+    )
+    .splice(0, 2)
+    .join('');
 }
-  
- 
-   
-   
-            
