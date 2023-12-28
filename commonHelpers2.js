@@ -112,6 +112,7 @@ import{s as k,d as y,e as f,f as d,h as r,i,j,k as B,l as A,m as C,n as E}from".
     </div>
   `}const w=document.querySelector(".product-list"),L=document.querySelector(".pagination");function n(t){L.classList.remove("visually-hidden"),w.innerHTML=R(t.results),document.querySelectorAll(".product-modal-open").forEach(a=>{a.addEventListener("click",G(a))})}function R(t){return t.map(({_id:e,name:a,img:l,category:s,price:p,size:g,is10PercentOff:h,popularity:M})=>`
         <li class="all-product-card product-modal-open js-product-card" id="${e}" data-id=${e}>
+          <div>
             <img
               class="all-discount-svg ${h.toString().replace("false","visually-hidden").replace("true","")}"
               src="${S}"
@@ -135,6 +136,7 @@ import{s as k,d as y,e as f,f as d,h as r,i,j,k as B,l as A,m as C,n as E}from".
                 ${M}
               </p>
             </div>
+          </div>
           <div class="all-purchaise-box">
             <h3 class="all-product-price header-three">&#36;${p}</h3>
             <button class="all-product-btn buy-btn js-buy-btn js-btn-first-ico" type="button">
