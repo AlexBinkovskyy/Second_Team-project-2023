@@ -8,8 +8,11 @@ import { showProductModal } from './product-list-modal.js';
 import  check  from '../images/icons/check-ico.svg';
 
 const productList = document.querySelector('.product-list');
+const tuiPagination = document.querySelector('.pagination');
 
 export function renderProductList(data) {
+  tuiPagination.classList.remove('visually-hidden');
+
   productList.innerHTML = createMarkup(data.results);
 
   const productModalOpen = document.querySelectorAll('.product-modal-open');
@@ -22,8 +25,9 @@ function createMarkup(arr) {
   return arr
     .map(
       ({ _id, name, img, category, price, size, is10PercentOff, popularity }) =>
-       `
+        `
         <li class="all-product-card product-modal-open  js-product-card" id="${_id}" data-id=${_id}>
+<div class="all-product-test">
             <img
               class="all-discount-svg ${is10PercentOff
                 .toString()
@@ -50,6 +54,7 @@ function createMarkup(arr) {
                 ${popularity}
               </p>
             </div>
+</div>
           <div class="all-purchaise-box">
             <h3 class="all-product-price header-three">&#36;${price}</h3>
             <button class="all-product-btn buy-btn js-buy-btn js-btn-first-ico" type="button">
@@ -90,9 +95,14 @@ function onClick(event) {
 }
 
 export function createEmptyMarkup() {
-  const emptyQuery = `<h3>Nothing was found for the selected <a href="" class="link js-link">filters...</a></h3>
-  <p>Try adjusting your search parameters or browse our range by other criteria to find the perfect product for you. </p>`;
+  const emptyQuery = `
+  <div class="product-search-error">
+  <h3 class="product-search-title header-three">Nothing was found for the selected <a href="" class="product-search-link link js-link">filters...</a></h3>
+  <p class="product-search-text">Try adjusting your search parameters or browse our range by other criteria to find the perfect product for you. </p>
+  </div>
+  `;
   productList.innerHTML = emptyQuery;
   const emptySetLink = document.querySelector('.js-link');
   emptySetLink.addEventListener('click', onClick);
+  tuiPagination.classList.add('visually-hidden');
 }

@@ -98,8 +98,6 @@ function renderProductModal(object) {
             class="all-buy-svg"
             src="${shoppingSvg}"
             alt="shop-icon"
-            width="18"
-            height="18"
           />
         </button>
              <button class="all-product-btn btn-check buy-btn js-btn-second-ico" type="button">

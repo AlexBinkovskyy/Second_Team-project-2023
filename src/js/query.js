@@ -5,13 +5,21 @@ let page = 1;
 let limitPerPage = 6;
 
 export async function getProdByParams() {
-  if (window.innerWidth >= 1440) {
-    limitPerPage = 9;
-  } else if (window.innerWidth >= 768) {
+  // if (window.innerWidth >= 1440) {
+  //   limitPerPage = 9;
+  // } else if (window.innerWidth >= 768) {
+  //   limitPerPage = 8;
+  // } else {
+  //   limitPerPage = 6;
+  // }
+
+  if (window.innerWidth >= 768) {
     limitPerPage = 8;
-  } else {
-    limitPerPage = 6;
+    if (window.innerWidth >= 1440) {
+      limitPerPage = 9;
+    }
   }
+
   return await axios(
     `${references.MAIN_URL}?page=${page}&limit=${limitPerPage}`
   );
@@ -49,7 +57,7 @@ export async function getProdByQuery({
     limitPerPage = 9;
   } else if (window.innerWidth >= 768) {
     limitPerPage = 8;
-  } 
+  }
 
   let query = `https://food-boutique.b.goit.study/api/products?`;
   if (keyword) {
@@ -91,7 +99,6 @@ export async function getProdByQuery({
 //   });
 // }
 
-
 // postOrder(JSON.stringify({
 //   "email": "test@gmail.com",
 //   "products": [
@@ -101,4 +108,3 @@ export async function getProdByQuery({
 //     }
 //   ]
 // }));
-
