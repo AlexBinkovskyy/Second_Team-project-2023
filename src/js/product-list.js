@@ -5,6 +5,7 @@ import { filterForm } from './filter';
 import { setDefaultFilterParams } from './localStorage';
 import { checkFilterParams } from './filter';
 import { showProductModal } from './product-list-modal.js';
+import  check  from '../images/icons/check-ico.svg';
 
 const productList = document.querySelector('.product-list');
 const tuiPagination = document.querySelector('.pagination');
@@ -56,10 +57,19 @@ function createMarkup(arr) {
 </div>
           <div class="all-purchaise-box">
             <h3 class="all-product-price header-three">&#36;${price}</h3>
-            <button class="all-product-btn buy-btn js-buy-btn" type="button">
+            <button class="all-product-btn buy-btn js-buy-btn js-btn-first-ico" type="button">
               <img
                 class="all-buy-svg"
                 src="${shoppingSvg}"
+                alt="shop-icon"
+                width="18"
+                height="18"
+              />
+            </button>
+               <button class="all-product-btn btn-check buy-btn js-btn-second-ico" type="button">
+              <img
+                class="all-buy-svg"
+                src="${check}"
                 alt="shop-icon"
                 width="18"
                 height="18"

@@ -81,7 +81,7 @@
 }
 @media screen and (min-width: 1440px) {
   .all-product-pic {
-      padding: 20px 58px;
+    padding: 20px 58px;
   }
 }
 
@@ -203,4 +203,8 @@
     line-height: 1.33;
     padding-bottom: 230px;
   }
+}
+
+.btn-check {
+  display: none;
 }
