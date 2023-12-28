@@ -6,11 +6,11 @@ const popularProduct = document.querySelector('.popular-product-list');
 
 export async function renderPopularProduct(data) {
   popularProduct.insertAdjacentHTML('beforeend', markup(data));
-  const clickBtnBuy = document.querySelector('.click-buy');
-  clickBtnBuy.addEventListener('click', () => {
-    (clickBtnBuy.style.display = 'none'), (clickcheck.style.display = 'block');
-  });
-  const clickcheck = document.querySelector('.popular-check');
+ // const clickBtnBuy = document.querySelector('.click-buy');
+ // clickBtnBuy.addEventListener('click', () => {
+ //   (clickBtnBuy.style.display = 'none'), (clickcheck.style.display = 'block');
+ // });
+ // const clickcheck = document.querySelector('.popular-check');
 }
 
 function markup(arr) {
