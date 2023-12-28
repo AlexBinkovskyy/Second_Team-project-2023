@@ -44,7 +44,7 @@
 
 .all-product-card {
   width: 100vw;
-  max-width: 335px;    
+  max-width: 335px;
   padding: 20px;
   border-radius: 20px;
   background: #fafafa;
@@ -78,7 +78,7 @@
 }
 @media screen and (min-width: 1440px) {
   .all-product-pic {
-      padding: 20px 58px;
+    padding: 20px 58px;
   }
 }
 
@@ -107,8 +107,8 @@
   margin-right: 4px;
 }
 
-.all-product-desc{
-  color: rgba(1, 1, 1, 0.70);
+.all-product-desc {
+  color: rgba(1, 1, 1, 0.7);
   font-family: 'NeueMontreal-regular';
   font-size: 14px;
   font-style: normal;
@@ -143,4 +143,8 @@
 .all-buy-svg {
   width: 18px;
   height: 18px;
+}
+
+.btn-check {
+  display: none;
 }

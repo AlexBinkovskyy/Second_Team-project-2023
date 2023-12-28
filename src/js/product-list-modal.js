@@ -1,5 +1,6 @@
 import { getProdByID } from './query';
 import shoppingSvg from '../images/icons/shopping-cart.svg';
+import  check  from '../images/icons/check-ico.svg';
 
 const productModalContent = document.querySelector('.product-modal-content');
 const body = document.querySelector('body');
@@ -91,7 +92,7 @@ function renderProductModal(object) {
 </div>
       <div class="all-purchaise-box">
         <h3 class="all-product-price header-three">&#36;${object.price}</h3>
-        <button class="modal-product-btn buy-btn js-buy-btn" type="button">
+        <button class="modal-product-btn buy-btn js-buy-btn js-btn-first-ico" type="button">
           <p class="modal-product-btn-text">Add to</p>
           <img
             class="all-buy-svg"
@@ -101,6 +102,15 @@ function renderProductModal(object) {
             height="18"
           />
         </button>
+             <button class="all-product-btn btn-check buy-btn js-btn-second-ico" type="button">
+              <img
+                class="all-buy-svg"
+                src="${check}"
+                alt="shop-icon"
+                width="18"
+                height="18"
+              />
+            </button>
       </div>
     </div>
   `;
