@@ -73,6 +73,11 @@
   }
 }
 
+.all-product-card:hover,
+.all-product-card:focus {
+cursor: pointer;
+}
+
 .all-product-pic {
   padding: 20px 78px;
   border-radius: 10px;
