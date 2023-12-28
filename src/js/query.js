@@ -163,3 +163,21 @@ form.addEventListener('submit', async function (event) {
 const modalCloseBtn = document.querySelector('[data-modal-close]');
 modalCloseBtn.addEventListener('click', closeModal);
 
+// Додавання обробника подій для закриття модального вікна при натисканні клавіші "Esc"
+document.addEventListener('keydown', function (event) {
+  const modalBackdrop = document.querySelector('[data-modal]');
+  if (
+    event.key === 'Escape' &&
+    !modalBackdrop.classList.contains('is-hidden')
+  ) {
+    closeModal();
+  }
+});
+// Додавання обробника подій для закриття модального вікна при кліку поза модальним вікном
+const modalBackdrop = document.querySelector('[data-modal]');
+modalBackdrop.addEventListener('click', function (event) {
+  if (event.target === modalBackdrop) {
+    closeModal();
+  }
+});
+
