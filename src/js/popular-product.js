@@ -22,14 +22,11 @@ function markup(arr) {
             <div class="popular-product-info">
             <div class="popular-product-info-btn">
             <h3 class="popular-product-name">${name}</h3>
-           <button type="button" class="popular-buy buy-btn js-buy-btn js-btn-first-ico" >
-            <svg class="img-icon"  width="12" height="12">
-            <use href="${shoppingSvg}#icon-shopping-cart"></use>
-            </svg>
-            </button>
-            <button 
-            class="popular-check  js-btn-second-ico" type="button">
-            <img class="popular-check-svg" src="${check}" alt="shop-icon" width="12" height="12"/>
+            <button type="button" class="popular-buy buy-btn js-buy-btn" >
+              <svg class="img-icon js-btn-first-ico"  width="12" height="12">
+                <use href="${shoppingSvg}#icon-shopping-cart"></use>
+              </svg>
+              <img class="popular-check-svg js-btn-second-ico" src="${check}" alt="shop-icon" width="12" height="12"/>
             </button>
               </div>
               <div class="info-item-description">

@@ -23,11 +23,13 @@ const instance = new Pagination(container, {});
 getProdByDiscount()
   .then(({ data }) => {
     renderProductDiscount(data);
+    updateCartBtns();
   })
   .catch(error => console.log(error));
 
 getProdByParams().then(({ data, data: { perPage, totalPages } }) => {
   renderProductList(data);
+  updateCartBtns();
   const container = document.getElementById('tui-pagination-container');
   const instance = new Pagination(container, {
     totalItems: perPage * totalPages,
@@ -70,12 +72,14 @@ getProdByParams().then(({ data, data: { perPage, totalPages } }) => {
 getProdByPopular()
   .then(({ data }) => {
     renderPopularProduct(data);
+    updateCartBtns();
   })
   .catch(error => console.log(error));
 
 getProdByCategories()
   .then(({ data }) => {
     renderFilterSelect(data.toString().replaceAll('_', ' ').split(','));
+    updateCartBtns();
   })
   .catch(error => console.log(error));
 
@@ -151,7 +155,9 @@ mainContainer.addEventListener('click', e => {
     let parent = e.target.closest('.js-product-card');
     // console.log("click buy", parent.dataset.id);
     addProductToCart(parent.dataset.id);
-    addedToCartProduct(parent.dataset.id);
+    // addedToCartProduct(parent.dataset.id);
+    updateCartBtns();
+    document.querySelector(".js-cart-numbers").textContent = getCartItems().products.length;
   }
 });
 
@@ -161,12 +167,30 @@ function addedToCartProduct(id) {
   );
   const iconName = '';
 
-  console.log(allProductsById);
+  if (!allProductsById.length) {
+    return
+  }
+
+  // console.log(allProductsById);
   allProductsById.forEach(obj => {
     const btn = obj.querySelector('.js-buy-btn');
-    btn.innerHTML = `<svg class="img-icon" width="12" height="12" style="stroke:"#fff""><use href="${shoppingSvg}#${iconName}"></use></svg>`;
+    btn.style.backgroundColor = "#6D8434";
+    btn.querySelector(".js-btn-first-ico").style.display = "none";
+    btn.querySelector(".js-btn-second-ico").style.display = "block";
+    // btn.innerHTML = `<svg class="img-icon" width="12" height="12" style="stroke:"#fff""><use href="${shoppingSvg}#${iconName}"></use></svg>`;
     btn.disabled = true;
     // console.log(btn);
   });
 }
 //some
+
+// console.log(getCartItems());
+
+function updateCartBtns() {
+  getCartItems().products.forEach((product) => {
+    // console.log(product.id);
+    addedToCartProduct(product.id);
+  })
+}
+
+

@@ -32,15 +32,12 @@ export function renderProductDiscount(data) {
                 </div>
                 <div class=discount-price-item>
                 <p class="discount-price">&#36;${price}</p>
-                <button class="discount-buy buy-btn click-buy js-buy-btn js-btn-first-ico" type="button">
-                <img class="discount-buy-svg" src="${shoppingSvg}" alt="shop-icon" width="18" height="18"/>
-            
-</button>
-           <button class="discount-check js-btn-second-ico" type="button">
-                <img class="discount-check-svg" src="${check}" alt="shop-icon" width="18" height="18"/>
-            
-</button>
-</div> 
+                <button class="discount-buy buy-btn click-buy js-buy-btn" type="button">
+                    <img class="discount-buy-svg js-btn-first-ico" src="${shoppingSvg}" alt="shop-icon" width="18" height="18"/>
+                    <img class="discount-check-svg js-btn-second-ico" src="${check}" alt="shop-icon" width="18" height="18"/>            
+                </button>
+        
+                </div> 
             </div>
             </div>
         </li>
