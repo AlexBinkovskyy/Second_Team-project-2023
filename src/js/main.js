@@ -10,7 +10,7 @@ import { renderFilterSelect } from './filter';
 import { getCartItems } from './localStorage.js';
 // import { showModalMessage } from './footer.js';
 import { addProductToCart } from './workWithCart.js';
-import shoppingSvg from '../images/sprite.svg'
+import shoppingSvg from '../images/sprite.svg';
 import Pagination from 'tui-pagination';
 import { getProdByQuery } from './query';
 import 'tui-pagination/dist/tui-pagination.css';
@@ -26,43 +26,47 @@ getProdByDiscount()
   })
   .catch(error => console.log(error));
 
-  getProdByParams().then(({ data, data: { perPage, totalPages } }) => {
-    renderProductList(data);
-    const container = document.getElementById('tui-pagination-container');
-    const instance = new Pagination(container, {
-      totalItems: perPage * totalPages,
-      itemsPerPage: perPage,
-      visiblePages: 5,
-      centerAlign: true,
-      template: {
-        page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-        currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+getProdByParams().then(({ data, data: { perPage, totalPages } }) => {
+  renderProductList(data);
+  const container = document.getElementById('tui-pagination-container');
+  const instance = new Pagination(container, {
+    totalItems: perPage * totalPages,
+    itemsPerPage: perPage,
+    visiblePages: 5,
+    centerAlign: true,
+    template: {
+      page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+      currentPage:
+        '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
       moveButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}">' +
+        '<a href="#" class="tui-page-btn tui-{{type}}">' +
         '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</a>',
-    disabledMoveButton:
-      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+        '</a>',
+      disabledMoveButton:
+        '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
         '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</span>',
-    moreButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+        '</span>',
+      moreButton:
+        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
         '<span class="tui-ico-ellip">...</span>' +
-      '</a>'
-      },
-    });
-  
-    instance.on('beforeMove', async (event) => {
-      const newPage = event.page;
-      try {
-        const { data: newData } = await getProdByQuery({ page: newPage, limitPerPage: perPage });
-        renderProductList(newData);
-      } catch (err) {
-        console.log(err);
-      }
-    });
+        '</a>',
+    },
   });
-  
+
+  instance.on('beforeMove', async event => {
+    const newPage = event.page;
+    try {
+      const { data: newData } = await getProdByQuery({
+        page: newPage,
+        limitPerPage: perPage,
+      });
+      renderProductList(newData);
+    } catch (err) {
+      console.log(err);
+    }
+  });
+});
+
 getProdByPopular()
   .then(({ data }) => {
     renderPopularProduct(data);
@@ -87,36 +91,36 @@ const loaderContainer = document.getElementById('loader-container');
 const main = document.querySelector('.main');
 const body = document.body;
 
-window.addEventListener('load', function () {
-  const loadingScreen = document.querySelector('.loader-container');
+// window.addEventListener('load', function () {
+//   const loadingScreen = document.querySelector('.loader-container');
 
-  // Array of asynchronous functions
-  const asyncFunctions = [
-    getProdByDiscount,
-    getProdByParams,
-    getProdByPopular,
-    getProdByCategories,
-  ];
+//   // Array of asynchronous functions
+//   const asyncFunctions = [
+//     getProdByDiscount,
+//     getProdByParams,
+//     getProdByPopular,
+//     getProdByCategories,
+//   ];
 
-  // Show loading screen
-  main.classList.add('visually-hidden');
-  body.classList.add('no-scroll');
-  loadingScreen.classList.remove('visually-hidden');
+//   // Show loading screen
+//   main.classList.add('visually-hidden');
+//   body.classList.add('no-scroll');
+//   loadingScreen.classList.remove('visually-hidden');
 
-  // Execute all asynchronous functions
-  Promise.all(asyncFunctions.map(fn => fn()))
-    .then(() => {
-      // All asynchronous functions completed
-      main.classList.remove('visually-hidden');
-      loadingScreen.classList.add('visually-hidden'); // Hide loading screen
-      body.classList.remove('no-scroll');
-    })
-    .catch(error => {
-      console.error('Error in asynchronous operation:', error);
-      loadingScreen.classList.add('visually-hidden'); // Hide loading screen even in case of an error
-      body.classList.remove('no-scroll');
-    });
-});
+//   // Execute all asynchronous functions
+//   Promise.all(asyncFunctions.map(fn => fn()))
+//     .then(() => {
+//       // All asynchronous functions completed
+//       main.classList.remove('visually-hidden');
+//       loadingScreen.classList.add('visually-hidden'); // Hide loading screen
+//       body.classList.remove('no-scroll');
+//     })
+//     .catch(error => {
+//       console.error('Error in asynchronous operation:', error);
+//       loadingScreen.classList.add('visually-hidden'); // Hide loading screen even in case of an error
+//       body.classList.remove('no-scroll');
+//     });
+// });
 
 //export function hideLoader() {
 //body.classList.remove('no-scroll');
@@ -141,27 +145,27 @@ const mainContainer = document.querySelector('.js-main-container');
 //   console.log(ls);
 // }
 
-
 mainContainer.addEventListener('click', e => {
   // console.log("Click");
-  if (e.target.classList.contains('js-buy-btn')) {    
+  if (e.target.classList.contains('js-buy-btn')) {
     let parent = e.target.closest('.js-product-card');
     // console.log("click buy", parent.dataset.id);
     addProductToCart(parent.dataset.id);
-    addedToCartProduct(parent.dataset.id)
+    addedToCartProduct(parent.dataset.id);
   }
 });
 
 function addedToCartProduct(id) {
-  const allProductsById = document.querySelectorAll(`.js-product-card[data-id="${id}"]`);
-  const iconName = "";
+  const allProductsById = document.querySelectorAll(
+    `.js-product-card[data-id="${id}"]`
+  );
+  const iconName = '';
 
   console.log(allProductsById);
-  allProductsById.forEach((obj) => {
+  allProductsById.forEach(obj => {
     const btn = obj.querySelector('.js-buy-btn');
-    btn.innerHTML = `<svg class="img-icon" width="12" height="12" style="stroke:"#fff""><use href="${shoppingSvg}#${iconName}"></use></svg>`
+    btn.innerHTML = `<svg class="img-icon" width="12" height="12" style="stroke:"#fff""><use href="${shoppingSvg}#${iconName}"></use></svg>`;
     btn.disabled = true;
     // console.log(btn);
-  })
+  });
 }
-
