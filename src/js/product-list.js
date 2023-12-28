@@ -16,13 +16,8 @@ export function renderProductList(data) {
   productList.innerHTML = createMarkup(data.results);
 
   const productModalOpen = document.querySelectorAll('.product-modal-open');
-  // const productModalBuy = document.querySelectorAll('.');
   productModalOpen.forEach(element => {
     element.addEventListener('click', showProductModal(element));
-
-    // showProductModal(element);
-
-    // console.log(element);
   });
 }
 
@@ -31,8 +26,7 @@ function createMarkup(arr) {
     .map(
       ({ _id, name, img, category, price, size, is10PercentOff, popularity }) =>
         `
-        <li class="all-product-card product-modal-open  js-product-card" id="${_id}" data-id=${_id}>
-<div class="all-product-test">
+        <li class="all-product-card product-modal-open js-product-card" id="${_id}" data-id=${_id}>
             <img
               class="all-discount-svg ${is10PercentOff
                 .toString()
@@ -59,7 +53,6 @@ function createMarkup(arr) {
                 ${popularity}
               </p>
             </div>
-</div>
           <div class="all-purchaise-box">
             <h3 class="all-product-price header-three">&#36;${price}</h3>
             <button class="all-product-btn buy-btn js-buy-btn js-btn-first-ico" type="button">
@@ -72,13 +65,13 @@ function createMarkup(arr) {
               />
             </button>
                <button class="all-product-btn btn-check buy-btn js-btn-second-ico" type="button">
-              <img
-                class="all-buy-svg"
-                src="${check}"
-                alt="shop-icon"
-                width="18"
-                height="18"
-              />
+                <img
+                  class="all-buy-svg"
+                  src="${check}"
+                  alt="shop-icon"
+                  width="18"
+                  height="18"
+                />
             </button>
           </div>
         </li>
