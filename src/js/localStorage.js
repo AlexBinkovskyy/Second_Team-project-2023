@@ -48,4 +48,3 @@ export function getFilterParams() {
 const cartNumber = document.querySelector('.cart-number');
 cartNumber.insertAdjacentHTML('beforeend', getCartItemsQuantity());
  
-//some
