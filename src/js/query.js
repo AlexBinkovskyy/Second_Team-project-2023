@@ -71,29 +71,24 @@ export async function getProdByQuery({
   console.log(query);
   return await axios(query);
 }
+// footer sbscr start
 
-// Функція для відправки даних з форми
+//для відправки даних з форми
 export async function postData(email) {
   return axios.post(`${references.SECOND_URL}`, { email });
 }
 
 export async function postOrder(obj) {
-  return await axios
-  .post("https://food-boutique.b.goit.study/api/orders", obj)
-  
+  return await axios.post('https://food-boutique.b.goit.study/api/orders', obj);
 }
 
-// Функція для відображення модального вікна з текстом
+//для відображення модального вікна з текстом
 function showModal(title, text) {
   const modalBackdrop = document.querySelector('[data-modal]');
-  const modalTitle = modalBackdrop.querySelector('.modal-title');
-  const modalText = modalBackdrop.querySelector('.modal-text');
-
-  modalTitle.textContent = title;
-  modalText.textContent = text;
 
   modalBackdrop.classList.remove('is-hidden');
 }
+const modalDiv = document.querySelector('.modal');
 
 // Функція для закриття модального вікна
 function closeModal() {
@@ -103,36 +98,75 @@ function closeModal() {
 
 // Отримання форми та додавання обробника подій для події submit
 const form = document.getElementById('subscriptionForm');
+
 form.addEventListener('submit', async function (event) {
-  event.preventDefault(); // Зупинити перезавантаження сторінки при натисканні кнопки
+  event.preventDefault();
 
   const emailInput = document.getElementById('emailInput');
-  const email = emailInput.value; // Отримання значення поля email
+  const email = emailInput.value;
 
   postData(email)
     .then(response => {
       const responseData = response.data;
-      showModal(
-        'Thanks for subscribing for new products',
-        'We promise you organic and high-quality products that will meet your expectations. Please stay with us and we promise you many pleasant surprises.'
-      );
+      if (response.status === 201) {
+        showModal(goodModal());
+        modalDiv.innerHTML = goodModal();
+        //закриття модального вікна
+        const modalCloseBtn = document.querySelector('[data-modal-close]');
+        modalCloseBtn.addEventListener('click', closeModal);
+      }
     })
     .catch(error => {
-      const errorMessage = error.response
-        ? 'This email address has already been entered'
-        : 'An error occurred';
-      showModal(
-        errorMessage,
-        'You have already subscribed to our new products. Watch for offers at the mailing address.'
-      );
+      const errorMessage = error.response;
+      if (error.response.status === 409) {
+        showModal(errModal());
+        modalDiv.innerHTML = errModal();
+        //закриття модального вікна
+        const modalCloseBtn = document.querySelector('[data-modal-close]');
+        modalCloseBtn.addEventListener('click', closeModal);
+      }
     });
 });
 
-// Додавання обробника подій для закриття модального вікна при натисканні на кнопку закриття
-const modalCloseBtn = document.querySelector('[data-modal-close]');
-modalCloseBtn.addEventListener('click', closeModal);
+function goodModal() {
+  return `
+    <button class="modal-btn" type="button" data-modal-close>
+      <svg class="modal-btn-icon" width="8" height="8">
+        <use href="./images/sprite.svg#icon-Cross_close"></use>
+      </svg>
+    </button>
+    <div class="modal-poshition-content">
+      <h2 class="modal-title">Thanks for subscribing for <span class="modal-title-span">new</span> products</h2>
+      <p class="modal-text">We promise you organic and high-quality products that will meet your expectations. Please stay with us and we promise you many pleasant surprises.</p>
+    </div>
+    <img
+      class="modal-form-img"
+      srcset="
+        ./images/modal-sbscr@1x-min.png 1x,
+        ./images/modal-sbscr@2x-min.png 2x
+      "
+      src="./images/modal-sbscr@1x-min.png"
+      alt="What are we doing"
+      width="360"
+      />
+      </div>
+  `;
+}
+function errModal() {
+  return `
+    <button class="modal-btn" type="button" data-modal-close>
+      <svg class="modal-btn-icon" width="8" height="8">
+        <use href="./images/sprite.svg#icon-Cross_close"></use>
+      </svg>
+    </button>
+    <div class="modal-poshition-content">
+      <h2 class="modal-title">This <span class="modal-title-span">email address</span> has already been entered</h2>
+       <p class="modal-text">You have already subscribed to our new products. Watch for offers at the mailing address.</p>
 
-// Додавання обробника подій для закриття модального вікна при натисканні клавіші "Esc"
+      </div>
+  `;
+}
+//закриття модального вікна при натисканні клавіші "Esc"
 document.addEventListener('keydown', function (event) {
   const modalBackdrop = document.querySelector('[data-modal]');
   if (
@@ -142,10 +176,11 @@ document.addEventListener('keydown', function (event) {
     closeModal();
   }
 });
-// Додавання обробника подій для закриття модального вікна при кліку поза модальним вікном
+//закриття модального вікна при кліку поза модальним вікном
 const modalBackdrop = document.querySelector('[data-modal]');
 modalBackdrop.addEventListener('click', function (event) {
   if (event.target === modalBackdrop) {
     closeModal();
   }
 });
+// footer sbscr end
