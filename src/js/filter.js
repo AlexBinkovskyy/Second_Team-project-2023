@@ -6,11 +6,7 @@ import { getProdByParams } from './query';
 import { renderProductList } from './product-list';
 import { createEmptyMarkup } from './product-list';
 import { updateCartBtns } from './main';
-import 'tui-pagination/dist/tui-pagination.css';
-import Pagination from 'tui-pagination';
 
-const container = document.getElementById('tui-pagination-container');
-const instance = new Pagination(container, {});
 
 export const filterForm = document.querySelector('#filterForm');
 filterForm.addEventListener('submit', onSubmit);
@@ -34,49 +30,11 @@ export function checkFilterParams() {
 checkFilterParams();
 
 getProdByQuery(getFilterParams()).then(
-  ({ data, data: { perPage, totalPages } }) => {
+  ({ data}) => {
     if (data.results.length) {
+      console.log('0', data);
       renderProductList(data);
       updateCartBtns();
-      const container = document.getElementById('tui-pagination-container');
-      const instance = new Pagination(container, {
-        totalItems: perPage * totalPages,
-        itemsPerPage: perPage,
-        visiblePages: 5,
-        centerAlign: true,
-        template: {
-          page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-          currentPage:
-            '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-
-          moveButton:
-            '<a href="#" class="tui-page-btn tui-{{type}}">' +
-            '<span class="tui-ico-{{type}}">{{type}}</span>' +
-            '</a>',
-          disabledMoveButton:
-            '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-            '<span class="tui-ico-{{type}}">{{type}}</span>' +
-            '</span>',
-          moreButton:
-            '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-            '<span class="tui-ico-ellip">...</span>' +
-            '</a>',
-        },
-      });
-
-      instance.on('beforeMove', async event => {
-        const newPage = event.page;
-        try {
-          const { data: newData } = await getProdByQuery({
-            page: newPage,
-            limitPerPage: perPage,
-          });
-          renderProductList(newData);
-          updateCartBtns();
-        } catch (err) {
-          console.log(err);
-        }
-      });
     } else if (!Array.isArray(data.results) || !data.results.length) {
       createEmptyMarkup();
       return;
@@ -88,7 +46,6 @@ export function renderFilterSelect(data) {
   filterSelectCategories.innerHTML = markup(data);
   if (filterParams.category !== null) {
     const opt = filterForm.filterCategories.options;
-    console.log('5', opt);
     for (const option of opt) {
       if (
         option.value.replaceAll(' ', '_').replaceAll('&', '%26') ===
