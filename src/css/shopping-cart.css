@@ -5,14 +5,20 @@ body {
 }
 .cart-section {
   flex: 1;
-  padding-bottom: 100px;
-}
-.cart-container{
-  min-width: 104%;
-  padding-right: 8px;  
+  /* padding-bottom: 80px; */
 }
 @media only screen and (min-width: 768px) {
-  .cart-container{
+  .cart-section {
+    /* padding-bottom: 100px; */
+  }
+}
+
+.cart-container {
+  min-width: 104%;
+  padding-right: 8px;
+}
+@media only screen and (min-width: 768px) {
+  .cart-container {
     padding-right: 20px;
     min-width: none;
   }
@@ -47,8 +53,7 @@ body {
 
 @media only screen and (min-width: 1440px) {
   .cart-title {
-    margin-top: 41px;
-    margin-bottom: 150px;
+    margin-bottom: 82px;
   }
 }
 
@@ -154,12 +159,18 @@ body {
 ▮▮▯▯⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘   Cart bottom   ⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘⁘▯▯▮▮
 */
 .cart-box {
-  display: flex;
-  gap: 4%;
+  display: block;
+  padding-bottom: 80px;
 }
-@media screen and (max-width: 1440px) {
+@media screen and (min-width: 768px) {
   .cart-box {
-    display: block;
+    padding-bottom: 100px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .cart-box {
+    display: flex;
+    gap: 110px;
   }
 }
 /*
@@ -167,22 +178,24 @@ body {
 */
 .cart-order-wraper {
   position: relative;
-  width: 48%;
+  margin-bottom: 70px;
+  width: 100%;
 }
-@media screen and (max-width: 1440px) {
+@media screen and (min-width: 768px) {
   .cart-order-wraper {
-    width: 100%;
-    margin-bottom: 100px;
+    margin-bottom: 90px;
   }
 }
-@media screen and (max-width: 400px) {
+@media screen and (min-width: 1440px) {
   .cart-order-wraper {
-    margin-bottom: 80px;
+    width: 48%;
+    margin-bottom: 0;
   }
 }
+
 .cart-order-clear-btn {
   position: absolute;
-  right: 0px;
+  right: -11px;
   top: -40px;
 
   margin-right: 15px;
@@ -200,7 +213,12 @@ body {
 }
 @media only screen and (min-width: 768px) {
   .cart-order-clear-btn {
-    right: 58px;
+    right: 4px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .cart-order-clear-btn {
+    right: 10px;
   }
 }
 .cart-order-container {
@@ -209,7 +227,7 @@ body {
   /* margin-right: 15px; */
   width: 100%;
   max-height: 520px;
-  min-height: 360px;
+  /* min-height: 360px; */
   /* overflow-x: hidden; */
   overflow: auto;
   /* overflow-y: scroll; */
@@ -251,10 +269,17 @@ body {
   }
 }
 .cart-form-title {
-  font-size: 32px;
+  /* font-size: 32px; */
+  font-size: 24px;
   margin-bottom: 40px;
   text-transform: uppercase;
 }
+@media screen and (min-width: 768px) {
+  .cart-form-title {
+    font-size: 32px;
+  }
+}
+
 .cart-total-price {
   height: 60px;
   padding: 14px 28px;
@@ -273,19 +298,31 @@ body {
     margin-bottom: 30px;
   }
 }
+
 .cart-total-price-text {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   line-height: 24px;
 }
+@media screen and (min-width: 768px) {
+  .cart-total-price-text {
+    font-size: 20px;
+  }
+}
+
 .cart-total-price-sum {
   color: rgba(1, 1, 1, 0.2);
   font-size: 12px;
 }
 .cart-total-price-sum-span {
   color: var(--text-color);
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 500;
+}
+@media screen and (min-width: 768px) {
+  .cart-total-price-sum-span {
+    font-size: 32px;
+  }
 }
 
 .cart-form {
@@ -310,12 +347,19 @@ body {
   left: 20px;
   transform: translateY(-45%);
 
+  font-size: 14px;
   color: var(--passive-text-color);
 }
+@media screen and (min-width: 768px) {
+  .cart-form-label-text {
+    font-size: 18px;
+  }
+}
+
 .cart-form-input {
   position: relative;
   padding: 15px 20px;
-  padding-left: 64px;
+  padding-left: 56px;
 
   width: 100%;
 
@@ -324,13 +368,27 @@ body {
   border: 1px solid rgba(1, 1, 1, 0.3);
 
   color: var(--text-color);
-  font-size: 18px;
+  /* font-size: 18px; */
+  font-size: 14px;
 }
+@media screen and (min-width: 768px) {
+  .cart-form-input {
+    padding-left: 64px;
+    font-size: 18px;
+  }
+}
+
 .cart-form-input::placeholder {
   color: var(--text-color);
-  font-size: 18px;
+  font-size: 14px;
   line-height: 24px;
 }
+@media screen and (min-width: 768px) {
+  .cart-form-input::placeholder {
+    font-size: 18px;
+  }
+}
+
 .cart-form-input:focus,
 .cart-form-input:active,
 .cart-form-input:valid {
@@ -352,15 +410,19 @@ body {
   cursor: pointer;
 
   color: #e8e8e2;
-  font-size: 20px;
+  /* font-size: 20px; */
+  font-size: 14px;
   font-weight: 500;
 
   transition: background var(--transition-settings);
 }
+
 @media screen and (min-width: 768px) {
   .cart-form-button {
     margin: 0;
     max-width: 214px;
+
+    font-size: 20px;
   }
 }
 .cart-form-button:hover {

@@ -20,25 +20,37 @@
 .cart-modal {
   position: relative;
   margin: auto;
-  padding: 80px 40px;
+  padding: 60px 20px;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  max-width: 560px;
+  max-width: 335px;  
 
   border-radius: 20px;
   background: #e8e8e2;
+}
+@media screen and (min-width: 768px) {
+  .cart-modal {
+    padding: 80px 40px;    
+    max-width: 560px;
+  }
 }
 .cart-modal-close-btn {
   position: absolute;
   top: 24px;
   right: 24px;
 
-  height: 28px;
-  width: 28px;
+  height: 24px;
+  width: 24px;
 
   background-color: transparent;
+}
+@media screen and (min-width: 768px) {
+  .cart-modal-close-btn {
+    height: 28px;
+    width: 28px;
+  }
 }
 .cart-modal-close-btn svg {
 }
@@ -52,23 +64,40 @@
   height: 118px;
 }
 .cart-modal-title {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   font-family: Neue Montreal;
-  font-size: 32px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 500;
   line-height: 32px; /* 100% */
   text-transform: uppercase;
   text-align: center;
 }
+@media screen and (min-width: 768px) {
+  .cart-modal-title {
+    margin-bottom: 20px;
+    font-size: 32px;
+  }
+}
+@media screen and (min-width: 1440px) {
+
+}
 .cart-modal-desc {
   color: rgba(1, 1, 1, 0.7);
 
   text-align: center;
-  font-size: 18px;
+  font-size: 14px;
   font-style: normal;
   line-height: 24px;
+}
+@media screen and (min-width: 768px) {
+  .cart-modal-desc {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 1440px) {
+
 }
 
 /*
