@@ -1,6 +1,7 @@
 import { getProdByID } from './query';
 import shoppingSvg from '../images/icons/shopping-cart.svg';
 import check from '../images/icons/check-ico.svg';
+import { updateCartBtns } from './main';
 
 const productModalContent = document.querySelector('.product-modal-content');
 const body = document.querySelector('body');
@@ -44,13 +45,16 @@ function logModal(obj) {
         '.product-modal-content'
       );
       productModalContent.innerHTML = renderProductModal(data);
+      updateCartBtns();
     })
     .catch(error => console.log(error));
 }
 
 function renderProductModal(object) {
   return `
-  <div class="modal-card-content" id="${object._id}" data-id="${object._id}">
+  <div class="modal-card-content  js-product-card" id="${
+    object._id
+  }" data-id="${object._id}">
     <div class="modal-card-pic-info">
       <img
         src="${object.img}"
@@ -81,17 +85,15 @@ function renderProductModal(object) {
     </div>
       <div class="all-purchaise-box">
         <h3 class="all-product-price header-three">&#36;${object.price}</h3>
-        <button class="modal-product-btn buy-btn js-buy-btn js-btn-first-ico" type="button">
+        <button class="modal-product-btn buy-btn js-buy-btn" type="button">
           <p class="modal-product-btn-text">Add to</p>
           <img
-            class="all-buy-svg"
+                class="all-buy-svg js-btn-first-ico"
             src="${shoppingSvg}"
             alt="shop-icon"
           />
-        </button>
-             <button class="all-product-btn btn-check buy-btn js-btn-second-ico" type="button">
               <img
-                class="all-buy-svg"
+                class="all-buy-svg js-btn-second-ico"
                 src="${check}"
                 alt="shop-icon"
                 width="18"
