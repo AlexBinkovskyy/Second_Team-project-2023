@@ -1,13 +1,13 @@
 .popular-product {
   padding: 40px 0;
-  width: 335px;
+  max-width: 335px;
   margin-left: auto;
   margin-right: auto;
 }
 
 @media screen and (min-width: 768px) {
   .popular-product {
-    width: 704px;
+    max-width: 704px;
     padding: 50px 0 32px;
     margin: 0;
   }
@@ -36,12 +36,6 @@
   }
 }
 
-/* @media screen and (min-width: 1440) {
-  .popular-product-title {
-    margin: 0;
-  }
-} */
-
 .popular-product-list {
   display: flex;
   flex-wrap: wrap;
@@ -51,19 +45,19 @@
 @media screen and (min-width: 768px) {
   .popular-product-list {
     gap: 13px;
-    width: 563px;
+    max-width: 563px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .popular-product-list {
     flex-direction: column;
-    width: 275px;
+    max-width: 275px;
   }
 }
 
 .popular-product-item {
-  width: 335px;
+  max-width: 335px;
   display: flex;
   padding: 12px;
   border-radius: 10px;
@@ -81,10 +75,8 @@
 }
 
 .popular-product-pic {
-  max-width: 74px;
+  width: 74px;
   height: 74px;
-  /* display: flex;
-  align-items: center; */
   padding: 9px;
   border-radius: 10px;
   background: var(--maingray);
@@ -92,12 +84,18 @@
 }
 
 .popular-product-info {
-  min-width: 227px;
+  width: 227px;
+}
+
+@media screen and (min-width: 374.98px) {
+  .popular-product-info {
+    width: 227px;
+  }
 }
 
 @media screen and (min-width: 768px) {
   .popular-product-info {
-    min-width: 167px;
+    width: 167px;
   }
 }
 

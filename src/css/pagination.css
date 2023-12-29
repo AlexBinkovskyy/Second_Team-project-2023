@@ -5,7 +5,7 @@
 
 @media screen and (max-width: 767.98px) {
   #tui-pagination-container {
-    min-width: 335px;
+    max-width: 335px;
   }
   .tui-page-btn.tui-is-disabled.tui-first,
   .tui-page-btn.tui-is-disabled.tui-prev,
@@ -41,6 +41,43 @@
   }
 }
 
+@media screen and (max-width: 374.98px) {
+  #tui-pagination-container {
+    max-width: 335px;
+  }
+  .tui-page-btn.tui-is-disabled.tui-first,
+  .tui-page-btn.tui-is-disabled.tui-prev,
+  .tui-page-btn.tui-is-disabled.tui-next,
+  .tui-page-btn.tui-is-disabled.tui-last,
+  a.tui-page-btn.tui-next,
+  a.tui-page-btn.tui-last,
+  a.tui-page-btn.tui-next-is-ellip.tui-last-child,
+  a.tui-page-btn.tui-prev,
+  a.tui-page-btn.tui-first,
+  a.tui-page-btn.tui-prev-is-ellip.tui-first-child,
+  strong.tui-page-btn.tui-is-selected {
+    height: 25px;
+    width: 25px;
+  }
+
+  #tui-pagination-container a.tui-page-btn.tui-next,
+  #tui-pagination-container a.tui-page-btn.tui-last,
+  #tui-pagination-container a.tui-page-btn.tui-prev,
+  #tui-pagination-container a.tui-page-btn.tui-first,
+  span.tui-page-btn.tui-is-disabled.tui-first,
+  span.tui-page-btn.tui-is-disabled.tui-prev,
+  span.tui-page-btn.tui-is-disabled.tui-next,
+  span.tui-page-btn.tui-is-disabled.tui-last {
+    padding: 9px;
+  }
+
+  a.tui-page-btn.tui-page-btn,
+  strong.tui-page-btn.tui-is-selected {
+    height: 25px;
+    width: 25px;
+    padding: 5px;
+  }
+}
 @media screen and (min-width: 768px) {
   .pagination {
     padding: 30px 0 50px;
