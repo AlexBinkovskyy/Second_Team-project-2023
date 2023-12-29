@@ -19,6 +19,7 @@ let filterParams;
 export function checkFilterParams() {
   if (!getFilterParams()) {
     setDefaultFilterParams();
+    filterParams = getFilterParams();
   } else {
     filterParams = getFilterParams();
     if (filterParams.keyword !== null) {
@@ -32,7 +33,6 @@ checkFilterParams();
 getProdByQuery(getFilterParams()).then(
   ({ data}) => {
     if (data.results.length) {
-      console.log('0', data);
       renderProductList(data);
       updateCartBtns();
     } else if (!Array.isArray(data.results) || !data.results.length) {

@@ -21,7 +21,6 @@ const tuiPagination = document.querySelector('.pagination');
 export function renderProductList( {results, perPage, totalPages}) {
   tuiPagination.classList.remove('visually-hidden');
 
-  console.log('1', results);
   productList.innerHTML = createMarkup(results);
 
   const productModalOpen = document.querySelectorAll('.product-modal-open');
