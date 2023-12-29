@@ -42,13 +42,14 @@
 }
 
 .all-product-card {
-  width: 100vw;
-  max-width: 336px;    
+  /* width: 100vw; */
+  max-width: 336px;
   padding: 20px;
   border-radius: 20px;
   background: var(--mainwhite);
-  position: relative;  
+  position: relative;
 }
+
 @media screen and (max-width: 767.9px) {
   .all-product-card {
     margin-left: auto;
@@ -75,7 +76,7 @@
 
 .all-product-card:hover,
 .all-product-card:focus {
-cursor: pointer;
+  cursor: pointer;
 }
 
 .all-product-pic {
@@ -115,7 +116,7 @@ cursor: pointer;
   margin-right: 4px;
 }
 
-.all-product-desc{
+.all-product-desc {
   color: var(--more-passive-text-color);
   font-family: 'NeueMontreal-regular';
   font-size: 14px;
@@ -130,8 +131,8 @@ cursor: pointer;
   justify-content: space-between;
 }
 @media screen and (max-width: 767.9px) {
-.all-purchaise-box {
-  margin-top: 40px;
+  .all-purchaise-box {
+    margin-top: 40px;
   }
 }
 
@@ -165,16 +166,16 @@ cursor: pointer;
 }
 @media screen and (min-width: 768px) {
   .product-search-error {
-  padding-top: 100px;
+    padding-top: 100px;
   }
 }
 @media screen and (min-width: 1440px) {
   .product-search-error {
-  padding-top: 140px;
+    padding-top: 140px;
   }
 }
 
-.product-search-title{
+.product-search-title {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -183,15 +184,15 @@ cursor: pointer;
 }
 @media screen and (min-width: 768px) {
   .product-search-title {
-  width: 370px;
+    width: 370px;
   }
 }
 
-.product-search-link{
+.product-search-link {
   color: var(--maingreen);
 }
 
-.product-search-text{
+.product-search-text {
   margin-left: auto;
   margin-right: auto;
   text-align: center;

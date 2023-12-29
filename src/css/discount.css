@@ -1,6 +1,6 @@
 .discount-products {
   padding: 40px 0;
-  width: 335px;
+  max-width: 335px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -12,14 +12,14 @@
 @media screen and (min-width: 768px) {
   .discount-products {
     padding: 32px 0 50px;
-    width: 704px;
+    max-width: 704px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .discount-products {
     padding: 20px 0;
-    width: 275px;
+    max-width: 275px;
   }
 }
 

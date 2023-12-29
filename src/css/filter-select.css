@@ -13,16 +13,28 @@ input {
 
 #filterForm {
   position: relative;
-  width: 335px;
+  max-width: 375px;
+}
+
+@media screen and (max-width: 374.98px) {
+  #filterForm {
+    max-width: 280px;
+  }
 }
 
 @media screen and (min-width: 768px) {
   #filterForm {
-    width: 704px;
+    max-width: 704px;
     display: flex;
     gap: 8px;
     align-items: center;
     justify-content: flex-start;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  #filterForm {
+    max-width: 1240px;
   }
 }
 
@@ -41,9 +53,15 @@ input {
   width: 24px;
   height: 24px;
   top: 25px;
-  left: 290px;
+  left: 285px;
   transform: translateY(-50%);
   margin: 0 auto;
+}
+
+@media screen and (max-width: 374.98px) {
+  .submit-button {
+    left: 240px;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -66,6 +84,13 @@ input {
   border-width: 1px;
   border-style: solid;
   margin-bottom: 12px;
+}
+
+@media screen and (max-width: 374.98px) {
+  .filter-select,
+  .filter-input {
+    width: 100%;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -95,7 +120,7 @@ input {
 }
 
 .filter-select.custom-select {
-  width: 335px;
+  max-width: 335px;
 }
 
 @media screen and (min-width: 768px) {
@@ -142,10 +167,16 @@ input {
   font-size: 12px;
   color: #555;
   position: absolute;
-  top: 50%;
-  left: 300px;
+  top: 45%;
+  left: 290px;
   transform: translateY(-50%);
   z-index: 1;
+}
+
+@media screen and (max-width: 374.98px) {
+  .custom-select::before {
+    left: 245px;
+  }
 }
 
 @media screen and (min-width: 768px) {
