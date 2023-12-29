@@ -6,18 +6,67 @@ import { setDefaultFilterParams } from './localStorage';
 import { checkFilterParams } from './filter';
 import { showProductModal } from './product-list-modal.js';
 import check from '../images/icons/check-ico.svg';
+import 'tui-pagination/dist/tui-pagination.css';
+import Pagination from 'tui-pagination';
+import { getProdByQuery } from './query';
+import { updateCartBtns } from './main';
+
+const container = document.getElementById('tui-pagination-container');
+const instance = new Pagination(container, {});
 
 const productList = document.querySelector('.product-list');
 const tuiPagination = document.querySelector('.pagination');
 
-export function renderProductList(data) {
+
+export function renderProductList( {results, perPage, totalPages}) {
   tuiPagination.classList.remove('visually-hidden');
 
-  productList.innerHTML = createMarkup(data.results);
+  console.log('1', results);
+  productList.innerHTML = createMarkup(results);
 
   const productModalOpen = document.querySelectorAll('.product-modal-open');
   productModalOpen.forEach(element => {
     element.addEventListener('click', showProductModal(element));
+  });
+
+  const container = document.getElementById('tui-pagination-container');
+  const instance = new Pagination(container, {
+    totalItems: perPage * totalPages,
+    itemsPerPage: perPage,
+    visiblePages: 5,
+    centerAlign: true,
+    template: {
+      page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+      currentPage:
+        '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+
+      moveButton:
+        '<a href="#" class="tui-page-btn tui-{{type}}">' +
+        '<span class="tui-ico-{{type}}">{{type}}</span>' +
+        '</a>',
+      disabledMoveButton:
+        '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+        '<span class="tui-ico-{{type}}">{{type}}</span>' +
+        '</span>',
+      moreButton:
+        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+        '<span class="tui-ico-ellip">...</span>' +
+        '</a>',
+    },
+  });
+
+  instance.on('beforeMove', async event => {
+    const newPage = event.page;
+    try {
+      const { data: newData } = await getProdByQuery({
+        page: newPage,
+        limitPerPage: perPage,
+      });
+      renderProductList(newData);
+      updateCartBtns();
+    } catch (err) {
+      console.log(err);
+    }
   });
 }
 

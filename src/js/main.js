@@ -10,14 +10,13 @@ import { renderFilterSelect } from './filter';
 import { getCartItems } from './localStorage.js';
 import { addProductToCart, setEmailToOrderInfo } from './workWithCart.js';
 import shoppingSvg from '../images/sprite.svg';
-import Pagination from 'tui-pagination';
 import { getProdByQuery } from './query';
+
 import { postData, postOrder } from './query';
 import axios from 'axios';
 import 'tui-pagination/dist/tui-pagination.css';
 
-const container = document.getElementById('tui-pagination-container');
-const instance = new Pagination(container, {});
+
 
 getProdByDiscount()
   .then(({ data }) => {
@@ -25,50 +24,6 @@ getProdByDiscount()
     updateCartBtns();
   })
   .catch(error => console.log(error));
-
-getProdByParams().then(({ data, data: { perPage, totalPages } }) => {
-  renderProductList(data);
-  updateCartBtns();
-  const container = document.getElementById('tui-pagination-container');
-  const instance = new Pagination(container, {
-    totalItems: perPage * totalPages,
-    itemsPerPage: perPage,
-    visiblePages: 5,
-    centerAlign: true,
-    template: {
-      page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-      currentPage:
-        '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-
-      moveButton:
-        '<a href="#" class="tui-page-btn tui-{{type}}">' +
-        '<span class="tui-ico-{{type}}">{{type}}</span>' +
-        '</a>',
-      disabledMoveButton:
-        '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-        '<span class="tui-ico-{{type}}">{{type}}</span>' +
-        '</span>',
-      moreButton:
-        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-        '<span class="tui-ico-ellip">...</span>' +
-        '</a>',
-    },
-  });
-
-  instance.on('beforeMove', async event => {
-    const newPage = event.page;
-    try {
-      const { data: newData } = await getProdByQuery({
-        page: newPage,
-        limitPerPage: perPage,
-      });
-      renderProductList(newData);
-      updateCartBtns();
-    } catch (err) {
-      console.log(err);
-    }
-  });
-});
 
 getProdByPopular()
   .then(({ data }) => {
@@ -186,8 +141,9 @@ function addedToCartProduct(id) {
   });
 }
 
-function updateCartBtns() {
-  getCartItems().products.forEach(product => {
+
+export function updateCartBtns() {
+  getCartItems().products.forEach((product) => {
     // console.log(product.id);
     addedToCartProduct(product.id);
   });

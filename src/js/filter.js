@@ -5,6 +5,8 @@ import { getProdByQuery } from './query';
 import { getProdByParams } from './query';
 import { renderProductList } from './product-list';
 import { createEmptyMarkup } from './product-list';
+import { updateCartBtns } from './main';
+
 
 export const filterForm = document.querySelector('#filterForm');
 filterForm.addEventListener('submit', onSubmit);
@@ -14,43 +16,46 @@ filterForm.elements.filterMethod.addEventListener('change', proceedFilter);
 
 let filterParams;
 
-export async function checkFilterParams() {
-  if (getFilterParams()) {
+export function checkFilterParams() {
+  if (!getFilterParams()) {
+    setDefaultFilterParams();
+  } else {
     filterParams = getFilterParams();
     if (filterParams.keyword !== null) {
       filterForm.filterInput.value = filterParams.keyword;
-      await getProdByQuery(getFilterParams()).then(resp => {
-        console.log(resp);
-        if (resp.data.results.length) {
-          renderProductList(resp.data);
-        } else if (
-          !Array.isArray(resp.data.results) ||
-          !resp.data.results.length
-        ) {
-          createEmptyMarkup();
-          return;
-        }
-      });
-    }  else {
-    setDefaultFilterParams();
+    }
   }
-}}
+}
 
 checkFilterParams();
 
-export function renderFilterSelect(data) {
-  filterSelectCategories.insertAdjacentHTML('afterbegin', markup(data));
+getProdByQuery(getFilterParams()).then(
+  ({ data}) => {
+    if (data.results.length) {
+      console.log('0', data);
+      renderProductList(data);
+      updateCartBtns();
+    } else if (!Array.isArray(data.results) || !data.results.length) {
+      createEmptyMarkup();
+      return;
+    }
+  }
+);
 
+export function renderFilterSelect(data) {
+  filterSelectCategories.innerHTML = markup(data);
   if (filterParams.category !== null) {
-    console.log('1', filterForm.filterCategories);
-      const opt = filterForm.filterCategories.options;
-      for (const option of opt) {
-        if (option.value === filterParams.category) {
-        option.value.option.selected;
-        break; // Зупинити пошук, якщо знайдено
+    const opt = filterForm.filterCategories.options;
+    for (const option of opt) {
+      if (
+        option.value.replaceAll(' ', '_').replaceAll('&', '%26') ===
+        filterParams.category
+      ) {
+        option.selected = true;
+        break;
       }
     }
-  } 
+  }
 }
 
 function markup(arr) {
@@ -59,7 +64,10 @@ function markup(arr) {
     <option value="${categorie}" class="js-option">${categorie}</option>
     `
   );
-  selects.unshift('<option value="" disabled selected>Categories</option>');
+  selects.unshift(
+    '<option value="" class="js-option" disabled selected>Categories</option>'
+  );
+  selects.push('<option value="Show all" class="js-option">Show all</option>');
   return selects.join('');
 }
 
@@ -82,7 +90,9 @@ function proceedInput(filterInput, filterCategories) {
   } else if (filterInput.value.trim()) {
     filterParams.keyword = filterInput.value.trim();
     if (filterCategories.value !== '') {
-      filterParams.category = filterCategories.value;
+      filterParams.category = filterCategories.value
+        .replaceAll(' ', '_')
+        .replaceAll('&', '%26');
     }
     setNewFilterParams(filterParams);
     getProdByQuery(getFilterParams())
@@ -117,6 +127,8 @@ function proceedInput(filterInput, filterCategories) {
 function proceedSelect(event) {
   event.preventDefault();
   if (event.target.value === 'Show all') {
+    setDefaultFilterParams();
+    filterForm.reset();
     getProdByParams()
       .then(({ data }) => {
         renderProductList(data);
