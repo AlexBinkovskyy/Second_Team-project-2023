@@ -318,56 +318,76 @@ body.no-scroll {
 }
 .hero-text {
   text-align: center;
-  padding-bottom: 32px;
+  margin-bottom: 32px;
   font-style: normal;
 }
 .accent-food {
   color: var(--maingreen);
 }
 .hero-main-text {
-  padding-bottom: 16px;
+  width: 335px;
+  margin: 0 auto 16px;
   /* padding-top: 58px; */
   font-size: 44px;
-  font-weight: 500;
-  font-family: 'NeueMontreal-regular';
-  letter-spacing: -1.6px;
+  /* font-weight: 500; */
+  font-family: 'NeueMontreal-Medium';
+  line-height: 1.09;
+  letter-spacing: -0.04em;
   color: #010101;
-  margin-left: 55px;
-  margin-right: 55px;
+  /* margin-left: 55px;
+  margin-right: 55px; */
   text-align: center;
-  font-style: normal;
+  /* font-style: normal; */
 }
+@media only screen and (max-width: 374.98px) {
+  .hero-main-text {
+    width: 280px;
+  }
+  .hero-second-text {
+    max-width: 280px;
+  }
+}
+
 .hero-second-text {
   color: rgba(1, 1, 1, 0.8);
   font-family: 'NeueMontreal-regular';
   font-size: 14px;
-  font-weight: 400;
-  line-height: 18px;
-  padding-left: 41.5px;
-  padding-right: 41.5px;
+  /* font-weight: 400; */
+  line-height: 1.28;
+  margin: 0 auto;
+  width: 292px;
 }
 @media only screen and (min-width: 768px) {
   .hero-text {
-    padding-bottom: 40px;
+    margin-bottom: 40px;
   }
   .hero-main-text {
     font-size: 80px;
-    line-height: 80px;
-    padding-bottom: 20px;
+    line-height: 1;
+    margin: 0 auto 20px;
+    width: 658px;
+    /* margin: 0 auto; */
   }
   .hero-second-text {
     text-align: center;
     font-size: 18px;
-    line-height: 24px;
-    padding-left: 138px;
-    padding-right: 138px;
+    line-height: 1.33;
+    width: 492px;
+
+    /* padding-left: 138px;
+    padding-right: 138px; */
   }
 }
 
 @media only screen and (min-width: 1440px) {
+  .hero-main-text {
+    width: 1042px;
+  }
+
   .hero-second-text {
-    padding-left: 374px;
-    padding-right: 374px;
+    /* padding-left: 374px;
+    padding-right: 374px; */
+    width: 492px;
   }
 }
 /* Hero Images */
