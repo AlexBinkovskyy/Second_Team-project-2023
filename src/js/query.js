@@ -1,5 +1,8 @@
 import axios from 'axios';
 import references from './references';
+import crossClose from '../images/sprite.svg';
+import fotoModal1 from '../images/modal-sbscr@1x-min.png';
+import fotoModal2 from '../images/modal-sbscr@2x-min.png';
 
 let page = 1;
 let limitPerPage = 6;
@@ -132,7 +135,7 @@ function goodModal() {
   return `
     <button class="modal-btn" type="button" data-modal-close>
       <svg class="modal-btn-icon" width="8" height="8">
-        <use href="./images/sprite.svg#icon-Cross_close"></use>
+        <use href="${crossClose}#icon-Cross_close"></use>
       </svg>
     </button>
     <div class="modal-poshition-content">
@@ -142,10 +145,10 @@ function goodModal() {
     <img
       class="modal-form-img"
       srcset="
-        ./images/modal-sbscr@1x-min.png 1x,
-        ./images/modal-sbscr@2x-min.png 2x
+        ${fotoModal1},
+        ${fotoModal2}
       "
-      src="./images/modal-sbscr@1x-min.png"
+      src="${fotoModal1}"
       alt="What are we doing"
       width="360"
       />
@@ -156,7 +159,7 @@ function errModal() {
   return `
     <button class="modal-btn" type="button" data-modal-close>
       <svg class="modal-btn-icon" width="8" height="8">
-        <use href="./images/sprite.svg#icon-Cross_close"></use>
+        <use href="${crossClose}#icon-Cross_close"></use>
       </svg>
     </button>
     <div class="modal-poshition-content">
