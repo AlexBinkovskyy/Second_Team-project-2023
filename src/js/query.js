@@ -72,35 +72,6 @@ export async function getProdByQuery({
   return await axios(query);
 }
 
-// export async function sendSubscription(data) {
-//   return (await axios.post(`${references.SECOND_URL}`))
-// }
-
-// export async function sendSubscription(data) {
-//   return (await axios.post(`${references.SECOND_URL}`))
-// }
-
-// export async function postOrder(order) {
-//   console.log("--------------------");
-//   console.log(order);
-//   console.log(JSON.stringify(order));
-//   return await axios.post(`https://food-boutique.b.goit.study/api/orders`, JSON.stringify(order), {
-//     headers: {
-//       'Content-Type': 'application/json'
-//     }
-//   });
-// }
-
-// postOrder(JSON.stringify({
-//   "email": "test@gmail.com",
-//   "products": [
-//     {
-//       "productId": "640c2dd963a319ea671e383b",
-//       "amount": 2
-//     }
-//   ]
-// }));
-
 // Функція для відправки даних з форми
 export async function postData(email) {
   return axios.post(`${references.SECOND_URL}`, { email });

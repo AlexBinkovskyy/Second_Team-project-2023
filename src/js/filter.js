@@ -7,7 +7,6 @@ import { renderProductList } from './product-list';
 import { createEmptyMarkup } from './product-list';
 import { updateCartBtns } from './main';
 
-
 export const filterForm = document.querySelector('#filterForm');
 filterForm.addEventListener('submit', onSubmit);
 const filterSelectCategories = document.querySelector('#single');
@@ -30,17 +29,15 @@ export function checkFilterParams() {
 
 checkFilterParams();
 
-getProdByQuery(getFilterParams()).then(
-  ({ data}) => {
-    if (data.results.length) {
-      renderProductList(data);
-      updateCartBtns();
-    } else if (!Array.isArray(data.results) || !data.results.length) {
-      createEmptyMarkup();
-      return;
-    }
+getProdByQuery(getFilterParams()).then(({ data }) => {
+  if (data.results.length) {
+    renderProductList(data);
+    updateCartBtns();
+  } else if (!Array.isArray(data.results) || !data.results.length) {
+    createEmptyMarkup();
+    return;
   }
-);
+});
 
 export function renderFilterSelect(data) {
   filterSelectCategories.innerHTML = markup(data);

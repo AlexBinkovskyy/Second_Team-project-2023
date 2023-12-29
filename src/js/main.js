@@ -1,22 +1,12 @@
-import { getProdByParams } from './query';
 import { getProdByPopular } from './query';
 import { getProdByDiscount } from './query';
-import { getProdByID } from './query';
 import { getProdByCategories } from './query';
 import { renderPopularProduct } from './popular-product';
 import { renderProductDiscount } from './discount';
-import { renderProductList } from './product-list';
 import { renderFilterSelect } from './filter';
 import { getCartItems } from './localStorage.js';
 import { addProductToCart, setEmailToOrderInfo } from './workWithCart.js';
-import shoppingSvg from '../images/sprite.svg';
-import { getProdByQuery } from './query';
-
-import { postData, postOrder } from './query';
-import axios from 'axios';
 import 'tui-pagination/dist/tui-pagination.css';
-
-
 
 getProdByDiscount()
   .then(({ data }) => {
@@ -141,9 +131,8 @@ function addedToCartProduct(id) {
   });
 }
 
-
 export function updateCartBtns() {
-  getCartItems().products.forEach((product) => {
+  getCartItems().products.forEach(product => {
     // console.log(product.id);
     addedToCartProduct(product.id);
   });
