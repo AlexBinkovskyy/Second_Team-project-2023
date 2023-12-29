@@ -744,7 +744,7 @@ body.no-scroll {
 
   background-color: var(--maingray);
   transform: translate(-50%, -50%);
-  width: 335px;
+  max-width: 335px;
   min-height: 276px;
   border-radius: 20px;
   box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2),
@@ -753,7 +753,7 @@ body.no-scroll {
 }
 @media screen and (min-width: 768px) {
   .modal {
-    width: 469px;
+    max-width: 469px;
   }
 }
 
