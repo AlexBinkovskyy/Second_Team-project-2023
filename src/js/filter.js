@@ -15,7 +15,9 @@ filterForm.elements.filterMethod.addEventListener('change', proceedFilter);
 let filterParams;
 
 export async function checkFilterParams() {
-  if (getFilterParams()) {
+  if (!getFilterParams()) {setDefaultFilterParams()
+    
+    }  else {
     filterParams = getFilterParams();
     if (filterParams.keyword !== null) {
       filterForm.filterInput.value = filterParams.keyword;
@@ -31,8 +33,6 @@ export async function checkFilterParams() {
           return;
         }
       });
-    }  else {
-    setDefaultFilterParams();
   }
 }}
 
@@ -47,7 +47,7 @@ export function renderFilterSelect(data) {
       for (const option of opt) {
         if (option.value === filterParams.category) {
         option.value.option.selected;
-        break; // Зупинити пошук, якщо знайдено
+        break; 
       }
     }
   } 
