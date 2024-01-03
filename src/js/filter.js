@@ -125,6 +125,7 @@ function proceedSelect(event) {
   event.preventDefault();
   if (event.target.value === 'Show all') {
     setDefaultFilterParams();
+    filterParams = getFilterParams();
     filterForm.reset();
     getProdByParams()
       .then(({ data }) => {
