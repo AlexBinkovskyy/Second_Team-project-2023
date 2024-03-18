@@ -12,7 +12,7 @@ import { getProdByQuery } from './query';
 import { updateCartBtns } from './main';
 
 const container = document.getElementById('tui-pagination-container');
-let currentPage = 1; // Variable to store the current page
+let currentPage = 1;
 
 const productList = document.querySelector('.product-list');
 const tuiPagination = document.querySelector('.pagination');
@@ -28,7 +28,6 @@ export async function renderProductList({ results, perPage, totalPages }) {
     element.addEventListener('click', showProductModal(element));
   });
 
-  // Initialize Pagination only once
   if (!tuiPagination.getAttribute('data-initialized')) {
     const instance = new Pagination(container, {
       totalItems: perPage * totalPages,
@@ -54,7 +53,7 @@ export async function renderProductList({ results, perPage, totalPages }) {
     });
 
     instance.on('beforeMove', async event => {
-      currentPage = event.page; // Update the current page
+      currentPage = event.page;
       try {
         const { data: newData } = await getProdByQuery({
           page: currentPage,
@@ -67,7 +66,7 @@ export async function renderProductList({ results, perPage, totalPages }) {
       }
     });
 
-    tuiPagination.setAttribute('data-initialized', 'true'); // Mark as initialized
+    tuiPagination.setAttribute('data-initialized', 'true');
   }
 }
 
