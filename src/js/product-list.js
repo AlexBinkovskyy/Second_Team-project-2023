@@ -12,13 +12,13 @@ import { getProdByQuery } from './query';
 import { updateCartBtns } from './main';
 
 const container = document.getElementById('tui-pagination-container');
-const instance = new Pagination(container, {});
+let currentPage = 1;
 
 const productList = document.querySelector('.product-list');
 const tuiPagination = document.querySelector('.pagination');
 
 
-export function renderProductList( {results, perPage, totalPages}) {
+export async function renderProductList({ results, perPage, totalPages }) {
   tuiPagination.classList.remove('visually-hidden');
 
   productList.innerHTML = createMarkup(results);
@@ -28,45 +28,46 @@ export function renderProductList( {results, perPage, totalPages}) {
     element.addEventListener('click', showProductModal(element));
   });
 
-  const container = document.getElementById('tui-pagination-container');
-  const instance = new Pagination(container, {
-    totalItems: perPage * totalPages,
-    itemsPerPage: perPage,
-    visiblePages: 5,
-    centerAlign: true,
-    template: {
-      page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-      currentPage:
-        '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+  if (!tuiPagination.getAttribute('data-initialized')) {
+    const instance = new Pagination(container, {
+      totalItems: perPage * totalPages,
+      itemsPerPage: perPage,
+      visiblePages: 5,
+      centerAlign: true,
+      template: {
+        page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+        currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+        moveButton:
+          '<a href="#" class="tui-page-btn tui-{{type}}">' +
+          '<span class="tui-ico-{{type}}">{{type}}</span>' +
+          '</a>',
+        disabledMoveButton:
+          '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+          '<span class="tui-ico-{{type}}">{{type}}</span>' +
+          '</span>',
+        moreButton:
+          '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+          '<span class="tui-ico-ellip">...</span>' +
+          '</a>',
+      },
+    });
 
-      moveButton:
-        '<a href="#" class="tui-page-btn tui-{{type}}">' +
-        '<span class="tui-ico-{{type}}">{{type}}</span>' +
-        '</a>',
-      disabledMoveButton:
-        '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-        '<span class="tui-ico-{{type}}">{{type}}</span>' +
-        '</span>',
-      moreButton:
-        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-        '<span class="tui-ico-ellip">...</span>' +
-        '</a>',
-    },
-  });
+    instance.on('beforeMove', async event => {
+      currentPage = event.page;
+      try {
+        const { data: newData } = await getProdByQuery({
+          page: currentPage,
+          limitPerPage: perPage,
+        });
+        renderProductList(newData);
+        updateCartBtns();
+      } catch (err) {
+        console.log(err);
+      }
+    });
 
-  instance.on('beforeMove', async event => {
-    const newPage = event.page;
-    try {
-      const { data: newData } = await getProdByQuery({
-        page: newPage,
-        limitPerPage: perPage,
-      });
-      renderProductList(newData);
-      updateCartBtns();
-    } catch (err) {
-      console.log(err);
-    }
-  });
+    tuiPagination.setAttribute('data-initialized', 'true');
+  }
 }
 
 function createMarkup(arr) {
