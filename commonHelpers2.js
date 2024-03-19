@@ -1,4 +1,4 @@
-import{s as C,d as B,e as r,f as m,h,i as c,j as p,k as q,l as E,m as _,n as T,g as k}from"./assets/workWithCart-9e93bad5.js";import{P as x}from"./assets/vendor-8aa786c2.js";const w="/Second_Team-project-2023/assets/discount-1f26b8b0.svg",v="/Second_Team-project-2023/assets/check-ico-267a6277.svg",z=document.querySelector(".popular-product-list");async function D(t){z.insertAdjacentHTML("beforeend",F(t))}function F(t){return t.map(({_id:e,name:a,img:s,category:l,size:y,popularity:d})=>`
+import{s as C,d as B,e as r,f as m,h,i as c,j as p,k as q,l as E,m as _,n as T,g as k}from"./assets/workWithCart-c49fbe6d.js";import{P as x}from"./assets/vendor-8aa786c2.js";const v="/Second_Team-project-2023/assets/check-ico-267a6277.svg",z=document.querySelector(".popular-product-list");async function D(t){z.insertAdjacentHTML("beforeend",F(t))}function F(t){return t.map(({_id:e,name:a,img:s,category:l,size:y,popularity:d})=>`
           <li class="popular-product-item product-modal-open js-product-card"  data-id="${e}" id="${e}">
             <img src="${s}" alt="${a}" width="56" height="56" loading="lazy" class="popular-product-pic"/>
             <div class="popular-product-info">
@@ -29,7 +29,7 @@ import{s as C,d as B,e as r,f as m,h,i as c,j as p,k as q,l as E,m as _,n as T,g
             </div>
             </div>
           </li>
-      `).join("")}const $="/Second_Team-project-2023/assets/shopping-cart-a18eb96b.svg",H=document.querySelector(".discount-products-item");function I(t){H.insertAdjacentHTML("beforeend",N(t))}function N(t){return t.map(({_id:e,name:a,img:s,price:l})=>`
+      `).join("")}const w="/Second_Team-project-2023/assets/discount-1f26b8b0.svg",$="/Second_Team-project-2023/assets/shopping-cart-a18eb96b.svg",H=document.querySelector(".discount-products-item");function I(t){H.insertAdjacentHTML("beforeend",N(t))}function N(t){return t.map(({_id:e,name:a,img:s,price:l})=>`
         <li class="discount-product">
          <div class="discount-card product-modal-open js-product-card"  data-id="${e}" id="${e}">
          <img class="discount-svg" src="${w}" alt="discount-icon" width="60" height="60"/>
