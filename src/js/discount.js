@@ -1,6 +1,3 @@
-import axios from 'axios';
-import references from './references';
-import { getProdByDiscount } from './query';
 import discountSvg from '../images/icons/discount.svg';
 import shoppingSvg from '../images/icons/shopping-cart.svg';
 import check from '../images/icons/check-ico.svg';
@@ -9,14 +6,6 @@ const productDiscount = document.querySelector('.discount-products-item');
 
 export function renderProductDiscount(data) {
   productDiscount.insertAdjacentHTML('beforeend', markup(data));
-  // const clickBtns = document.querySelectorAll('.click-buy');
-  // const clickChecks = document.querySelectorAll('.discount-check');
-  // clickBtns.forEach((clickBtn) =>
-  //     clickBtn.addEventListener('click', () => { clickBtn.style.display = 'none'; onCheck(clickBtn) }));
-  // function onCheck() {
-  //     clickChecks.forEach((clickChecks) =>
-  //     clickChecks.style.display = 'block')
-  // }
 }
 
 function markup(arr) {

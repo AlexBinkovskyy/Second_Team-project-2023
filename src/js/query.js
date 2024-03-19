@@ -71,7 +71,6 @@ export async function getProdByQuery({
     query += `byPopularity=${byPopularity}&`;
   }
   query += `page=${page}&limit=${limitPerPage}`;
-  console.log(query);
   return await axios(query);
 }
 // footer sbscr start

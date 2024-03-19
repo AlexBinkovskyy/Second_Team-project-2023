@@ -2,7 +2,6 @@ import { getCartItems } from './localStorage';
 import { removeAllProductsFromCart, setEmailToOrderInfo } from './workWithCart';
 import { postOrder } from './query';
 import { updateCartPage } from './shopping-cart';
-// import { postOrder } from "./query";
 
 const form = document.querySelector('.cart-form');
 const modalCloseBtn = document.querySelectorAll('.js-modal-close');
@@ -10,7 +9,6 @@ const modal = document.querySelector('.success-modal');
 const modalFail = document.querySelector('.fail-modal');
 
 console.log('Hello');
-// console.log("Modal js");
 
 form.addEventListener('submit', e => {
   e.preventDefault();

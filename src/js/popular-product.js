@@ -1,4 +1,3 @@
-import discountSvg from '../images/icons/discount.svg';
 import shoppingSvg from '../images/sprite.svg';
 import check from '../images/icons/check-ico.svg';
 
@@ -6,11 +5,6 @@ const popularProduct = document.querySelector('.popular-product-list');
 
 export async function renderPopularProduct(data) {
   popularProduct.insertAdjacentHTML('beforeend', markup(data));
- // const clickBtnBuy = document.querySelector('.click-buy');
- // clickBtnBuy.addEventListener('click', () => {
- //   (clickBtnBuy.style.display = 'none'), (clickcheck.style.display = 'block');
- // });
- // const clickcheck = document.querySelector('.popular-check');
 }
 
 function markup(arr) {
@@ -51,24 +45,3 @@ function markup(arr) {
     )
     .join('');
 }
-
-// Змініть ваш код так, щоб він виглядав приблизно так
-// window.addToCart = function (productId) {
-//   const cart = JSON.parse(localStorage.getItem('cart')) || {};
-
-//   if (cart[productId]) {
-//     alert('This product is already in your cart!');
-//   } else {
-//     cart[productId] = true;
-//     localStorage.setItem('cart', JSON.stringify(cart));
-//     alert('Product added to cart!');
-
-//     // Отримайте кнопку за допомогою productId та змініть її на іконку "✓"
-//     const addToCartButton = document.querySelector(
-//       `[data-product-id="${productId}"]`
-//     );
-//     addToCartButton.innerHTML =
-//       '<svg class="img-icon" width="12" height="12"><use href="${shoppingSvg}#check-icon"></use></svg>';
-//     addToCartButton.disabled = true;
-//   }
-// };
