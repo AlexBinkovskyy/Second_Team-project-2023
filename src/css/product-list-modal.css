@@ -1,125 +1,127 @@
 .product-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--modal-background);
-    transition: opacity var(--transition-settings), visibility var(--transition-settings);
-    z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--modal-background);
+  transition: opacity var(--transition-settings),
+    visibility var(--transition-settings);
+  z-index: 100;
 }
 
 .product-backdrop.is-hidden {
-    opacity: 0;
-    pointer-events: none;
-    visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }
 
 .product-modal-window {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    width: 100vw;
-    max-width: 336px;
-    padding: 40px 20px;
-    border-radius: 20px;
-    background: var(--mainwhite);
-    transition: var(--transition-settings);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 88vw;
+  max-width: 336px;
+  padding: 40px 20px;
+  border-radius: 20px;
+  background: var(--mainwhite);
+  transition: var(--transition-settings);
 }
 @media screen and (min-width: 768px) {
-    .product-modal-window {
-        max-width: 600px;
-        padding: 40px;
-    }
+  .product-modal-window {
+    max-width: 600px;
+    padding: 40px;
+  }
 }
 
 @media screen and (min-width: 768px) {
-    .modal-card-pic-info {
-        display: flex;
-        gap: 24px;
-    }
+  .modal-card-pic-info {
+    display: flex;
+    gap: 24px;
+  }
 }
 
 .product-modal-title {
-    color: var(--navyblue);
-    display: block;
-    text-align: center;
-    margin: 0 0 16px 0;
+  color: var(--navyblue);
+  display: block;
+  text-align: center;
+  margin: 0 0 16px 0;
 }
 
 @media screen and (min-width: 768px) {
-    .modal-card-content .all-product-desc {
-        margin-top: 24px;
-    }
+  .modal-card-content .all-product-desc {
+    margin-top: 24px;
+  }
 }
 
-.modal-card-content .all-product-pic{
-    padding: 26px 68px;
-    width: 295px;
-    height: 212px;
+.modal-card-content .all-product-pic {
+  padding: 26px 68px;
+  width: 295px;
+  /* height: 212px; */
 }
 @media screen and (min-width: 768px) {
-    .modal-card-content .all-product-pic {
-        margin-bottom: 0;
-        padding: 26px 40px;
-        object-fit: contain;
-        width: 240px;
-    }
+  .modal-card-content .all-product-pic {
+    margin-bottom: 0;
+    padding: 26px 40px;
+    object-fit: contain;
+    width: 240px;
+  }
 }
 
 @media screen and (min-width: 768px) {
-    .modal-card-content .all-purchaise-box{
-        margin-top: 48px;
-    }
+  .modal-card-content .all-purchaise-box {
+    margin-top: 48px;
+  }
 }
 
 .product-modal-close {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    padding: 4px;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background-color: var(--mainwhite);
-    transition: background-color var(--transition-settings), border var(--transition-settings);
-    z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 4px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--mainwhite);
+  transition: background-color var(--transition-settings),
+    border var(--transition-settings);
+  z-index: 10;
 }
 @media screen and (max-width: 767.9px) {
-    .product-modal-close {
-        width: 22px;
-        height: 22px;
-    }
+  .product-modal-close {
+    width: 22px;
+    height: 22px;
+  }
 }
 .product-modal-close:hover,
 .product-modal-close:focus {
-    background-color: var(--maingreen-hower);
-    border: none;
-    fill: var(--maingray);
+  background-color: var(--maingreen-hower);
+  border: none;
+  fill: var(--maingray);
 }
 
-.modal-product-btn{
-    padding: 12px 24px;
-    fill: var(--maingray);
-    border-radius: 30px;
-    background: var(--maingreen);
-    transition: var(--transition-settings);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    gap: 10px;
+.modal-product-btn {
+  padding: 12px 24px;
+  fill: var(--maingray);
+  border-radius: 30px;
+  background: var(--maingreen);
+  transition: var(--transition-settings);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
 }
 
 .modal-product-btn-text {
-    color: var(--maingray);
-    font-family: 'NeueMontreal-regular';
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 1.28;
+  color: var(--maingray);
+  font-family: 'NeueMontreal-regular';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.28;
 }

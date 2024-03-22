@@ -124,6 +124,9 @@
   font-weight: 400;
   line-height: 1.28;
   margin-top: 20px;
+
+  height: 140px;
+  overflow-y: auto;
 }
 
 .all-purchaise-box {
