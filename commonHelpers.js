@@ -27,7 +27,7 @@ import{g as a,r as M,a as C,b as T,u as H,s as w,c as k,p as F}from"./assets/wor
       </div>
       <div class="counter-container">
             <button class="counter-btn" type="button" data-action="decrement">
-                -
+            –
             </button>
             <span class="counter-value data-counter">${g}</span>
             <button class="counter-btn" type="button" data-action="increment">
