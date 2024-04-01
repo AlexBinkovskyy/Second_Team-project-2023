@@ -167,7 +167,7 @@ input {
   font-size: 12px;
   color: #555;
   position: absolute;
-  top: 45%;
+  top: 52%;
   left: 290px;
   transform: translateY(-50%);
   z-index: 1;
@@ -181,7 +181,7 @@ input {
 
 @media screen and (min-width: 768px) {
   .custom-select::before {
-    left: 150px;
+    left: 158px;
   }
 }
 
