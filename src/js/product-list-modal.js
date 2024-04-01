@@ -86,7 +86,7 @@ function renderProductModal(object) {
       <div class="all-purchaise-box">
         <h3 class="all-product-price header-three">&#36;${object.price}</h3>
         <button class="modal-product-btn buy-btn js-buy-btn" type="button">
-          <p class="modal-product-btn-text">Add to</p>
+          <p class="modal-product-btn-text js-buy-btn">Add to</p>
           <img
                 class="all-buy-svg js-btn-first-ico"
             src="${shoppingSvg}"

@@ -8,8 +8,6 @@ const modalCloseBtn = document.querySelectorAll('.js-modal-close');
 const modal = document.querySelector('.success-modal');
 const modalFail = document.querySelector('.fail-modal');
 
-console.log('Hello');
-
 form.addEventListener('submit', e => {
   e.preventDefault();
   setEmailToOrderInfo(form.elements['email'].value);
