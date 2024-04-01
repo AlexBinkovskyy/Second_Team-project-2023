@@ -28,11 +28,13 @@ list.addEventListener('click', e => {
     let parent = e.target.closest('.selectedProduct');
     removeProductFromCart(parent.dataset.id);
 
-    const index = arrCart.products.findIndex((product) => product.id === parent.dataset.id)
-    console.log("index", index);
+    const index = arrCart.products.findIndex(
+      product => product.id === parent.dataset.id
+    );
+    console.log('index', index);
     if (index !== -1) {
       arrCart.products.splice(index, 1);
-      listFromServer.splice(index, 1)
+      listFromServer.splice(index, 1);
     }
     console.log(arrCart);
     console.log(listFromServer);
@@ -78,7 +80,6 @@ export async function updateCartPage() {
   cartNumbersUpdate(cartNumbersList, amountElements);
 }
 
-
 function spawnCardProducts(products) {
   generateCardListMarkup(products, createCartProductMarkup).then(result => {
     list.insertAdjacentHTML('beforeend', result);
@@ -106,12 +107,13 @@ function createCartProductMarkup(product) {
   const { _id, name, img, category, price, size } = product;
   let amount = null;
   try {
-    amount = arrCart.products[arrCart.products.findIndex(p => p.id === _id)].amount;
+    amount =
+      arrCart.products[arrCart.products.findIndex(p => p.id === _id)].amount;
   } catch (error) {
     console.log(error);
-    return ""
+    return '';
   }
-  
+
   const cleanedCategory = category.replace(/_/g, ' ');
 
   return `
@@ -143,7 +145,7 @@ function createCartProductMarkup(product) {
       </div>
       <div class="counter-container">
             <button class="counter-btn" type="button" data-action="decrement">
-                -
+            –
             </button>
             <span class="counter-value data-counter">${amount}</span>
             <button class="counter-btn" type="button" data-action="increment">
@@ -204,7 +206,7 @@ list.addEventListener('click', function (event) {
 
   updateProductInCart(obj.products[thisProductIndex].id, counter.innerHTML);
 
-  updateCartPage()
+  updateCartPage();
 });
 
 /**
@@ -254,7 +256,10 @@ function cartNumbersUpdate(objs, number) {
 function getTotalSumm(products) {
   return products.reduce((sum, product) => {
     return (
-      sum + product.price * arrCart.products[arrCart.products.findIndex(p => p.id === product._id)].amount
+      sum +
+      product.price *
+        arrCart.products[arrCart.products.findIndex(p => p.id === product._id)]
+          .amount
     );
   }, 0);
 }
