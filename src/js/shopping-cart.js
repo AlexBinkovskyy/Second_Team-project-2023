@@ -16,7 +16,6 @@ const clearOrderBtn = document.querySelector('.js-clear-order-btn');
 const cartBox = document.querySelector('.js-cart-box');
 const emptyCart = document.querySelector('.js-empty-cart');
 
-// setEmailToOrderInfo('p@gmail.com');
 let totalSumm = 0;
 
 let arrCart = getCartItems();
@@ -27,7 +26,6 @@ drawCartPage();
 list.addEventListener('click', e => {
   if (e.target.classList.contains('delete-btn')) {
     let parent = e.target.closest('.selectedProduct');
-    // console.log(parent);
     removeProductFromCart(parent.dataset.id);
 
     const index = arrCart.products.findIndex((product) => product.id === parent.dataset.id)
@@ -38,7 +36,6 @@ list.addEventListener('click', e => {
     }
     console.log(arrCart);
     console.log(listFromServer);
-    // drawCartPage();
     updateCartPage();
   }
 });
@@ -51,10 +48,7 @@ clearOrderBtn.addEventListener('click', () => {
 });
 
 async function drawCartPage() {
-  //масив з localStorage
   arrCart = getCartItems();
-  // console.log(arrCart);
-
   summ.textContent = '$0';
 
   const amountElements = arrCart.products.length;
@@ -62,14 +56,9 @@ async function drawCartPage() {
 
   if (amountElements) {
     list.innerHTML = '';
-    //масив з Серверу
     const originProductList = await getCartProducts(arrCart.products);
     listFromServer = originProductList;
-    console.log(listFromServer);
-    // console.log(originProductList);
-
     cartNumbersUpdate(cartNumbersList, amountElements);
-    // console.log(cartBox);
     spawnCardProducts(originProductList);
     summ.textContent = '$' + getTotalSumm(originProductList).toFixed(2);
   }
@@ -78,20 +67,14 @@ async function drawCartPage() {
 
 export async function updateCartPage() {
   arrCart = getCartItems();
-  console.log(arrCart);
-
   const amountElements = arrCart.products.length;
   switchSections(amountElements);
 
   if (amountElements) {
-    // console.log(1, listFromServer);
-    // console.log(2, arrCart);
-    
     summ.textContent = '$' + getTotalSumm(listFromServer).toFixed(2);
     list.innerHTML = '';
     spawnCardProducts(listFromServer);
   }
-  // console.log(2, listFromServer);
   cartNumbersUpdate(cartNumbersList, amountElements);
 }
 
@@ -102,17 +85,6 @@ function spawnCardProducts(products) {
   });
 }
 
-/*  Параметри:
-      1.productList - масив з продуктами      
-        [{
-          id: '640c2dd963a319ea671e383b',
-          amount: 1,
-        }]
-
-      2.createElementMarkupFunc - Функція, що створює потрібну вам розмітку елемента.
-
-    Повертає html розмітку продуктів
-===================================================================================== */
 async function generateCardListMarkup(productList, createElementMarkupFunc) {
   return productList
     .map(product => {
@@ -122,15 +94,6 @@ async function generateCardListMarkup(productList, createElementMarkupFunc) {
     .join('');
 }
 
-/*  Параметри:
-      1.productList - масив з продуктами      
-        [{
-          id: '640c2dd963a319ea671e383b',
-          amount: 1,
-        }]
-
-    Повертає масив даних з продуктів
-===================================================================================== */
 async function getCartProducts(productList) {
   return await Promise.all(
     productList.map(({ id }) =>
@@ -139,7 +102,6 @@ async function getCartProducts(productList) {
   );
 }
 
-// створення карттки в кошику
 function createCartProductMarkup(product) {
   const { _id, name, img, category, price, size } = product;
   let amount = null;

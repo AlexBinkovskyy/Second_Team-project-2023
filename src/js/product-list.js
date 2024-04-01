@@ -17,7 +17,6 @@ let currentPage = 1;
 const productList = document.querySelector('.product-list');
 const tuiPagination = document.querySelector('.pagination');
 
-
 export async function renderProductList({ results, perPage, totalPages }) {
   tuiPagination.classList.remove('visually-hidden');
 
@@ -36,7 +35,8 @@ export async function renderProductList({ results, perPage, totalPages }) {
       centerAlign: true,
       template: {
         page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-        currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+        currentPage:
+          '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
         moveButton:
           '<a href="#" class="tui-page-btn tui-{{type}}">' +
           '<span class="tui-ico-{{type}}">{{type}}</span>' +
