@@ -1,4 +1,4 @@
-import{s as C,d as B,e as r,f as m,h,i as c,j as p,k as q,l as E,m as _,n as T,g as k}from"./assets/workWithCart-c49fbe6d.js";import{P as x}from"./assets/vendor-8aa786c2.js";const v="/Second_Team-project-2023/assets/check-ico-267a6277.svg",z=document.querySelector(".popular-product-list");async function D(t){z.insertAdjacentHTML("beforeend",F(t))}function F(t){return t.map(({_id:e,name:a,img:s,category:l,size:y,popularity:d})=>`
+import{s as C,d as B,e as r,f as m,h,i as c,j as p,k as q,l as E,m as _,n as T,g as k}from"./assets/workWithCart-c49fbe6d.js";import{P as x}from"./assets/vendor-8aa786c2.js";const b="/Second_Team-project-2023/assets/check-ico-267a6277.svg",z=document.querySelector(".popular-product-list");async function D(t){z.insertAdjacentHTML("beforeend",F(t))}function F(t){return t.map(({_id:e,name:a,img:s,category:l,size:y,popularity:d})=>`
           <li class="popular-product-item product-modal-open js-product-card"  data-id="${e}" id="${e}">
             <img src="${s}" alt="${a}" width="56" height="56" loading="lazy" class="popular-product-pic"/>
             <div class="popular-product-info">
@@ -8,7 +8,7 @@ import{s as C,d as B,e as r,f as m,h,i as c,j as p,k as q,l as E,m as _,n as T,g
               <svg class="img-icon js-btn-first-ico"  width="12" height="12">
                 <use href="${C}#icon-shopping-cart"></use>
               </svg>
-              <img class="popular-check-svg js-btn-second-ico" src="${v}" alt="shop-icon" width="12" height="12"/>
+              <img class="popular-check-svg js-btn-second-ico" src="${b}" alt="shop-icon" width="12" height="12"/>
             </button>
               </div>
               <div class="info-item-description">
@@ -42,7 +42,7 @@ import{s as C,d as B,e as r,f as m,h,i as c,j as p,k as q,l as E,m as _,n as T,g
                 <p class="discount-price">&#36;${l}</p>
                 <button class="discount-buy buy-btn click-buy js-buy-btn" type="button">
                     <img class="discount-buy-svg js-btn-first-ico" src="${$}" alt="shop-icon" width="18" height="18"/>
-                    <img class="discount-check-svg js-btn-second-ico" src="${v}" alt="shop-icon" width="18" height="18"/>            
+                    <img class="discount-check-svg js-btn-second-ico" src="${b}" alt="shop-icon" width="18" height="18"/>            
                 </button>
         
                 </div> 
@@ -84,7 +84,7 @@ import{s as C,d as B,e as r,f as m,h,i as c,j as p,k as q,l as E,m as _,n as T,g
       <div class="all-purchaise-box">
         <h3 class="all-product-price header-three">&#36;${t.price}</h3>
         <button class="modal-product-btn buy-btn js-buy-btn" type="button">
-          <p class="modal-product-btn-text">Add to</p>
+          <p class="modal-product-btn-text js-buy-btn">Add to</p>
           <img
                 class="all-buy-svg js-btn-first-ico"
             src="${$}"
@@ -92,7 +92,7 @@ import{s as C,d as B,e as r,f as m,h,i as c,j as p,k as q,l as E,m as _,n as T,g
           />
               <img
                 class="all-buy-svg js-btn-second-ico"
-                src="${v}"
+                src="${b}"
                 alt="shop-icon"
                 width="18"
                 height="18"
@@ -140,7 +140,7 @@ import{s as C,d as B,e as r,f as m,h,i as c,j as p,k as q,l as E,m as _,n as T,g
 
               <img
                 class="all-buy-svg js-btn-second-ico"
-                src="${v}"
+                src="${b}"
                 alt="shop-icon"
                 width="18"
                 height="18"
@@ -149,12 +149,12 @@ import{s as C,d as B,e as r,f as m,h,i as c,j as p,k as q,l as E,m as _,n as T,g
             </button>
           </div>
         </li>
-        `).join("")}function K(t){t.preventDefault(),m().then(({data:e})=>{n(e)}).catch(e=>console.log(e)),i.reset(),h(),b()}function g(){const t=`
+        `).join("")}function K(t){t.preventDefault(),m().then(({data:e})=>{n(e)}).catch(e=>console.log(e)),i.reset(),h(),v()}function g(){const t=`
   <div class="product-search-error">
   <h3 class="product-search-title header-three">Nothing was found for the selected <a href="" class="product-search-link link js-link">filters...</a></h3>
   <p class="product-search-text">Try adjusting your search parameters or browse our range by other criteria to find the perfect product for you. </p>
   </div>
-  `;j.innerHTML=t,document.querySelector(".js-link").addEventListener("click",K),f.classList.add("visually-hidden")}const i=document.querySelector("#filterForm");i.addEventListener("submit",X);const R=document.querySelector("#single");i.elements.filterCategories.addEventListener("change",tt);i.elements.filterMethod.addEventListener("change",et);let o;function b(){c()?(o=c(),o.keyword!==null&&(i.filterInput.value=o.keyword)):(h(),o=c())}b();r(c()).then(({data:t})=>{if(t.results.length)n(t),u();else if(!Array.isArray(t.results)||!t.results.length){g();return}});function V(t){if(R.innerHTML=W(t),o.category!==null){const e=i.filterCategories.options;for(const a of e)if(a.value.replaceAll(" ","_").replaceAll("&","%26")===o.category){a.selected=!0;break}}}function W(t){const e=t.map(a=>`
+  `;j.innerHTML=t,document.querySelector(".js-link").addEventListener("click",K),f.classList.add("visually-hidden")}const i=document.querySelector("#filterForm");i.addEventListener("submit",X);const R=document.querySelector("#single");i.elements.filterCategories.addEventListener("change",tt);i.elements.filterMethod.addEventListener("change",et);let o;function v(){c()?(o=c(),o.keyword!==null&&(i.filterInput.value=o.keyword)):(h(),o=c())}v();r(c()).then(({data:t})=>{if(t.results.length)n(t),u();else if(!Array.isArray(t.results)||!t.results.length){g();return}});function V(t){if(R.innerHTML=W(t),o.category!==null){const e=i.filterCategories.options;for(const a of e)if(a.value.replaceAll(" ","_").replaceAll("&","%26")===o.category){a.selected=!0;break}}}function W(t){const e=t.map(a=>`
     <option value="${a}" class="js-option">${a}</option>
-    `);return e.unshift('<option value="" class="js-option" disabled selected>Categories</option>'),e.push('<option value="Show all" class="js-option">Show all</option>'),e.join("")}function X(t){t.preventDefault();const{filterInput:e,filterCategories:a}=t.target.elements;Y(e,a)}function Y(t,e){t.value.trim().length?t.value.trim()?(o.keyword=t.value.trim(),e.value!==""&&(o.category=e.value.replaceAll(" ","_").replaceAll("&","%26")),p(o),r(c()).then(a=>{if(console.log(a),a.data.results.length)n(a.data);else if(!Array.isArray(a.data.results)||!a.data.results.length){g();return}}).catch(a=>console.log(a))):e.value&&(o.category=e.value.trim(),p(o),r(c()).then(a=>{if(a.data.results.length)n(a.data);else return}).catch(a=>console.log(a))):(h(),b(),m().then(({data:a})=>{n(a)}).catch(a=>console.log(a)),i.reset())}function tt(t){t.preventDefault(),t.target.value==="Show all"&&(h(),o=c(),i.reset(),m().then(({data:e})=>{n(e)}).catch(e=>console.log(e)),i.reset()),o.category=t.target.value.replaceAll(" ","_").replaceAll("&","%26"),p(o),r(c()).then(e=>{if(e.data.results.length)n(e.data);else if(!Array.isArray(e.data.results)||!e.data.results.length){g();return}}).catch(e=>console.log(e))}function et(t){if(t.preventDefault(),t.target.value==="Show_all"&&(h(),b(),m().then(({data:e})=>{n(e)}).catch(e=>console.log(e)),i.reset()),t.target.value==="A_to_Z"||t.target.value==="Z_to_A"){t.target.value==="A_to_Z"?o.byABC=!0:o.byABC=!1,o.byPrice=null,o.byPopularity=null,p(o),r(c()).then(e=>{if(e.data.results.length)n(e.data);else{g();return}}).catch(e=>console.log(e));return}else if(t.target.value==="Cheap"||t.target.value==="Expensive"){t.target.value==="Cheap"?o.byPrice=!0:o.byPrice=!1,o.byABC=null,o.byPopularity=null,p(o),r(c()).then(e=>{if(e.data.results.length)n(e.data);else{g();return}}).catch(e=>console.log(e));return}else if(t.target.value==="Popular"||t.target.value==="Not_popular"){t.target.value==="Not_popular"?o.byPopularity=!0:o.byPopularity=!1,o.byABC=null,o.byPrice=null,p(o),r(c()).then(e=>{if(e.data.results.length)n(e.data);else{g();return}}).catch(e=>console.log(e));return}else if(t.target.value==="Show_all"){h();return}}q().then(({data:t})=>{I(t),u()}).catch(t=>console.log(t));E().then(({data:t})=>{D(t),u()}).catch(t=>console.log(t));_().then(({data:t})=>{V(t.toString().replaceAll("_"," ").split(",")),u()}).catch(t=>console.log(t));document.getElementById("loader-container");document.querySelector(".main");const at=document.querySelector(".js-main-container"),ot=document.querySelector(".product-modal-window");at.addEventListener("click",A);ot.addEventListener("click",A);function A(t){if(t.target.classList.contains("js-buy-btn")){let e=t.target.closest(".js-product-card");T(e.dataset.id),u(),document.querySelector(".js-cart-numbers").textContent=k().products.length}}function st(t){const e=document.querySelectorAll(`.js-product-card[data-id="${t}"]`);e.length&&e.forEach(a=>{const s=a.querySelector(".js-buy-btn");s.style.backgroundColor="#6D8434",s.style.cursor="default",s.querySelector(".js-btn-first-ico").style.display="none",s.querySelector(".js-btn-second-ico").style.display="block",s.disabled=!0})}function u(){k().products.forEach(t=>{st(t.id)})}
+    `);return e.unshift('<option value="" class="js-option" disabled selected>Categories</option>'),e.push('<option value="Show all" class="js-option">Show all</option>'),e.join("")}function X(t){t.preventDefault();const{filterInput:e,filterCategories:a}=t.target.elements;Y(e,a)}function Y(t,e){t.value.trim().length?t.value.trim()?(o.keyword=t.value.trim(),e.value!==""&&(o.category=e.value.replaceAll(" ","_").replaceAll("&","%26")),p(o),r(c()).then(a=>{if(console.log(a),a.data.results.length)n(a.data);else if(!Array.isArray(a.data.results)||!a.data.results.length){g();return}}).catch(a=>console.log(a))):e.value&&(o.category=e.value.trim(),p(o),r(c()).then(a=>{if(a.data.results.length)n(a.data);else return}).catch(a=>console.log(a))):(h(),v(),m().then(({data:a})=>{n(a)}).catch(a=>console.log(a)),i.reset())}function tt(t){t.preventDefault(),t.target.value==="Show all"&&(h(),o=c(),i.reset(),m().then(({data:e})=>{n(e)}).catch(e=>console.log(e)),i.reset()),o.category=t.target.value.replaceAll(" ","_").replaceAll("&","%26"),p(o),r(c()).then(e=>{if(e.data.results.length)n(e.data);else if(!Array.isArray(e.data.results)||!e.data.results.length){g();return}}).catch(e=>console.log(e))}function et(t){if(t.preventDefault(),t.target.value==="Show_all"&&(h(),v(),m().then(({data:e})=>{n(e)}).catch(e=>console.log(e)),i.reset()),t.target.value==="A_to_Z"||t.target.value==="Z_to_A"){t.target.value==="A_to_Z"?o.byABC=!0:o.byABC=!1,o.byPrice=null,o.byPopularity=null,p(o),r(c()).then(e=>{if(e.data.results.length)n(e.data);else{g();return}}).catch(e=>console.log(e));return}else if(t.target.value==="Cheap"||t.target.value==="Expensive"){t.target.value==="Cheap"?o.byPrice=!0:o.byPrice=!1,o.byABC=null,o.byPopularity=null,p(o),r(c()).then(e=>{if(e.data.results.length)n(e.data);else{g();return}}).catch(e=>console.log(e));return}else if(t.target.value==="Popular"||t.target.value==="Not_popular"){t.target.value==="Not_popular"?o.byPopularity=!0:o.byPopularity=!1,o.byABC=null,o.byPrice=null,p(o),r(c()).then(e=>{if(e.data.results.length)n(e.data);else{g();return}}).catch(e=>console.log(e));return}else if(t.target.value==="Show_all"){h();return}}q().then(({data:t})=>{I(t),u()}).catch(t=>console.log(t));E().then(({data:t})=>{D(t),u()}).catch(t=>console.log(t));_().then(({data:t})=>{V(t.toString().replaceAll("_"," ").split(",")),u()}).catch(t=>console.log(t));document.getElementById("loader-container");document.querySelector(".main");const at=document.querySelector(".js-main-container"),ot=document.querySelector(".product-modal-window");at.addEventListener("click",A);ot.addEventListener("click",A);function A(t){if(t.target.classList.contains("js-buy-btn")){let e=t.target.closest(".js-product-card");T(e.dataset.id),u(),document.querySelector(".js-cart-numbers").textContent=k().products.length}}function st(t){const e=document.querySelectorAll(`.js-product-card[data-id="${t}"]`);e.length&&e.forEach(a=>{const s=a.querySelector(".js-buy-btn");s.style.backgroundColor="#6D8434",s.style.cursor="default",s.querySelector(".js-btn-first-ico").style.display="none",s.querySelector(".js-btn-second-ico").style.display="block",s.disabled=!0})}function u(){k().products.forEach(t=>{st(t.id)})}
 //# sourceMappingURL=commonHelpers2.js.map
